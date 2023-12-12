@@ -1,0 +1,2396 @@
+Uri: https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css
+File Name: D:\Web\prium.github.io\npm\bootstrap-icons@1.4.0\font\bootstrap-icons.css
+Content Type: text/css
+
+Uri: https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/fonts/bootstrap-icons.woff2?8bd4575acf83c7696dc7a14a966660a3
+File Name: D:\Web\prium.github.io\npm\bootstrap-icons@1.4.0\font\fonts\bootstrap-icons.woff2
+Content Type: font/woff2
+
+Uri: https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/fonts/bootstrap-icons.woff?8bd4575acf83c7696dc7a14a966660a3
+File Name: D:\Web\prium.github.io\npm\bootstrap-icons@1.4.0\font\fonts\bootstrap-icons.woff
+Content Type: font/woff
+
+Uri: https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js
+File Name: D:\Web\prium.github.io\npm\feather-icons\dist\feather.min.js
+Content Type: application/javascript
+
+Uri: https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700|Poppins:300,400,500,600,700,800,900&display=swap
+File Name: D:\Web\prium.github.io\css
+Content Type: text/css
+
+Uri: https://fonts.googleapis.com/icon?family=Material+Icons
+File Name: D:\Web\prium.github.io\icon
+Content Type: text/css
+
+Uri: https://fonts.gstatic.com/s/materialicons/v140/flUhRq6tzZclQEJ-Vdg-IuiaDsNZ.ttf
+File Name: D:\Web\prium.github.io\s\materialicons\v140\flUhRq6tzZclQEJ-Vdg-IuiaDsNZ.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/opensans/v36/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsg-1x4gaVc.ttf
+File Name: D:\Web\prium.github.io\s\opensans\v36\memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsg-1x4gaVc.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/opensans/v36/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsgH1x4gaVc.ttf
+File Name: D:\Web\prium.github.io\s\opensans\v36\memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsgH1x4gaVc.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/opensans/v36/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsiH0B4gaVc.ttf
+File Name: D:\Web\prium.github.io\s\opensans\v36\memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsiH0B4gaVc.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/opensans/v36/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjr0B4gaVc.ttf
+File Name: D:\Web\prium.github.io\s\opensans\v36\memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjr0B4gaVc.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/opensans/v36/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0B4gaVc.ttf
+File Name: D:\Web\prium.github.io\s\opensans\v36\memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0B4gaVc.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLBT5Z1xlEA.ttf
+File Name: D:\Web\prium.github.io\s\poppins\v20\pxiByp8kv8JHgFVrLBT5Z1xlEA.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLCz7Z1xlEA.ttf
+File Name: D:\Web\prium.github.io\s\poppins\v20\pxiByp8kv8JHgFVrLCz7Z1xlEA.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLDD4Z1xlEA.ttf
+File Name: D:\Web\prium.github.io\s\poppins\v20\pxiByp8kv8JHgFVrLDD4Z1xlEA.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLDz8Z1xlEA.ttf
+File Name: D:\Web\prium.github.io\s\poppins\v20\pxiByp8kv8JHgFVrLDz8Z1xlEA.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLEj6Z1xlEA.ttf
+File Name: D:\Web\prium.github.io\s\poppins\v20\pxiByp8kv8JHgFVrLEj6Z1xlEA.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLGT9Z1xlEA.ttf
+File Name: D:\Web\prium.github.io\s\poppins\v20\pxiByp8kv8JHgFVrLGT9Z1xlEA.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJfedw.ttf
+File Name: D:\Web\prium.github.io\s\poppins\v20\pxiEyp8kv8JHgFVrJJfedw.ttf
+Content Type: font/ttf
+
+Uri: https://polyfill.io/v3/polyfill.min.js?features=window.scroll
+File Name: D:\Web\prium.github.io\v3\polyfill.min.js
+Content Type: text/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\index.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/calendar.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\calendar.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/chat.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\chat.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/e-commerce/billing.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\e-commerce\billing.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/e-commerce/checkout.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\e-commerce\checkout.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/e-commerce/customer-details.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\e-commerce\customer-details.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/e-commerce/customers.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\e-commerce\customers.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/e-commerce/invoice.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\e-commerce\invoice.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/e-commerce/orders/order-details.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\e-commerce\orders\order-details.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/e-commerce/orders/order-list.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\e-commerce\orders\order-list.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/e-commerce/product/add-product.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\e-commerce\product\add-product.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/e-commerce/product/product-details.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\e-commerce\product\product-details.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/e-commerce/product/product-grid.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\e-commerce\product\product-grid.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/e-commerce/product/product-list.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\e-commerce\product\product-list.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/e-commerce/shopping-cart.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\e-commerce\shopping-cart.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/e-learning/course/course-details.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\e-learning\course\course-details.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/e-learning/course/course-grid.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\e-learning\course\course-grid.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/e-learning/course/course-list.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\e-learning\course\course-list.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/e-learning/course/create-a-course.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\e-learning\course\create-a-course.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/e-learning/student-overview.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\e-learning\student-overview.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/e-learning/trainer-profile.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\e-learning\trainer-profile.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/email/compose.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\email\compose.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/email/email-detail.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\email\email-detail.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/email/inbox.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\email\inbox.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/events/create-an-event.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\events\create-an-event.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/events/event-detail.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\events\event-detail.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/events/event-list.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\events\event-list.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/kanban.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\kanban.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/social/activity-log.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\social\activity-log.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/social/feed.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\social\feed.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/social/followers.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\social\followers.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/social/notifications.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\social\notifications.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/support-desk/card-view.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\support-desk\card-view.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/support-desk/contact-details.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\support-desk\contact-details.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/support-desk/contacts.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\support-desk\contacts.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/support-desk/quick-links.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\support-desk\quick-links.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/support-desk/reports.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\support-desk\reports.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/support-desk/table-view.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\support-desk\table-view.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/app/support-desk/tickets-preview.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\app\support-desk\tickets-preview.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/css/theme-rtl.min.css
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\css\theme-rtl.min.css
+Content Type: text/css
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/css/theme.min.css
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\css\theme.min.css
+Content Type: text/css
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/css/user-rtl.min.css
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\css\user-rtl.min.css
+Content Type: text/css
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/css/user.min.css
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\css\user.min.css
+Content Type: text/css
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/data/usa.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\data\usa.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/data/world.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\data\world.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/chat/1.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\chat\1.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/chat/10.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\chat\10.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/chat/11.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\chat\11.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/chat/12.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\chat\12.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/chat/2.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\chat\2.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/chat/3.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\chat\3.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/chat/4.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\chat\4.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/chat/5.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\chat\5.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/chat/6.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\chat\6.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/chat/7.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\chat\7.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/chat/8.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\chat\8.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/chat/9.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\chat\9.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/crm/call.svg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\crm\call.svg
+Content Type: image/svg+xml
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/crm/email.svg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\crm\email.svg
+Content Type: image/svg+xml
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/crm/india.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\crm\india.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/crm/nepal.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\crm\nepal.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/crm/other.svg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\crm\other.svg
+Content Type: image/svg+xml
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/crm/social.svg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\crm\social.svg
+Content Type: image/svg+xml
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/crm/uae.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\crm\uae.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/doc/error.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\doc\error.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/ecommerce/1.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\ecommerce\1.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/ecommerce/2.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\ecommerce\2.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/ecommerce/3.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\ecommerce\3.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/ecommerce/4.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\ecommerce\4.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/ecommerce/5.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\ecommerce\5.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/ecommerce/6.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\ecommerce\6.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/ecommerce/7.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\ecommerce\7.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/elearning/avatar/student.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\elearning\avatar\student.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/elearning/avatar/trainer.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\elearning\avatar\trainer.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/elearning/courses/course-details.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\elearning\courses\course-details.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/elearning/courses/course1.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\elearning\courses\course1.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/elearning/courses/course2.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\elearning\courses\course2.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/elearning/courses/course3.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\elearning\courses\course3.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/elearning/courses/course4.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\elearning\courses\course4.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/elearning/courses/course5.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\elearning\courses\course5.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/elearning/courses/course6.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\elearning\courses\course6.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/elearning/courses/course7.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\elearning\courses\course7.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/elearning/courses/course8.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\elearning\courses\course8.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/elearning/courses/course9.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\elearning\courses\course9.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/elearning/lessons/chapter1.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\elearning\lessons\chapter1.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/elearning/lessons/chapter2.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\elearning\lessons\chapter2.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/elearning/lessons/chapter3.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\elearning\lessons\chapter3.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/elearning/lessons/chapter4.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\elearning\lessons\chapter4.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/elearning/lessons/intro.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\elearning\lessons\intro.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/favicons/apple-touch-icon.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\favicons\apple-touch-icon.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/favicons/favicon-16x16.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\favicons\favicon-16x16.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/favicons/favicon-32x32.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\favicons\favicon-32x32.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/favicons/favicon.ico
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\favicons\favicon.ico
+Content Type: image/vnd.microsoft.icon
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/favicons/manifest.json
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\favicons\manifest.json
+Content Type: application/json
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/gallery/2.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\gallery\2.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/gallery/2000.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\gallery\2000.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/gallery/2001.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\gallery\2001.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/gallery/2006.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\gallery\2006.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/gallery/2007.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\gallery\2007.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/gallery/2008.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\gallery\2008.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/gallery/2010.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\gallery\2010.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/gallery/3.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\gallery\3.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/gallery/4.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\gallery\4.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/gallery/5.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\gallery\5.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/1.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\1.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/10.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\10.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/11.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\11.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/12.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\12.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/13.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\13.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/14.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\14.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/16.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\16.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/17.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\17.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/18.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\18.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/19.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\19.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/2.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\2.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/20.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\20.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/3.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\3.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/4.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\4.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/5.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\5.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/6.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\6.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/7.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\7.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/8.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\8.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/9.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\9.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/bg-1.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\bg-1.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/bg-2.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\bg-2.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/bg-navbar.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\bg-navbar.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/card.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\card.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/dashboard-alt-dark.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\dashboard-alt-dark.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/dashboard-alt.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\dashboard-alt.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/default.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\default.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/falcon-mode-auto.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\falcon-mode-auto.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/falcon-mode-dark.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\falcon-mode-dark.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/falcon-mode-default.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\falcon-mode-default.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/image-file-2.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\image-file-2.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/inverted.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\inverted.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/generic/vibrant.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\generic\vibrant.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/arrows-h.svg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\arrows-h.svg
+Content Type: image/svg+xml
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/chevron-up.svg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\chevron-up.svg
+Content Type: image/svg+xml
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/chip.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\chip.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/chrome-logo.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\chrome-logo.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/cloud-download.svg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\cloud-download.svg
+Content Type: image/svg+xml
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/cloud-upload.svg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\cloud-upload.svg
+Content Type: image/svg+xml
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/connect-circle.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\connect-circle.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/cookie-1.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\cookie-1.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/discount.svg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\discount.svg
+Content Type: image/svg+xml
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/docs.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\docs.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/double-chevron-up.svg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\double-chevron-up.svg
+Content Type: image/svg+xml
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/edit-alt.svg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\edit-alt.svg
+Content Type: image/svg+xml
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/firefox-logo.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\firefox-logo.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/free.svg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\free.svg
+Content Type: image/svg+xml
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/icon-payment-methods-grid.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\icon-payment-methods-grid.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/icon-payment-methods.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\icon-payment-methods.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/icon-paypal-full.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\icon-paypal-full.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/left-arrow-from-left.svg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\left-arrow-from-left.svg
+Content Type: image/svg+xml
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/master-card.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\master-card.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/networking.svg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\networking.svg
+Content Type: image/svg+xml
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/paragraph.svg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\paragraph.svg
+Content Type: image/svg+xml
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/play.svg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\play.svg
+Content Type: image/svg+xml
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/pro.svg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\pro.svg
+Content Type: image/svg+xml
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/safari-logo.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\safari-logo.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/shield.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\shield.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/signal.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\signal.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/16.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\16.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/21.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\21.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/41.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\41.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/45.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\45.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/47.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\47.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/48.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\48.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/49.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\49.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/50.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\50.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/authentication-corner.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\authentication-corner.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/bg-shape.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\bg-shape.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/calendar.svg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\calendar.svg
+Content Type: image/svg+xml
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/comment-active.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\comment-active.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/comment-inactive.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\comment-inactive.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/corner-1.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\corner-1.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/corner-2.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\corner-2.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/corner-3.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\corner-3.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/corner-4.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\corner-4.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/corner-5.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\corner-5.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/corner-6.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\corner-6.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/corner-7.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\corner-7.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/course-details-bg.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\course-details-bg.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/falcon.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\falcon.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/half-circle.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\half-circle.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/image.svg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\image.svg
+Content Type: image/svg+xml
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/international-women-s-day-2.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\international-women-s-day-2.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/like-active.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\like-active.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/like-inactive.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\like-inactive.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/location.svg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\location.svg
+Content Type: image/svg+xml
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/navbar-vertical.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\navbar-vertical.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/shape-1.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\shape-1.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/spot-illustrations/share-inactive.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\spot-illustrations\share-inactive.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/star_on.svg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\star_on.svg
+Content Type: image/svg+xml
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/target.svg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\target.svg
+Content Type: image/svg+xml
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/triple-chevron-up.svg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\triple-chevron-up.svg
+Content Type: image/svg+xml
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/user-plus.svg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\user-plus.svg
+Content Type: image/svg+xml
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/users.svg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\users.svg
+Content Type: image/svg+xml
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/visa.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\visa.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/weather-icon.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\weather-icon.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/weather-sm.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\weather-sm.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/icons/zip.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\icons\zip.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/illustrations/bg-wave.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\illustrations\bg-wave.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/illustrations/corner-6.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\illustrations\corner-6.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/illustrations/crm-bar-chart.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\illustrations\crm-bar-chart.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/illustrations/crm-line-chart.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\illustrations\crm-line-chart.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/illustrations/ecommerce-bg.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\illustrations\ecommerce-bg.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/illustrations/reports-bg.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\illustrations\reports-bg.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/illustrations/reports-greeting.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\illustrations\reports-greeting.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/illustrations/ticket-bg.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\illustrations\ticket-bg.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/illustrations/ticket-welcome.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\illustrations\ticket-welcome.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/kanban/1.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\kanban\1.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/kanban/2.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\kanban\2.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/kanban/3.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\kanban\3.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/kanban/4.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\kanban\4.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/adobe-creative-cloud.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\adobe-creative-cloud.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/apple.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\apple.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/asana-logo.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\asana-logo.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/atlassian.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\atlassian.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/b&w/1.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\b&w\1.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/b&w/10.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\b&w\10.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/b&w/11.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\b&w\11.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/b&w/12.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\b&w\12.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/b&w/2.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\b&w\2.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/b&w/4.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\b&w\4.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/b&w/6.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\b&w\6.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/bs-5.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\bs-5.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/coursera.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\coursera.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/digitalocean.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\digitalocean.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/facebook.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\facebook.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/g.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\g.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/github.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\github.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/gmail.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\gmail.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/goodreads.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\goodreads.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/google.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\google.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/harvard.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\harvard.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/hp.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\hp.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/hubstaff.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\hubstaff.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/intel-2.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\intel-2.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/logo-invoice.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\logo-invoice.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/mailbluster.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\mailbluster.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/medium.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\medium.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/netflix.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\netflix.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/nike.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\nike.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/nvidia.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\nvidia.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/oxford.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\oxford.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/paypal.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\paypal.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/pinterest.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\pinterest.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/spectrum.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\spectrum.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/spotify.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\spotify.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/staten.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\staten.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/stripe.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\stripe.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/tj-heigh-school.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\tj-heigh-school.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/unsplash.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\unsplash.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/logos/youtube.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\logos\youtube.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/management/activity-1.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\management\activity-1.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/management/activity-2.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\management\activity-2.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/management/activity-3.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\management\activity-3.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/management/activity-4.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\management\activity-4.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/management/activity-5.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\management\activity-5.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/management/activity-6.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\management\activity-6.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/management/activity-7.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\management\activity-7.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/management/activity-8.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\management\activity-8.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/management/activity-9.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\management\activity-9.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/nav-icons/deviantart.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\nav-icons\deviantart.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/nav-icons/discord.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\nav-icons\discord.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/nav-icons/facebook.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\nav-icons\facebook.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/nav-icons/github-light.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\nav-icons\github-light.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/nav-icons/google.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\nav-icons\google.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/nav-icons/hp.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\nav-icons\hp.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/nav-icons/instagram.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\nav-icons\instagram.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/nav-icons/linkedin.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\nav-icons\linkedin.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/nav-icons/mailbluster.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\nav-icons\mailbluster.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/nav-icons/pinterest.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\nav-icons\pinterest.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/nav-icons/slack.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\nav-icons\slack.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/nav-icons/spotify.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\nav-icons\spotify.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/nav-icons/steam.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\nav-icons\steam.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/nav-icons/themewagon.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\nav-icons\themewagon.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/nav-icons/trello.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\nav-icons\trello.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/nav-icons/twitter.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\nav-icons\twitter.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/nav-icons/xbox.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\nav-icons\xbox.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/products/1-2.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\products\1-2.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/products/1-3.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\products\1-3.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/products/1-4.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\products\1-4.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/products/1-5.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\products\1-5.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/products/1-6.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\products\1-6.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/products/1.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\products\1.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/products/10.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\products\10.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/products/11.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\products\11.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/products/12.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\products\12.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/products/13.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\products\13.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/products/14.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\products\14.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/products/2-thumb.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\products\2-thumb.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/products/2.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\products\2.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/products/3-thumb.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\products\3-thumb.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/products/3.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\products\3.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/products/4.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\products\4.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/products/5-thumb.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\products\5-thumb.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/products/5.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\products\5.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/products/6.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\products\6.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/products/7.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\products\7.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/products/8.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\products\8.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/products/9.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\products\9.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/1-thumb.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\1-thumb.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/1.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\1.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/10.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\10.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/11.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\11.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/12.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\12.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/13.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\13.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/14-thumb.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\14-thumb.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/14.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\14.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/15.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\15.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/16.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\16.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/17.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\17.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/18.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\18.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/19.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\19.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/2-thumb.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\2-thumb.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/2.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\2.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/20.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\20.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/21.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\21.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/22.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\22.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/23.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\23.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/24.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\24.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/25-thumb.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\25-thumb.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/25.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\25.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/3-thumb.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\3-thumb.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/3.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\3.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/4-thumb.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\4-thumb.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/4.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\4.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/5-thumb.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\5-thumb.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/5.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\5.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/6.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\6.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/7.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\7.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/8.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\8.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/9.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\9.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/team/avatar.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\team\avatar.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/tickets/due-tickets.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\tickets\due-tickets.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/tickets/hold-tickets.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\tickets\hold-tickets.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/tickets/open-tickets.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\tickets\open-tickets.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/tickets/reports/1.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\tickets\reports\1.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/tickets/reports/2.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\tickets\reports\2.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/tickets/reports/3.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\tickets\reports\3.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/tickets/reports/4.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\tickets\reports\4.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/tickets/reports/5.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\tickets\reports\5.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/tickets/reports/6.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\tickets\reports\6.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/tickets/reports/7.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\tickets\reports\7.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/img/tickets/unassigned.png
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\img\tickets\unassigned.png
+Content Type: image/png
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/js/config.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\js\config.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/js/echarts-example.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\js\echarts-example.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/js/flatpickr.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\js\flatpickr.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/js/theme.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\js\theme.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/video/beach.jpg
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\video\beach.jpg
+Content Type: image/jpeg
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/video/beach.mp4
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\video\beach.mp4
+Content Type: video/mp4
+
+Uri: https://prium.github.io/falcon/v3.19.0/assets/video/beach.webm
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\assets\video\beach.webm
+Content Type: video/webm
+
+Uri: https://prium.github.io/falcon/v3.19.0/changelog.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\changelog.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/dashboard/analytics.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\dashboard\analytics.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/dashboard/crm.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\dashboard\crm.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/dashboard/e-commerce.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\dashboard\e-commerce.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/dashboard/lms.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\dashboard\lms.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/dashboard/project-management.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\dashboard\project-management.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/dashboard/saas.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\dashboard\saas.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/dashboard/support-desk.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\dashboard\support-desk.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/demo/combo-nav.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\demo\combo-nav.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/demo/navbar-double-top.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\demo\navbar-double-top.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/demo/navbar-top.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\demo\navbar-top.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/demo/navbar-vertical-card.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\demo\navbar-vertical-card.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/demo/navbar-vertical-inverted.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\demo\navbar-vertical-inverted.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/demo/navbar-vertical-vibrant.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\demo\navbar-vertical-vibrant.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/demo/navbar-vertical.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\demo\navbar-vertical.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/documentation/customization/configuration.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\documentation\customization\configuration.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/documentation/customization/dark-mode.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\documentation\customization\dark-mode.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/documentation/customization/plugin.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\documentation\customization\plugin.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/documentation/customization/styling.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\documentation\customization\styling.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/documentation/design-file.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\documentation\design-file.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/documentation/faq.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\documentation\faq.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/documentation/getting-started.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\documentation\getting-started.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/documentation/gulp.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\documentation\gulp.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/index.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\index.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/charts/chartjs.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\charts\chartjs.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/charts/d3js.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\charts\d3js.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/charts/echarts/bar-charts.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\charts\echarts\bar-charts.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/charts/echarts/candlestick-charts.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\charts\echarts\candlestick-charts.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/charts/echarts/gauge-charts.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\charts\echarts\gauge-charts.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/charts/echarts/geo-map.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\charts\echarts\geo-map.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/charts/echarts/heatmap-charts.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\charts\echarts\heatmap-charts.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/charts/echarts/how-to-use.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\charts\echarts\how-to-use.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/charts/echarts/line-charts.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\charts\echarts\line-charts.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/charts/echarts/pie-charts.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\charts\echarts\pie-charts.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/charts/echarts/radar-charts.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\charts\echarts\radar-charts.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/charts/echarts/scatter-charts.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\charts\echarts\scatter-charts.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/accordion.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\accordion.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/alerts.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\alerts.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/anchor.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\anchor.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/animated-icons.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\animated-icons.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/background.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\background.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/badges.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\badges.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/bottom-bar.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\bottom-bar.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/breadcrumbs.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\breadcrumbs.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/buttons.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\buttons.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/calendar.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\calendar.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/cards.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\cards.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/carousel/bootstrap.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\carousel\bootstrap.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/carousel/swiper.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\carousel\swiper.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/collapse.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\collapse.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/cookie-notice.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\cookie-notice.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/countup.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\countup.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/draggable.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\draggable.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/dropdowns.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\dropdowns.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/jquery-components.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\jquery-components.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/list-group.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\list-group.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/modals.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\modals.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/navs-and-tabs/combo-navbar.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\navs-and-tabs\combo-navbar.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/navs-and-tabs/double-top-navbar.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\navs-and-tabs\double-top-navbar.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/navs-and-tabs/navbar.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\navs-and-tabs\navbar.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/navs-and-tabs/navs.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\navs-and-tabs\navs.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/navs-and-tabs/tabs.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\navs-and-tabs\tabs.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/navs-and-tabs/top-navbar.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\navs-and-tabs\top-navbar.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/navs-and-tabs/vertical-navbar.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\navs-and-tabs\vertical-navbar.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/offcanvas.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\offcanvas.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/pagination.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\pagination.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/pictures/avatar.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\pictures\avatar.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/pictures/figures.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\pictures\figures.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/pictures/hoverbox.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\pictures\hoverbox.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/pictures/images.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\pictures\images.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/pictures/lightbox.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\pictures\lightbox.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/placeholder.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\placeholder.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/popovers.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\popovers.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/progress-bar.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\progress-bar.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/scrollspy.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\scrollspy.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/search.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\search.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/spinners.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\spinners.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/timeline.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\timeline.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/toasts.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\toasts.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/tooltips.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\tooltips.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/treeview.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\treeview.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/typed-text.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\typed-text.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/videos/embed.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\videos\embed.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/components/videos/plyr.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\components\videos\plyr.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/forms/advance/advance-select.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\forms\advance\advance-select.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/forms/advance/date-picker.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\forms\advance\date-picker.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/forms/advance/editor.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\forms\advance\editor.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/forms/advance/emoji-button.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\forms\advance\emoji-button.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/forms/advance/file-uploader.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\forms\advance\file-uploader.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/forms/advance/input-mask.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\forms\advance\input-mask.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/forms/advance/range-slider.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\forms\advance\range-slider.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/forms/advance/rating.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\forms\advance\rating.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/forms/basic/checks.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\forms\basic\checks.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/forms/basic/form-control.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\forms\basic\form-control.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/forms/basic/input-group.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\forms\basic\input-group.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/forms/basic/layout.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\forms\basic\layout.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/forms/basic/range.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\forms\basic\range.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/forms/basic/select.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\forms\basic\select.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/forms/floating-labels.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\forms\floating-labels.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/forms/validation.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\forms\validation.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/forms/wizard.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\forms\wizard.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/icons/bootstrap-icons.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\icons\bootstrap-icons.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/icons/feather.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\icons\feather.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/icons/font-awesome.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\icons\font-awesome.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/icons/material-icons.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\icons\material-icons.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/maps/google-map.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\maps\google-map.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/maps/leaflet-map.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\maps\leaflet-map.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/tables/advance-tables.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\tables\advance-tables.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/tables/basic-tables.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\tables\basic-tables.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/tables/bulk-select.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\tables\bulk-select.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/utilities/background.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\utilities\background.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/utilities/borders.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\utilities\borders.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/utilities/clearfix.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\utilities\clearfix.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/utilities/colored-links.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\utilities\colored-links.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/utilities/colors.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\utilities\colors.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/utilities/display.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\utilities\display.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/utilities/flex.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\utilities\flex.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/utilities/float.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\utilities\float.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/utilities/focus-ring.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\utilities\focus-ring.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/utilities/grid.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\utilities\grid.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/utilities/icon-link.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\utilities\icon-link.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/utilities/overlayscrollbar.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\utilities\overlayscrollbar.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/utilities/position.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\utilities\position.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/utilities/ratio.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\utilities\ratio.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/utilities/sizing.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\utilities\sizing.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/utilities/spacing.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\utilities\spacing.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/utilities/stretched-link.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\utilities\stretched-link.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/utilities/text-truncation.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\utilities\text-truncation.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/utilities/typography.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\utilities\typography.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/utilities/vertical-align.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\utilities\vertical-align.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/utilities/vertical-rule.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\utilities\vertical-rule.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/utilities/visibility.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\utilities\visibility.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/modules/utilities/visually-hidden.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\modules\utilities\visually-hidden.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/authentication/card/confirm-mail.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\authentication\card\confirm-mail.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/authentication/card/forgot-password.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\authentication\card\forgot-password.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/authentication/card/lock-screen.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\authentication\card\lock-screen.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/authentication/card/login.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\authentication\card\login.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/authentication/card/logout.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\authentication\card\logout.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/authentication/card/register.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\authentication\card\register.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/authentication/card/reset-password.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\authentication\card\reset-password.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/authentication/simple/confirm-mail.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\authentication\simple\confirm-mail.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/authentication/simple/forgot-password.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\authentication\simple\forgot-password.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/authentication/simple/lock-screen.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\authentication\simple\lock-screen.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/authentication/simple/login.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\authentication\simple\login.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/authentication/simple/logout.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\authentication\simple\logout.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/authentication/simple/register.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\authentication\simple\register.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/authentication/simple/reset-password.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\authentication\simple\reset-password.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/authentication/split/confirm-mail.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\authentication\split\confirm-mail.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/authentication/split/forgot-password.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\authentication\split\forgot-password.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/authentication/split/lock-screen.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\authentication\split\lock-screen.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/authentication/split/login.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\authentication\split\login.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/authentication/split/logout.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\authentication\split\logout.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/authentication/split/register.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\authentication\split\register.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/authentication/split/reset-password.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\authentication\split\reset-password.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/authentication/wizard.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\authentication\wizard.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/errors/404.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\errors\404.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/errors/500.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\errors\500.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/faq/faq-accordion.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\faq\faq-accordion.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/faq/faq-alt.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\faq\faq-alt.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/faq/faq-basic.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\faq\faq-basic.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/landing.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\landing.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/miscellaneous/associations.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\miscellaneous\associations.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/miscellaneous/invite-people.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\miscellaneous\invite-people.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/miscellaneous/privacy-policy.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\miscellaneous\privacy-policy.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/pricing/pricing-alt.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\pricing\pricing-alt.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/pricing/pricing-default.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\pricing\pricing-default.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/starter.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\starter.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/user/profile.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\user\profile.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/pages/user/settings.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\pages\user\settings.html.htm
+Content Type: text/html
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/anchorjs/anchor.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\anchorjs\anchor.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/bootstrap/bootstrap.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\bootstrap\bootstrap.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/chart/chart.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\chart\chart.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/choices/choices.min.css
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\choices\choices.min.css
+Content Type: text/css
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/choices/choices.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\choices\choices.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/countup/countUp.umd.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\countup\countUp.umd.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/d3/d3.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\d3\d3.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/datatables.net-bs5/dataTables.bootstrap5.min.css
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\datatables.net-bs5\dataTables.bootstrap5.min.css
+Content Type: text/css
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/datatables.net-bs5/dataTables.bootstrap5.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\datatables.net-bs5\dataTables.bootstrap5.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/datatables.net-fixedcolumns/dataTables.fixedColumns.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\datatables.net-fixedcolumns\dataTables.fixedColumns.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/datatables.net/jquery.dataTables.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\datatables.net\jquery.dataTables.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/dayjs/dayjs.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\dayjs\dayjs.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/draggable/draggable.bundle.legacy.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\draggable\draggable.bundle.legacy.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/dropzone/dropzone.min.css
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\dropzone\dropzone.min.css
+Content Type: text/css
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/dropzone/dropzone.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\dropzone\dropzone.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/echarts/echarts.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\echarts\echarts.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/flatpickr/flatpickr.min.css
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\flatpickr\flatpickr.min.css
+Content Type: text/css
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/fontawesome/all.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\fontawesome\all.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/fullcalendar/main.min.css
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\fullcalendar\main.min.css
+Content Type: text/css
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/fullcalendar/main.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\fullcalendar\main.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/glightbox/glightbox.min.css
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\glightbox\glightbox.min.css
+Content Type: text/css
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/glightbox/glightbox.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\glightbox\glightbox.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/inputmask/inputmask.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\inputmask\inputmask.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/is/is.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\is\is.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/jquery/jquery.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\jquery\jquery.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/leaflet.markercluster/leaflet.markercluster.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\leaflet.markercluster\leaflet.markercluster.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/leaflet.markercluster/MarkerCluster.css
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\leaflet.markercluster\MarkerCluster.css
+Content Type: text/css
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/leaflet.markercluster/MarkerCluster.Default.css
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\leaflet.markercluster\MarkerCluster.Default.css
+Content Type: text/css
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/leaflet.tilelayer.colorfilter/leaflet-tilelayer-colorfilter.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\leaflet.tilelayer.colorfilter\leaflet-tilelayer-colorfilter.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/leaflet/leaflet.css
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\leaflet\leaflet.css
+Content Type: text/css
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/leaflet/leaflet.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\leaflet\leaflet.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/list.js/list.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\list.js\list.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/lodash/lodash.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\lodash\lodash.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/lottie/lottie.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\lottie\lottie.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/nouislider/nouislider.min.css
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\nouislider\nouislider.min.css
+Content Type: text/css
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/nouislider/nouislider.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\nouislider\nouislider.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/plyr/plyr.css
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\plyr\plyr.css
+Content Type: text/css
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/plyr/plyr.polyfilled.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\plyr\plyr.polyfilled.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/popper/popper.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\popper\popper.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/prism/prism-okaidia.css
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\prism\prism-okaidia.css
+Content Type: text/css
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/prism/prism.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\prism\prism.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/rater-js/index.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\rater-js\index.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/select2-bootstrap-5-theme/select2-bootstrap-5-theme.min.css
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\select2-bootstrap-5-theme\select2-bootstrap-5-theme.min.css
+Content Type: text/css
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/select2/select2.full.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\select2\select2.full.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/select2/select2.min.css
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\select2\select2.min.css
+Content Type: text/css
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/select2/select2.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\select2\select2.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/simplebar/simplebar.min.css
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\simplebar\simplebar.min.css
+Content Type: text/css
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/simplebar/simplebar.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\simplebar\simplebar.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/swiper/swiper-bundle.min.css
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\swiper\swiper-bundle.min.css
+Content Type: text/css
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/swiper/swiper-bundle.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\swiper\swiper-bundle.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/tinymce/tinymce.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\tinymce\tinymce.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/typed.js/typed.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\typed.js\typed.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/vendors/validator/validator.min.js
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\vendors\validator\validator.min.js
+Content Type: application/javascript
+
+Uri: https://prium.github.io/falcon/v3.19.0/widgets.html
+File Name: D:\Web\prium.github.io\falcon\v3.19.0\widgets.html.htm
+Content Type: text/html
+
+Uri: https://unpkg.com/@picmo/popup-picker@5.7.6/dist/umd/index.js
+File Name: D:\Web\prium.github.io\@picmo\popup-picker@5.7.6\dist\umd\index.js
+Content Type: application/javascript
+
+Uri: https://unpkg.com/picmo@5.7.6/dist/umd/index.js
+File Name: D:\Web\prium.github.io\picmo@5.7.6\dist\umd\index.js
+Content Type: application/javascript
+

@@ -68,8 +68,8 @@
                 <div class="col-md-7 d-flex flex-center">
                   <div class="p-4 p-md-5 flex-grow-1">
                     <div class="text-center"><img class="d-block mx-auto mb-4" src="assets/img/icons/spot-illustrations/45.png" alt="shield" width="100">
-                      <h3>See you again!</h3>
-                      <p>Thanks for using Falcon. You are <br>now successfully signed out.</p><a class="btn btn-primary btn-sm mt-3" href="login.php"><span class="fas fa-chevron-left me-1" data-fa-transform="shrink-4 down-1"></span>Return to Login</a>
+                      <h3>¡Nos vemos de nuevo!</h3>
+                      <p>Gracias por usar nuestro servicio <br></p><a class="btn btn-primary btn-sm mt-3" href="login.php"><span class="fas fa-chevron-left me-1" data-fa-transform="shrink-4 down-1"></span>Volver a iniciar sesión</a>
                     </div>
                   </div>
                 </div>

@@ -305,7 +305,7 @@
             </a>
             <div class="dropdown-menu dropdown-caret dropdown-caret dropdown-menu-end py-0" aria-labelledby="navbarDropdownUser">
             <div class="bg-white dark__bg-1000 rounded-2 py-2">
-                <a class="dropdown-item fw-bold text-warning" href="#!"><span class="fas fa-crown me-1"></span><span><?= $_SESSION["user_name"] ?></span></a>
+                <a class="dropdown-item fw-bold text-warning" href="#!"><span class="fas fa-crown me-1"></span><span><?= $_SESSION["user_nombres"] ?></span></a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#!">Set status</a>
                 <a class="dropdown-item" href="pages/user/profile.html.htm">Profile &amp; account</a>
@@ -361,7 +361,7 @@
                 <div class="row">
                     <div class="col-6 col-xxl-3">
                     <div class="nav flex-column">
-                        <p class="nav-link text-700 mb-0 fw-bold">Simple Auth</p><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/login.html.htm">Login</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/logout.html.htm">Logout</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/register.html.htm">Register</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/forgot-password.html.htm">Forgot password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/confirm-mail.html.htm">Confirm mail</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/reset-password.html.htm">Reset password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/lock-screen.html.htm">Lock screen</a>
+                        <p class="nav-link text-700 mb-0 fw-bold">Simple Auth</p><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/login.html.htm">Login</a><a class="nav-link py-1 link-600 fw-medium" href="ajax/logout.php">Logout</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/register.html.htm">Register</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/forgot-password.html.htm">Forgot password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/confirm-mail.html.htm">Confirm mail</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/reset-password.html.htm">Reset password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/lock-screen.html.htm">Lock screen</a>
                     </div>
                     </div>
                     <div class="col-6 col-xxl-3">
@@ -706,7 +706,7 @@
                 <li class="nav-item"><a class="nav-link" href="pages/authentication/simple/login.html.htm">
                     <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Login</span></div>
                     </a><!-- more inner pages--></li>
-                <li class="nav-item"><a class="nav-link" href="pages/authentication/simple/logout.html.htm">
+                <li class="nav-item"><a class="nav-link" href="ajax/logout.php">
                     <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Logout</span></div>
                     </a><!-- more inner pages--></li>
                 <li class="nav-item"><a class="nav-link" href="pages/authentication/simple/register.html.htm">
@@ -1430,7 +1430,7 @@
                 <div class="row">
                 <div class="col-6 col-xxl-3">
                     <div class="nav flex-column">
-                    <p class="nav-link text-700 mb-0 fw-bold">Simple Auth</p><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/login.html.htm">Login</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/logout.html.htm">Logout</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/register.html.htm">Register</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/forgot-password.html.htm">Forgot password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/confirm-mail.html.htm">Confirm mail</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/reset-password.html.htm">Reset password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/lock-screen.html.htm">Lock screen</a>
+                    <p class="nav-link text-700 mb-0 fw-bold">Simple Auth</p><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/login.html.htm">Login</a><a class="nav-link py-1 link-600 fw-medium" href="ajax/logout.php">Logout</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/register.html.htm">Register</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/forgot-password.html.htm">Forgot password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/confirm-mail.html.htm">Confirm mail</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/reset-password.html.htm">Reset password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/lock-screen.html.htm">Lock screen</a>
                     </div>
                 </div>
                 <div class="col-6 col-xxl-3">
@@ -1737,7 +1737,7 @@
         </a>
         <div class="dropdown-menu dropdown-caret dropdown-caret dropdown-menu-end py-0" aria-labelledby="navbarDropdownUser">
         <div class="bg-white dark__bg-1000 rounded-2 py-2">
-            <a class="dropdown-item fw-bold text-warning" href="#!"><span class="fas fa-crown me-1"></span><span><?= $_SESSION["user_name"] ?></span></a>
+            <a class="dropdown-item fw-bold text-warning" href="#!"><span class="fas fa-crown me-1"></span><span><?= $_SESSION["user_nombres"] ?></span></a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#!">Set status</a>
             <a class="dropdown-item" href="pages/user/profile.html.htm">Profile &amp; account</a>

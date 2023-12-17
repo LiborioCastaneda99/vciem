@@ -1,8 +1,16 @@
 ﻿<?php
+// Desactivar visualización de errores en el navegador
+ini_set('display_errors', 'Off');
+
+// Configurar el nivel de error
+error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+
+// Resto del código...
+
 session_start();
 
 if (isset($_SESSION['user_id'])) {
-    header('Location: dashboard.php');
+    header('Location: index.php');
 }
 
 ?>

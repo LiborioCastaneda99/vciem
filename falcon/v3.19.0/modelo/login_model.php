@@ -34,7 +34,7 @@
 		try {
 			$hash_md5 = md5($password);
 
-			$query = "SELECT fld_codusuario,fld_nomusuario,fld_iconsecutivo,nombres
+			$query = "SELECT fld_codusuario,fld_nomusuario,fld_iconsecutivo,nombres, rol_id
 			FROM user 
 			WHERE fld_nomusuario='" . $usuario . "' and fld_clave='" . $hash_md5 . "'";
 			// echo $query;
@@ -48,7 +48,7 @@
 				$_SESSION['user_name'] = $row['fld_nomusuario'];
 				$_SESSION['user_nombres'] = $row['nombres'];
 				$_SESSION['user_cod'] = $row['fld_codusuario'];
-				$_SESSION['user_tipo'] = '1'; // $row['tipo_usuario'];
+				$_SESSION['user_tipo'] =$row['rol_id'];
 				$_SESSION['user_empleado'] = $row['fld_nomusuario'];
 				session_start();
 

@@ -10,3 +10,4 @@
 <script src="vendors/lodash/lodash.min.js"></script>
 <script src="v3/polyfill.min.js?features=window.scroll"></script>
 <script src="assets/js/theme.js"></script>
+<script src="js/menu.js"></script>

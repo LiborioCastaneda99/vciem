@@ -1,5 +1,6 @@
 ﻿<?php
 session_start();
+
 // llamamos clase para validarPerfil
 require_once('modelo/validar_perfil.php');
 $vp = new validarPerfil();
@@ -18,7 +19,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
 
 ?>
 <!DOCTYPE html>
-<html data-bs-theme="light" lang="en-US" dir="ltr">
+<html data-bs-theme="light" lang="es" dir="ltr">
 
 <head>
     <meta charset="utf-8">

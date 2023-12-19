@@ -5,7 +5,7 @@ $(document).ready(function() {
 // consultar
 function cargar_tabla() {
     // Hacer la solicitud AJAX al servidor
-    var urlprocess = 'ajax/vendedoresajax.php';
+    var urlprocess = 'ajax/transportadoresajax.php';
     $.ajax({
         type: 'POST',
         url: urlprocess,
@@ -24,6 +24,7 @@ function cargar_tabla() {
                         '<td class="codigo">' + item.codigo + '</td>' +
                         '<td class="nombre">' + item.nombre + '</td>' +
                         '<td class="resumen">' + item.resum + '</td>' +
+                        '<td class="conduc">' + item.conduc + '</td>' +
                         '<td class="est">' + item.est + '</td>' +
                         '<td class="text-center"><button class="btn btn-outline-primary me-1 mb-1" type="button" onclick=editar(' + item.id + ')>' +
                         '<span class="fas fa-edit me-1" data-fa-transform="shrink-3"></span></button></td>' +
@@ -35,8 +36,8 @@ function cargar_tabla() {
 
                 // Inicializar List.js después de agregar datos
                 var options = {
-                    valueNames: ['codigo', 'nombre', 'resum', 'est'],
-                    item: '<tr><td class="codigo"></td><td class="nombre"></td><td class="resumen"></td><td class="est"></td></tr>'
+                    valueNames: ['codigo', 'nombre', 'resum', 'conduc', 'est'],
+                    item: '<tr><td class="codigo"></td><td class="nombre"></td><td class="resumen"></td><td class="conduc"></td><td class="est"></td></tr>'
                 };
                 var userList = new List('myTable', options);
 
@@ -45,13 +46,13 @@ function cargar_tabla() {
 
                 // Re-inicializar la búsqueda después de la actualización de la lista
                 var input = document.querySelector('.search');
-                var searchList = new List('myTable', { valueNames: ['codigo', 'nombre', 'resum', 'est'], page: 5 });
+                var searchList = new List('myTable', { valueNames: ['codigo', 'nombre', 'resum', 'conduc', 'est'], page: 5 });
                 input.addEventListener('input', function() {
                     searchList.search(input.value);
                 });
             } else {
-                // Mostrar un mensaje indicando que no hay vendedores disponibles
-                $('#myTable tbody').html('<tr><td colspan="4" class="text-center">No hay vendedores disponibles</td></tr>');
+                // Mostrar un mensaje indicando que no hay transportadores disponibles
+                $('#myTable tbody').html('<tr><td colspan="4" class="text-center">No hay transportadores disponibles</td></tr>');
             }
         },
         error: function() {
@@ -62,27 +63,29 @@ function cargar_tabla() {
 }
 
 // guardar
-$(".fmr_vendedores").submit(function(event) {
+$(".fmr_transportadores").submit(function(event) {
     event.preventDefault();
 
-    // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevo vendedor
-    var nuevovendedor = {
+    // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevo transportador
+    var nuevotransportador = {
         codigo: $("#codigo").val(),
         nombre: $("#nombre").val(),
         resumen: $("#resumen").val(),
+        conduc: $("#conduc").val(),
         est: $("#est").val()
     };
 
-    // Hacer la solicitud AJAX para guardar la nuevo vendedor
+    // Hacer la solicitud AJAX para guardar la nuevo transportador
     $.ajax({
         type: 'POST',
-        url: 'ajax/vendedoresajax.php',
+        url: 'ajax/transportadoresajax.php',
         data: {
             proceso: 'guardar',
-            codigo: nuevovendedor.codigo,
-            nombre: nuevovendedor.nombre,
-            resumen: nuevovendedor.resumen,
-            est: nuevovendedor.est
+            codigo: nuevotransportador.codigo,
+            nombre: nuevotransportador.nombre,
+            resumen: nuevotransportador.resumen,
+            conduc: nuevotransportador.conduc,
+            est: nuevotransportador.est
         },
         dataType: 'json',
         success: function(response) {
@@ -90,7 +93,7 @@ $(".fmr_vendedores").submit(function(event) {
                 // cerramos el modal
                 $('#guardarModal').modal('hide');
                 // limpiamos el formulario
-                $('#fmr_vendedores')[0].reset();
+                $('#fmr_transportadores')[0].reset();
                 // mostramos la alerta
                 notificacion('Éxito', 'success', response.message);
 
@@ -112,7 +115,7 @@ $(".fmr_vendedores").submit(function(event) {
 function editar(id) {
 
     // Hacer la solicitud AJAX al servidor
-    var urlprocess = 'ajax/vendedoresajax.php';
+    var urlprocess = 'ajax/transportadoresajax.php';
     $.ajax({
         type: 'POST',
         url: urlprocess,
@@ -125,6 +128,7 @@ function editar(id) {
             document.getElementById('codigo_mod').value = data[0].codigo
             document.getElementById('nombre_mod').value = data[0].nombre
             document.getElementById('resumen_mod').value = data[0].resum
+            document.getElementById('conduc_mod').value = data[0].conduc
             document.getElementById('est_mod').value = data[0].est
 
             // Limpiar el cuerpo de la tabla
@@ -138,29 +142,31 @@ function editar(id) {
     });
 }
 
-$(".fmr_vendedores_editar").submit(function(event) {
+$(".fmr_transportadores_editar").submit(function(event) {
     event.preventDefault();
 
-    // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nuevo vendedor
-    var nuevovendedor = {
+    // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nuevo transportador
+    var nuevotransportador = {
         codigo: $("#codigo_mod").val(),
         nombre: $("#nombre_mod").val(),
         resumen: $("#resumen_mod").val(),
+        conduc: $("#conduc_mod").val(),
         est: $("#est_mod").val(),
         id: $("#id").val()
     };
 
-    // Hacer la solicitud AJAX para guardar el nuevo vendedor
+    // Hacer la solicitud AJAX para guardar el nuevo transportador
     $.ajax({
         type: 'POST',
-        url: 'ajax/vendedoresajax.php',
+        url: 'ajax/transportadoresajax.php',
         data: {
             proceso: 'modificar',
-            codigo: nuevovendedor.codigo,
-            nombre: nuevovendedor.nombre,
-            resumen: nuevovendedor.resumen,
-            est: nuevovendedor.est,
-            id: nuevovendedor.id
+            codigo: nuevotransportador.codigo,
+            nombre: nuevotransportador.nombre,
+            resumen: nuevotransportador.resumen,
+            conduc: nuevotransportador.conduc,
+            est: nuevotransportador.est,
+            id: nuevotransportador.id
         },
         dataType: 'json',
         success: function(response) {
@@ -168,7 +174,7 @@ $(".fmr_vendedores_editar").submit(function(event) {
                 // cerramos el modal
                 $('#editarModal').modal('hide');
                 // limpiamos el formulario
-                $('#fmr_vendedores_editar')[0].reset();
+                $('#fmr_transportadores_editar')[0].reset();
                 // mostramos la alerta
                 notificacion('Éxito', 'success', response.message);
 
@@ -192,7 +198,7 @@ function eliminar(id) {
     // Utiliza SweetAlert para confirmar la eliminación
     Swal.fire({
         title: '¿Estás seguro?',
-        text: '¿Seguro que deseas eliminar el vendedor?',
+        text: '¿Seguro que deseas eliminar el transportador?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -204,7 +210,7 @@ function eliminar(id) {
             // Realiza la solicitud de eliminación al servidor (aquí deberías hacer tu llamada AJAX)
             $.ajax({
                 type: 'POST',
-                url: 'ajax/vendedoresajax.php',
+                url: 'ajax/transportadoresajax.php',
                 data: {
                     proceso: 'eliminar',
                     id: id

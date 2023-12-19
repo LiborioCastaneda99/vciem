@@ -5,7 +5,7 @@ $(document).ready(function() {
 // consultar
 function cargar_tabla() {
     // Hacer la solicitud AJAX al servidor
-    var urlprocess = 'ajax/vendedoresajax.php';
+    var urlprocess = 'ajax/presentacionesajax.php';
     $.ajax({
         type: 'POST',
         url: urlprocess,
@@ -23,8 +23,6 @@ function cargar_tabla() {
                         '<tr>' +
                         '<td class="codigo">' + item.codigo + '</td>' +
                         '<td class="nombre">' + item.nombre + '</td>' +
-                        '<td class="resumen">' + item.resum + '</td>' +
-                        '<td class="est">' + item.est + '</td>' +
                         '<td class="text-center"><button class="btn btn-outline-primary me-1 mb-1" type="button" onclick=editar(' + item.id + ')>' +
                         '<span class="fas fa-edit me-1" data-fa-transform="shrink-3"></span></button></td>' +
                         '<td class="text-center"><button class="btn btn-outline-primary me-1 mb-1" type="button" onclick=eliminar(' + item.id + ')>' +
@@ -35,8 +33,8 @@ function cargar_tabla() {
 
                 // Inicializar List.js después de agregar datos
                 var options = {
-                    valueNames: ['codigo', 'nombre', 'resum', 'est'],
-                    item: '<tr><td class="codigo"></td><td class="nombre"></td><td class="resumen"></td><td class="est"></td></tr>'
+                    valueNames: ['codigo', 'nombre'],
+                    item: '<tr><td class="codigo"></td><td class="nombre"></td></tr>'
                 };
                 var userList = new List('myTable', options);
 
@@ -45,44 +43,39 @@ function cargar_tabla() {
 
                 // Re-inicializar la búsqueda después de la actualización de la lista
                 var input = document.querySelector('.search');
-                var searchList = new List('myTable', { valueNames: ['codigo', 'nombre', 'resum', 'est'], page: 5 });
+                var searchList = new List('myTable', { valueNames: ['codigo', 'nombre'], page: 5 });
                 input.addEventListener('input', function() {
                     searchList.search(input.value);
                 });
             } else {
-                // Mostrar un mensaje indicando que no hay vendedores disponibles
-                $('#myTable tbody').html('<tr><td colspan="4" class="text-center">No hay vendedores disponibles</td></tr>');
+                // Mostrar un mensaje indicando que no hay presentaciones disponibles
+                $('#myTable tbody').html('<tr><td colspan="4" class="text-center">No hay presentaciones disponibles</td></tr>');
             }
         },
         error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
             notificacion('Error', 'error', response.message);
         }
     });
 }
 
 // guardar
-$(".fmr_vendedores").submit(function(event) {
+$(".fmr_presentaciones").submit(function(event) {
     event.preventDefault();
 
-    // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevo vendedor
-    var nuevovendedor = {
+    // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nueva presentacion
+    var nuevapresentacion = {
         codigo: $("#codigo").val(),
-        nombre: $("#nombre").val(),
-        resumen: $("#resumen").val(),
-        est: $("#est").val()
+        nombre: $("#nombre").val()
     };
 
-    // Hacer la solicitud AJAX para guardar la nuevo vendedor
+    // Hacer la solicitud AJAX para guardar el nueva presentacion
     $.ajax({
         type: 'POST',
-        url: 'ajax/vendedoresajax.php',
+        url: 'ajax/presentacionesajax.php',
         data: {
             proceso: 'guardar',
-            codigo: nuevovendedor.codigo,
-            nombre: nuevovendedor.nombre,
-            resumen: nuevovendedor.resumen,
-            est: nuevovendedor.est
+            codigo: nuevapresentacion.codigo,
+            nombre: nuevapresentacion.nombre
         },
         dataType: 'json',
         success: function(response) {
@@ -90,18 +83,16 @@ $(".fmr_vendedores").submit(function(event) {
                 // cerramos el modal
                 $('#guardarModal').modal('hide');
                 // limpiamos el formulario
-                $('#fmr_vendedores')[0].reset();
+                $('#fmr_presentaciones')[0].reset();
                 // mostramos la alerta
                 notificacion('Éxito', 'success', response.message);
 
                 cargar_tabla();
             } else {
-                // Error en la inserción, muestra mensaje de error con SweetAlert
                 notificacion('Error', 'error', response.message);
             }
         },
         error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
             notificacion('Error', 'error', response.message);
         }
     });
@@ -112,7 +103,7 @@ $(".fmr_vendedores").submit(function(event) {
 function editar(id) {
 
     // Hacer la solicitud AJAX al servidor
-    var urlprocess = 'ajax/vendedoresajax.php';
+    var urlprocess = 'ajax/presentacionesajax.php';
     $.ajax({
         type: 'POST',
         url: urlprocess,
@@ -124,43 +115,36 @@ function editar(id) {
             document.getElementById('id').value = data[0].id
             document.getElementById('codigo_mod').value = data[0].codigo
             document.getElementById('nombre_mod').value = data[0].nombre
-            document.getElementById('resumen_mod').value = data[0].resum
-            document.getElementById('est_mod').value = data[0].est
 
             // Limpiar el cuerpo de la tabla
             $('#editarModal').modal('show'); // abrir
 
         },
         error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
             notificacion('Error', 'error', response.message);
         }
     });
 }
 
-$(".fmr_vendedores_editar").submit(function(event) {
+$(".fmr_presentaciones_editar").submit(function(event) {
     event.preventDefault();
 
-    // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nuevo vendedor
-    var nuevovendedor = {
+    // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nueva presentacion
+    var nuevapresentacion = {
         codigo: $("#codigo_mod").val(),
         nombre: $("#nombre_mod").val(),
-        resumen: $("#resumen_mod").val(),
-        est: $("#est_mod").val(),
         id: $("#id").val()
     };
 
-    // Hacer la solicitud AJAX para guardar el nuevo vendedor
+    // Hacer la solicitud AJAX para guardar la nueva presentacion
     $.ajax({
         type: 'POST',
-        url: 'ajax/vendedoresajax.php',
+        url: 'ajax/presentacionesajax.php',
         data: {
             proceso: 'modificar',
-            codigo: nuevovendedor.codigo,
-            nombre: nuevovendedor.nombre,
-            resumen: nuevovendedor.resumen,
-            est: nuevovendedor.est,
-            id: nuevovendedor.id
+            codigo: nuevapresentacion.codigo,
+            nombre: nuevapresentacion.nombre,
+            id: nuevapresentacion.id
         },
         dataType: 'json',
         success: function(response) {
@@ -168,18 +152,16 @@ $(".fmr_vendedores_editar").submit(function(event) {
                 // cerramos el modal
                 $('#editarModal').modal('hide');
                 // limpiamos el formulario
-                $('#fmr_vendedores_editar')[0].reset();
+                $('#fmr_presentaciones_editar')[0].reset();
                 // mostramos la alerta
                 notificacion('Éxito', 'success', response.message);
 
                 cargar_tabla();
             } else {
-                // Error en la inserción, muestra mensaje de error con SweetAlert
                 notificacion('Error', 'error', response.message);
             }
         },
         error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
             notificacion('Error', 'error', response.message);
         }
     });
@@ -192,7 +174,7 @@ function eliminar(id) {
     // Utiliza SweetAlert para confirmar la eliminación
     Swal.fire({
         title: '¿Estás seguro?',
-        text: '¿Seguro que deseas eliminar el vendedor?',
+        text: '¿Seguro que deseas eliminar el presentacion?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -204,7 +186,7 @@ function eliminar(id) {
             // Realiza la solicitud de eliminación al servidor (aquí deberías hacer tu llamada AJAX)
             $.ajax({
                 type: 'POST',
-                url: 'ajax/vendedoresajax.php',
+                url: 'ajax/presentacionesajax.php',
                 data: {
                     proceso: 'eliminar',
                     id: id
@@ -216,8 +198,7 @@ function eliminar(id) {
 
                         cargar_tabla();
                     } else {
-                        // Error en la inserción, muestra mensaje de error con SweetAlert
-                        notificacion('Error', 'error', response.message);
+                        notificacion('Error', 'error', response.message)
                     }
                 },
                 error: function() {

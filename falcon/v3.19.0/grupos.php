@@ -1,9 +1,22 @@
 ﻿<?php
 session_start();
 
-if (!isset($_SESSION['user_id'])) {
+// llamamos clase para validarPerfil
+require_once('modelo/validar_perfil.php');
+$vp = new validarPerfil();
+
+$usuario_id = $_SESSION['user_id'];
+if (!isset($usuario_id)) {
     header('Location: login.php');
 }
+
+$permisoRequerido = "ver_grupos";
+// Verificar si el usuario tiene el permiso requerido
+if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
+    // Mostrar un mensaje de error o redirigir a otra página
+    header('Location: index.php');
+}
+
 ?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en-US" dir="ltr">

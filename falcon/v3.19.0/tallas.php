@@ -10,7 +10,7 @@ if (!isset($usuario_id)) {
     header('Location: login.php');
 }
 
-$permisoRequerido = "VER_USUARIOS";
+$permisoRequerido = "ver_tallas";
 // Verificar si el usuario tiene el permiso requerido
 if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
     // Mostrar un mensaje de error o redirigir a otra página

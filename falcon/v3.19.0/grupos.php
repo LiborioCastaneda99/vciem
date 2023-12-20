@@ -14,7 +14,7 @@ if (!isset($_SESSION['user_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- ===============================================--><!--    Document Title--><!-- ===============================================-->
-    <title>Visual Ciem | Marcas</title>
+    <title>Visual Ciem | Grupos</title>
 
     <!-- ===============================================--><!--    Favicons--><!-- ===============================================-->
     <?php require_once("head.php"); ?>
@@ -51,7 +51,7 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="card-header bg-body-tertiary">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h6 class="mb-0">Marcas</h6>
+                                <h6 class="mb-0">Grupos</h6>
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@ if (!isset($_SESSION['user_id'])) {
                                 <div id="tableExample3" data-list='{"valueNames":["codigo","nombre"],"page":5,"pagination":true}'>
                                     <div class="row justify-content-end g-0">
                                         <div class="col-auto col-sm-7 mb-3">
-                                            <button class="btn btn-outline-primary btn-sm me-1 mb-1" type="button" data-bs-toggle="modal" data-bs-target="#guardarModal">Registrar marca</button>
+                                            <button class="btn btn-outline-primary btn-sm me-1 mb-1" type="button" data-bs-toggle="modal" data-bs-target="#guardarModal">Registrar grupo</button>
                                         </div>
                                         <div class="col-auto col-sm-5 mb-3">
                                             <form method="POST" action="#" id="" name="">
@@ -77,7 +77,10 @@ if (!isset($_SESSION['user_id'])) {
                                             <thead class="bg-200">
                                                 <tr>
                                                     <th class="text-900 sort" data-sort="codigo">Codigo</th>
+                                                    <th class="text-900 sort" data-sort="clase">Clase</th>
                                                     <th class="text-900 sort" data-sort="nombre">Nombre</th>
+                                                    <th class="text-900 sort" data-sort="resumen">Resumen</th>
+                                                    <th class="text-900 sort" data-sort="dias">Dias</th>
                                                     <th class="text-900 no-sort pe-1 align-middle data-table-row-action">Editar</th>
                                                     <th class="text-900 no-sort pe-1 align-middle data-table-row-action">Eliminar</th>
                                                 </tr>
@@ -105,25 +108,40 @@ if (!isset($_SESSION['user_id'])) {
                             <div class="position-absolute top-0 end-0 mt-3 me-3 z-1"><button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button></div>
                             <div class="modal-body p-0">
                                 <div class="rounded-top-3 bg-body-tertiary py-3 ps-4 pe-6">
-                                    <h4 class="mb-1" id="staticBackdropLabel">Registro de marcas</h4>
+                                    <h4 class="mb-1" id="staticBackdropLabel">Registro de grupos</h4>
                                     <!-- <p class="fs-11 mb-0">Added by <a class="link-600 fw-semi-bold" href="#!">Antony</a></p> -->
                                 </div>
                                 <div class="p-4">
                                     <div class="row">
-                                        <form id="fmr_marcas" method="POST" class="fmr_marcas row g-2 needs-validation" novalidate="">
+                                        <form id="fmr_grupos" method="POST" class="fmr_grupos row g-2 needs-validation" novalidate="">
                                             <div class="col-md-6">
                                                 <label class="form-label" for="codigo">Codigo</label>
                                                 <input class="form-control" id="codigo" name="codigo" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-6">
+                                                <label class="form-label" for="clase">Clase</label>
+                                                <input class="form-control" id="clase" name="clase" type="text" required />
+                                                <div class="valid-feedback">¡Ok!</div>
+                                            </div>
+                                            <div class="col-md-12">
                                                 <label class="form-label" for="nombre">Nombre</label>
                                                 <input class="form-control" id="nombre" name="nombre" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label" for="resumen">Resumen</label>
+                                                <input class="form-control" id="resumen" name="resumen" type="text" required />
+                                                <div class="valid-feedback">¡Ok!</div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label" for="dias">Dias</label>
+                                                <input class="form-control" id="dias" name="dias" type="text" required />
+                                                <div class="valid-feedback">¡Ok!</div>
+                                            </div>
                                             <div class="modal-footer">
                                                 <div class="col-12 d-grid  gap-0">
-                                                    <button class="btn btn-outline-primary me-1 mb-1" type="submit">Agregar marca</button>
+                                                    <button class="btn btn-outline-primary me-1 mb-1" type="submit">Agregar grupo</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -141,12 +159,12 @@ if (!isset($_SESSION['user_id'])) {
                             <div class="position-absolute top-0 end-0 mt-3 me-3 z-1"><button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button></div>
                             <div class="modal-body p-0">
                                 <div class="rounded-top-3 bg-body-tertiary py-3 ps-4 pe-6">
-                                    <h4 class="mb-1" id="staticBackdropLabel">Editar marca</h4>
+                                    <h4 class="mb-1" id="staticBackdropLabel">Editar grupo</h4>
                                     <!-- <p class="fs-11 mb-0">Added by <a class="link-600 fw-semi-bold" href="#!">Antony</a></p> -->
                                 </div>
                                 <div class="p-4">
                                     <div class="row">
-                                        <form id="fmr_marcas_editar" method="POST" class="fmr_marcas_editar row g-2 needs-validation" novalidate="">
+                                        <form id="fmr_grupos_editar" method="POST" class="fmr_grupos_editar row g-2 needs-validation" novalidate="">
                                             <div class="col-md-6">
                                                 <label class="form-label" for="codigo">Codigo</label>
                                                 <input class="form-control" id="id" name="id" type="hidden" />
@@ -154,8 +172,23 @@ if (!isset($_SESSION['user_id'])) {
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-6">
+                                                <label class="form-label" for="clase_mod">Clase</label>
+                                                <input class="form-control" id="clase_mod" name="clase_mod" type="text" required />
+                                                <div class="valid-feedback">¡Ok!</div>
+                                            </div>
+                                            <div class="col-md-12">
                                                 <label class="form-label" for="nombre_mod">Nombre</label>
                                                 <input class="form-control" id="nombre_mod" name="nombre_mod" type="text" required />
+                                                <div class="valid-feedback">¡Ok!</div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label" for="resumen_mod">Resumen</label>
+                                                <input class="form-control" id="resumen_mod" name="resumen_mod" type="text" required />
+                                                <div class="valid-feedback">¡Ok!</div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label" for="dias_mod">Dias</label>
+                                                <input class="form-control" id="dias_mod" name="dias_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="modal-footer">
@@ -180,7 +213,7 @@ if (!isset($_SESSION['user_id'])) {
 
     <!-- ===============================================--><!--    JavaScripts--><!-- ===============================================-->
     <?php require_once("script.php"); ?>
-    <script src="js/marcas.js"></script>
+    <script src="js/grupos.js"></script>
 </body>
 
 </html>

@@ -29,15 +29,15 @@ function cargar_menu() {
                     `);
                     menuContainer.append(menuItem);
                 } else {
-                    const menuItem = $(`<ul class="nav collapse show" id="${menu.modulo}">
+                    const menuItemm = $(`<ul class="nav collapse show" id="${menu.modulo}">
                         <li class="nav-item">
-                            <a class="nav-link" href="${menu.ruta}">
+                            <a class="nav-link" href="${menu.ruta}" title="${menu.descripcion}">
                                 <div class="d-flex align-items-center"><span class="nav-link-text ps-1"><span
                                 class="fas ${menu.icono}"></span> ${menu.nombre}</span></div>
                             </a>
                         </li>
                     `);
-                    menuContainer.append(menuItem);
+                    menuContainer.append(menuItemm);
                 }
 
             });

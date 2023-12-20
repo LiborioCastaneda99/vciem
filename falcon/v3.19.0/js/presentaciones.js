@@ -5,7 +5,7 @@ $(document).ready(function() {
 // consultar
 function cargar_tabla() {
     // Hacer la solicitud AJAX al servidor
-    var urlprocess = 'ajax/marcasajax.php';
+    var urlprocess = 'ajax/presentacionesajax.php';
     $.ajax({
         type: 'POST',
         url: urlprocess,
@@ -48,35 +48,34 @@ function cargar_tabla() {
                     searchList.search(input.value);
                 });
             } else {
-                // Mostrar un mensaje indicando que no hay marcas disponibles
-                $('#myTable tbody').html('<tr><td colspan="4" class="text-center">No hay marcas disponibles</td></tr>');
+                // Mostrar un mensaje indicando que no hay presentaciones disponibles
+                $('#myTable tbody').html('<tr><td colspan="4" class="text-center">No hay presentaciones disponibles</td></tr>');
             }
         },
         error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
             notificacion('Error', 'error', response.message);
         }
     });
 }
 
 // guardar
-$(".fmr_marcas").submit(function(event) {
+$(".fmr_presentaciones").submit(function(event) {
     event.preventDefault();
 
-    // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nueva marca
-    var nuevamarca = {
+    // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nueva presentacion
+    var nuevapresentacion = {
         codigo: $("#codigo").val(),
         nombre: $("#nombre").val()
     };
 
-    // Hacer la solicitud AJAX para guardar la nueva marca
+    // Hacer la solicitud AJAX para guardar el nueva presentacion
     $.ajax({
         type: 'POST',
-        url: 'ajax/marcasajax.php',
+        url: 'ajax/presentacionesajax.php',
         data: {
             proceso: 'guardar',
-            codigo: nuevamarca.codigo,
-            nombre: nuevamarca.nombre
+            codigo: nuevapresentacion.codigo,
+            nombre: nuevapresentacion.nombre
         },
         dataType: 'json',
         success: function(response) {
@@ -84,18 +83,16 @@ $(".fmr_marcas").submit(function(event) {
                 // cerramos el modal
                 $('#guardarModal').modal('hide');
                 // limpiamos el formulario
-                $('#fmr_marcas')[0].reset();
+                $('#fmr_presentaciones')[0].reset();
                 // mostramos la alerta
                 notificacion('Éxito', 'success', response.message);
 
                 cargar_tabla();
             } else {
-                // Error en la inserción, muestra mensaje de error con SweetAlert
                 notificacion('Error', 'error', response.message);
             }
         },
         error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
             notificacion('Error', 'error', response.message);
         }
     });
@@ -106,7 +103,7 @@ $(".fmr_marcas").submit(function(event) {
 function editar(id) {
 
     // Hacer la solicitud AJAX al servidor
-    var urlprocess = 'ajax/marcasajax.php';
+    var urlprocess = 'ajax/presentacionesajax.php';
     $.ajax({
         type: 'POST',
         url: urlprocess,
@@ -124,31 +121,30 @@ function editar(id) {
 
         },
         error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
             notificacion('Error', 'error', response.message);
         }
     });
 }
 
-$(".fmr_marcas_editar").submit(function(event) {
+$(".fmr_presentaciones_editar").submit(function(event) {
     event.preventDefault();
 
-    // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nueva marca
-    var nuevamarca = {
+    // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nueva presentacion
+    var nuevapresentacion = {
         codigo: $("#codigo_mod").val(),
         nombre: $("#nombre_mod").val(),
         id: $("#id").val()
     };
 
-    // Hacer la solicitud AJAX para guardar la nueva marca
+    // Hacer la solicitud AJAX para guardar la nueva presentacion
     $.ajax({
         type: 'POST',
-        url: 'ajax/marcasajax.php',
+        url: 'ajax/presentacionesajax.php',
         data: {
             proceso: 'modificar',
-            codigo: nuevamarca.codigo,
-            nombre: nuevamarca.nombre,
-            id: nuevamarca.id
+            codigo: nuevapresentacion.codigo,
+            nombre: nuevapresentacion.nombre,
+            id: nuevapresentacion.id
         },
         dataType: 'json',
         success: function(response) {
@@ -156,18 +152,16 @@ $(".fmr_marcas_editar").submit(function(event) {
                 // cerramos el modal
                 $('#editarModal').modal('hide');
                 // limpiamos el formulario
-                $('#fmr_marcas_editar')[0].reset();
+                $('#fmr_presentaciones_editar')[0].reset();
                 // mostramos la alerta
                 notificacion('Éxito', 'success', response.message);
 
                 cargar_tabla();
             } else {
-                // Error en la inserción, muestra mensaje de error con SweetAlert
                 notificacion('Error', 'error', response.message);
             }
         },
         error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
             notificacion('Error', 'error', response.message);
         }
     });
@@ -180,7 +174,7 @@ function eliminar(id) {
     // Utiliza SweetAlert para confirmar la eliminación
     Swal.fire({
         title: '¿Estás seguro?',
-        text: '¿Seguro que deseas eliminar la marca?',
+        text: '¿Seguro que deseas eliminar el presentacion?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -192,7 +186,7 @@ function eliminar(id) {
             // Realiza la solicitud de eliminación al servidor (aquí deberías hacer tu llamada AJAX)
             $.ajax({
                 type: 'POST',
-                url: 'ajax/marcasajax.php',
+                url: 'ajax/presentacionesajax.php',
                 data: {
                     proceso: 'eliminar',
                     id: id
@@ -204,8 +198,7 @@ function eliminar(id) {
 
                         cargar_tabla();
                     } else {
-                        // Error en la inserción, muestra mensaje de error con SweetAlert
-                        notificacion('Error', 'error', response.message);
+                        notificacion('Error', 'error', response.message)
                     }
                 },
                 error: function() {
@@ -227,6 +220,6 @@ function notificacion(titulo, icon, mensaje) {
         title: titulo,
         text: mensaje,
         icon: icon,
-        confirmButtonmarca: color
+        confirmButtonColor: color
     });
 }

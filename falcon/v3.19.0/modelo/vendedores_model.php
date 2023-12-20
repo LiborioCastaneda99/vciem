@@ -1,7 +1,7 @@
 <?php
 require_once('../modelo/Conexion.php');  // Se carga la clase conexion
 
-class tallasModel extends Conexion
+class vendedoresModel extends Conexion
 {
 
     public static function get()
@@ -9,7 +9,7 @@ class tallasModel extends Conexion
         $dbconec = Conexion::Conectar();
 
         try {
-            $query = "SELECT `id`, `codigo`, `nombre` FROM tbtallas WHERE activo = 1";
+            $query = "SELECT `id`, `codigo`, `nombre`, `resum`, `est` FROM tbvendedores WHERE activo = 1";
             $stmt = $dbconec->prepare($query);
             $stmt->execute();
 
@@ -17,7 +17,7 @@ class tallasModel extends Conexion
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             if ($rows) {
-                // Devolver el array JSON con todos los tbtallas
+                // Devolver el array JSON con todos los tbvendedores
                 echo json_encode($rows);
             } else {
 
@@ -35,7 +35,7 @@ class tallasModel extends Conexion
         $dbconec = Conexion::Conectar();
 
         try {
-            $query = "SELECT `id`, `codigo`, `nombre` FROM tbtallas WHERE id = $id";
+            $query = "SELECT `id`, `codigo`, `nombre`, `resum`, `est` FROM tbvendedores WHERE id = $id";
             $stmt = $dbconec->prepare($query);
             $stmt->execute();
 
@@ -43,10 +43,10 @@ class tallasModel extends Conexion
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             if ($rows) {
-                // Devolver el array JSON con todos los tbtallas
+                // Devolver el array JSON con todos los tbvendedores
                 echo json_encode($rows);
             } else {
-                $data = "No hay talla con este id.";
+                $data = "No hay vendedores";
                 echo json_encode($data);
             }
         } catch (Exception $e) {
@@ -62,9 +62,11 @@ class tallasModel extends Conexion
         try {
             $codigo = $datos['codigo'];
             $nombre = $datos['nombre'];
+            $resumen = $datos['resumen'];
+            $est = $datos['est'];
 
             // Consulta para verificar la existencia del código
-            $query = "SELECT COUNT(*) as count FROM tbtallas WHERE codigo = :codigo";
+            $query = "SELECT COUNT(*) as count FROM tbvendedores WHERE codigo = :codigo";
             $stmt = $dbconec->prepare($query);
             $stmt->bindParam(':codigo', $codigo);
             $stmt->execute();
@@ -79,17 +81,19 @@ class tallasModel extends Conexion
             } else {
 
                 // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
-                $query = "INSERT INTO tbtallas (codigo, nombre) VALUES (:codigo, :nombre)";
+                $query = "INSERT INTO tbvendedores (codigo, nombre, resum, est) VALUES (:codigo, :nombre, :resumen, :est)";
                 $stmt = $dbconec->prepare($query);
                 $stmt->bindParam(':codigo', $codigo);
                 $stmt->bindParam(':nombre', $nombre);
+                $stmt->bindParam(':resumen', $resumen);
+                $stmt->bindParam(':est', $est);
 
                 if ($stmt->execute()) {
                     // Si la inserción fue exitosa, devuelve un mensaje o los datos actualizados
-                    $response = array('status' => 'success', 'message' => 'La talla se ha guardado correctamente');
+                    $response = array('status' => 'success', 'message' => 'El vendedor se ha guardado correctamente');
                 } else {
                     // Si hubo un error en la inserción, devuelve un mensaje de error
-                    $response = array('status' => 'error', 'message' => 'Error al guardar la talla');
+                    $response = array('status' => 'error', 'message' => 'Error al guardar el vendedor');
                 }
 
                 // Devuelve la respuesta en formato JSON
@@ -109,9 +113,11 @@ class tallasModel extends Conexion
 
             $codigo = $datos['codigo'];
             $nombre = $datos['nombre'];
+            $resumen = $datos['resumen'];
+            $est = $datos['est'];
             $id = $datos['id'];
             // Consulta para verificar la existencia del código
-            $query = "SELECT COUNT(*) as count FROM tbtallas WHERE codigo = :codigo";
+            $query = "SELECT COUNT(*) as count FROM tbvendedores WHERE codigo = :codigo";
             $stmt = $dbconec->prepare($query);
             $stmt->bindParam(':codigo', $codigo);
             $stmt->execute();
@@ -125,18 +131,20 @@ class tallasModel extends Conexion
                 echo json_encode($response);
             } else {
                 // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
-                $query = "UPDATE tbtallas SET codigo=:codigo, nombre=:nombre WHERE id=:id";
+                $query = "UPDATE tbvendedores SET codigo=:codigo, nombre=:nombre, resum=:resumen, est=:est WHERE id=:id";
                 $stmt = $dbconec->prepare($query);
                 $stmt->bindParam(':id', $id);
                 $stmt->bindParam(':codigo', $codigo);
                 $stmt->bindParam(':nombre', $nombre);
+                $stmt->bindParam(':resumen', $resumen);
+                $stmt->bindParam(':est', $est);
 
                 if ($stmt->execute()) {
                     // Si la inserción fue exitosa, devuelve un mensaje o los datos actualizados
-                    $response = array('status' => 'success', 'message' => 'La talla se ha modificado exitosamente.');
+                    $response = array('status' => 'success', 'message' => 'El vendedor se ha modificado exitosamente.');
                 } else {
                     // Si hubo un error en la inserción, devuelve un mensaje de error
-                    $response = array('status' => 'error', 'message' => 'Error al modificar la talla.');
+                    $response = array('status' => 'error', 'message' => 'Error al modificar el vendedor.');
                 }
 
                 // Devuelve la respuesta en formato JSON
@@ -155,17 +163,17 @@ class tallasModel extends Conexion
         try {
             $activo = 0;
             // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
-            $query = "UPDATE tbtallas SET activo=:activo WHERE id=:id";
+            $query = "UPDATE tbvendedores SET activo=:activo WHERE id=:id";
             $stmt = $dbconec->prepare($query);
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':activo', $activo);
 
             if ($stmt->execute()) {
                 // Si la inserción fue exitosa, devuelve un mensaje o los datos actualizados
-                $response = array('status' => 'success', 'message' => 'Talla eliminada exitosamente.');
+                $response = array('status' => 'success', 'message' => 'Vendedor eliminado exitosamente.');
             } else {
                 // Si hubo un error en la inserción, devuelve un mensaje de error
-                $response = array('status' => 'error', 'message' => 'Error al eliminar la talla.');
+                $response = array('status' => 'error', 'message' => 'Error al eliminar el vendedor.');
             }
 
             // Devuelve la respuesta en formato JSON

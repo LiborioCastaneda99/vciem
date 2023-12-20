@@ -1,11 +1,11 @@
 <?php
-$className = "zonas";
+$className = "presentaciones";
 $model = "../modelo/". $className ."_model.php";
 $controller = "../controlador/". $className ."_controller.php";
 require_once($model);
 require_once($controller);
 
-$cl = new zonasModelo();  //Instanciamiento de clase...
+$cl = new presentacionesModelo();  //Instanciamiento de clase...
 
 if (!empty($_POST))
 {

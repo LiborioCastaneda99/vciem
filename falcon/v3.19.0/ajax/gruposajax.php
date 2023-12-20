@@ -1,11 +1,11 @@
 <?php
-$className = "tallas";
+$className = "grupos";
 $model = "../modelo/". $className ."_model.php";
 $controller = "../controlador/". $className ."_controller.php";
 require_once($model);
 require_once($controller);
 
-$cl = new tallasModelo();  //Instanciamiento de clase...
+$cl = new gruposModelo();  //Instanciamiento de clase...
 
 if (!empty($_POST))
 {

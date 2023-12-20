@@ -14,7 +14,7 @@ if (!isset($_SESSION['user_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- ===============================================--><!--    Document Title--><!-- ===============================================-->
-    <title>Visual Ciem | Marcas</title>
+    <title>Visual Ciem | Presentaciones</title>
 
     <!-- ===============================================--><!--    Favicons--><!-- ===============================================-->
     <?php require_once("head.php"); ?>
@@ -51,7 +51,7 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="card-header bg-body-tertiary">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h6 class="mb-0">Marcas</h6>
+                                <h6 class="mb-0">Presentaciones</h6>
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@ if (!isset($_SESSION['user_id'])) {
                                 <div id="tableExample3" data-list='{"valueNames":["codigo","nombre"],"page":5,"pagination":true}'>
                                     <div class="row justify-content-end g-0">
                                         <div class="col-auto col-sm-7 mb-3">
-                                            <button class="btn btn-outline-primary btn-sm me-1 mb-1" type="button" data-bs-toggle="modal" data-bs-target="#guardarModal">Registrar marca</button>
+                                            <button class="btn btn-outline-primary btn-sm me-1 mb-1" type="button" data-bs-toggle="modal" data-bs-target="#guardarModal">Registrar presentacion</button>
                                         </div>
                                         <div class="col-auto col-sm-5 mb-3">
                                             <form method="POST" action="#" id="" name="">
@@ -87,10 +87,8 @@ if (!isset($_SESSION['user_id'])) {
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="d-flex justify-content-center mt-3">
-                                        <button class="btn btn-sm btn-falcon-default me-1" type="button" title="Previous" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
-                                        <ul class="pagination mb-0"></ul>
-                                        <button class="btn btn-sm btn-falcon-default ms-1" type="button" title="Next" data-list-pagination="next"><span class="fas fa-chevron-right"> </span></button>
+                                    <div class="d-flex justify-content-center mt-3"><button class="btn btn-sm btn-falcon-default me-1" type="button" title="Previous" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
+                                        <ul class="pagination mb-0"></ul><button class="btn btn-sm btn-falcon-default ms-1" type="button" title="Next" data-list-pagination="next"><span class="fas fa-chevron-right"> </span></button>
                                     </div>
                                 </div>
                             </div>
@@ -105,12 +103,12 @@ if (!isset($_SESSION['user_id'])) {
                             <div class="position-absolute top-0 end-0 mt-3 me-3 z-1"><button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button></div>
                             <div class="modal-body p-0">
                                 <div class="rounded-top-3 bg-body-tertiary py-3 ps-4 pe-6">
-                                    <h4 class="mb-1" id="staticBackdropLabel">Registro de marcas</h4>
+                                    <h4 class="mb-1" id="staticBackdropLabel">Registro de presentaciones</h4>
                                     <!-- <p class="fs-11 mb-0">Added by <a class="link-600 fw-semi-bold" href="#!">Antony</a></p> -->
                                 </div>
                                 <div class="p-4">
                                     <div class="row">
-                                        <form id="fmr_marcas" method="POST" class="fmr_marcas row g-2 needs-validation" novalidate="">
+                                        <form id="fmr_presentaciones" method="POST" class="fmr_presentaciones row g-2 needs-validation" novalidate="">
                                             <div class="col-md-6">
                                                 <label class="form-label" for="codigo">Codigo</label>
                                                 <input class="form-control" id="codigo" name="codigo" type="text" required />
@@ -123,7 +121,7 @@ if (!isset($_SESSION['user_id'])) {
                                             </div>
                                             <div class="modal-footer">
                                                 <div class="col-12 d-grid  gap-0">
-                                                    <button class="btn btn-outline-primary me-1 mb-1" type="submit">Agregar marca</button>
+                                                    <button class="btn btn-outline-primary me-1 mb-1" type="submit">Agregar presentacion</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -141,14 +139,14 @@ if (!isset($_SESSION['user_id'])) {
                             <div class="position-absolute top-0 end-0 mt-3 me-3 z-1"><button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button></div>
                             <div class="modal-body p-0">
                                 <div class="rounded-top-3 bg-body-tertiary py-3 ps-4 pe-6">
-                                    <h4 class="mb-1" id="staticBackdropLabel">Editar marca</h4>
+                                    <h4 class="mb-1" id="staticBackdropLabel">Editar presentacion</h4>
                                     <!-- <p class="fs-11 mb-0">Added by <a class="link-600 fw-semi-bold" href="#!">Antony</a></p> -->
                                 </div>
                                 <div class="p-4">
                                     <div class="row">
-                                        <form id="fmr_marcas_editar" method="POST" class="fmr_marcas_editar row g-2 needs-validation" novalidate="">
+                                        <form id="fmr_presentaciones_editar" method="POST" class="fmr_presentaciones_editar row g-2 needs-validation" novalidate="">
                                             <div class="col-md-6">
-                                                <label class="form-label" for="codigo">Codigo</label>
+                                                <label class="form-label" for="codigo_mod">Codigo</label>
                                                 <input class="form-control" id="id" name="id" type="hidden" />
                                                 <input class="form-control" id="codigo_mod" name="codigo_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
@@ -180,7 +178,7 @@ if (!isset($_SESSION['user_id'])) {
 
     <!-- ===============================================--><!--    JavaScripts--><!-- ===============================================-->
     <?php require_once("script.php"); ?>
-    <script src="js/marcas.js"></script>
+    <script src="js/presentaciones.js"></script>
 </body>
 
 </html>

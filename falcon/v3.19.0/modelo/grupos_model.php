@@ -1,7 +1,7 @@
 <?php
 require_once('../modelo/Conexion.php');  // Se carga la clase conexion
 
-class menuModel extends Conexion
+class gruposModel extends Conexion
 {
 
     public static function get()
@@ -9,21 +9,15 @@ class menuModel extends Conexion
         $dbconec = Conexion::Conectar();
 
         try {
-            $query = "SELECT RP.permiso_id, P.nombre, M.*, P.`descripcion` FROM roles_permisos RP
-            INNER JOIN roles R ON R.id = RP.rol_id
-            INNER JOIN permisos P ON P.id = RP.permiso_id
-            INNER JOIN menu M ON M.id = P.id
-            WHERE RP.rol_id = {$_SESSION['user_tipo']} AND M.activo = 1 group by P.nombre
-            ORDER BY M.modulo, RP.`permiso_id` ASC";
-
-            $dbconec->exec("SET CHARACTER SET utf8");
+            $query = "SELECT `id`, `codigo`, `clase`, `nombre`, `resum`, `dias` FROM tbgrupos WHERE activo = 1";
             $stmt = $dbconec->prepare($query);
             $stmt->execute();
+
             // Obtener todos los resultados como un array asociativo
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             if ($rows) {
-                // Devolver el array JSON con todos los tbtallas
+                // Devolver el array JSON con todos los tbgrupos
                 echo json_encode($rows);
             } else {
 
@@ -41,7 +35,7 @@ class menuModel extends Conexion
         $dbconec = Conexion::Conectar();
 
         try {
-            $query = "SELECT `id`, `codigo`, `nombre` FROM tbtallas WHERE id = $id";
+            $query = "SELECT `id`, `codigo`, `clase`, `nombre`, `resum`, `dias` FROM tbgrupos WHERE id = $id";
             $stmt = $dbconec->prepare($query);
             $stmt->execute();
 
@@ -49,10 +43,10 @@ class menuModel extends Conexion
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             if ($rows) {
-                // Devolver el array JSON con todos los tbtallas
+                // Devolver el array JSON con todos los tbgrupos
                 echo json_encode($rows);
             } else {
-                $data = "No hay talla con este id.";
+                $data = "No hay grupos";
                 echo json_encode($data);
             }
         } catch (Exception $e) {
@@ -67,10 +61,13 @@ class menuModel extends Conexion
 
         try {
             $codigo = $datos['codigo'];
+            $clase = $datos['clase'];
             $nombre = $datos['nombre'];
+            $resumen = $datos['resumen'];
+            $dias = $datos['dias'];
 
             // Consulta para verificar la existencia del código
-            $query = "SELECT COUNT(*) as count FROM tbtallas WHERE codigo = :codigo";
+            $query = "SELECT COUNT(*) as count FROM tbgrupos WHERE codigo = :codigo";
             $stmt = $dbconec->prepare($query);
             $stmt->bindParam(':codigo', $codigo);
             $stmt->execute();
@@ -85,20 +82,23 @@ class menuModel extends Conexion
             } else {
 
                 // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
-                $query = "INSERT INTO tbtallas (codigo, nombre) VALUES (:codigo, :nombre)";
+                $query = "INSERT INTO tbgrupos (codigo, clase, nombre, resum, dias) VALUES (:codigo, :clase, :nombre, :resumen, :dias)";
                 $stmt = $dbconec->prepare($query);
                 $stmt->bindParam(':codigo', $codigo);
+                $stmt->bindParam(':clase', $clase);
                 $stmt->bindParam(':nombre', $nombre);
+                $stmt->bindParam(':resumen', $resumen);
+                $stmt->bindParam(':dias', $dias);
 
                 if ($stmt->execute()) {
                     // Si la inserción fue exitosa, devuelve un mensaje o los datos actualizados
-                    $response = array('status' => 'success', 'message' => 'La talla se ha guardado correctamente');
+                    $response = array('status' => 'success', 'message' => 'El grupo se ha guardado correctamente');
                 } else {
                     // Si hubo un error en la inserción, devuelve un mensaje de error
-                    $response = array('status' => 'error', 'message' => 'Error al guardar la talla');
+                    $response = array('status' => 'error', 'message' => 'Error al guardar el grupo');
                 }
 
-                // Devuelve la respuesta en formato JSON
+                // Devuelve la respudiasa en formato JSON
                 echo json_encode($response);
             }
         } catch (Exception $e) {
@@ -114,10 +114,13 @@ class menuModel extends Conexion
         try {
 
             $codigo = $datos['codigo'];
+            $clase = $datos['clase'];
             $nombre = $datos['nombre'];
+            $resumen = $datos['resumen'];
+            $dias = $datos['dias'];
             $id = $datos['id'];
             // Consulta para verificar la existencia del código
-            $query = "SELECT COUNT(*) as count FROM tbtallas WHERE codigo = :codigo";
+            $query = "SELECT COUNT(*) as count FROM tbgrupos WHERE codigo = :codigo";
             $stmt = $dbconec->prepare($query);
             $stmt->bindParam(':codigo', $codigo);
             $stmt->execute();
@@ -130,22 +133,25 @@ class menuModel extends Conexion
                 $response = array('status' => 'error', 'message' => 'El código ya existe en la base de datos.');
                 echo json_encode($response);
             } else {
-                // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
-                $query = "UPDATE tbtallas SET codigo=:codigo, nombre=:nombre WHERE id=:id";
+                // Realiza la inserción en la base de datos (ajusta diaso según tu configuración)
+                $query = "UPDATE tbgrupos SET codigo=:codigo, clase=:clase, nombre=:nombre, resum=:resumen, dias=:dias WHERE id=:id";
                 $stmt = $dbconec->prepare($query);
                 $stmt->bindParam(':id', $id);
                 $stmt->bindParam(':codigo', $codigo);
+                $stmt->bindParam(':clase', $clase);
                 $stmt->bindParam(':nombre', $nombre);
+                $stmt->bindParam(':resumen', $resumen);
+                $stmt->bindParam(':dias', $dias);
 
                 if ($stmt->execute()) {
                     // Si la inserción fue exitosa, devuelve un mensaje o los datos actualizados
-                    $response = array('status' => 'success', 'message' => 'La talla se ha modificado exitosamente.');
+                    $response = array('status' => 'success', 'message' => 'El grupo se ha modificado exitosamente.');
                 } else {
                     // Si hubo un error en la inserción, devuelve un mensaje de error
-                    $response = array('status' => 'error', 'message' => 'Error al modificar la talla.');
+                    $response = array('status' => 'error', 'message' => 'Error al modificar el grupo.');
                 }
 
-                // Devuelve la respuesta en formato JSON
+                // Devuelve la respudiasa en formato JSON
                 echo json_encode($response);
             }
         } catch (Exception $e) {
@@ -160,21 +166,21 @@ class menuModel extends Conexion
 
         try {
             $activo = 0;
-            // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
-            $query = "UPDATE tbtallas SET activo=:activo WHERE id=:id";
+            // Realiza la inserción en la base de datos (ajusta diaso según tu configuración)
+            $query = "UPDATE tbgrupos SET activo=:activo WHERE id=:id";
             $stmt = $dbconec->prepare($query);
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':activo', $activo);
 
             if ($stmt->execute()) {
                 // Si la inserción fue exitosa, devuelve un mensaje o los datos actualizados
-                $response = array('status' => 'success', 'message' => 'Talla eliminada exitosamente.');
+                $response = array('status' => 'success', 'message' => 'grupo eliminado exitosamente.');
             } else {
                 // Si hubo un error en la inserción, devuelve un mensaje de error
-                $response = array('status' => 'error', 'message' => 'Error al eliminar la talla.');
+                $response = array('status' => 'error', 'message' => 'Error al eliminar el grupo.');
             }
 
-            // Devuelve la respuesta en formato JSON
+            // Devuelve la respudiasa en formato JSON
             echo json_encode($response);
         } catch (Exception $e) {
             $data = "Error";

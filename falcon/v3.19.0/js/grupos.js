@@ -5,7 +5,7 @@ $(document).ready(function() {
 // consultar
 function cargar_tabla() {
     // Hacer la solicitud AJAX al servidor
-    var urlprocess = 'ajax/marcasajax.php';
+    var urlprocess = 'ajax/gruposajax.php';
     $.ajax({
         type: 'POST',
         url: urlprocess,
@@ -22,7 +22,10 @@ function cargar_tabla() {
                     $('#myTable tbody').append(
                         '<tr>' +
                         '<td class="codigo">' + item.codigo + '</td>' +
+                        '<td class="clase">' + item.clase + '</td>' +
                         '<td class="nombre">' + item.nombre + '</td>' +
+                        '<td class="resumen">' + item.resum + '</td>' +
+                        '<td class="dias">' + item.dias + '</td>' +
                         '<td class="text-center"><button class="btn btn-outline-primary me-1 mb-1" type="button" onclick=editar(' + item.id + ')>' +
                         '<span class="fas fa-edit me-1" data-fa-transform="shrink-3"></span></button></td>' +
                         '<td class="text-center"><button class="btn btn-outline-primary me-1 mb-1" type="button" onclick=eliminar(' + item.id + ')>' +
@@ -33,8 +36,8 @@ function cargar_tabla() {
 
                 // Inicializar List.js después de agregar datos
                 var options = {
-                    valueNames: ['codigo', 'nombre'],
-                    item: '<tr><td class="codigo"></td><td class="nombre"></td></tr>'
+                    valueNames: ['codigo', 'clase', 'nombre', 'resum', 'dias'],
+                    item: '<tr><td class="codigo"><td class="clase"></td></td><td class="nombre"></td><td class="resumen"></td><td class="dias"></td></tr>'
                 };
                 var userList = new List('myTable', options);
 
@@ -43,13 +46,13 @@ function cargar_tabla() {
 
                 // Re-inicializar la búsqueda después de la actualización de la lista
                 var input = document.querySelector('.search');
-                var searchList = new List('myTable', { valueNames: ['codigo', 'nombre'], page: 5 });
+                var searchList = new List('myTable', { valueNames: ['codigo', 'clase', 'nombre', 'resum', 'dias'], page: 5 });
                 input.addEventListener('input', function() {
                     searchList.search(input.value);
                 });
             } else {
-                // Mostrar un mensaje indicando que no hay marcas disponibles
-                $('#myTable tbody').html('<tr><td colspan="4" class="text-center">No hay marcas disponibles</td></tr>');
+                // Mostrar un mensaje indicando que no hay grupos disponibles
+                $('#myTable tbody').html('<tr><td colspan="4" class="text-center">No hay grupos disponibles</td></tr>');
             }
         },
         error: function() {
@@ -60,23 +63,29 @@ function cargar_tabla() {
 }
 
 // guardar
-$(".fmr_marcas").submit(function(event) {
+$(".fmr_grupos").submit(function(event) {
     event.preventDefault();
 
-    // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nueva marca
-    var nuevamarca = {
+    // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevo grupo
+    var nuevogrupo = {
         codigo: $("#codigo").val(),
-        nombre: $("#nombre").val()
+        clase: $("#clase").val(),
+        nombre: $("#nombre").val(),
+        resumen: $("#resumen").val(),
+        dias: $("#dias").val()
     };
 
-    // Hacer la solicitud AJAX para guardar la nueva marca
+    // Hacer la solicitud AJAX para guardar el nuevo grupo
     $.ajax({
         type: 'POST',
-        url: 'ajax/marcasajax.php',
+        url: 'ajax/gruposajax.php',
         data: {
             proceso: 'guardar',
-            codigo: nuevamarca.codigo,
-            nombre: nuevamarca.nombre
+            codigo: nuevogrupo.codigo,
+            clase: nuevogrupo.clase,
+            nombre: nuevogrupo.nombre,
+            resumen: nuevogrupo.resumen,
+            dias: nuevogrupo.dias
         },
         dataType: 'json',
         success: function(response) {
@@ -84,7 +93,7 @@ $(".fmr_marcas").submit(function(event) {
                 // cerramos el modal
                 $('#guardarModal').modal('hide');
                 // limpiamos el formulario
-                $('#fmr_marcas')[0].reset();
+                $('#fmr_grupos')[0].reset();
                 // mostramos la alerta
                 notificacion('Éxito', 'success', response.message);
 
@@ -106,7 +115,7 @@ $(".fmr_marcas").submit(function(event) {
 function editar(id) {
 
     // Hacer la solicitud AJAX al servidor
-    var urlprocess = 'ajax/marcasajax.php';
+    var urlprocess = 'ajax/gruposajax.php';
     $.ajax({
         type: 'POST',
         url: urlprocess,
@@ -117,7 +126,10 @@ function editar(id) {
             // Asignar un valor al input
             document.getElementById('id').value = data[0].id
             document.getElementById('codigo_mod').value = data[0].codigo
+            document.getElementById('clase_mod').value = data[0].clase
             document.getElementById('nombre_mod').value = data[0].nombre
+            document.getElementById('resumen_mod').value = data[0].resum
+            document.getElementById('dias_mod').value = data[0].dias
 
             // Limpiar el cuerpo de la tabla
             $('#editarModal').modal('show'); // abrir
@@ -130,25 +142,31 @@ function editar(id) {
     });
 }
 
-$(".fmr_marcas_editar").submit(function(event) {
+$(".fmr_grupos_editar").submit(function(event) {
     event.preventDefault();
 
-    // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nueva marca
-    var nuevamarca = {
+    // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nuevo grupo
+    var nuevogrupo = {
         codigo: $("#codigo_mod").val(),
+        clase: $("#clase_mod").val(),
         nombre: $("#nombre_mod").val(),
+        resumen: $("#resumen_mod").val(),
+        dias: $("#dias_mod").val(),
         id: $("#id").val()
     };
 
-    // Hacer la solicitud AJAX para guardar la nueva marca
+    // Hacer la solicitud AJAX para guardar el nuevo grupo
     $.ajax({
         type: 'POST',
-        url: 'ajax/marcasajax.php',
+        url: 'ajax/gruposajax.php',
         data: {
             proceso: 'modificar',
-            codigo: nuevamarca.codigo,
-            nombre: nuevamarca.nombre,
-            id: nuevamarca.id
+            codigo: nuevogrupo.codigo,
+            clase: nuevogrupo.clase,
+            nombre: nuevogrupo.nombre,
+            resumen: nuevogrupo.resumen,
+            dias: nuevogrupo.dias,
+            id: nuevogrupo.id
         },
         dataType: 'json',
         success: function(response) {
@@ -156,7 +174,7 @@ $(".fmr_marcas_editar").submit(function(event) {
                 // cerramos el modal
                 $('#editarModal').modal('hide');
                 // limpiamos el formulario
-                $('#fmr_marcas_editar')[0].reset();
+                $('#fmr_grupos_editar')[0].reset();
                 // mostramos la alerta
                 notificacion('Éxito', 'success', response.message);
 
@@ -180,7 +198,7 @@ function eliminar(id) {
     // Utiliza SweetAlert para confirmar la eliminación
     Swal.fire({
         title: '¿Estás seguro?',
-        text: '¿Seguro que deseas eliminar la marca?',
+        text: '¿Seguro que deseas eliminar el grupo?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -192,7 +210,7 @@ function eliminar(id) {
             // Realiza la solicitud de eliminación al servidor (aquí deberías hacer tu llamada AJAX)
             $.ajax({
                 type: 'POST',
-                url: 'ajax/marcasajax.php',
+                url: 'ajax/gruposajax.php',
                 data: {
                     proceso: 'eliminar',
                     id: id
@@ -227,6 +245,6 @@ function notificacion(titulo, icon, mensaje) {
         title: titulo,
         text: mensaje,
         icon: icon,
-        confirmButtonmarca: color
+        confirmButtonColor: color
     });
 }

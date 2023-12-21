@@ -1,7 +1,7 @@
 <?php
 require_once('../modelo/Conexion.php');  // Se carga la clase conexion
 
-class menuModel extends Conexion
+class subzonasModel extends Conexion
 {
 
     public static function get()
@@ -9,21 +9,15 @@ class menuModel extends Conexion
         $dbconec = Conexion::Conectar();
 
         try {
-            $query = "SELECT RP.permiso_id, P.nombre, M.*, P.`descripcion` FROM roles_permisos RP
-            INNER JOIN roles R ON R.id = RP.rol_id
-            INNER JOIN permisos P ON P.id = RP.permiso_id
-            INNER JOIN menu M ON M.id = P.id
-            WHERE RP.rol_id = {$_SESSION['user_tipo']} AND M.activo = 1 group by P.nombre
-            ORDER BY M.modulo, RP.`permiso_id` ASC";
-
-            $dbconec->exec("SET CHARACTER SET utf8");
+            $query = "SELECT `id`,  `codigo`, `zona`, `nombre`, `resum` FROM tbsubzonas WHERE activo = 1";
             $stmt = $dbconec->prepare($query);
             $stmt->execute();
+
             // Obtener todos los resultados como un array asociativo
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             if ($rows) {
-                // Devolver el array JSON con todos los tbtallas
+                // Devolver el array JSON con todos los tbsubzonas
                 echo json_encode($rows);
             } else {
 
@@ -41,7 +35,7 @@ class menuModel extends Conexion
         $dbconec = Conexion::Conectar();
 
         try {
-            $query = "SELECT `id`, `codigo`, `nombre` FROM tbtallas WHERE id = $id";
+            $query = "SELECT `id`, `codigo`, `zona`, `nombre`, `resum` FROM tbsubzonas WHERE id = $id";
             $stmt = $dbconec->prepare($query);
             $stmt->execute();
 
@@ -49,10 +43,10 @@ class menuModel extends Conexion
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             if ($rows) {
-                // Devolver el array JSON con todos los tbtallas
+                // Devolver el array JSON con todos los tbsubzonas
                 echo json_encode($rows);
             } else {
-                $data = "No hay talla con este id.";
+                $data = "No hay subzonas";
                 echo json_encode($data);
             }
         } catch (Exception $e) {
@@ -67,10 +61,12 @@ class menuModel extends Conexion
 
         try {
             $codigo = $datos['codigo'];
+            $subzona = $datos['subzona'];
             $nombre = $datos['nombre'];
+            $resumen = $datos['resumen'];
 
             // Consulta para verificar la existencia del código
-            $query = "SELECT COUNT(*) as count FROM tbtallas WHERE codigo = :codigo";
+            $query = "SELECT COUNT(*) as count FROM tbsubzonas WHERE codigo = :codigo";
             $stmt = $dbconec->prepare($query);
             $stmt->bindParam(':codigo', $codigo);
             $stmt->execute();
@@ -85,17 +81,19 @@ class menuModel extends Conexion
             } else {
 
                 // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
-                $query = "INSERT INTO tbtallas (codigo, nombre) VALUES (:codigo, :nombre)";
+                $query = "INSERT INTO tbsubzonas (codigo, zona, nombre, resum) VALUES (:codigo, :subzona, :nombre, :resumen)";
                 $stmt = $dbconec->prepare($query);
                 $stmt->bindParam(':codigo', $codigo);
+                $stmt->bindParam(':subzona', $subzona);
                 $stmt->bindParam(':nombre', $nombre);
+                $stmt->bindParam(':resumen', $resumen);
 
                 if ($stmt->execute()) {
                     // Si la inserción fue exitosa, devuelve un mensaje o los datos actualizados
-                    $response = array('status' => 'success', 'message' => 'La talla se ha guardado correctamente');
+                    $response = array('status' => 'success', 'message' => 'El subzona se ha guardado correctamente');
                 } else {
                     // Si hubo un error en la inserción, devuelve un mensaje de error
-                    $response = array('status' => 'error', 'message' => 'Error al guardar la talla');
+                    $response = array('status' => 'error', 'message' => 'Error al guardar el subzona');
                 }
 
                 // Devuelve la respuesta en formato JSON
@@ -112,12 +110,13 @@ class menuModel extends Conexion
         $dbconec = Conexion::Conectar();
 
         try {
-
             $codigo = $datos['codigo'];
+            $subzona = $datos['subzona'];
             $nombre = $datos['nombre'];
+            $resumen = $datos['resumen'];
             $id = $datos['id'];
             // Consulta para verificar la existencia del código
-            $query = "SELECT COUNT(*) as count FROM tbtallas WHERE codigo = :codigo";
+            $query = "SELECT COUNT(*) as count FROM tbsubzonas WHERE codigo = :codigo";
             $stmt = $dbconec->prepare($query);
             $stmt->bindParam(':codigo', $codigo);
             $stmt->execute();
@@ -131,18 +130,20 @@ class menuModel extends Conexion
                 echo json_encode($response);
             } else {
                 // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
-                $query = "UPDATE tbtallas SET codigo=:codigo, nombre=:nombre WHERE id=:id";
+                $query = "UPDATE tbsubzonas SET codigo=:codigo, zona=:subzona, nombre=:nombre, resum=:resumen WHERE id=:id";
                 $stmt = $dbconec->prepare($query);
                 $stmt->bindParam(':id', $id);
                 $stmt->bindParam(':codigo', $codigo);
+                $stmt->bindParam(':subzona', $subzona);
                 $stmt->bindParam(':nombre', $nombre);
+                $stmt->bindParam(':resumen', $resumen);
 
                 if ($stmt->execute()) {
                     // Si la inserción fue exitosa, devuelve un mensaje o los datos actualizados
-                    $response = array('status' => 'success', 'message' => 'La talla se ha modificado exitosamente.');
+                    $response = array('status' => 'success', 'message' => 'La subzona se ha modificado exitosamente.');
                 } else {
                     // Si hubo un error en la inserción, devuelve un mensaje de error
-                    $response = array('status' => 'error', 'message' => 'Error al modificar la talla.');
+                    $response = array('status' => 'error', 'message' => 'Error al modificar la subzona.');
                 }
 
                 // Devuelve la respuesta en formato JSON
@@ -161,17 +162,17 @@ class menuModel extends Conexion
         try {
             $activo = 0;
             // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
-            $query = "UPDATE tbtallas SET activo=:activo WHERE id=:id";
+            $query = "UPDATE tbsubzonas SET activo=:activo WHERE id=:id";
             $stmt = $dbconec->prepare($query);
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':activo', $activo);
 
             if ($stmt->execute()) {
                 // Si la inserción fue exitosa, devuelve un mensaje o los datos actualizados
-                $response = array('status' => 'success', 'message' => 'Talla eliminada exitosamente.');
+                $response = array('status' => 'success', 'message' => 'Subzona eliminada exitosamente.');
             } else {
                 // Si hubo un error en la inserción, devuelve un mensaje de error
-                $response = array('status' => 'error', 'message' => 'Error al eliminar la talla.');
+                $response = array('status' => 'error', 'message' => 'Error al eliminar la subzona.');
             }
 
             // Devuelve la respuesta en formato JSON

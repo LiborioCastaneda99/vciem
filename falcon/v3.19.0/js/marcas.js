@@ -230,3 +230,12 @@ function notificacion(titulo, icon, mensaje) {
         confirmButtonmarca: color
     });
 }
+
+document.getElementById('printButton').addEventListener('click', function() {
+    var printWindow = window.open('', '_blank');
+    printWindow.document.write('<html><head><title>Tabla Imprimible</title></head><body>');
+    printWindow.document.write(document.getElementById('myTable').outerHTML);
+    printWindow.document.write('</body></html>');
+    printWindow.document.close();
+    printWindow.print();
+});

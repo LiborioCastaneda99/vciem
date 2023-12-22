@@ -31,6 +31,19 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
 
     <!-- ===============================================--><!--    Favicons--><!-- ===============================================-->
     <?php require_once("head.php"); ?>
+    <style>
+        @media print {
+
+            /* Estilos específicos para impresión */
+            body {
+                font-size: 12pt;
+            }
+
+            #myTable .no-print {
+                display: none;
+            }
+        }
+    </style>
     <script>
         var isRTL = JSON.parse(localStorage.getItem('isRTL'));
         if (isRTL) {
@@ -73,8 +86,23 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                             <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="-" id="">
                                 <div id="tableExample3" data-list='{"valueNames":["codigo","nombre"],"page":5,"pagination":true}'>
                                     <div class="row justify-content-end g-0">
-                                        <div class="col-auto col-sm-7 mb-3">
+                                        <!-- <div class="col-auto col-sm-7 mb-3">
                                             <button class="btn btn-outline-primary btn-sm me-1 mb-1" type="button" data-bs-toggle="modal" data-bs-target="#guardarModal">Registrar marca</button>
+                                        </div> -->
+
+                                        <div class="d-flex align-items-center" id="table-contact-replace-element">
+                                            <button class="btn btn-falcon-default btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#guardarModal">
+                                                <span class="fas fa-plus" data-fa-transform="shrink-3"></span>
+                                                <span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1" title="Registrar marca">New</span>
+                                            </button>
+                                            <button onclick="printJS({ printable: 'myTable', type: 'html' })" class="btn btn-falcon-default btn-sm mx-2" type="button">
+                                                <span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span>
+                                                <span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1">Export</span>
+                                            </button>
+                                            <button class="btn btn-falcon-default btn-sm" type="button" onclick="window.print()" class="no-print">
+                                                <span class="fas fa-file-import" data--transform="shrink-3"></span>
+                                                <span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1">Import</span>
+                                            </button>
                                         </div>
                                         <div class="col-auto col-sm-5 mb-3">
                                             <form method="POST" action="#" id="" name="">
@@ -194,6 +222,8 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
     <!-- ===============================================--><!--    JavaScripts--><!-- ===============================================-->
     <?php require_once("script.php"); ?>
     <script src="js/marcas.js"></script>
+    <script src="https://printjs.crabbly.com/print.js"></script>
+
 </body>
 
 </html>

@@ -101,6 +101,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                     <th class="text-900 sort" data-sort="cupo">Cupo</th>
                                                     <th class="text-900 sort" data-sort="legal">Legal</th>
                                                     <th class="text-900 sort" data-sort="fecha_ini">Fecha Inicial</th>
+                                                    <th class="text-900 sort" data-sort="fpago">Forma de Pago</th>
                                                     <th class="text-900 sort" data-sort="correo">Correo</th>
                                                     <th class="text-900 sort" data-sort="caract_dev">Caract. Devolución</th>
                                                     <th class="text-900 sort" data-sort="digito">Dígito</th>
@@ -224,9 +225,9 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             <div class="col-md-6">
                                                 <label class="form-label" for="riva">Retención de IVA</label>
                                                 <select name="riva" id="riva" class="form-control">
-                                                    <option value="" disabled selected>Seleccione</option>
-                                                    <option value="1">SI</option>
-                                                    <option value="0">NO</option>
+                                                    <option value="0" disabled selected>Seleccione</option>
+                                                    <option value="S">SI</option>
+                                                    <option value="N">NO</option>
                                                 </select>
                                                 <!-- <input class="form-control" id="riva" name="riva" type="text" required /> -->
                                                 <div class="valid-feedback">¡Ok!</div>
@@ -234,9 +235,9 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             <div class="col-md-6">
                                                 <label class="form-label" for="rfte">Retención de Fuente</label>
                                                 <select name="rfte" id="rfte" class="form-control">
-                                                    <option value="" disabled selected>Seleccione</option>
-                                                    <option value="1">SI</option>
-                                                    <option value="0">NO</option>
+                                                    <option value="0" disabled selected>Seleccione</option>
+                                                    <option value="S">SI</option>
+                                                    <option value="N">NO</option>
                                                 </select>
                                                 <!-- <input class="form-control" id="rfte" name="rfte" type="text" required /> -->
                                                 <div class="valid-feedback">¡Ok!</div>
@@ -244,9 +245,9 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             <div class="col-md-6">
                                                 <label class="form-label" for="rica">Retención de ICA</label>
                                                 <select name="rica" id="rica" class="form-control">
-                                                    <option value="" disabled selected>Seleccione</option>
-                                                    <option value="1">SI</option>
-                                                    <option value="0">NO</option>
+                                                    <option value="0" disabled selected>Seleccione</option>
+                                                    <option value="S">SI</option>
+                                                    <option value="N">NO</option>
                                                 </select>
                                                 <!-- <input class="form-control" id="rica" name="rica" type="text" required /> -->
                                                 <div class="valid-feedback">¡Ok!</div>
@@ -366,9 +367,9 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             <div class="col-md-6">
                                                 <label class="form-label" for="riva_mod">Retención de IVA</label>
                                                 <select name="riva_mod" id="riva_mod" class="form-control">
-                                                    <option value="" disabled selected>Seleccione</option>
-                                                    <option value="1">SI</option>
-                                                    <option value="0">NO</option>
+                                                    <option value="0" disabled selected>Seleccione</option>
+                                                    <option value="S">SI</option>
+                                                    <option value="N">NO</option>
                                                 </select>
                                                 <!-- <input class="form-control" id="riva" name="riva" type="text" required /> -->
                                                 <div class="valid-feedback">¡Ok!</div>
@@ -376,9 +377,9 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             <div class="col-md-6">
                                                 <label class="form-label" for="rfte_mod">Retención de Fuente</label>
                                                 <select name="rfte_mod" id="rfte_mod" class="form-control">
-                                                    <option value="" disabled selected>Seleccione</option>
-                                                    <option value="1">SI</option>
-                                                    <option value="0">NO</option>
+                                                    <option value="0" disabled selected>Seleccione</option>
+                                                    <option value="S">SI</option>
+                                                    <option value="N">NO</option>
                                                 </select>
                                                 <!-- <input class="form-control" id="rfte" name="rfte" type="text" required /> -->
                                                 <div class="valid-feedback">¡Ok!</div>
@@ -386,15 +387,15 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             <div class="col-md-6">
                                                 <label class="form-label" for="rica_mod">Retención de ICA</label>
                                                 <select name="rica_mod" id="rica_mod" class="form-control">
-                                                    <option value="" disabled selected>Seleccione</option>
-                                                    <option value="1">SI</option>
-                                                    <option value="0">NO</option>
+                                                    <option value="0" disabled selected>Seleccione</option>
+                                                    <option value="S">SI</option>
+                                                    <option value="N">NO</option>
                                                 </select>
                                                 <!-- <input class="form-control" id="rica" name="rica" type="text" required /> -->
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="form-label" for="estado_mod">Est</label>
+                                                <label class="form-label" for="estado_mod">Estado</label>
                                                 <input class="form-control" id="estado_mod" name="estado_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>

@@ -173,7 +173,7 @@ class proveedoresModel extends Conexion
             $estado = $datos['estado'];
             $id = $datos['id'];
             // Consulta para verificar la existencia del código
-            $query = "SELECT COUNT(*) as count FROM proveedores WHERE codigo = :codigo";
+            $query = "SELECT COUNT(*) as count FROM proveedores WHERE codigo=:codigo";
             $stmt = $dbconec->prepare($query);
             $stmt->bindParam(':codigo', $codigo);
             $stmt->execute();

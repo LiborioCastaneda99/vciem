@@ -22,25 +22,25 @@ function cargar_tabla() {
                     $('#myTable tbody').append(
                         '<tr>' +
                         '<td class="codigo">' + item.codigo + '</td>' +
-                        '<td class="codigo">' + item.suc + '</td>' +
-                        '<td class="codigo">' + item.zona + '</td>' +
-                        '<td class="codigo">' + item.subzona + '</td>' +
+                        '<td class="suc">' + item.suc + '</td>' +
+                        '<td class="zona">' + item.zona + '</td>' +
+                        '<td class="subzona">' + item.subzona + '</td>' +
                         '<td class="nombre">' + item.nombre + '</td>' +
-                        '<td class="nombre">' + item.dir + '</td>' +
-                        '<td class="nombre">' + item.tel1 + '</td>' +
-                        '<td class="nombre">' + item.tel2 + '</td>' +
-                        '<td class="nombre">' + item.ciudad + '</td>' +
-                        '<td class="nombre">' + item.cupo + '</td>' +
-                        '<td class="nombre">' + item.legal + '</td>' +
-                        '<td class="nombre">' + item.fecha_ini + '</td>' +
-                        '<td class="nombre">' + item.forma_pago + '</td>' +
-                        '<td class="nombre">' + item.correo + '</td>' +
-                        '<td class="nombre">' + item.caract_dev + '</td>' +
-                        '<td class="nombre">' + item.digito + '</td>' +
-                        '<td class="nombre">' + item.riva + '</td>' +
-                        '<td class="nombre">' + item.rfte + '</td>' +
-                        '<td class="nombre">' + item.rica + '</td>' +
-                        '<td class="nombre">' + item.estado + '</td>' +
+                        '<td class="dir">' + item.dir + '</td>' +
+                        '<td class="tel1">' + item.tel1 + '</td>' +
+                        '<td class="tel2">' + item.tel2 + '</td>' +
+                        '<td class="ciudad">' + item.ciudad + '</td>' +
+                        '<td class="cupo">' + item.cupo + '</td>' +
+                        '<td class="legal">' + item.legal + '</td>' +
+                        '<td class="fecha_ini">' + item.fecha_ini + '</td>' +
+                        '<td class="fpago">' + item.forma_pago + '</td>' +
+                        '<td class="correo">' + item.correo + '</td>' +
+                        '<td class="caract_dev">' + item.caract_dev + '</td>' +
+                        '<td class="digito">' + item.digito + '</td>' +
+                        '<td class="riva">' + item.riva + '</td>' +
+                        '<td class="rfte">' + item.rfte + '</td>' +
+                        '<td class="rica">' + item.rica + '</td>' +
+                        '<td class="estado">' + item.estado + '</td>' +
                         '<td class="text-center"><button class="btn btn-outline-primary me-1 mb-1" type="button" onclick=editar(' + item.id + ')>' +
                         '<span class="fas fa-edit me-1" data-fa-transform="shrink-3"></span></button></td>' +
                         '<td class="text-center"><button class="btn btn-outline-primary me-1 mb-1" type="button" onclick=eliminar(' + item.id + ')>' +
@@ -217,26 +217,26 @@ $(".fmr_proveedores_editar").submit(function(event) {
 
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nuevo proveedor
     var nuevoproveedor = {
-        codigo: $("#codigo").val(),
-        suc: $("#suc").val(),
-        zona: $("#zona").val(),
-        subzona: $("#subzona").val(),
-        nombre: $("#nombre").val(),
-        dir: $("#dir").val(),
-        tel1: $("#tel1").val(),
-        tel2: $("#tel2").val(),
-        ciudad: $("#ciudad").val(),
-        cupo: $("#cupo").val(),
-        legal: $("#legal").val(),
-        fecha_ini: $("#fecha_ini").val(),
-        fpago: $("#fpago").val(),
-        correo: $("#correo").val(),
-        caract_dev: $("#caract_dev").val(),
-        digito: $("#digito").val(),
-        riva: $("#riva").val(),
-        rfte: $("#rfte").val(),
-        rica: $("#rica").val(),
-        estado: $("#estado").val(),
+        codigo: $("#codigo_mod").val(),
+        suc: $("#suc_mod").val(),
+        zona: $("#zona_mod").val(),
+        subzona: $("#subzona_mod").val(),
+        nombre: $("#nombre_mod").val(),
+        dir: $("#dir_mod").val(),
+        tel1: $("#tel1_mod").val(),
+        tel2: $("#tel2_mod").val(),
+        ciudad: $("#ciudad_mod").val(),
+        cupo: $("#cupo_mod").val(),
+        legal: $("#legal_mod").val(),
+        fecha_ini: $("#fecha_ini_mod").val(),
+        fpago: $("#fpago_mod").val(),
+        correo: $("#correo_mod").val(),
+        caract_dev: $("#caract_dev_mod").val(),
+        digito: $("#digito_mod").val(),
+        riva: $("#riva_mod").val(),
+        rfte: $("#rfte_mod").val(),
+        rica: $("#rica_mod").val(),
+        estado: $("#estado_mod").val(),
         id: $("#id").val()
     };
 

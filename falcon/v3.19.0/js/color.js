@@ -53,7 +53,7 @@ function cargar_tabla() {
             }
         },
         error: function() {
-            console.error('Error al cargar los datos.');
+            notificacion('Error', 'error', response.message);
         }
     });
 }
@@ -85,20 +85,15 @@ $(".fmr_colores").submit(function(event) {
                 // limpiamos el formulario
                 $('#fmr_colores')[0].reset();
                 // mostramos la alerta
-                Swal.fire({
-                    title: 'Éxito',
-                    text: 'El color se ha guardado correctamente',
-                    icon: 'success',
-                    confirmButtonColor: '#2196f3'
-                });
+                notificacion('Éxito', 'success', response.message);
 
                 cargar_tabla();
             } else {
-                console.error('Error al guardar el color.');
+                notificacion('Error', 'error', response.message);
             }
         },
         error: function() {
-            console.error('Error al intentar guardar el color.');
+            notificacion('Error', 'error', response.message);
         }
     });
 
@@ -126,7 +121,7 @@ function editar(id) {
 
         },
         error: function() {
-            console.error('Error al cargar los datos.');
+            notificacion('Error', 'error', response.message);
         }
     });
 }
@@ -159,20 +154,15 @@ $(".fmr_colores_editar").submit(function(event) {
                 // limpiamos el formulario
                 $('#fmr_colores_editar')[0].reset();
                 // mostramos la alerta
-                Swal.fire({
-                    title: 'Éxito',
-                    text: 'El color se ha modificado correctamente',
-                    icon: 'success',
-                    confirmButtonColor: '#2196f3'
-                });
+                notificacion('Éxito', 'success', response.message);
 
                 cargar_tabla();
             } else {
-                console.error('Error al modificar el color.');
+                notificacion('Error', 'error', response.message);
             }
         },
         error: function() {
-            console.error('Error al intentar modificar el color.');
+            notificacion('Error', 'error', response.message);
         }
     });
 
@@ -204,23 +194,32 @@ function eliminar(id) {
                 dataType: 'json',
                 success: function(response) {
                     if (response.status === 'success') {
-
-                        Swal.fire({
-                            title: 'Éxito',
-                            text: 'El color se ha eliminado correctamente',
-                            icon: 'success',
-                            confirmButtonColor: '#2196f3'
-                        });
+                        notificacion('Éxito', 'success', response.message);
 
                         cargar_tabla();
                     } else {
-                        console.error('Error al eliminar el color.');
+                        notificacion('Error', 'error', response.message);
                     }
                 },
                 error: function() {
-                    console.error('Error al intentar eliminar el color.');
+                    notificacion('Error', 'error', response.message)
                 }
             });
         }
+    });
+}
+
+function notificacion(titulo, icon, mensaje) {
+    //Mensaje de notificación, muestra un mensaje con SweetAlert
+    if (titulo == "Error") {
+        color = "#EF5350"
+    } else {
+        color = "#2196f3"
+    }
+    Swal.fire({
+        title: titulo,
+        text: mensaje,
+        icon: icon,
+        confirmButtonmarca: color
     });
 }

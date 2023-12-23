@@ -123,7 +123,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                     <div class="row">
                                         <form id="fmr_colores" method="POST" class="fmr_colores row g-2 needs-validation" novalidate="">
                                             <div class="col-md-6">
-                                                <label class="form-label" for="codigo">Codigo</label>
+                                                <label class="form-label" for="codigo">Código</label>
                                                 <input class="form-control" id="codigo" name="codigo" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
@@ -159,7 +159,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                     <div class="row">
                                         <form id="fmr_colores_editar" method="POST" class="fmr_colores_editar row g-2 needs-validation" novalidate="">
                                             <div class="col-md-6">
-                                                <label class="form-label" for="codigo_mod">Codigo</label>
+                                                <label class="form-label" for="codigo_mod">Código</label>
                                                 <input class="form-control" id="id" name="id" type="hidden" />
                                                 <input class="form-control" id="codigo_mod" name="codigo_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>

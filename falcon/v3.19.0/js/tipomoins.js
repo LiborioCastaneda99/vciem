@@ -50,7 +50,7 @@ function cargar_tabla() {
                 });
             } else {
                 // Mostrar un mensaje indicando que no hay tipomoins disponibles
-                $('#myTable tbody').html('<tr><td colspan="4" class="text-center">No hay tipomoins disponibles</td></tr>');
+                $('#myTable tbody').html('<tr><td colspan="4" class="text-center">No hay tipos de movimientos disponibles</td></tr>');
             }
         },
         error: function() {
@@ -64,45 +64,54 @@ function cargar_tabla() {
 $(".fmr_tipomoins").submit(function(event) {
     event.preventDefault();
 
+    codigo = $("#codigo").val()
+    nombre = $("#nombre").val()
+    resumen = $("#resumen").val()
+
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nuevo tipomoin
-    var nuevotipomoin = {
+    var nuevoTipomoin = {
         codigo: $("#codigo").val(),
         nombre: $("#nombre").val(),
         resumen: $("#resumen").val()
     };
 
-    // Hacer la solicitud AJAX para guardar la nuevo tipomoin
-    $.ajax({
-        type: 'POST',
-        url: 'ajax/tipomoinsajax.php',
-        data: {
-            proceso: 'guardar',
-            codigo: nuevotipomoin.codigo,
-            nombre: nuevotipomoin.nombre,
-            resumen: nuevotipomoin.resumen
-        },
-        dataType: 'json',
-        success: function(response) {
-            if (response.status === 'success') {
-                // cerramos el modal
-                $('#guardarModal').modal('hide');
-                // limpiamos el formulario
-                $('#fmr_tipomoins')[0].reset();
-                // mostramos la alerta
-                notificacion('Éxito', 'success', response.message);
+    if (codigo == "" || nombre == "" || resumen == "") {
+        // alert("Por favor, completa todos los campos.");
+        notificacion('Error', 'error', "Por favor, completa todos los campos.");
+        return;
+    } else {
+        // Hacer la solicitud AJAX para guardar la nuevo tipomoin
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/tipomoinsajax.php',
+            data: {
+                proceso: 'guardar',
+                codigo: nuevoTipomoin.codigo,
+                nombre: nuevoTipomoin.nombre,
+                resumen: nuevoTipomoin.resumen
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // cerramos el modal
+                    $('#guardarModal').modal('hide');
+                    // limpiamos el formulario
+                    $('#fmr_tipomoins')[0].reset();
+                    // mostramos la alerta
+                    notificacion('Éxito', 'success', response.message);
 
-                cargar_tabla();
-            } else {
+                    cargar_tabla();
+                } else {
+                    // Error en la inserción, muestra mensaje de error con SweetAlert
+                    notificacion('Error', 'error', response.message);
+                }
+            },
+            error: function() {
                 // Error en la inserción, muestra mensaje de error con SweetAlert
                 notificacion('Error', 'error', response.message);
             }
-        },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            notificacion('Error', 'error', response.message);
-        }
-    });
-
+        });
+    }
 });
 
 // editar
@@ -137,47 +146,56 @@ function editar(id) {
 $(".fmr_tipomoins_editar").submit(function(event) {
     event.preventDefault();
 
+    codigo = $("#codigo_mod").val()
+    nombre = $("#nombre_mod").val()
+    resumen = $("#resumen_mod").val()
+
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nuevo tipomoin
-    var nuevotipomoin = {
+    var nuevoTipomoin = {
         codigo: $("#codigo_mod").val(),
         nombre: $("#nombre_mod").val(),
         resumen: $("#resumen_mod").val(),
         id: $("#id").val()
     };
 
-    // Hacer la solicitud AJAX para guardar la nuevo tipomoin
-    $.ajax({
-        type: 'POST',
-        url: 'ajax/tipomoinsajax.php',
-        data: {
-            proceso: 'modificar',
-            codigo: nuevotipomoin.codigo,
-            nombre: nuevotipomoin.nombre,
-            resumen: nuevotipomoin.resumen,
-            id: nuevotipomoin.id
-        },
-        dataType: 'json',
-        success: function(response) {
-            if (response.status === 'success') {
-                // cerramos el modal
-                $('#editarModal').modal('hide');
-                // limpiamos el formulario
-                $('#fmr_tipomoins_editar')[0].reset();
-                // mostramos la alerta
-                notificacion('Éxito', 'success', response.message);
+    if (codigo == "" || nombre == "" || resumen == "") {
+        // alert("Por favor, completa todos los campos.");
+        notificacion('Error', 'error', "Por favor, completa todos los campos.");
+        return;
+    } else {
+        // Hacer la solicitud AJAX para guardar la nuevo tipomoin
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/tipomoinsajax.php',
+            data: {
+                proceso: 'modificar',
+                codigo: nuevoTipomoin.codigo,
+                nombre: nuevoTipomoin.nombre,
+                resumen: nuevoTipomoin.resumen,
+                id: nuevoTipomoin.id
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // cerramos el modal
+                    $('#editarModal').modal('hide');
+                    // limpiamos el formulario
+                    $('#fmr_tipomoins_editar')[0].reset();
+                    // mostramos la alerta
+                    notificacion('Éxito', 'success', response.message);
 
-                cargar_tabla();
-            } else {
+                    cargar_tabla();
+                } else {
+                    // Error en la inserción, muestra mensaje de error con SweetAlert
+                    notificacion('Error', 'error', response.message);
+                }
+            },
+            error: function() {
                 // Error en la inserción, muestra mensaje de error con SweetAlert
                 notificacion('Error', 'error', response.message);
             }
-        },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            notificacion('Error', 'error', response.message);
-        }
-    });
-
+        });
+    }
 });
 
 // eliminar

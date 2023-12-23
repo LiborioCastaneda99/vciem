@@ -89,11 +89,11 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
 
                                             <thead class="bg-200">
                                                 <tr>
-                                                    <th class="text-900 sort" data-sort="codigo">Codigo</th>
+                                                    <th class="text-900 sort" data-sort="codigo">Código</th>
                                                     <th class="text-900 sort" data-sort="clase">Clase</th>
                                                     <th class="text-900 sort" data-sort="nombre">Nombre</th>
                                                     <th class="text-900 sort" data-sort="resumen">Resumen</th>
-                                                    <th class="text-900 sort" data-sort="dias">Dias</th>
+                                                    <th class="text-900 sort" data-sort="dias">Días</th>
                                                     <th class="text-900 no-sort pe-1 align-middle data-table-row-action">Editar</th>
                                                     <th class="text-900 no-sort pe-1 align-middle data-table-row-action">Eliminar</th>
                                                 </tr>
@@ -128,7 +128,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                     <div class="row">
                                         <form id="fmr_grupos" method="POST" class="fmr_grupos row g-2 needs-validation" novalidate="">
                                             <div class="col-md-6">
-                                                <label class="form-label" for="codigo">Codigo</label>
+                                                <label class="form-label" for="codigo">Código</label>
                                                 <input class="form-control" id="codigo" name="codigo" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
@@ -148,7 +148,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="form-label" for="dias">Dias</label>
+                                                <label class="form-label" for="dias">Días</label>
                                                 <input class="form-control" id="dias" name="dias" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
@@ -179,7 +179,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                     <div class="row">
                                         <form id="fmr_grupos_editar" method="POST" class="fmr_grupos_editar row g-2 needs-validation" novalidate="">
                                             <div class="col-md-6">
-                                                <label class="form-label" for="codigo">Codigo</label>
+                                                <label class="form-label" for="codigo_mod">Código</label>
                                                 <input class="form-control" id="id" name="id" type="hidden" />
                                                 <input class="form-control" id="codigo_mod" name="codigo_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
@@ -200,7 +200,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="form-label" for="dias_mod">Dias</label>
+                                                <label class="form-label" for="dias_mod">Días</label>
                                                 <input class="form-control" id="dias_mod" name="dias_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>

@@ -111,18 +111,46 @@ class tallasModel extends Conexion
             $nombre = $datos['nombre'];
             $id = $datos['id'];
             // Consulta para verificar la existencia del código
-            $query = "SELECT COUNT(*) as count FROM tbtallas WHERE codigo = :codigo";
+            $query = "SELECT COUNT(*) as count, codigo FROM tbtallas WHERE id = :id";
             $stmt = $dbconec->prepare($query);
-            $stmt->bindParam(':codigo', $codigo);
+            $stmt->bindParam(':id', $id);
             $stmt->execute();
-
-            // Obtiene el resultado
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $codigo_bd = $result['codigo'];
 
-            // Verifica si el código ya existe
-            if ($result['count'] > 0) {
-                $response = array('status' => 'error', 'message' => 'El código ya existe en la base de datos.');
-                echo json_encode($response);
+            // comparamos el codigo que llega y el que está
+            if ($codigo != $codigo_bd) {
+                $queryC = "SELECT COUNT(*) as count, codigo FROM tbtallas WHERE codigo = :codigo";
+                $stmt = $dbconec->prepare($queryC);
+                $stmt->bindParam(':codigo', $codigo);
+                $stmt->execute();
+
+                // Obtiene el resultado
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                // Verifica si el código ya existe
+                if ($result['count'] > 0) {
+                    $response = array('status' => 'error', 'message' => 'El código ya existe en la base de datos.');
+                    echo json_encode($response);
+                } else {
+                    // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
+                    $query = "UPDATE tbtallas SET codigo=:codigo, nombre=:nombre WHERE id=:id";
+                    $stmt = $dbconec->prepare($query);
+                    $stmt->bindParam(':id', $id);
+                    $stmt->bindParam(':codigo', $codigo);
+                    $stmt->bindParam(':nombre', $nombre);
+
+                    if ($stmt->execute()) {
+                        // Si la inserción fue exitosa, devuelve un mensaje o los datos actualizados
+                        $response = array('status' => 'success', 'message' => 'La talla se ha modificado exitosamente.');
+                    } else {
+                        // Si hubo un error en la inserción, devuelve un mensaje de error
+                        $response = array('status' => 'error', 'message' => 'Error al modificar la talla.');
+                    }
+
+                    // Devuelve la respuesta en formato JSON
+                    echo json_encode($response);
+                }
             } else {
                 // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
                 $query = "UPDATE tbtallas SET codigo=:codigo, nombre=:nombre WHERE id=:id";

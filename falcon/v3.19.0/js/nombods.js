@@ -52,7 +52,7 @@ function cargar_tabla() {
                 });
             } else {
                 // Mostrar un mensaje indicando que no hay nombods disponibles
-                $('#myTable tbody').html('<tr><td colspan="4" class="text-center">No hay nombods disponibles</td></tr>');
+                $('#myTable tbody').html('<tr><td colspan="5" class="text-center">No hay nombres de bodega disponibles</td></tr>');
             }
         },
         error: function() {
@@ -66,8 +66,13 @@ function cargar_tabla() {
 $(".fmr_nombods").submit(function(event) {
     event.preventDefault();
 
-    // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevo nombod
-    var nuevonombod = {
+    codigo = $("#codigo").val()
+    nombre = $("#nombre").val()
+    direccion = $("#direccion").val()
+    telefono = $("#telefono").val()
+    nit = $("#nit").val()
+        // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevo nombod
+    var nuevaNombod = {
         codigo: $("#codigo").val(),
         nombre: $("#nombre").val(),
         direccion: $("#direccion").val(),
@@ -75,40 +80,46 @@ $(".fmr_nombods").submit(function(event) {
         nit: $("#nit").val()
     };
 
-    // Hacer la solicitud AJAX para guardar el nuevo nombod
-    $.ajax({
-        type: 'POST',
-        url: 'ajax/nombodsajax.php',
-        data: {
-            proceso: 'guardar',
-            codigo: nuevonombod.codigo,
-            nombre: nuevonombod.nombre,
-            direccion: nuevonombod.direccion,
-            telefono: nuevonombod.telefono,
-            nit: nuevonombod.nit
-        },
-        dataType: 'json',
-        success: function(response) {
-            if (response.status === 'success') {
-                // cerramos el modal
-                $('#guardarModal').modal('hide');
-                // limpiamos el formulario
-                $('#fmr_nombods')[0].reset();
-                // mostramos la alerta
-                notificacion('Éxito', 'success', response.message);
+    if (codigo == "" || nombre == "" || direccion == "" || telefono == "" || nit == "") {
+        // alert("Por favor, completa todos los campos.");
+        notificacion('Error', 'error', "Por favor, completa todos los campos.");
+        return;
+    } else {
 
-                cargar_tabla();
-            } else {
+        // Hacer la solicitud AJAX para guardar el nuevo nombod
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/nombodsajax.php',
+            data: {
+                proceso: 'guardar',
+                codigo: nuevaNombod.codigo,
+                nombre: nuevaNombod.nombre,
+                direccion: nuevaNombod.direccion,
+                telefono: nuevaNombod.telefono,
+                nit: nuevaNombod.nit
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // cerramos el modal
+                    $('#guardarModal').modal('hide');
+                    // limpiamos el formulario
+                    $('#fmr_nombods')[0].reset();
+                    // mostramos la alerta
+                    notificacion('Éxito', 'success', response.message);
+
+                    cargar_tabla();
+                } else {
+                    // Error en la inserción, muestra mensaje de error con SweetAlert
+                    notificacion('Error', 'error', response.message);
+                }
+            },
+            error: function() {
                 // Error en la inserción, muestra mensaje de error con SweetAlert
                 notificacion('Error', 'error', response.message);
             }
-        },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            notificacion('Error', 'error', response.message);
-        }
-    });
-
+        });
+    }
 });
 
 // editar
@@ -145,8 +156,15 @@ function editar(id) {
 $(".fmr_nombods_editar").submit(function(event) {
     event.preventDefault();
 
+    codigo = $("#codigo_mod").val()
+    nombre = $("#nombre_mod").val()
+    direccion = $("#direccion_mod").val()
+    telefono = $("#telefono_mod").val()
+    nit = $("#nit_mod").val()
+    id = $("#id").val()
+
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nuevo nombod
-    var nuevonombod = {
+    var nuevaNombod = {
         codigo: $("#codigo_mod").val(),
         nombre: $("#nombre_mod").val(),
         direccion: $("#direccion_mod").val(),
@@ -155,41 +173,46 @@ $(".fmr_nombods_editar").submit(function(event) {
         id: $("#id").val()
     };
 
-    // Hacer la solicitud AJAX para guardar el nuevo nombod
-    $.ajax({
-        type: 'POST',
-        url: 'ajax/nombodsajax.php',
-        data: {
-            proceso: 'modificar',
-            codigo: nuevonombod.codigo,
-            nombre: nuevonombod.nombre,
-            direccion: nuevonombod.direccion,
-            telefono: nuevonombod.telefono,
-            nit: nuevonombod.nit,
-            id: nuevonombod.id
-        },
-        dataType: 'json',
-        success: function(response) {
-            if (response.status === 'success') {
-                // cerramos el modal
-                $('#editarModal').modal('hide');
-                // limpiamos el formulario
-                $('#fmr_nombods_editar')[0].reset();
-                // mostramos la alerta
-                notificacion('Éxito', 'success', response.message);
+    if (codigo == "" || nombre == "" || direccion == "" || telefono == "" || nit == "") {
+        // alert("Por favor, completa todos los campos.");
+        notificacion('Error', 'error', "Por favor, completa todos los campos.");
+        return;
+    } else {
+        // Hacer la solicitud AJAX para guardar el nuevo nombod
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/nombodsajax.php',
+            data: {
+                proceso: 'modificar',
+                codigo: nuevaNombod.codigo,
+                nombre: nuevaNombod.nombre,
+                direccion: nuevaNombod.direccion,
+                telefono: nuevaNombod.telefono,
+                nit: nuevaNombod.nit,
+                id: nuevaNombod.id
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // cerramos el modal
+                    $('#editarModal').modal('hide');
+                    // limpiamos el formulario
+                    $('#fmr_nombods_editar')[0].reset();
+                    // mostramos la alerta
+                    notificacion('Éxito', 'success', response.message);
 
-                cargar_tabla();
-            } else {
+                    cargar_tabla();
+                } else {
+                    // Error en la inserción, muestra mensaje de error con SweetAlert
+                    notificacion('Error', 'error', response.message);
+                }
+            },
+            error: function() {
                 // Error en la inserción, muestra mensaje de error con SweetAlert
                 notificacion('Error', 'error', response.message);
             }
-        },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            notificacion('Error', 'error', response.message);
-        }
-    });
-
+        });
+    }
 });
 
 // eliminar

@@ -89,10 +89,10 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
 
                                             <thead class="bg-200">
                                                 <tr>
-                                                    <th class="text-900 sort" data-sort="codigo">Codigo</th>
+                                                    <th class="text-900 sort" data-sort="codigo">Código</th>
                                                     <th class="text-900 sort" data-sort="nombre">Nombre</th>
-                                                    <th class="text-900 sort" data-sort="direccion">Direccion</th>
-                                                    <th class="text-900 sort" data-sort="telefono">Telefono</th>
+                                                    <th class="text-900 sort" data-sort="direccion">Dirección</th>
+                                                    <th class="text-900 sort" data-sort="telefono">Teléfono</th>
                                                     <th class="text-900 sort" data-sort="nit">Nit</th>
                                                     <th class="text-900 no-sort pe-1 align-middle data-table-row-action">Editar</th>
                                                     <th class="text-900 no-sort pe-1 align-middle data-table-row-action">Eliminar</th>
@@ -128,7 +128,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                     <div class="row">
                                         <form id="fmr_nombods" method="POST" class="fmr_nombods row g-2 needs-validation" novalidate="">
                                             <div class="col-md-6">
-                                                <label class="form-label" for="codigo">Codigo</label>
+                                                <label class="form-label" for="codigo">Código</label>
                                                 <input class="form-control" id="codigo" name="codigo" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
@@ -138,12 +138,12 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-12">
-                                                <label class="form-label" for="direccion">Direccion</label>
+                                                <label class="form-label" for="direccion">Dirección</label>
                                                 <input class="form-control" id="direccion" name="direccion" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="form-label" for="telefono">Telefono</label>
+                                                <label class="form-label" for="telefono">Teléfono</label>
                                                 <input class="form-control" id="telefono" name="telefono" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
@@ -179,7 +179,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                     <div class="row">
                                         <form id="fmr_nombods_editar" method="POST" class="fmr_nombods_editar row g-2 needs-validation" novalidate="">
                                             <div class="col-md-6">
-                                                <label class="form-label" for="codigo">Codigo</label>
+                                                <label class="form-label" for="codigo_mod">Código</label>
                                                 <input class="form-control" id="id" name="id" type="hidden" />
                                                 <input class="form-control" id="codigo_mod" name="codigo_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
@@ -190,12 +190,12 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-12">
-                                                <label class="form-label" for="direccion_mod">Direccion</label>
+                                                <label class="form-label" for="direccion_mod">Dirección</label>
                                                 <input class="form-control" id="direccion_mod" name="direccion_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="form-label" for="telefono_mod">Telefono</label>
+                                                <label class="form-label" for="telefono_mod">Teléfono</label>
                                                 <input class="form-control" id="telefono_mod" name="telefono_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>

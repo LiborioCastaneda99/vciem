@@ -50,7 +50,7 @@ function cargar_tabla() {
                 });
             } else {
                 // Mostrar un mensaje indicando que no hay umedidas disponibles
-                $('#myTable tbody').html('<tr><td colspan="4" class="text-center">No hay umedidas disponibles</td></tr>');
+                $('#myTable tbody').html('<tr><td colspan="3" class="text-center">No hay unidades de medida disponibles</td></tr>');
             }
         },
         error: function() {
@@ -64,45 +64,54 @@ function cargar_tabla() {
 $(".fmr_umedidas").submit(function(event) {
     event.preventDefault();
 
+    codigo = $("#codigo").val()
+    nombre = $("#nombre").val()
+    resumen = $("#resumen").val()
+
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nueva umedida
-    var nuevaumedida = {
+    var nuevaUmedida = {
         codigo: $("#codigo").val(),
         nombre: $("#nombre").val(),
         resumen: $("#resumen").val()
     };
 
-    // Hacer la solicitud AJAX para guardar la nueva umedida
-    $.ajax({
-        type: 'POST',
-        url: 'ajax/umedidasajax.php',
-        data: {
-            proceso: 'guardar',
-            codigo: nuevaumedida.codigo,
-            nombre: nuevaumedida.nombre,
-            resumen: nuevaumedida.resumen
-        },
-        dataType: 'json',
-        success: function(response) {
-            if (response.status === 'success') {
-                // cerramos el modal
-                $('#guardarModal').modal('hide');
-                // limpiamos el formulario
-                $('#fmr_umedidas')[0].reset();
-                // mostramos la alerta
-                notificacion('Éxito', 'success', response.message);
+    if (codigo == "" || nombre == "" || resumen == "") {
+        // alert("Por favor, completa todos los campos.");
+        notificacion('Error', 'error', "Por favor, completa todos los campos.");
+        return;
+    } else {
+        // Hacer la solicitud AJAX para guardar la nueva umedida
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/umedidasajax.php',
+            data: {
+                proceso: 'guardar',
+                codigo: nuevaUmedida.codigo,
+                nombre: nuevaUmedida.nombre,
+                resumen: nuevaUmedida.resumen
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // cerramos el modal
+                    $('#guardarModal').modal('hide');
+                    // limpiamos el formulario
+                    $('#fmr_umedidas')[0].reset();
+                    // mostramos la alerta
+                    notificacion('Éxito', 'success', response.message);
 
-                cargar_tabla();
-            } else {
+                    cargar_tabla();
+                } else {
+                    // Error en la inserción, muestra mensaje de error con SweetAlert
+                    notificacion('Error', 'error', response.message);
+                }
+            },
+            error: function() {
                 // Error en la inserción, muestra mensaje de error con SweetAlert
                 notificacion('Error', 'error', response.message);
             }
-        },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            notificacion('Error', 'error', response.message);
-        }
-    });
-
+        });
+    }
 });
 
 // editar
@@ -137,47 +146,57 @@ function editar(id) {
 $(".fmr_umedidas_editar").submit(function(event) {
     event.preventDefault();
 
+    codigo = $("#codigo_mod").val()
+    nombre = $("#nombre_mod").val()
+    resumen = $("#resumen_mod").val()
+
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nueva umedida
-    var nuevaumedida = {
+    var nuevaUmedida = {
         codigo: $("#codigo_mod").val(),
         nombre: $("#nombre_mod").val(),
         resumen: $("#resumen_mod").val(),
         id: $("#id").val()
     };
 
-    // Hacer la solicitud AJAX para guardar la nueva umedida
-    $.ajax({
-        type: 'POST',
-        url: 'ajax/umedidasajax.php',
-        data: {
-            proceso: 'modificar',
-            codigo: nuevaumedida.codigo,
-            nombre: nuevaumedida.nombre,
-            resumen: nuevaumedida.resumen,
-            id: nuevaumedida.id
-        },
-        dataType: 'json',
-        success: function(response) {
-            if (response.status === 'success') {
-                // cerramos el modal
-                $('#editarModal').modal('hide');
-                // limpiamos el formulario
-                $('#fmr_umedidas_editar')[0].reset();
-                // mostramos la alerta
-                notificacion('Éxito', 'success', response.message);
+    if (codigo == "" || nombre == "" || resumen == "") {
+        // alert("Por favor, completa todos los campos.");
+        notificacion('Error', 'error', "Por favor, completa todos los campos.");
+        return;
+    } else {
 
-                cargar_tabla();
-            } else {
+        // Hacer la solicitud AJAX para guardar la nueva umedida
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/umedidasajax.php',
+            data: {
+                proceso: 'modificar',
+                codigo: nuevaUmedida.codigo,
+                nombre: nuevaUmedida.nombre,
+                resumen: nuevaUmedida.resumen,
+                id: nuevaUmedida.id
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // cerramos el modal
+                    $('#editarModal').modal('hide');
+                    // limpiamos el formulario
+                    $('#fmr_umedidas_editar')[0].reset();
+                    // mostramos la alerta
+                    notificacion('Éxito', 'success', response.message);
+
+                    cargar_tabla();
+                } else {
+                    // Error en la inserción, muestra mensaje de error con SweetAlert
+                    notificacion('Error', 'error', response.message);
+                }
+            },
+            error: function() {
                 // Error en la inserción, muestra mensaje de error con SweetAlert
                 notificacion('Error', 'error', response.message);
             }
-        },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            notificacion('Error', 'error', response.message);
-        }
-    });
-
+        });
+    }
 });
 
 // eliminar

@@ -52,7 +52,7 @@ function cargar_tabla() {
                 });
             } else {
                 // Mostrar un mensaje indicando que no hay transportadores disponibles
-                $('#myTable tbody').html('<tr><td colspan="4" class="text-center">No hay transportadores disponibles</td></tr>');
+                $('#myTable tbody').html('<tr><td colspan="5" class="text-center">No hay transportadores disponibles</td></tr>');
             }
         },
         error: function() {
@@ -66,8 +66,14 @@ function cargar_tabla() {
 $(".fmr_transportadores").submit(function(event) {
     event.preventDefault();
 
+    codigo = $("#codigo").val()
+    nombre = $("#nombre").val()
+    resumen = $("#resumen").val()
+    conduc = $("#conduc").val()
+    est = $("#est").val()
+
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevo transportador
-    var nuevotransportador = {
+    var nuevoTransportador = {
         codigo: $("#codigo").val(),
         nombre: $("#nombre").val(),
         resumen: $("#resumen").val(),
@@ -75,40 +81,46 @@ $(".fmr_transportadores").submit(function(event) {
         est: $("#est").val()
     };
 
-    // Hacer la solicitud AJAX para guardar la nuevo transportador
-    $.ajax({
-        type: 'POST',
-        url: 'ajax/transportadoresajax.php',
-        data: {
-            proceso: 'guardar',
-            codigo: nuevotransportador.codigo,
-            nombre: nuevotransportador.nombre,
-            resumen: nuevotransportador.resumen,
-            conduc: nuevotransportador.conduc,
-            est: nuevotransportador.est
-        },
-        dataType: 'json',
-        success: function(response) {
-            if (response.status === 'success') {
-                // cerramos el modal
-                $('#guardarModal').modal('hide');
-                // limpiamos el formulario
-                $('#fmr_transportadores')[0].reset();
-                // mostramos la alerta
-                notificacion('Éxito', 'success', response.message);
+    if (codigo == "" || nombre == "" || resumen == "" || conduc == "" || est == "") {
+        // alert("Por favor, completa todos los campos.");
+        notificacion('Error', 'error', "Por favor, completa todos los campos.");
+        return;
+    } else {
 
-                cargar_tabla();
-            } else {
+        // Hacer la solicitud AJAX para guardar la nuevo transportador
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/transportadoresajax.php',
+            data: {
+                proceso: 'guardar',
+                codigo: nuevoTransportador.codigo,
+                nombre: nuevoTransportador.nombre,
+                resumen: nuevoTransportador.resumen,
+                conduc: nuevoTransportador.conduc,
+                est: nuevoTransportador.est
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // cerramos el modal
+                    $('#guardarModal').modal('hide');
+                    // limpiamos el formulario
+                    $('#fmr_transportadores')[0].reset();
+                    // mostramos la alerta
+                    notificacion('Éxito', 'success', response.message);
+
+                    cargar_tabla();
+                } else {
+                    // Error en la inserción, muestra mensaje de error con SweetAlert
+                    notificacion('Error', 'error', response.message);
+                }
+            },
+            error: function() {
                 // Error en la inserción, muestra mensaje de error con SweetAlert
                 notificacion('Error', 'error', response.message);
             }
-        },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            notificacion('Error', 'error', response.message);
-        }
-    });
-
+        });
+    }
 });
 
 // editar
@@ -145,8 +157,14 @@ function editar(id) {
 $(".fmr_transportadores_editar").submit(function(event) {
     event.preventDefault();
 
+    codigo = $("#codigo_mod").val()
+    nombre = $("#nombre_mod").val()
+    resumen = $("#resumen_mod").val()
+    conduc = $("#conduc_mod").val()
+    est = $("#est_mod").val()
+
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nuevo transportador
-    var nuevotransportador = {
+    var nuevoTransportador = {
         codigo: $("#codigo_mod").val(),
         nombre: $("#nombre_mod").val(),
         resumen: $("#resumen_mod").val(),
@@ -155,41 +173,47 @@ $(".fmr_transportadores_editar").submit(function(event) {
         id: $("#id").val()
     };
 
-    // Hacer la solicitud AJAX para guardar el nuevo transportador
-    $.ajax({
-        type: 'POST',
-        url: 'ajax/transportadoresajax.php',
-        data: {
-            proceso: 'modificar',
-            codigo: nuevotransportador.codigo,
-            nombre: nuevotransportador.nombre,
-            resumen: nuevotransportador.resumen,
-            conduc: nuevotransportador.conduc,
-            est: nuevotransportador.est,
-            id: nuevotransportador.id
-        },
-        dataType: 'json',
-        success: function(response) {
-            if (response.status === 'success') {
-                // cerramos el modal
-                $('#editarModal').modal('hide');
-                // limpiamos el formulario
-                $('#fmr_transportadores_editar')[0].reset();
-                // mostramos la alerta
-                notificacion('Éxito', 'success', response.message);
+    if (codigo == "" || nombre == "" || resumen == "" || conduc == "" || est == "") {
+        // alert("Por favor, completa todos los campos.");
+        notificacion('Error', 'error', "Por favor, completa todos los campos.");
+        return;
+    } else {
 
-                cargar_tabla();
-            } else {
+        // Hacer la solicitud AJAX para guardar el nuevo transportador
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/transportadoresajax.php',
+            data: {
+                proceso: 'modificar',
+                codigo: nuevoTransportador.codigo,
+                nombre: nuevoTransportador.nombre,
+                resumen: nuevoTransportador.resumen,
+                conduc: nuevoTransportador.conduc,
+                est: nuevoTransportador.est,
+                id: nuevoTransportador.id
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // cerramos el modal
+                    $('#editarModal').modal('hide');
+                    // limpiamos el formulario
+                    $('#fmr_transportadores_editar')[0].reset();
+                    // mostramos la alerta
+                    notificacion('Éxito', 'success', response.message);
+
+                    cargar_tabla();
+                } else {
+                    // Error en la inserción, muestra mensaje de error con SweetAlert
+                    notificacion('Error', 'error', response.message);
+                }
+            },
+            error: function() {
                 // Error en la inserción, muestra mensaje de error con SweetAlert
                 notificacion('Error', 'error', response.message);
             }
-        },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            notificacion('Error', 'error', response.message);
-        }
-    });
-
+        });
+    }
 });
 
 // eliminar

@@ -59,7 +59,7 @@ function cargar_tabla() {
     });
 }
 
-// guardar
+// guardar btn
 $(".fmr_marcas").submit(function(event) {
     event.preventDefault();
 
@@ -111,7 +111,7 @@ $(".fmr_marcas").submit(function(event) {
 
 });
 
-// editar
+// editar funcion
 function editar(id) {
 
     // Hacer la solicitud AJAX al servidor
@@ -139,6 +139,7 @@ function editar(id) {
     });
 }
 
+//editar btn
 $(".fmr_marcas_editar").submit(function(event) {
     event.preventDefault();
 

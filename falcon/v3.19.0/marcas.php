@@ -151,15 +151,15 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                 </div>
                                 <div class="p-4">
                                     <div class="row">
-                                        <form id="fmr_marcas" method="POST" class="fmr_marcas row g-2 needs-validation" novalidate="">
+                                        <form id="fmr_marcas" method="POST" class="fmr_marcas row g-2 needs-validation" novalidate>
                                             <div class="col-md-6">
                                                 <label class="form-label" for="codigo">Codigo</label>
-                                                <input class="form-control" id="codigo" name="codigo" type="text" required />
+                                                <input class="form-control" id="codigo" name="codigo" type="text" required="" />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="form-label" for="nombre">Nombre</label>
-                                                <input class="form-control" id="nombre" name="nombre" type="text" required />
+                                                <input class="form-control" id="nombre" name="nombre" type="text" required="" />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="modal-footer">

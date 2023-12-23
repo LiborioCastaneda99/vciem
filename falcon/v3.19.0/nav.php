@@ -18,7 +18,7 @@
         <div class="toggle-icon-wrapper">
             <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
         </div>
-        <a class="navbar-brand" href="index.html.htm">
+        <a class="navbar-brand" href="index.php">
             <!-- <div class="d-flex align-items-center py-3"><img class="me-2" src="assets/img/icons/spot-illustrations/falcon.png" alt width="40"><span class="font-sans-serif text-primary">Visual -->
             <div class="d-flex align-items-center py-3"><span class="font-sans-serif text-primary">Visual 100</span></div>
         </a>

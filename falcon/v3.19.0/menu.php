@@ -301,7 +301,7 @@
           <a class="dropdown-item" href="#!">Feedback</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="pages/user/settings.html.htm">Settings</a>
-          <a class="dropdown-item" href="ajax/logout.php">Logout</a>
+          <a class="dropdown-item" href="ajax/logout.php">Cerrar sesión</a>
         </div>
       </div>
     </li>
@@ -354,17 +354,17 @@
               <div class="row">
                 <div class="col-6 col-xxl-3">
                   <div class="nav flex-column">
-                    <p class="nav-link text-700 mb-0 fw-bold">Simple Auth</p><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/login.html.htm">Login</a><a class="nav-link py-1 link-600 fw-medium" href="ajax/logout.php">Logout</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/register.html.htm">Register</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/forgot-password.html.htm">Forgot password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/confirm-mail.html.htm">Confirm mail</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/reset-password.html.htm">Reset password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/lock-screen.html.htm">Lock screen</a>
+                    <p class="nav-link text-700 mb-0 fw-bold">Simple Auth</p><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/login.html.htm">Login</a><a class="nav-link py-1 link-600 fw-medium" href="ajax/logout.php">Cerrar sesión</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/register.html.htm">Register</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/forgot-password.html.htm">Forgot password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/confirm-mail.html.htm">Confirm mail</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/reset-password.html.htm">Reset password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/simple/lock-screen.html.htm">Lock screen</a>
                   </div>
                 </div>
                 <div class="col-6 col-xxl-3">
                   <div class="nav flex-column">
-                    <p class="nav-link text-700 mb-0 fw-bold">Card Auth</p><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/login.html.htm">Login</a><a class="nav-link py-1 link-600 fw-medium" href="ajax/logout.php">Logout</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/register.html.htm">Register</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/forgot-password.html.htm">Forgot password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/confirm-mail.html.htm">Confirm mail</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/reset-password.html.htm">Reset password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/lock-screen.html.htm">Lock screen</a>
+                    <p class="nav-link text-700 mb-0 fw-bold">Card Auth</p><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/login.html.htm">Login</a><a class="nav-link py-1 link-600 fw-medium" href="ajax/logout.php">Cerrar sesión</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/register.html.htm">Register</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/forgot-password.html.htm">Forgot password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/confirm-mail.html.htm">Confirm mail</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/reset-password.html.htm">Reset password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/card/lock-screen.html.htm">Lock screen</a>
                   </div>
                 </div>
                 <div class="col-6 col-xxl-3">
                   <div class="nav flex-column">
-                    <p class="nav-link text-700 mb-0 fw-bold">Split Auth</p><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/split/login.html.htm">Login</a><a class="nav-link py-1 link-600 fw-medium" href="ajax/logout.php">Logout</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/split/register.html.htm">Register</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/split/forgot-password.html.htm">Forgot password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/split/confirm-mail.html.htm">Confirm mail</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/split/reset-password.html.htm">Reset password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/split/lock-screen.html.htm">Lock screen</a>
+                    <p class="nav-link text-700 mb-0 fw-bold">Split Auth</p><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/split/login.html.htm">Login</a><a class="nav-link py-1 link-600 fw-medium" href="ajax/logout.php">Cerrar sesión</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/split/register.html.htm">Register</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/split/forgot-password.html.htm">Forgot password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/split/confirm-mail.html.htm">Confirm mail</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/split/reset-password.html.htm">Reset password</a><a class="nav-link py-1 link-600 fw-medium" href="pages/authentication/split/lock-screen.html.htm">Lock screen</a>
                   </div>
                 </div>
                 <div class="col-6 col-xxl-3">
@@ -668,7 +668,7 @@
           <a class="dropdown-item" href="#!">Feedback</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="pages/user/settings.html.htm">Settings</a>
-          <a class="dropdown-item" href="ajax/logout.php">Logout</a>
+          <a class="dropdown-item" href="ajax/logout.php">Cerrar sesión</a>
         </div>
       </div>
     </li>

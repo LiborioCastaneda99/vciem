@@ -63,42 +63,51 @@ function cargar_tabla() {
 $(".fmr_marcas").submit(function(event) {
     event.preventDefault();
 
+    codigo = $("#codigo").val()
+    nombre = $("#nombre").val()
+
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nueva marca
     var nuevamarca = {
-        codigo: $("#codigo").val(),
-        nombre: $("#nombre").val()
+        codigo: codigo,
+        nombre: nombre
     };
 
-    // Hacer la solicitud AJAX para guardar la nueva marca
-    $.ajax({
-        type: 'POST',
-        url: 'ajax/marcasajax.php',
-        data: {
-            proceso: 'guardar',
-            codigo: nuevamarca.codigo,
-            nombre: nuevamarca.nombre
-        },
-        dataType: 'json',
-        success: function(response) {
-            if (response.status === 'success') {
-                // cerramos el modal
-                $('#guardarModal').modal('hide');
-                // limpiamos el formulario
-                $('#fmr_marcas')[0].reset();
-                // mostramos la alerta
-                notificacion('Éxito', 'success', response.message);
+    if (codigo == "" || nombre == "") {
+        // alert("Por favor, completa todos los campos.");
+        notificacion('Error', 'error', "Por favor, completa todos los campos.");
+        return;
+    } else {
+        // Hacer la solicitud AJAX para guardar la nueva marca
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/marcasajax.php',
+            data: {
+                proceso: 'guardar',
+                codigo: nuevamarca.codigo,
+                nombre: nuevamarca.nombre
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // cerramos el modal
+                    $('#guardarModal').modal('hide');
+                    // limpiamos el formulario
+                    $('#fmr_marcas')[0].reset();
+                    // mostramos la alerta
+                    notificacion('Éxito', 'success', response.message);
 
-                cargar_tabla();
-            } else {
+                    cargar_tabla();
+                } else {
+                    // Error en la inserción, muestra mensaje de error con SweetAlert
+                    notificacion('Error', 'error', response.message);
+                }
+            },
+            error: function() {
                 // Error en la inserción, muestra mensaje de error con SweetAlert
                 notificacion('Error', 'error', response.message);
             }
-        },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            notificacion('Error', 'error', response.message);
-        }
-    });
+        });
+    }
 
 });
 
@@ -134,43 +143,52 @@ $(".fmr_marcas_editar").submit(function(event) {
     event.preventDefault();
 
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nueva marca
+    codigo = $("#codigo_mod").val()
+    nombre = $("#nombre_mod").val()
+
     var nuevamarca = {
-        codigo: $("#codigo_mod").val(),
-        nombre: $("#nombre_mod").val(),
+        codigo: codigo,
+        nombre: nombre,
         id: $("#id").val()
     };
 
-    // Hacer la solicitud AJAX para guardar la nueva marca
-    $.ajax({
-        type: 'POST',
-        url: 'ajax/marcasajax.php',
-        data: {
-            proceso: 'modificar',
-            codigo: nuevamarca.codigo,
-            nombre: nuevamarca.nombre,
-            id: nuevamarca.id
-        },
-        dataType: 'json',
-        success: function(response) {
-            if (response.status === 'success') {
-                // cerramos el modal
-                $('#editarModal').modal('hide');
-                // limpiamos el formulario
-                $('#fmr_marcas_editar')[0].reset();
-                // mostramos la alerta
-                notificacion('Éxito', 'success', response.message);
+    if (codigo == "" || nombre == "") {
+        // alert("Por favor, completa todos los campos.");
+        notificacion('Error', 'error', "Por favor, completa todos los campos.");
+        return;
+    } else {
+        // Hacer la solicitud AJAX para guardar la nueva marca
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/marcasajax.php',
+            data: {
+                proceso: 'modificar',
+                codigo: nuevamarca.codigo,
+                nombre: nuevamarca.nombre,
+                id: nuevamarca.id
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // cerramos el modal
+                    $('#editarModal').modal('hide');
+                    // limpiamos el formulario
+                    $('#fmr_marcas_editar')[0].reset();
+                    // mostramos la alerta
+                    notificacion('Éxito', 'success', response.message);
 
-                cargar_tabla();
-            } else {
+                    cargar_tabla();
+                } else {
+                    // Error en la inserción, muestra mensaje de error con SweetAlert
+                    notificacion('Error', 'error', response.message);
+                }
+            },
+            error: function() {
                 // Error en la inserción, muestra mensaje de error con SweetAlert
                 notificacion('Error', 'error', response.message);
             }
-        },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            notificacion('Error', 'error', response.message);
-        }
-    });
+        });
+    }
 
 });
 
@@ -216,6 +234,7 @@ function eliminar(id) {
     });
 }
 
+// notificacion
 function notificacion(titulo, icon, mensaje) {
     //Mensaje de notificación, muestra un mensaje con SweetAlert
     if (titulo == "Error") {
@@ -231,6 +250,7 @@ function notificacion(titulo, icon, mensaje) {
     });
 }
 
+// cuadramos lo que queremos imprimir
 document.getElementById('printButton').addEventListener('click', function() {
     var printWindow = window.open('', '_blank');
     printWindow.document.write('<html><head><title>Tabla Imprimible</title></head><body>');

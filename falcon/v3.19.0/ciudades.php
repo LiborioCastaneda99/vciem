@@ -129,7 +129,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label class="form-label" for="nombre">Descripción</label>
+                                                <label class="form-label" for="nombre">Nombre</label>
                                                 <input class="form-control" id="nombre" name="nombre" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
@@ -140,7 +140,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             </div>
                                             <div class="modal-footer">
                                                 <div class="col-12 d-grid  gap-0">
-                                                    <button class="btn btn-outline-primary me-1 mb-1" type="submit">Agregar zona</button>
+                                                    <button class="btn btn-outline-primary me-1 mb-1" type="submit">Agregar ciudad</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -158,7 +158,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                             <div class="position-absolute top-0 end-0 mt-3 me-3 z-1"><button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button></div>
                             <div class="modal-body p-0">
                                 <div class="rounded-top-3 bg-body-tertiary py-3 ps-4 pe-6">
-                                    <h4 class="mb-1" id="staticBackdropLabel">Editar zona</h4>
+                                    <h4 class="mb-1" id="staticBackdropLabel">Editar ciudad</h4>
                                     <!-- <p class="fs-11 mb-0">Added by <a class="link-600 fw-semi-bold" href="#!">Antony</a></p> -->
                                 </div>
                                 <div class="p-4">
@@ -171,7 +171,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label class="form-label" for="nombre_mod">Descripción</label>
+                                                <label class="form-label" for="nombre_mod">Nombre</label>
                                                 <input class="form-control" id="nombre_mod" name="nombre_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>

@@ -49,17 +49,12 @@ function cargar_tabla() {
                 });
             } else {
                 // Mostrar un mensaje indicando que no hay tallas disponibles
-                $('#myTable tbody').html('<tr><td colspan="4" class="text-center">No hay tallas disponibles</td></tr>');
+                $('#myTable tbody').html('<tr><td colspan="2" class="text-center">No hay tallas disponibles</td></tr>');
             }
         },
         error: function() {
             // Error en la inserción, muestra mensaje de error con SweetAlert
-            Swal.fire({
-                title: 'Error',
-                text: 'Error al traer los datos.',
-                icon: 'error',
-                confirmButtonColor: "#EF5350"
-            });
+            notificacion('Error', 'error', response.message);
         }
     });
 }
@@ -68,58 +63,50 @@ function cargar_tabla() {
 $(".fmr_tallas").submit(function(event) {
     event.preventDefault();
 
+    codigo = $("#codigo").val()
+    nombre = $("#nombre").val()
+
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevo color
-    var nuevoColor = {
+    var nuevaTalla = {
         codigo: $("#codigo").val(),
         nombre: $("#nombre").val()
     };
+    if (codigo == "" || nombre == "") {
+        // alert("Por favor, completa todos los campos.");
+        notificacion('Error', 'error', "Por favor, completa todos los campos.");
+        return;
+    } else {
+        // Hacer la solicitud AJAX para guardar el nuevo color
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/tallasajax.php',
+            data: {
+                proceso: 'guardar',
+                codigo: nuevaTalla.codigo,
+                nombre: nuevaTalla.nombre
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // cerramos el modal
+                    $('#guardarModal').modal('hide');
+                    // limpiamos el formulario
+                    $('#fmr_tallas')[0].reset();
+                    // mostramos la alerta
+                    notificacion('Éxito', 'success', response.message);
 
-    // Hacer la solicitud AJAX para guardar el nuevo color
-    $.ajax({
-        type: 'POST',
-        url: 'ajax/tallasajax.php',
-        data: {
-            proceso: 'guardar',
-            codigo: nuevoColor.codigo,
-            nombre: nuevoColor.nombre
-        },
-        dataType: 'json',
-        success: function(response) {
-            if (response.status === 'success') {
-                // cerramos el modal
-                $('#guardarModal').modal('hide');
-                // limpiamos el formulario
-                $('#fmr_tallas')[0].reset();
-                // mostramos la alerta
-                Swal.fire({
-                    title: 'Éxito',
-                    text: response.message,
-                    icon: 'success',
-                    confirmButtonColor: '#2196f3'
-                });
-
-                cargar_tabla();
-            } else {
+                    cargar_tabla();
+                } else {
+                    // Error en la inserción, muestra mensaje de error con SweetAlert
+                    notificacion('Error', 'error', response.message);
+                }
+            },
+            error: function() {
                 // Error en la inserción, muestra mensaje de error con SweetAlert
-                Swal.fire({
-                    title: 'Error',
-                    text: response.message,
-                    icon: 'error',
-                    confirmButtonColor: "#EF5350"
-                });
+                notificacion('Error', 'error', response.message);
             }
-        },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            Swal.fire({
-                title: 'Error',
-                text: response.message,
-                icon: 'error',
-                confirmButtonColor: "#EF5350"
-            });
-        }
-    });
-
+        });
+    }
 });
 
 // editar
@@ -145,12 +132,7 @@ function editar(id) {
         },
         error: function() {
             // Error en la inserción, muestra mensaje de error con SweetAlert
-            Swal.fire({
-                title: 'Error',
-                text: response.message,
-                icon: 'error',
-                confirmButtonColor: "#EF5350"
-            });
+            notificacion('Error', 'error', response.message);
         }
     });
 }
@@ -158,60 +140,53 @@ function editar(id) {
 $(".fmr_tallas_editar").submit(function(event) {
     event.preventDefault();
 
+    codigo = $("#codigo_mod").val()
+    nombre = $("#nombre_mod").val()
+
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevo color
-    var nuevoColor = {
+    var nuevaTalla = {
         codigo: $("#codigo_mod").val(),
         nombre: $("#nombre_mod").val(),
         id: $("#id").val()
     };
 
-    // Hacer la solicitud AJAX para guardar el nuevo color
-    $.ajax({
-        type: 'POST',
-        url: 'ajax/tallasajax.php',
-        data: {
-            proceso: 'modificar',
-            codigo: nuevoColor.codigo,
-            nombre: nuevoColor.nombre,
-            id: nuevoColor.id
-        },
-        dataType: 'json',
-        success: function(response) {
-            if (response.status === 'success') {
-                // cerramos el modal
-                $('#editarModal').modal('hide');
-                // limpiamos el formulario
-                $('#fmr_tallas_editar')[0].reset();
-                // mostramos la alerta
-                Swal.fire({
-                    title: 'Éxito',
-                    text: response.message,
-                    icon: 'success',
-                    confirmButtonColor: '#2196f3'
-                });
+    if (codigo == "" || nombre == "") {
+        // alert("Por favor, completa todos los campos.");
+        notificacion('Error', 'error', "Por favor, completa todos los campos.");
+        return;
+    } else {
+        // Hacer la solicitud AJAX para guardar el nuevo color
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/tallasajax.php',
+            data: {
+                proceso: 'modificar',
+                codigo: nuevaTalla.codigo,
+                nombre: nuevaTalla.nombre,
+                id: nuevaTalla.id
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // cerramos el modal
+                    $('#editarModal').modal('hide');
+                    // limpiamos el formulario
+                    $('#fmr_tallas_editar')[0].reset();
+                    // mostramos la alerta
+                    notificacion('Éxito', 'success', response.message);
 
-                cargar_tabla();
-            } else {
+                    cargar_tabla();
+                } else {
+                    // Error en la inserción, muestra mensaje de error con SweetAlert
+                    notificacion('Error', 'error', response.message);
+                }
+            },
+            error: function() {
                 // Error en la inserción, muestra mensaje de error con SweetAlert
-                Swal.fire({
-                    title: 'Error',
-                    text: response.message,
-                    icon: 'error',
-                    confirmButtonColor: "#EF5350"
-                });
+                notificacion('Error', 'error', response.message);
             }
-        },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            Swal.fire({
-                title: 'Error',
-                text: response.message,
-                icon: 'error',
-                confirmButtonColor: "#EF5350"
-            });
-        }
-    });
-
+        });
+    }
 });
 
 // eliminar
@@ -240,35 +215,35 @@ function eliminar(id) {
                 dataType: 'json',
                 success: function(response) {
                     if (response.status === 'success') {
-
-                        Swal.fire({
-                            title: 'Éxito',
-                            text: response.message,
-                            icon: 'success',
-                            confirmButtonColor: '#2196f3'
-                        });
+                        notificacion('Éxito', 'success', response.message);
 
                         cargar_tabla();
                     } else {
                         // Error en la inserción, muestra mensaje de error con SweetAlert
-                        Swal.fire({
-                            title: 'Error',
-                            text: response.message,
-                            icon: 'error',
-                            confirmButtonColor: "#EF5350"
-                        });
+                        notificacion('Error', 'error', response.message);
                     }
                 },
                 error: function() {
                     // Error en la inserción, muestra mensaje de error con SweetAlert
-                    Swal.fire({
-                        title: 'Error',
-                        text: response.message,
-                        icon: 'error',
-                        confirmButtonColor: "#EF5350"
-                    });
+                    notificacion('Error', 'error', response.message);
                 }
             });
         }
+    });
+}
+
+// notificacion
+function notificacion(titulo, icon, mensaje) {
+    //Mensaje de notificación, muestra un mensaje con SweetAlert
+    if (titulo == "Error") {
+        color = "#EF5350"
+    } else {
+        color = "#2196f3"
+    }
+    Swal.fire({
+        title: titulo,
+        text: mensaje,
+        icon: icon,
+        confirmButtonmarca: color
     });
 }

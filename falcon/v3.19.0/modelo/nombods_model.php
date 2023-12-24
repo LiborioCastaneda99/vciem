@@ -120,18 +120,48 @@ class nombodsModel extends Conexion
             $nit = $datos['nit'];
             $id = $datos['id'];
             // Consulta para verificar la existencia del código
-            $query = "SELECT COUNT(*) as count FROM tbnombod WHERE codigo = :codigo";
+            $query = "SELECT COUNT(*) as count, codigo FROM tbnombod WHERE id = :id";
             $stmt = $dbconec->prepare($query);
-            $stmt->bindParam(':codigo', $codigo);
+            $stmt->bindParam(':id', $id);
             $stmt->execute();
-
-            // Obtiene el resultado
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $codigo_bd = $result['codigo'];
 
-            // Verifica si el código ya existe
-            if ($result['count'] > 0) {
-                $response = array('status' => 'error', 'message' => 'El código ya existe en la base de datos.');
-                echo json_encode($response);
+            // comparamos el codigo que llega y el que está
+            if ($codigo != $codigo_bd) {
+                $queryC = "SELECT COUNT(*) as count, codigo FROM tbnombod WHERE codigo = :codigo";
+                $stmt = $dbconec->prepare($queryC);
+                $stmt->bindParam(':codigo', $codigo);
+                $stmt->execute();
+                // Obtiene el resultado
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                // Verifica si el código ya existe
+                if ($result['count'] > 0) {
+                    $response = array('status' => 'error', 'message' => 'El código ya existe en la base de datos.');
+                    echo json_encode($response);
+                } else {
+                    // Realiza la inserción en la base de datos (ajusta diaso según tu configuración)
+                    $query = "UPDATE tbnombod SET codigo=:codigo, nombre=:nombre, dir=:direccion, tel=:telefono, nit=:nit WHERE id=:id";
+                    $stmt = $dbconec->prepare($query);
+                    $stmt->bindParam(':id', $id);
+                    $stmt->bindParam(':codigo', $codigo);
+                    $stmt->bindParam(':nombre', $nombre);
+                    $stmt->bindParam(':direccion', $direccion);
+                    $stmt->bindParam(':telefono', $telefono);
+                    $stmt->bindParam(':nit', $nit);
+
+                    if ($stmt->execute()) {
+                        // Si la inserción fue exitosa, devuelve un mensaje o los datos actualizados
+                        $response = array('status' => 'success', 'message' => 'El nombod se ha modificado exitosamente.');
+                    } else {
+                        // Si hubo un error en la inserción, devuelve un mensaje de error
+                        $response = array('status' => 'error', 'message' => 'Error al modificar el nombod.');
+                    }
+
+                    // Devuelve la respudiasa en formato JSON
+                    echo json_encode($response);
+                }
             } else {
                 // Realiza la inserción en la base de datos (ajusta diaso según tu configuración)
                 $query = "UPDATE tbnombod SET codigo=:codigo, nombre=:nombre, dir=:direccion, tel=:telefono, nit=:nit WHERE id=:id";

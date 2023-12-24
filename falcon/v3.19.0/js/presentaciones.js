@@ -62,41 +62,49 @@ function cargar_tabla() {
 $(".fmr_presentaciones").submit(function(event) {
     event.preventDefault();
 
+    codigo = $("#codigo").val()
+    nombre = $("#nombre").val()
+
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nueva presentacion
-    var nuevapresentacion = {
+    var nuevaPresentacion = {
         codigo: $("#codigo").val(),
         nombre: $("#nombre").val()
     };
 
-    // Hacer la solicitud AJAX para guardar el nueva presentacion
-    $.ajax({
-        type: 'POST',
-        url: 'ajax/presentacionesajax.php',
-        data: {
-            proceso: 'guardar',
-            codigo: nuevapresentacion.codigo,
-            nombre: nuevapresentacion.nombre
-        },
-        dataType: 'json',
-        success: function(response) {
-            if (response.status === 'success') {
-                // cerramos el modal
-                $('#guardarModal').modal('hide');
-                // limpiamos el formulario
-                $('#fmr_presentaciones')[0].reset();
-                // mostramos la alerta
-                notificacion('Éxito', 'success', response.message);
+    if (codigo == "" || nombre == "") {
+        // alert("Por favor, completa todos los campos.");
+        notificacion('Error', 'error', "Por favor, completa todos los campos.");
+        return;
+    } else {
+        // Hacer la solicitud AJAX para guardar el nueva presentacion
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/presentacionesajax.php',
+            data: {
+                proceso: 'guardar',
+                codigo: nuevaPresentacion.codigo,
+                nombre: nuevaPresentacion.nombre
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // cerramos el modal
+                    $('#guardarModal').modal('hide');
+                    // limpiamos el formulario
+                    $('#fmr_presentaciones')[0].reset();
+                    // mostramos la alerta
+                    notificacion('Éxito', 'success', response.message);
 
-                cargar_tabla();
-            } else {
+                    cargar_tabla();
+                } else {
+                    notificacion('Error', 'error', response.message);
+                }
+            },
+            error: function() {
                 notificacion('Error', 'error', response.message);
             }
-        },
-        error: function() {
-            notificacion('Error', 'error', response.message);
-        }
-    });
-
+        });
+    }
 });
 
 // editar
@@ -129,43 +137,52 @@ function editar(id) {
 $(".fmr_presentaciones_editar").submit(function(event) {
     event.preventDefault();
 
+    codigo = $("#codigo_mod").val()
+    nombre = $("#nombre_mod").val()
+
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nueva presentacion
-    var nuevapresentacion = {
+    var nuevaPresentacion = {
         codigo: $("#codigo_mod").val(),
         nombre: $("#nombre_mod").val(),
         id: $("#id").val()
     };
 
-    // Hacer la solicitud AJAX para guardar la nueva presentacion
-    $.ajax({
-        type: 'POST',
-        url: 'ajax/presentacionesajax.php',
-        data: {
-            proceso: 'modificar',
-            codigo: nuevapresentacion.codigo,
-            nombre: nuevapresentacion.nombre,
-            id: nuevapresentacion.id
-        },
-        dataType: 'json',
-        success: function(response) {
-            if (response.status === 'success') {
-                // cerramos el modal
-                $('#editarModal').modal('hide');
-                // limpiamos el formulario
-                $('#fmr_presentaciones_editar')[0].reset();
-                // mostramos la alerta
-                notificacion('Éxito', 'success', response.message);
+    if (codigo == "" || nombre == "") {
+        // alert("Por favor, completa todos los campos.");
+        notificacion('Error', 'error', "Por favor, completa todos los campos.");
+        return;
+    } else {
 
-                cargar_tabla();
-            } else {
+        // Hacer la solicitud AJAX para guardar la nueva presentacion
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/presentacionesajax.php',
+            data: {
+                proceso: 'modificar',
+                codigo: nuevaPresentacion.codigo,
+                nombre: nuevaPresentacion.nombre,
+                id: nuevaPresentacion.id
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // cerramos el modal
+                    $('#editarModal').modal('hide');
+                    // limpiamos el formulario
+                    $('#fmr_presentaciones_editar')[0].reset();
+                    // mostramos la alerta
+                    notificacion('Éxito', 'success', response.message);
+
+                    cargar_tabla();
+                } else {
+                    notificacion('Error', 'error', response.message);
+                }
+            },
+            error: function() {
                 notificacion('Error', 'error', response.message);
             }
-        },
-        error: function() {
-            notificacion('Error', 'error', response.message);
-        }
-    });
-
+        });
+    }
 });
 
 // eliminar

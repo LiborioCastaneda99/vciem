@@ -65,48 +65,58 @@ function cargar_tabla() {
 $(".fmr_subzonas").submit(function(event) {
     event.preventDefault();
 
+    codigo = $("#codigo").val()
+    subzona = $("#subzona").val()
+    nombre = $("#nombre").val()
+    resumen = $("#resumen").val()
+
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nueva subzona
-    var nuevasubzona = {
+    var nuevaSubzona = {
         codigo: $("#codigo").val(),
         subzona: $("#subzona").val(),
         nombre: $("#nombre").val(),
         resumen: $("#resumen").val()
     };
 
-    // Hacer la solicitud AJAX para guardar la nueva subzona
-    $.ajax({
-        type: 'POST',
-        url: 'ajax/subzonasajax.php',
-        data: {
-            proceso: 'guardar',
-            codigo: nuevasubzona.codigo,
-            subzona: nuevasubzona.subzona,
-            nombre: nuevasubzona.nombre,
-            resumen: nuevasubzona.resumen
+    if (codigo == "" || subzona == "" || nombre == "" || resumen == "") {
+        // alert("Por favor, completa todos los campos.");
+        notificacion('Error', 'error', "Por favor, completa todos los campos.");
+        return;
+    } else {
+        // Hacer la solicitud AJAX para guardar la nueva subzona
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/subzonasajax.php',
+            data: {
+                proceso: 'guardar',
+                codigo: nuevaSubzona.codigo,
+                subzona: nuevaSubzona.subzona,
+                nombre: nuevaSubzona.nombre,
+                resumen: nuevaSubzona.resumen
 
-        },
-        dataType: 'json',
-        success: function(response) {
-            if (response.status === 'success') {
-                // cerramos el modal
-                $('#guardarModal').modal('hide');
-                // limpiamos el formulario
-                $('#fmr_subzonas')[0].reset();
-                // mostramos la alerta
-                notificacion('Éxito', 'success', response.message);
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // cerramos el modal
+                    $('#guardarModal').modal('hide');
+                    // limpiamos el formulario
+                    $('#fmr_subzonas')[0].reset();
+                    // mostramos la alerta
+                    notificacion('Éxito', 'success', response.message);
 
-                cargar_tabla();
-            } else {
+                    cargar_tabla();
+                } else {
+                    // Error en la inserción, muestra mensaje de error con SweetAlert
+                    notificacion('Error', 'error', response.message);
+                }
+            },
+            error: function() {
                 // Error en la inserción, muestra mensaje de error con SweetAlert
                 notificacion('Error', 'error', response.message);
             }
-        },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            notificacion('Error', 'error', response.message);
-        }
-    });
-
+        });
+    }
 });
 
 // editar
@@ -142,8 +152,13 @@ function editar(id) {
 $(".fmr_subzonas_editar").submit(function(event) {
     event.preventDefault();
 
+    codigo = $("#codigo_mod").val()
+    subzona = $("#subzona_mod").val()
+    nombre = $("#nombre_mod").val()
+    resumen = $("#resumen_mod").val()
+
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nueva subzona
-    var nuevasubzona = {
+    var nuevaSubzona = {
         codigo: $("#codigo_mod").val(),
         subzona: $("#subzona_mod").val(),
         nombre: $("#nombre_mod").val(),
@@ -151,40 +166,45 @@ $(".fmr_subzonas_editar").submit(function(event) {
         id: $("#id").val()
     };
 
-    // Hacer la solicitud AJAX para guardar la nueva subzona
-    $.ajax({
-        type: 'POST',
-        url: 'ajax/subzonasajax.php',
-        data: {
-            proceso: 'modificar',
-            codigo: nuevasubzona.codigo,
-            subzona: nuevasubzona.subzona,
-            nombre: nuevasubzona.nombre,
-            resumen: nuevasubzona.resumen,
-            id: nuevasubzona.id
-        },
-        dataType: 'json',
-        success: function(response) {
-            if (response.status === 'success') {
-                // cerramos el modal
-                $('#editarModal').modal('hide');
-                // limpiamos el formulario
-                $('#fmr_subzonas_editar')[0].reset();
-                // mostramos la alerta
-                notificacion('Éxito', 'success', response.message);
+    if (codigo == "" || subzona == "" || nombre == "" || resumen == "") {
+        // alert("Por favor, completa todos los campos.");
+        notificacion('Error', 'error', "Por favor, completa todos los campos.");
+        return;
+    } else {
+        // Hacer la solicitud AJAX para guardar la nueva subzona
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/subzonasajax.php',
+            data: {
+                proceso: 'modificar',
+                codigo: nuevaSubzona.codigo,
+                subzona: nuevaSubzona.subzona,
+                nombre: nuevaSubzona.nombre,
+                resumen: nuevaSubzona.resumen,
+                id: nuevaSubzona.id
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // cerramos el modal
+                    $('#editarModal').modal('hide');
+                    // limpiamos el formulario
+                    $('#fmr_subzonas_editar')[0].reset();
+                    // mostramos la alerta
+                    notificacion('Éxito', 'success', response.message);
 
-                cargar_tabla();
-            } else {
+                    cargar_tabla();
+                } else {
+                    // Error en la inserción, muestra mensaje de error con SweetAlert
+                    notificacion('Error', 'error', response.message);
+                }
+            },
+            error: function() {
                 // Error en la inserción, muestra mensaje de error con SweetAlert
                 notificacion('Error', 'error', response.message);
             }
-        },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            notificacion('Error', 'error', response.message);
-        }
-    });
-
+        });
+    }
 });
 
 // eliminar

@@ -65,6 +65,11 @@ function cargar_tabla() {
 $(".fmr_vendedores").submit(function(event) {
     event.preventDefault();
 
+    codigo = $("#codigo").val()
+    nombre = $("#nombre").val()
+    resumen = $("#resumen").val()
+    est = $("#est").val()
+
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevo vendedor
     var nuevovendedor = {
         codigo: $("#codigo").val(),
@@ -73,39 +78,45 @@ $(".fmr_vendedores").submit(function(event) {
         est: $("#est").val()
     };
 
-    // Hacer la solicitud AJAX para guardar la nuevo vendedor
-    $.ajax({
-        type: 'POST',
-        url: 'ajax/vendedoresajax.php',
-        data: {
-            proceso: 'guardar',
-            codigo: nuevovendedor.codigo,
-            nombre: nuevovendedor.nombre,
-            resumen: nuevovendedor.resumen,
-            est: nuevovendedor.est
-        },
-        dataType: 'json',
-        success: function(response) {
-            if (response.status === 'success') {
-                // cerramos el modal
-                $('#guardarModal').modal('hide');
-                // limpiamos el formulario
-                $('#fmr_vendedores')[0].reset();
-                // mostramos la alerta
-                notificacion('Éxito', 'success', response.message);
+    if (codigo == "" || nombre == "" || resumen == "" || est == "") {
+        // alert("Por favor, completa todos los campos.");
+        notificacion('Error', 'error', "Por favor, completa todos los campos.");
+        return;
+    } else {
 
-                cargar_tabla();
-            } else {
+        // Hacer la solicitud AJAX para guardar la nuevo vendedor
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/vendedoresajax.php',
+            data: {
+                proceso: 'guardar',
+                codigo: nuevovendedor.codigo,
+                nombre: nuevovendedor.nombre,
+                resumen: nuevovendedor.resumen,
+                est: nuevovendedor.est
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // cerramos el modal
+                    $('#guardarModal').modal('hide');
+                    // limpiamos el formulario
+                    $('#fmr_vendedores')[0].reset();
+                    // mostramos la alerta
+                    notificacion('Éxito', 'success', response.message);
+
+                    cargar_tabla();
+                } else {
+                    // Error en la inserción, muestra mensaje de error con SweetAlert
+                    notificacion('Error', 'error', response.message);
+                }
+            },
+            error: function() {
                 // Error en la inserción, muestra mensaje de error con SweetAlert
                 notificacion('Error', 'error', response.message);
             }
-        },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            notificacion('Error', 'error', response.message);
-        }
-    });
-
+        });
+    }
 });
 
 // editar
@@ -141,6 +152,11 @@ function editar(id) {
 $(".fmr_vendedores_editar").submit(function(event) {
     event.preventDefault();
 
+    codigo = $("#codigo_mod").val()
+    nombre = $("#nombre_mod").val()
+    resumen = $("#resumen_mod").val()
+    est = $("#est_mod").val()
+
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nuevo vendedor
     var nuevovendedor = {
         codigo: $("#codigo_mod").val(),
@@ -149,41 +165,46 @@ $(".fmr_vendedores_editar").submit(function(event) {
         est: $("#est_mod").val(),
         id: $("#id").val()
     };
+    if (codigo == "" || nombre == "" || resumen == "" || est == "") {
+        // alert("Por favor, completa todos los campos.");
+        notificacion('Error', 'error', "Por favor, completa todos los campos.");
+        return;
+    } else {
 
-    // Hacer la solicitud AJAX para guardar el nuevo vendedor
-    $.ajax({
-        type: 'POST',
-        url: 'ajax/vendedoresajax.php',
-        data: {
-            proceso: 'modificar',
-            codigo: nuevovendedor.codigo,
-            nombre: nuevovendedor.nombre,
-            resumen: nuevovendedor.resumen,
-            est: nuevovendedor.est,
-            id: nuevovendedor.id
-        },
-        dataType: 'json',
-        success: function(response) {
-            if (response.status === 'success') {
-                // cerramos el modal
-                $('#editarModal').modal('hide');
-                // limpiamos el formulario
-                $('#fmr_vendedores_editar')[0].reset();
-                // mostramos la alerta
-                notificacion('Éxito', 'success', response.message);
+        // Hacer la solicitud AJAX para guardar el nuevo vendedor
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/vendedoresajax.php',
+            data: {
+                proceso: 'modificar',
+                codigo: nuevovendedor.codigo,
+                nombre: nuevovendedor.nombre,
+                resumen: nuevovendedor.resumen,
+                est: nuevovendedor.est,
+                id: nuevovendedor.id
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // cerramos el modal
+                    $('#editarModal').modal('hide');
+                    // limpiamos el formulario
+                    $('#fmr_vendedores_editar')[0].reset();
+                    // mostramos la alerta
+                    notificacion('Éxito', 'success', response.message);
 
-                cargar_tabla();
-            } else {
+                    cargar_tabla();
+                } else {
+                    // Error en la inserción, muestra mensaje de error con SweetAlert
+                    notificacion('Error', 'error', response.message);
+                }
+            },
+            error: function() {
                 // Error en la inserción, muestra mensaje de error con SweetAlert
                 notificacion('Error', 'error', response.message);
             }
-        },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            notificacion('Error', 'error', response.message);
-        }
-    });
-
+        });
+    }
 });
 
 // eliminar

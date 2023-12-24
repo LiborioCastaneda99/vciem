@@ -50,11 +50,11 @@ function cargar_tabla() {
                 });
             } else {
                 // Mostrar un mensaje indicando que no hay colores disponibles
-                $('#myTable tbody').html('<tr><td colspan="5" class="text-center">No hay zonas disponibles</td></tr>');
+                $('#myTable tbody').html('<tr><td colspan="3" class="text-center">No hay zonas disponibles</td></tr>');
             }
         },
         error: function() {
-            console.error('Error al cargar los datos.');
+            notificacion('Error', 'error', response.message);
         }
     });
 }
@@ -63,48 +63,53 @@ function cargar_tabla() {
 $(".fmr_zonas").submit(function(event) {
     event.preventDefault();
 
-    // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevo color
-    var nuevo = {
+    codigo = $("#codigo").val()
+    nombre = $("#nombre").val()
+    resumen = $("#resumen").val()
+
+    // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevaZona color
+    var nuevaZona = {
         codigo: $("#codigo").val(),
         nombre: $("#nombre").val(),
         resumen: $("#resumen").val()
     };
 
-    // Hacer la solicitud AJAX para guardar el nuevo color
-    $.ajax({
-        type: 'POST',
-        url: 'ajax/zonasajax.php',
-        data: {
-            proceso: 'guardar',
-            codigo: nuevo.codigo,
-            nombre: nuevo.nombre,
-            resumen: nuevo.resumen
-        },
-        dataType: 'json',
-        success: function(response) {
-            if (response.status === 'success') {
-                // cerramos el modal
-                $('#guardarModal').modal('hide');
-                // limpiamos el formulario
-                $('#fmr_zonas')[0].reset();
-                // mostramos la alerta
-                Swal.fire({
-                    title: 'Éxito',
-                    text: 'La zona se ha guardado correctamente',
-                    icon: 'success',
-                    confirmButtonColor: '#2196f3'
-                });
+    if (codigo == "" || nombre == "" || resumen == "") {
+        // alert("Por favor, completa todos los campos.");
+        notificacion('Error', 'error', "Por favor, completa todos los campos.");
+        return;
+    } else {
 
-                cargar_tabla();
-            } else {
-                console.error('Error al guardar la zona.');
+        // Hacer la solicitud AJAX para guardar el nuevaZona color
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/zonasajax.php',
+            data: {
+                proceso: 'guardar',
+                codigo: nuevaZona.codigo,
+                nombre: nuevaZona.nombre,
+                resumen: nuevaZona.resumen
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // cerramos el modal
+                    $('#guardarModal').modal('hide');
+                    // limpiamos el formulario
+                    $('#fmr_zonas')[0].reset();
+                    // mostramos la alerta
+                    notificacion('Éxito', 'success', response.message);
+
+                    cargar_tabla();
+                } else {
+                    notificacion('Error', 'error', response.message);
+                }
+            },
+            error: function() {
+                notificacion('Error', 'error', response.message);
             }
-        },
-        error: function() {
-            console.error('Error al intentar guardar la zona.');
-        }
-    });
-
+        });
+    }
 });
 
 // editar
@@ -130,7 +135,7 @@ function editar(id) {
 
         },
         error: function() {
-            console.error('Error al cargar los datos.');
+            notificacion('Error', 'error', response.message);
         }
     });
 }
@@ -138,50 +143,55 @@ function editar(id) {
 $(".fmr_zonas_editar").submit(function(event) {
     event.preventDefault();
 
-    // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevo color
-    var nuevo = {
+    codigo = $("#codigo_mod").val()
+    nombre = $("#nombre_mod").val()
+    resumen = $("#resumen_mod").val()
+
+    // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevaZona color
+    var nuevaZona = {
         codigo: $("#codigo_mod").val(),
         nombre: $("#nombre_mod").val(),
         resumen: $("#resumen_mod").val(),
         id: $("#id").val()
     };
 
-    // Hacer la solicitud AJAX para guardar el nuevo color
-    $.ajax({
-        type: 'POST',
-        url: 'ajax/zonasajax.php',
-        data: {
-            proceso: 'modificar',
-            codigo: nuevo.codigo,
-            nombre: nuevo.nombre,
-            resumen: nuevo.resumen,
-            id: nuevo.id
-        },
-        dataType: 'json',
-        success: function(response) {
-            if (response.status === 'success') {
-                // cerramos el modal
-                $('#editarModal').modal('hide');
-                // limpiamos el formulario
-                $('#fmr_zonas_editar')[0].reset();
-                // mostramos la alerta
-                Swal.fire({
-                    title: 'Éxito',
-                    text: 'La zona se ha modificado correctamente',
-                    icon: 'success',
-                    confirmButtonColor: '#2196f3'
-                });
+    if (codigo == "" || nombre == "" || resumen == "") {
+        // alert("Por favor, completa todos los campos.");
+        notificacion('Error', 'error', "Por favor, completa todos los campos.");
+        return;
+    } else {
 
-                cargar_tabla();
-            } else {
-                console.error('Error al modificar la zona.');
+        // Hacer la solicitud AJAX para guardar el nuevaZona color
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/zonasajax.php',
+            data: {
+                proceso: 'modificar',
+                codigo: nuevaZona.codigo,
+                nombre: nuevaZona.nombre,
+                resumen: nuevaZona.resumen,
+                id: nuevaZona.id
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // cerramos el modal
+                    $('#editarModal').modal('hide');
+                    // limpiamos el formulario
+                    $('#fmr_zonas_editar')[0].reset();
+                    // mostramos la alerta
+                    notificacion('Éxito', 'success', response.message);
+
+                    cargar_tabla();
+                } else {
+                    notificacion('Error', 'error', response.message);
+                }
+            },
+            error: function() {
+                notificacion('Error', 'error', response.message);
             }
-        },
-        error: function() {
-            console.error('Error al intentar modificar la zona.');
-        }
-    });
-
+        });
+    }
 });
 
 // eliminar
@@ -210,23 +220,32 @@ function eliminar(id) {
                 dataType: 'json',
                 success: function(response) {
                     if (response.status === 'success') {
-
-                        Swal.fire({
-                            title: 'Éxito',
-                            text: 'La zona se ha eliminado correctamente',
-                            icon: 'success',
-                            confirmButtonColor: '#2196f3'
-                        });
+                        notificacion('Éxito', 'success', response.message);
 
                         cargar_tabla();
                     } else {
-                        console.error('Error al eliminar la zona.');
+                        notificacion('Error', 'error', response.message);
                     }
                 },
                 error: function() {
-                    console.error('Error al intentar eliminar la zona.');
+                    notificacion('Error', 'error', response.message);
                 }
             });
         }
+    });
+}
+
+function notificacion(titulo, icon, mensaje) {
+    //Mensaje de notificación, muestra un mensaje con SweetAlert
+    if (titulo == "Error") {
+        color = "#EF5350"
+    } else {
+        color = "#2196f3"
+    }
+    Swal.fire({
+        title: titulo,
+        text: mensaje,
+        icon: icon,
+        confirmButtonmarca: color
     });
 }

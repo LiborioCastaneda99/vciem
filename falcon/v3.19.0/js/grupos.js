@@ -52,7 +52,7 @@ function cargar_tabla() {
                 });
             } else {
                 // Mostrar un mensaje indicando que no hay grupos disponibles
-                $('#myTable tbody').html('<tr><td colspan="4" class="text-center">No hay grupos disponibles</td></tr>');
+                $('#myTable tbody').html('<tr><td colspan="5" class="text-center">No hay grupos disponibles</td></tr>');
             }
         },
         error: function() {
@@ -66,6 +66,12 @@ function cargar_tabla() {
 $(".fmr_grupos").submit(function(event) {
     event.preventDefault();
 
+    codigo = $("#codigo").val()
+    clase = $("#clase").val()
+    nombre = $("#nombre").val()
+    resumen = $("#resumen").val()
+    dias = $("#dias").val()
+
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevo grupo
     var nuevogrupo = {
         codigo: $("#codigo").val(),
@@ -75,40 +81,45 @@ $(".fmr_grupos").submit(function(event) {
         dias: $("#dias").val()
     };
 
-    // Hacer la solicitud AJAX para guardar el nuevo grupo
-    $.ajax({
-        type: 'POST',
-        url: 'ajax/gruposajax.php',
-        data: {
-            proceso: 'guardar',
-            codigo: nuevogrupo.codigo,
-            clase: nuevogrupo.clase,
-            nombre: nuevogrupo.nombre,
-            resumen: nuevogrupo.resumen,
-            dias: nuevogrupo.dias
-        },
-        dataType: 'json',
-        success: function(response) {
-            if (response.status === 'success') {
-                // cerramos el modal
-                $('#guardarModal').modal('hide');
-                // limpiamos el formulario
-                $('#fmr_grupos')[0].reset();
-                // mostramos la alerta
-                notificacion('Éxito', 'success', response.message);
+    if (codigo == "" || clase == "" || nombre == "" || resumen == "" || dias == "") {
+        // alert("Por favor, completa todos los campos.");
+        notificacion('Error', 'error', "Por favor, completa todos los campos.");
+        return;
+    } else {
+        // Hacer la solicitud AJAX para guardar el nuevo grupo
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/gruposajax.php',
+            data: {
+                proceso: 'guardar',
+                codigo: nuevogrupo.codigo,
+                clase: nuevogrupo.clase,
+                nombre: nuevogrupo.nombre,
+                resumen: nuevogrupo.resumen,
+                dias: nuevogrupo.dias
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // cerramos el modal
+                    $('#guardarModal').modal('hide');
+                    // limpiamos el formulario
+                    $('#fmr_grupos')[0].reset();
+                    // mostramos la alerta
+                    notificacion('Éxito', 'success', response.message);
 
-                cargar_tabla();
-            } else {
+                    cargar_tabla();
+                } else {
+                    // Error en la inserción, muestra mensaje de error con SweetAlert
+                    notificacion('Error', 'error', response.message);
+                }
+            },
+            error: function() {
                 // Error en la inserción, muestra mensaje de error con SweetAlert
                 notificacion('Error', 'error', response.message);
             }
-        },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            notificacion('Error', 'error', response.message);
-        }
-    });
-
+        });
+    }
 });
 
 // editar
@@ -145,6 +156,12 @@ function editar(id) {
 $(".fmr_grupos_editar").submit(function(event) {
     event.preventDefault();
 
+    codigo = $("#codigo_mod").val()
+    clase = $("#clase_mod").val()
+    nombre = $("#nombre_mod").val()
+    resumen = $("#resumen_mod").val()
+    dias = $("#dias_mod").val()
+
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nuevo grupo
     var nuevogrupo = {
         codigo: $("#codigo_mod").val(),
@@ -155,41 +172,46 @@ $(".fmr_grupos_editar").submit(function(event) {
         id: $("#id").val()
     };
 
-    // Hacer la solicitud AJAX para guardar el nuevo grupo
-    $.ajax({
-        type: 'POST',
-        url: 'ajax/gruposajax.php',
-        data: {
-            proceso: 'modificar',
-            codigo: nuevogrupo.codigo,
-            clase: nuevogrupo.clase,
-            nombre: nuevogrupo.nombre,
-            resumen: nuevogrupo.resumen,
-            dias: nuevogrupo.dias,
-            id: nuevogrupo.id
-        },
-        dataType: 'json',
-        success: function(response) {
-            if (response.status === 'success') {
-                // cerramos el modal
-                $('#editarModal').modal('hide');
-                // limpiamos el formulario
-                $('#fmr_grupos_editar')[0].reset();
-                // mostramos la alerta
-                notificacion('Éxito', 'success', response.message);
+    if (codigo == "" || clase == "" || nombre == "" || resumen == "" || dias == "") {
+        // alert("Por favor, completa todos los campos.");
+        notificacion('Error', 'error', "Por favor, completa todos los campos.");
+        return;
+    } else {
+        // Hacer la solicitud AJAX para guardar el nuevo grupo
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/gruposajax.php',
+            data: {
+                proceso: 'modificar',
+                codigo: nuevogrupo.codigo,
+                clase: nuevogrupo.clase,
+                nombre: nuevogrupo.nombre,
+                resumen: nuevogrupo.resumen,
+                dias: nuevogrupo.dias,
+                id: nuevogrupo.id
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // cerramos el modal
+                    $('#editarModal').modal('hide');
+                    // limpiamos el formulario
+                    $('#fmr_grupos_editar')[0].reset();
+                    // mostramos la alerta
+                    notificacion('Éxito', 'success', response.message);
 
-                cargar_tabla();
-            } else {
+                    cargar_tabla();
+                } else {
+                    // Error en la inserción, muestra mensaje de error con SweetAlert
+                    notificacion('Error', 'error', response.message);
+                }
+            },
+            error: function() {
                 // Error en la inserción, muestra mensaje de error con SweetAlert
                 notificacion('Error', 'error', response.message);
             }
-        },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            notificacion('Error', 'error', response.message);
-        }
-    });
-
+        });
+    }
 });
 
 // eliminar

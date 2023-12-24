@@ -89,7 +89,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
 
                                             <thead class="bg-200">
                                                 <tr>
-                                                    <th class="text-900 sort" data-sort="codigo">Codigo</th>
+                                                    <th class="text-900 sort" data-sort="codigo">Código</th>
                                                     <th class="text-900 sort" data-sort="nombre">Nombre</th>
                                                     <th class="text-900 no-sort pe-1 align-middle data-table-row-action">Editar</th>
                                                     <th class="text-900 no-sort pe-1 align-middle data-table-row-action">Eliminar</th>
@@ -123,7 +123,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                     <div class="row">
                                         <form id="fmr_presentaciones" method="POST" class="fmr_presentaciones row g-2 needs-validation" novalidate="">
                                             <div class="col-md-6">
-                                                <label class="form-label" for="codigo">Codigo</label>
+                                                <label class="form-label" for="codigo">Código</label>
                                                 <input class="form-control" id="codigo" name="codigo" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
@@ -152,14 +152,14 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                             <div class="position-absolute top-0 end-0 mt-3 me-3 z-1"><button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button></div>
                             <div class="modal-body p-0">
                                 <div class="rounded-top-3 bg-body-tertiary py-3 ps-4 pe-6">
-                                    <h4 class="mb-1" id="staticBackdropLabel">Editar presentacion</h4>
+                                    <h4 class="mb-1" id="staticBackdropLabel">Editar presentación</h4>
                                     <!-- <p class="fs-11 mb-0">Added by <a class="link-600 fw-semi-bold" href="#!">Antony</a></p> -->
                                 </div>
                                 <div class="p-4">
                                     <div class="row">
                                         <form id="fmr_presentaciones_editar" method="POST" class="fmr_presentaciones_editar row g-2 needs-validation" novalidate="">
                                             <div class="col-md-6">
-                                                <label class="form-label" for="codigo_mod">Codigo</label>
+                                                <label class="form-label" for="codigo_mod">Código</label>
                                                 <input class="form-control" id="id" name="id" type="hidden" />
                                                 <input class="form-control" id="codigo_mod" name="codigo_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>

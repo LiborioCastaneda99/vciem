@@ -91,6 +91,27 @@ function cargar_tabla() {
 $(".fmr_proveedores").submit(function(event) {
     event.preventDefault();
 
+    codigo = $("#codigo").val()
+    suc = $("#suc").val()
+    zona = $("#zona").val()
+    subzona = $("#subzona").val()
+    nombre = $("#nombre").val()
+    dir = $("#dir").val()
+    tel1 = $("#tel1").val()
+    tel2 = $("#tel2").val()
+    ciudad = $("#ciudad").val()
+    cupo = $("#cupo").val()
+    legal = $("#legal").val()
+    fecha_ini = $("#fecha_ini").val()
+    fpago = $("#fpago").val()
+    correo = $("#correo").val()
+    caract_dev = $("#caract_dev").val()
+    digito = $("#digito").val()
+    riva = $("#riva").val()
+    rfte = $("#rfte").val()
+    rica = $("#rica").val()
+    estado = $("#estado").val()
+
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevo proveedor
     var nuevoproveedor = {
         codigo: $("#codigo").val(),
@@ -115,55 +136,64 @@ $(".fmr_proveedores").submit(function(event) {
         estado: $("#estado").val()
     };
 
-    // Hacer la solicitud AJAX para guardar la nuevo proveedor
-    $.ajax({
-        type: 'POST',
-        url: 'ajax/proveedoresajax.php',
-        data: {
-            proceso: 'guardar',
-            codigo: nuevoproveedor.codigo,
-            suc: nuevoproveedor.suc,
-            zona: nuevoproveedor.zona,
-            subzona: nuevoproveedor.subzona,
-            nombre: nuevoproveedor.nombre,
-            dir: nuevoproveedor.dir,
-            tel1: nuevoproveedor.tel1,
-            tel2: nuevoproveedor.tel2,
-            ciudad: nuevoproveedor.ciudad,
-            cupo: nuevoproveedor.cupo,
-            legal: nuevoproveedor.legal,
-            fecha_ini: nuevoproveedor.fecha_ini,
-            fpago: nuevoproveedor.fpago,
-            correo: nuevoproveedor.correo,
-            caract_dev: nuevoproveedor.caract_dev,
-            digito: nuevoproveedor.digito,
-            riva: nuevoproveedor.riva,
-            rfte: nuevoproveedor.rfte,
-            rica: nuevoproveedor.rica,
-            estado: nuevoproveedor.estado
-        },
-        dataType: 'json',
-        success: function(response) {
-            if (response.status === 'success') {
-                // cerramos el modal
-                $('#guardarModal').modal('hide');
-                // limpiamos el formulario
-                $('#fmr_proveedores')[0].reset();
-                // mostramos la alerta
-                notificacion('Éxito', 'success', response.message);
+    if (codigo == "" || suc == "" || zona == "" || subzona == "" || nombre == "" || dir == "" ||
+        tel1 == "" || tel2 == "" || ciudad == "" || cupo == "" || legal == "" || fecha_ini == "" ||
+        fpago == "" || correo == "" || caract_dev == "" || digito == "" || riva == "" || rfte == "" ||
+        rica == "" || estado == "") {
+        // alert("Por favor, completa todos los campos.");
+        notificacion('Error', 'error', "Por favor, completa todos los campos.");
+        return;
+    } else {
 
-                cargar_tabla();
-            } else {
+        // Hacer la solicitud AJAX para guardar la nuevo proveedor
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/proveedoresajax.php',
+            data: {
+                proceso: 'guardar',
+                codigo: nuevoproveedor.codigo,
+                suc: nuevoproveedor.suc,
+                zona: nuevoproveedor.zona,
+                subzona: nuevoproveedor.subzona,
+                nombre: nuevoproveedor.nombre,
+                dir: nuevoproveedor.dir,
+                tel1: nuevoproveedor.tel1,
+                tel2: nuevoproveedor.tel2,
+                ciudad: nuevoproveedor.ciudad,
+                cupo: nuevoproveedor.cupo,
+                legal: nuevoproveedor.legal,
+                fecha_ini: nuevoproveedor.fecha_ini,
+                fpago: nuevoproveedor.fpago,
+                correo: nuevoproveedor.correo,
+                caract_dev: nuevoproveedor.caract_dev,
+                digito: nuevoproveedor.digito,
+                riva: nuevoproveedor.riva,
+                rfte: nuevoproveedor.rfte,
+                rica: nuevoproveedor.rica,
+                estado: nuevoproveedor.estado
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // cerramos el modal
+                    $('#guardarModal').modal('hide');
+                    // limpiamos el formulario
+                    $('#fmr_proveedores')[0].reset();
+                    // mostramos la alerta
+                    notificacion('Éxito', 'success', response.message);
+
+                    cargar_tabla();
+                } else {
+                    // Error en la inserción, muestra mensaje de error con SweetAlert
+                    notificacion('Error', 'error', response.message);
+                }
+            },
+            error: function() {
                 // Error en la inserción, muestra mensaje de error con SweetAlert
                 notificacion('Error', 'error', response.message);
             }
-        },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            notificacion('Error', 'error', response.message);
-        }
-    });
-
+        });
+    }
 });
 
 // editar
@@ -215,6 +245,27 @@ function editar(id) {
 $(".fmr_proveedores_editar").submit(function(event) {
     event.preventDefault();
 
+    codigo = $("#codigo_mod").val()
+    suc = $("#suc_mod").val()
+    zona = $("#zona_mod").val()
+    subzona = $("#subzona_mod").val()
+    nombre = $("#nombre_mod").val()
+    dir = $("#dir_mod").val()
+    tel1 = $("#tel1_mod").val()
+    tel2 = $("#tel2_mod").val()
+    ciudad = $("#ciudad_mod").val()
+    cupo = $("#cupo_mod").val()
+    legal = $("#legal_mod").val()
+    fecha_ini = $("#fecha_ini_mod").val()
+    fpago = $("#fpago_mod").val()
+    correo = $("#correo_mod").val()
+    caract_dev = $("#caract_dev_mod").val()
+    digito = $("#digito_mod").val()
+    riva = $("#riva_mod").val()
+    rfte = $("#rfte_mod").val()
+    rica = $("#rica_mod").val()
+    estado = $("#estado_mod").val()
+
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nuevo proveedor
     var nuevoproveedor = {
         codigo: $("#codigo_mod").val(),
@@ -240,56 +291,65 @@ $(".fmr_proveedores_editar").submit(function(event) {
         id: $("#id").val()
     };
 
-    // Hacer la solicitud AJAX para guardar la nuevo proveedor
-    $.ajax({
-        type: 'POST',
-        url: 'ajax/proveedoresajax.php',
-        data: {
-            proceso: 'modificar',
-            codigo: nuevoproveedor.codigo,
-            suc: nuevoproveedor.suc,
-            zona: nuevoproveedor.zona,
-            subzona: nuevoproveedor.subzona,
-            nombre: nuevoproveedor.nombre,
-            dir: nuevoproveedor.dir,
-            tel1: nuevoproveedor.tel1,
-            tel2: nuevoproveedor.tel2,
-            ciudad: nuevoproveedor.ciudad,
-            cupo: nuevoproveedor.cupo,
-            legal: nuevoproveedor.legal,
-            fecha_ini: nuevoproveedor.fecha_ini,
-            fpago: nuevoproveedor.fpago,
-            correo: nuevoproveedor.correo,
-            caract_dev: nuevoproveedor.caract_dev,
-            digito: nuevoproveedor.digito,
-            riva: nuevoproveedor.riva,
-            rfte: nuevoproveedor.rfte,
-            rica: nuevoproveedor.rica,
-            estado: nuevoproveedor.estado,
-            id: nuevoproveedor.id
-        },
-        dataType: 'json',
-        success: function(response) {
-            if (response.status === 'success') {
-                // cerramos el modal
-                $('#editarModal').modal('hide');
-                // limpiamos el formulario
-                $('#fmr_proveedores_editar')[0].reset();
-                // mostramos la alerta
-                notificacion('Éxito', 'success', response.message);
+    if (codigo == "" || suc == "" || zona == "" || subzona == "" || nombre == "" || dir == "" ||
+        tel1 == "" || tel2 == "" || ciudad == "" || cupo == "" || legal == "" || fecha_ini == "" ||
+        fpago == "" || correo == "" || caract_dev == "" || digito == "" || riva == "" || rfte == "" ||
+        rica == "" || estado == "") {
+        // alert("Por favor, completa todos los campos.");
+        notificacion('Error', 'error', "Por favor, completa todos los campos.");
+        return;
+    } else {
 
-                cargar_tabla();
-            } else {
+        // Hacer la solicitud AJAX para guardar la nuevo proveedor
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/proveedoresajax.php',
+            data: {
+                proceso: 'modificar',
+                codigo: nuevoproveedor.codigo,
+                suc: nuevoproveedor.suc,
+                zona: nuevoproveedor.zona,
+                subzona: nuevoproveedor.subzona,
+                nombre: nuevoproveedor.nombre,
+                dir: nuevoproveedor.dir,
+                tel1: nuevoproveedor.tel1,
+                tel2: nuevoproveedor.tel2,
+                ciudad: nuevoproveedor.ciudad,
+                cupo: nuevoproveedor.cupo,
+                legal: nuevoproveedor.legal,
+                fecha_ini: nuevoproveedor.fecha_ini,
+                fpago: nuevoproveedor.fpago,
+                correo: nuevoproveedor.correo,
+                caract_dev: nuevoproveedor.caract_dev,
+                digito: nuevoproveedor.digito,
+                riva: nuevoproveedor.riva,
+                rfte: nuevoproveedor.rfte,
+                rica: nuevoproveedor.rica,
+                estado: nuevoproveedor.estado,
+                id: nuevoproveedor.id
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // cerramos el modal
+                    $('#editarModal').modal('hide');
+                    // limpiamos el formulario
+                    $('#fmr_proveedores_editar')[0].reset();
+                    // mostramos la alerta
+                    notificacion('Éxito', 'success', response.message);
+
+                    cargar_tabla();
+                } else {
+                    // Error en la inserción, muestra mensaje de error con SweetAlert
+                    notificacion('Error', 'error', response.message);
+                }
+            },
+            error: function() {
                 // Error en la inserción, muestra mensaje de error con SweetAlert
                 notificacion('Error', 'error', response.message);
             }
-        },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            notificacion('Error', 'error', response.message);
-        }
-    });
-
+        });
+    }
 });
 
 // eliminar

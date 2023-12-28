@@ -27,7 +27,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- ===============================================--><!--    Document Title--><!-- ===============================================-->
-    <title>Visual Ciem | Unidades de medida</title>
+    <title>Visual Ciem | Umedidas</title>
 
     <!-- ===============================================--><!--    Favicons--><!-- ===============================================-->
     <?php require_once("head.php"); ?>
@@ -64,7 +64,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                     <div class="card-header bg-body-tertiary">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h6 class="mb-0">Unidades de medida</h6>
+                                <h6 class="mb-0">Umedidas</h6>
                             </div>
                         </div>
                     </div>
@@ -89,7 +89,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
 
                                             <thead class="bg-200">
                                                 <tr>
-                                                    <th class="text-900 sort" data-sort="codigo">Código</th>
+                                                    <th class="text-900 sort" data-sort="codigo">Codigo</th>
                                                     <th class="text-900 sort" data-sort="nombre">Nombre</th>
                                                     <th class="text-900 sort" data-sort="resumen">Resumen</th>
                                                     <th class="text-900 no-sort pe-1 align-middle data-table-row-action">Editar</th>
@@ -119,14 +119,14 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                             <div class="position-absolute top-0 end-0 mt-3 me-3 z-1"><button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button></div>
                             <div class="modal-body p-0">
                                 <div class="rounded-top-3 bg-body-tertiary py-3 ps-4 pe-6">
-                                    <h4 class="mb-1" id="staticBackdropLabel">Registro de unidad de medida</h4>
+                                    <h4 class="mb-1" id="staticBackdropLabel">Registro de umedidas</h4>
                                     <!-- <p class="fs-11 mb-0">Added by <a class="link-600 fw-semi-bold" href="#!">Antony</a></p> -->
                                 </div>
                                 <div class="p-4">
                                     <div class="row">
                                         <form id="fmr_umedidas" method="POST" class="fmr_umedidas row g-2 needs-validation" novalidate="">
                                             <div class="col-md-6">
-                                                <label class="form-label" for="codigo">Código</label>
+                                                <label class="form-label" for="codigo">Codigo</label>
                                                 <input class="form-control" id="codigo" name="codigo" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
@@ -160,14 +160,14 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                             <div class="position-absolute top-0 end-0 mt-3 me-3 z-1"><button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button></div>
                             <div class="modal-body p-0">
                                 <div class="rounded-top-3 bg-body-tertiary py-3 ps-4 pe-6">
-                                    <h4 class="mb-1" id="staticBackdropLabel">Editar unidad de medida</h4>
+                                    <h4 class="mb-1" id="staticBackdropLabel">Editar umedida</h4>
                                     <!-- <p class="fs-11 mb-0">Added by <a class="link-600 fw-semi-bold" href="#!">Antony</a></p> -->
                                 </div>
                                 <div class="p-4">
                                     <div class="row">
                                         <form id="fmr_umedidas_editar" method="POST" class="fmr_umedidas_editar row g-2 needs-validation" novalidate="">
                                             <div class="col-md-6">
-                                                <label class="form-label" for="codigo_mod">Código</label>
+                                                <label class="form-label" for="codigo">Codigo</label>
                                                 <input class="form-control" id="id" name="id" type="hidden" />
                                                 <input class="form-control" id="codigo_mod" name="codigo_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>

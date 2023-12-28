@@ -89,11 +89,11 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
 
                                             <thead class="bg-200">
                                                 <tr>
-                                                    <th class="text-900 sort" data-sort="codigo">Código</th>
+                                                    <th class="text-900 sort" data-sort="codigo">Codigo</th>
                                                     <th class="text-900 sort" data-sort="nombre">Nombre</th>
                                                     <th class="text-900 sort" data-sort="resumen">Resumen</th>
-                                                    <th class="text-900 sort" data-sort="conduc">Conductor</th>
-                                                    <th class="text-900 sort" data-sort="est">Estado</th>
+                                                    <th class="text-900 sort" data-sort="conduc">Conduc</th>
+                                                    <th class="text-900 sort" data-sort="est">Est</th>
                                                     <th class="text-900 no-sort pe-1 align-middle data-table-row-action">Editar</th>
                                                     <th class="text-900 no-sort pe-1 align-middle data-table-row-action">Eliminar</th>
                                                 </tr>
@@ -128,7 +128,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                     <div class="row">
                                         <form id="fmr_transportadores" method="POST" class="fmr_transportadores row g-2 needs-validation" novalidate="">
                                             <div class="col-md-6">
-                                                <label class="form-label" for="codigo">Código</label>
+                                                <label class="form-label" for="codigo">Codigo</label>
                                                 <input class="form-control" id="codigo" name="codigo" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
@@ -143,12 +143,12 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="form-label" for="conduc">Conductor</label>
+                                                <label class="form-label" for="conduc">Conduc</label>
                                                 <input class="form-control" id="conduc" name="conduc" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="form-label" for="est">Estado</label>
+                                                <label class="form-label" for="est">Est</label>
                                                 <input class="form-control" id="est" name="est" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
@@ -179,7 +179,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                     <div class="row">
                                         <form id="fmr_transportadores_editar" method="POST" class="fmr_transportadores_editar row g-2 needs-validation" novalidate="">
                                             <div class="col-md-6">
-                                                <label class="form-label" for="codigo_mod">Código</label>
+                                                <label class="form-label" for="codigo_mod">Codigo</label>
                                                 <input class="form-control" id="id" name="id" type="hidden" />
                                                 <input class="form-control" id="codigo_mod" name="codigo_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
@@ -195,12 +195,12 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="form-label" for="conduc_mod">Conductor</label>
+                                                <label class="form-label" for="conduc_mod">Conduc</label>
                                                 <input class="form-control" id="conduc_mod" name="conduc_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="form-label" for="est_mod">Estado</label>
+                                                <label class="form-label" for="est_mod">Est</label>
                                                 <input class="form-control" id="est_mod" name="est_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>

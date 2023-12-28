@@ -64,54 +64,45 @@ function cargar_tabla() {
 $(".fmr_clases").submit(function(event) {
     event.preventDefault();
 
-    codigo = $("#codigo").val()
-    nombre = $("#nombre").val()
-    resumen = $("#resumen").val()
-
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nueva clase
-    var nuevaClase = {
+    var nuevaclase = {
         codigo: $("#codigo").val(),
         nombre: $("#nombre").val(),
         resumen: $("#resumen").val()
     };
 
-    if (codigo == "" || nombre == "" || resumen == "") {
-        // alert("Por favor, completa todos los campos.");
-        notificacion('Error', 'error', "Por favor, completa todos los campos.");
-        return;
-    } else {
-        // Hacer la solicitud AJAX para guardar la nueva clase
-        $.ajax({
-            type: 'POST',
-            url: 'ajax/clasesajax.php',
-            data: {
-                proceso: 'guardar',
-                codigo: nuevaClase.codigo,
-                nombre: nuevaClase.nombre,
-                resumen: nuevaClase.resumen
-            },
-            dataType: 'json',
-            success: function(response) {
-                if (response.status === 'success') {
-                    // cerramos el modal
-                    $('#guardarModal').modal('hide');
-                    // limpiamos el formulario
-                    $('#fmr_clases')[0].reset();
-                    // mostramos la alerta
-                    notificacion('Éxito', 'success', response.message);
+    // Hacer la solicitud AJAX para guardar la nueva clase
+    $.ajax({
+        type: 'POST',
+        url: 'ajax/clasesajax.php',
+        data: {
+            proceso: 'guardar',
+            codigo: nuevaclase.codigo,
+            nombre: nuevaclase.nombre,
+            resumen: nuevaclase.resumen
+        },
+        dataType: 'json',
+        success: function(response) {
+            if (response.status === 'success') {
+                // cerramos el modal
+                $('#guardarModal').modal('hide');
+                // limpiamos el formulario
+                $('#fmr_clases')[0].reset();
+                // mostramos la alerta
+                notificacion('Éxito', 'success', response.message);
 
-                    cargar_tabla();
-                } else {
-                    // Error en la inserción, muestra mensaje de error con SweetAlert
-                    notificacion('Error', 'error', response.message);
-                }
-            },
-            error: function() {
+                cargar_tabla();
+            } else {
                 // Error en la inserción, muestra mensaje de error con SweetAlert
                 notificacion('Error', 'error', response.message);
             }
-        });
-    }
+        },
+        error: function() {
+            // Error en la inserción, muestra mensaje de error con SweetAlert
+            notificacion('Error', 'error', response.message);
+        }
+    });
+
 });
 
 // editar
@@ -146,56 +137,47 @@ function editar(id) {
 $(".fmr_clases_editar").submit(function(event) {
     event.preventDefault();
 
-    codigo = $("#codigo_mod").val()
-    nombre = $("#nombre_mod").val()
-    resumen = $("#resumen_mod").val()
-
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nueva clase
-    var nuevaClase = {
+    var nuevaclase = {
         codigo: $("#codigo_mod").val(),
         nombre: $("#nombre_mod").val(),
         resumen: $("#resumen_mod").val(),
         id: $("#id").val()
     };
 
-    if (codigo == "" || nombre == "" || resumen == "") {
-        // alert("Por favor, completa todos los campos.");
-        notificacion('Error', 'error', "Por favor, completa todos los campos.");
-        return;
-    } else {
-        // Hacer la solicitud AJAX para guardar la nueva clase
-        $.ajax({
-            type: 'POST',
-            url: 'ajax/clasesajax.php',
-            data: {
-                proceso: 'modificar',
-                codigo: nuevaClase.codigo,
-                nombre: nuevaClase.nombre,
-                resumen: nuevaClase.resumen,
-                id: nuevaClase.id
-            },
-            dataType: 'json',
-            success: function(response) {
-                if (response.status === 'success') {
-                    // cerramos el modal
-                    $('#editarModal').modal('hide');
-                    // limpiamos el formulario
-                    $('#fmr_clases_editar')[0].reset();
-                    // mostramos la alerta
-                    notificacion('Éxito', 'success', response.message);
+    // Hacer la solicitud AJAX para guardar la nueva clase
+    $.ajax({
+        type: 'POST',
+        url: 'ajax/clasesajax.php',
+        data: {
+            proceso: 'modificar',
+            codigo: nuevaclase.codigo,
+            nombre: nuevaclase.nombre,
+            resumen: nuevaclase.resumen,
+            id: nuevaclase.id
+        },
+        dataType: 'json',
+        success: function(response) {
+            if (response.status === 'success') {
+                // cerramos el modal
+                $('#editarModal').modal('hide');
+                // limpiamos el formulario
+                $('#fmr_clases_editar')[0].reset();
+                // mostramos la alerta
+                notificacion('Éxito', 'success', response.message);
 
-                    cargar_tabla();
-                } else {
-                    // Error en la inserción, muestra mensaje de error con SweetAlert
-                    notificacion('Error', 'error', response.message);
-                }
-            },
-            error: function() {
+                cargar_tabla();
+            } else {
                 // Error en la inserción, muestra mensaje de error con SweetAlert
                 notificacion('Error', 'error', response.message);
             }
-        });
-    }
+        },
+        error: function() {
+            // Error en la inserción, muestra mensaje de error con SweetAlert
+            notificacion('Error', 'error', response.message);
+        }
+    });
+
 });
 
 // eliminar

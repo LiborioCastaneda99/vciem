@@ -263,7 +263,7 @@ session_start();
                                             <div class="col-md-3">
                                                 <label class="form-label" for="pro_riva">Retención de IVA</label>
                                                 <select class="form-select js-choice" id="pro_riva" size="1" name="pro_riva" data-options='{"removeItemButton":true,"placeholder":true}' required>
-                                                    <option value="" disabled selected>Seleccione...</option>
+                                                    <option value="">Seleccione...</option>
                                                     <option value="S">Si</option>
                                                     <option value="N">No</option>
                                                 </select>
@@ -272,7 +272,7 @@ session_start();
                                             <div class="col-md-3">
                                                 <label class="form-label" for="pro_rfte">Retención de Fuente</label>
                                                 <select class="form-select js-choice" id="pro_rfte" size="1" name="pro_rfte" data-options='{"removeItemButton":true,"placeholder":true}' required>
-                                                    <option value="" disabled selected>Seleccione...</option>
+                                                    <option value="">Seleccione...</option>
                                                     <option value="S">Si</option>
                                                     <option value="N">No</option>
                                                 </select>
@@ -281,7 +281,7 @@ session_start();
                                             <div class="col-md-3">
                                                 <label class="form-label" for="pro_rica">Retención de ICA</label>
                                                 <select class="form-select js-choice" id="pro_rica" size="1" name="pro_rica" data-options='{"removeItemButton":true,"placeholder":true}' required>
-                                                    <option value="" disabled selected>Seleccione...</option>
+                                                    <option value="">Seleccione...</option>
                                                     <option value="S">Si</option>
                                                     <option value="N">No</option>
                                                 </select>

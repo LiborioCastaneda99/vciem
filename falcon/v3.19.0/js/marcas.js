@@ -228,7 +228,7 @@ function eliminar(id) {
                     }
                 },
                 error: function() {
-                    notificacion('Error', 'error', response.message);
+                    notificacion('Error', 'error', response.message)
                 }
             });
         }

@@ -53,7 +53,7 @@ function cargar_tabla() {
             }
         },
         error: function() {
-            notificacion('Error', 'error', response.message);
+            console.error('Error al cargar los datos.');
         }
     });
 }
@@ -68,40 +68,40 @@ $(".fmr_colores").submit(function(event) {
         descripcion: $("#descripcion").val()
     };
 
-    if (codigo == "" || descripcion == "") {
-        // alert("Por favor, completa todos los campos.");
-        notificacion('Error', 'error', "Por favor, completa todos los campos.");
-        return;
-    } else {
-        // Hacer la solicitud AJAX para guardar el nuevo color
-        $.ajax({
-            type: 'POST',
-            url: 'ajax/colorajax.php',
-            data: {
-                proceso: 'guardar',
-                codigo: nuevoColor.codigo,
-                descripcion: nuevoColor.descripcion
-            },
-            dataType: 'json',
-            success: function(response) {
-                if (response.status === 'success') {
-                    // cerramos el modal
-                    $('#guardarModal').modal('hide');
-                    // limpiamos el formulario
-                    $('#fmr_colores')[0].reset();
-                    // mostramos la alerta
-                    notificacion('Éxito', 'success', response.message);
+    // Hacer la solicitud AJAX para guardar el nuevo color
+    $.ajax({
+        type: 'POST',
+        url: 'ajax/colorajax.php',
+        data: {
+            proceso: 'guardar',
+            codigo: nuevoColor.codigo,
+            descripcion: nuevoColor.descripcion
+        },
+        dataType: 'json',
+        success: function(response) {
+            if (response.status === 'success') {
+                // cerramos el modal
+                $('#guardarModal').modal('hide');
+                // limpiamos el formulario
+                $('#fmr_colores')[0].reset();
+                // mostramos la alerta
+                Swal.fire({
+                    title: 'Éxito',
+                    text: 'El color se ha guardado correctamente',
+                    icon: 'success',
+                    confirmButtonColor: '#2196f3'
+                });
 
-                    cargar_tabla();
-                } else {
-                    notificacion('Error', 'error', response.message);
-                }
-            },
-            error: function() {
-                notificacion('Error', 'error', response.message);
+                cargar_tabla();
+            } else {
+                console.error('Error al guardar el color.');
             }
-        });
-    }
+        },
+        error: function() {
+            console.error('Error al intentar guardar el color.');
+        }
+    });
+
 });
 
 // editar
@@ -126,7 +126,7 @@ function editar(id) {
 
         },
         error: function() {
-            notificacion('Error', 'error', response.message);
+            console.error('Error al cargar los datos.');
         }
     });
 }
@@ -135,50 +135,47 @@ $(".fmr_colores_editar").submit(function(event) {
     event.preventDefault();
 
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevo color
-    codigo = $("#codigo_mod").val()
-    nombre = $("#nombre_mod").val()
-
     var nuevoColor = {
         codigo: $("#codigo_mod").val(),
         descripcion: $("#descripcion_mod").val(),
         id: $("#id").val()
     };
 
-    if (codigo == "" || descripcion == "") {
-        // alert("Por favor, completa todos los campos.");
-        notificacion('Error', 'error', "Por favor, completa todos los campos.");
-        return;
-    } else {
-        // Hacer la solicitud AJAX para guardar el nuevo color
-        $.ajax({
-            type: 'POST',
-            url: 'ajax/colorajax.php',
-            data: {
-                proceso: 'modificar',
-                codigo: nuevoColor.codigo,
-                descripcion: nuevoColor.descripcion,
-                id: nuevoColor.id
-            },
-            dataType: 'json',
-            success: function(response) {
-                if (response.status === 'success') {
-                    // cerramos el modal
-                    $('#editarModal').modal('hide');
-                    // limpiamos el formulario
-                    $('#fmr_colores_editar')[0].reset();
-                    // mostramos la alerta
-                    notificacion('Éxito', 'success', response.message);
+    // Hacer la solicitud AJAX para guardar el nuevo color
+    $.ajax({
+        type: 'POST',
+        url: 'ajax/colorajax.php',
+        data: {
+            proceso: 'modificar',
+            codigo: nuevoColor.codigo,
+            descripcion: nuevoColor.descripcion,
+            id: nuevoColor.id
+        },
+        dataType: 'json',
+        success: function(response) {
+            if (response.status === 'success') {
+                // cerramos el modal
+                $('#editarModal').modal('hide');
+                // limpiamos el formulario
+                $('#fmr_colores_editar')[0].reset();
+                // mostramos la alerta
+                Swal.fire({
+                    title: 'Éxito',
+                    text: 'El color se ha modificado correctamente',
+                    icon: 'success',
+                    confirmButtonColor: '#2196f3'
+                });
 
-                    cargar_tabla();
-                } else {
-                    notificacion('Error', 'error', response.message);
-                }
-            },
-            error: function() {
-                notificacion('Error', 'error', response.message);
+                cargar_tabla();
+            } else {
+                console.error('Error al modificar el color.');
             }
-        });
-    }
+        },
+        error: function() {
+            console.error('Error al intentar modificar el color.');
+        }
+    });
+
 });
 
 // eliminar
@@ -207,32 +204,23 @@ function eliminar(id) {
                 dataType: 'json',
                 success: function(response) {
                     if (response.status === 'success') {
-                        notificacion('Éxito', 'success', response.message);
+
+                        Swal.fire({
+                            title: 'Éxito',
+                            text: 'El color se ha eliminado correctamente',
+                            icon: 'success',
+                            confirmButtonColor: '#2196f3'
+                        });
 
                         cargar_tabla();
                     } else {
-                        notificacion('Error', 'error', response.message);
+                        console.error('Error al eliminar el color.');
                     }
                 },
                 error: function() {
-                    notificacion('Error', 'error', response.message)
+                    console.error('Error al intentar eliminar el color.');
                 }
             });
         }
-    });
-}
-
-function notificacion(titulo, icon, mensaje) {
-    //Mensaje de notificación, muestra un mensaje con SweetAlert
-    if (titulo == "Error") {
-        color = "#EF5350"
-    } else {
-        color = "#2196f3"
-    }
-    Swal.fire({
-        title: titulo,
-        text: mensaje,
-        icon: icon,
-        confirmButtonmarca: color
     });
 }

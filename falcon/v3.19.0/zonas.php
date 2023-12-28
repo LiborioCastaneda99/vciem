@@ -89,7 +89,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
 
                                             <thead class="bg-200">
                                                 <tr>
-                                                    <th class="text-900 sort" data-sort="codigo">Código</th>
+                                                    <th class="text-900 sort" data-sort="codigo">Codigo</th>
                                                     <th class="text-900 sort" data-sort="nombre">Nombre</th>
                                                     <th class="text-900 sort" data-sort="resumen">Resumen</th>
                                                     <th class="text-900 no-sort pe-1 align-middle data-table-row-action">Editar</th>
@@ -124,12 +124,12 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                     <div class="row">
                                         <form id="fmr_zonas" method="POST" class="fmr_zonas row g-2 needs-validation" novalidate="">
                                             <div class="col-md-4">
-                                                <label class="form-label" for="codigo">Código</label>
+                                                <label class="form-label" for="codigo">Codigo</label>
                                                 <input class="form-control" id="codigo" name="codigo" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label class="form-label" for="nombre">Nombre</label>
+                                                <label class="form-label" for="nombre">Descripción</label>
                                                 <input class="form-control" id="nombre" name="nombre" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
@@ -165,13 +165,13 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                     <div class="row">
                                         <form id="fmr_zonas_editar" method="POST" class="fmr_zonas_editar row g-2 needs-validation" novalidate="">
                                             <div class="col-md-4">
-                                                <label class="form-label" for="codigo_mod">Código</label>
+                                                <label class="form-label" for="codigo_mod">Codigo</label>
                                                 <input class="form-control" id="id" name="id" type="hidden" />
                                                 <input class="form-control" id="codigo_mod" name="codigo_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label class="form-label" for="nombre_mod">Nombre</label>
+                                                <label class="form-label" for="nombre_mod">Descripción</label>
                                                 <input class="form-control" id="nombre_mod" name="nombre_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>

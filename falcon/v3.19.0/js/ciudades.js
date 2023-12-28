@@ -54,7 +54,7 @@ function cargar_tabla() {
             }
         },
         error: function() {
-            notificacion('Error', 'error', response.message)
+            console.error('Error al cargar los datos.');
         }
     });
 }
@@ -63,52 +63,48 @@ function cargar_tabla() {
 $(".fmr_ciudades").submit(function(event) {
     event.preventDefault();
 
-    codigo = $("#codigo").val()
-    nombre = $("#nombre").val()
-    resumen = $("#resumen").val()
-
-    // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevaCiudad color
-    var nuevaCiudad = {
+    // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevo color
+    var nuevo = {
         codigo: $("#codigo").val(),
         nombre: $("#nombre").val(),
         resumen: $("#resumen").val()
     };
 
-    if (codigo == "" || nombre == "" || resumen == "") {
-        // alert("Por favor, completa todos los campos.");
-        notificacion('Error', 'error', "Por favor, completa todos los campos.");
-        return;
-    } else {
-        // Hacer la solicitud AJAX para guardar el nuevaCiudad color
-        $.ajax({
-            type: 'POST',
-            url: 'ajax/ciudadesajax.php',
-            data: {
-                proceso: 'guardar',
-                codigo: nuevaCiudad.codigo,
-                nombre: nuevaCiudad.nombre,
-                resumen: nuevaCiudad.resumen
-            },
-            dataType: 'json',
-            success: function(response) {
-                if (response.status === 'success') {
-                    // cerramos el modal
-                    $('#guardarModal').modal('hide');
-                    // limpiamos el formulario
-                    $('#fmr_ciudades')[0].reset();
-                    // mostramos la alerta
-                    notificacion('Éxito', 'success', response.message);
+    // Hacer la solicitud AJAX para guardar el nuevo color
+    $.ajax({
+        type: 'POST',
+        url: 'ajax/ciudadesajax.php',
+        data: {
+            proceso: 'guardar',
+            codigo: nuevo.codigo,
+            nombre: nuevo.nombre,
+            resumen: nuevo.resumen
+        },
+        dataType: 'json',
+        success: function(response) {
+            if (response.status === 'success') {
+                // cerramos el modal
+                $('#guardarModal').modal('hide');
+                // limpiamos el formulario
+                $('#fmr_ciudades')[0].reset();
+                // mostramos la alerta
+                Swal.fire({
+                    title: 'Éxito',
+                    text: 'La ciudad se ha guardado correctamente',
+                    icon: 'success',
+                    confirmButtonColor: '#2196f3'
+                });
 
-                    cargar_tabla();
-                } else {
-                    notificacion('Error', 'error', response.message);
-                }
-            },
-            error: function() {
-                notificacion('Error', 'error', response.message);
+                cargar_tabla();
+            } else {
+                console.error('Error al guardar la ciudad.');
             }
-        });
-    }
+        },
+        error: function() {
+            console.error('Error al intentar guardar la ciudad.');
+        }
+    });
+
 });
 
 // editar
@@ -134,7 +130,7 @@ function editar(id) {
 
         },
         error: function() {
-            notificacion('Error', 'error', response.message)
+            console.error('Error al cargar los datos.');
         }
     });
 }
@@ -142,54 +138,50 @@ function editar(id) {
 $(".fmr_ciudades_editar").submit(function(event) {
     event.preventDefault();
 
-    codigo = $("#codigo_mod").val()
-    nombre = $("#nombre_mod").val()
-    resumen = $("#resumen_mod").val()
-
-    // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevaCiudad color
-    var nuevaCiudad = {
+    // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevo color
+    var nuevo = {
         codigo: $("#codigo_mod").val(),
         nombre: $("#nombre_mod").val(),
         resumen: $("#resumen_mod").val(),
         id: $("#id").val()
     };
 
-    if (codigo == "" || nombre == "" || resumen == "") {
-        // alert("Por favor, completa todos los campos.");
-        notificacion('Error', 'error', "Por favor, completa todos los campos.");
-        return;
-    } else {
-        // Hacer la solicitud AJAX para guardar el nuevaCiudad color
-        $.ajax({
-            type: 'POST',
-            url: 'ajax/ciudadesajax.php',
-            data: {
-                proceso: 'modificar',
-                codigo: nuevaCiudad.codigo,
-                nombre: nuevaCiudad.nombre,
-                resumen: nuevaCiudad.resumen,
-                id: nuevaCiudad.id
-            },
-            dataType: 'json',
-            success: function(response) {
-                if (response.status === 'success') {
-                    // cerramos el modal
-                    $('#editarModal').modal('hide');
-                    // limpiamos el formulario
-                    $('#fmr_ciudades_editar')[0].reset();
-                    // mostramos la alerta
-                    notificacion('Éxito', 'success', response.message);
+    // Hacer la solicitud AJAX para guardar el nuevo color
+    $.ajax({
+        type: 'POST',
+        url: 'ajax/ciudadesajax.php',
+        data: {
+            proceso: 'modificar',
+            codigo: nuevo.codigo,
+            nombre: nuevo.nombre,
+            resumen: nuevo.resumen,
+            id: nuevo.id
+        },
+        dataType: 'json',
+        success: function(response) {
+            if (response.status === 'success') {
+                // cerramos el modal
+                $('#editarModal').modal('hide');
+                // limpiamos el formulario
+                $('#fmr_ciudades_editar')[0].reset();
+                // mostramos la alerta
+                Swal.fire({
+                    title: 'Éxito',
+                    text: 'La ciudad se ha modificado correctamente',
+                    icon: 'success',
+                    confirmButtonColor: '#2196f3'
+                });
 
-                    cargar_tabla();
-                } else {
-                    notificacion('Error', 'error', response.message);
-                }
-            },
-            error: function() {
-                notificacion('Error', 'error', response.message);
+                cargar_tabla();
+            } else {
+                console.error('Error al modificar la ciudad.');
             }
-        });
-    }
+        },
+        error: function() {
+            console.error('Error al intentar modificar la ciudad.');
+        }
+    });
+
 });
 
 // eliminar
@@ -218,33 +210,23 @@ function eliminar(id) {
                 dataType: 'json',
                 success: function(response) {
                     if (response.status === 'success') {
-                        notificacion('Éxito', 'success', response.message);
+
+                        Swal.fire({
+                            title: 'Éxito',
+                            text: 'La ciudad se ha eliminado correctamente',
+                            icon: 'success',
+                            confirmButtonColor: '#2196f3'
+                        });
 
                         cargar_tabla();
                     } else {
-                        notificacion('Error', 'error', response.message);
+                        console.error('Error al eliminar la ciudad.');
                     }
                 },
                 error: function() {
-                    notificacion('Error', 'error', response.message);
+                    console.error('Error al intentar eliminar la ciudad.');
                 }
             });
         }
-    });
-}
-
-// notificacion
-function notificacion(titulo, icon, mensaje) {
-    //Mensaje de notificación, muestra un mensaje con SweetAlert
-    if (titulo == "Error") {
-        color = "#EF5350"
-    } else {
-        color = "#2196f3"
-    }
-    Swal.fire({
-        title: titulo,
-        text: mensaje,
-        icon: icon,
-        confirmButtonmarca: color
     });
 }

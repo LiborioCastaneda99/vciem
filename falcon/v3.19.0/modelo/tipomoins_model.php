@@ -114,47 +114,18 @@ class tipomoinsModel extends Conexion
             $resumen = $datos['resumen'];
             $id = $datos['id'];
             // Consulta para verificar la existencia del código
-            $query = "SELECT COUNT(*) as count, codigo FROM tbtipomoin WHERE id = :id";
+            $query = "SELECT COUNT(*) as count FROM tbtipomoin WHERE codigo = :codigo";
             $stmt = $dbconec->prepare($query);
-            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':codigo', $codigo);
             $stmt->execute();
+
+            // Obtiene el resultado
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            $codigo_bd = $result['codigo'];
 
-            // comparamos el codigo que llega y el que está
-            if ($codigo != $codigo_bd) {
-                $queryC = "SELECT COUNT(*) as count, codigo FROM tbtipomoin WHERE codigo = :codigo";
-                $stmt = $dbconec->prepare($queryC);
-                $stmt->bindParam(':codigo', $codigo);
-                $stmt->execute();
-
-                // Obtiene el resultado
-                $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-                // Verifica si el código ya existe
-                if ($result['count'] > 0) {
-                    $response = array('status' => 'error', 'message' => 'El código ya existe en la base de datos.');
-                    echo json_encode($response);
-                } else {
-                    // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
-                    $query = "UPDATE tbtipomoin SET codigo=:codigo, nombre=:nombre, resum=:resumen WHERE id=:id";
-                    $stmt = $dbconec->prepare($query);
-                    $stmt->bindParam(':id', $id);
-                    $stmt->bindParam(':codigo', $codigo);
-                    $stmt->bindParam(':nombre', $nombre);
-                    $stmt->bindParam(':resumen', $resumen);
-
-                    if ($stmt->execute()) {
-                        // Si la inserción fue exitosa, devuelve un mensaje o los datos actualizados
-                        $response = array('status' => 'success', 'message' => 'El tipomoin se ha modificado exitosamente.');
-                    } else {
-                        // Si hubo un error en la inserción, devuelve un mensaje de error
-                        $response = array('status' => 'error', 'message' => 'Error al modificar el tipomoin.');
-                    }
-
-                    // Devuelve la respuesta en formato JSON
-                    echo json_encode($response);
-                }
+            // Verifica si el código ya existe
+            if ($result['count'] > 0) {
+                $response = array('status' => 'error', 'message' => 'El código ya existe en la base de datos.');
+                echo json_encode($response);
             } else {
                 // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
                 $query = "UPDATE tbtipomoin SET codigo=:codigo, nombre=:nombre, resum=:resumen WHERE id=:id";

@@ -397,3 +397,9 @@ function notificacion(titulo, icon, mensaje) {
         confirmButtonarticulo: color
     });
 }
+
+function generar() {
+    // Abre la URL del archivo PDF en una nueva pestaña
+    window.open('pdfs/generar_pdf_articulos.php', '_blank');
+
+}

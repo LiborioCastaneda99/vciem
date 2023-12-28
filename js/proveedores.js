@@ -348,3 +348,9 @@ function notificacion(titulo, icon, mensaje) {
         confirmButtonproveedor: color
     });
 }
+
+function generar() {
+    // Abre la URL del archivo PDF en una nueva pestaña
+    window.open('pdfs/generar_pdf_proveedores.php', '_blank');
+
+}

@@ -13,6 +13,7 @@ if (!empty($_POST))
 
 	$proceso = (isset($_POST['proceso'])) ? $_POST['proceso'] : '';
 	$id = (isset($_POST['id'])) ? $_POST['id'] : '';
+	$nombre = (isset($_POST['searchTerm'])) ? $_POST['searchTerm'] : '';
     $datos = $_POST;
 
     switch ($proceso) {
@@ -21,6 +22,9 @@ if (!empty($_POST))
             break;
         case 'get_id': // consultar registros por id
             $cl->get_id($id);
+            break;
+        case 'combo_zonas': // consultar registros por id
+            $cl->combo_zonas($nombre,$id);
             break;
         case 'guardar': // guardar
 			$cl->guardar($datos);

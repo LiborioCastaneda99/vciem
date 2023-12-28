@@ -9,7 +9,9 @@ class subzonasModel extends Conexion
         $dbconec = Conexion::Conectar();
 
         try {
-            $query = "SELECT `id`,  `codigo`, `zona`, `nombre`, `resum` FROM tbsubzonas WHERE activo = 1";
+            $query = "SELECT SZ.id, SZ.codigo, Z.nombre As zona, SZ.nombre, SZ.resum, SZ.activo, SZ.created_at FROM `tbsubzonas` AS SZ
+            INNER JOIN tbzonas AS Z ON Z.id = SZ.zona
+            WHERE SZ.activo = 1";
             $stmt = $dbconec->prepare($query);
             $stmt->execute();
 

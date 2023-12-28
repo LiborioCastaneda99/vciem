@@ -66,14 +66,14 @@ $(".fmr_subzonas").submit(function(event) {
     event.preventDefault();
 
     codigo = $("#codigo").val()
-    subzona = $("#subzona").val()
+    subzona = $("#lstSubzonaAgregar").val()
     nombre = $("#nombre").val()
     resumen = $("#resumen").val()
 
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nueva subzona
     var nuevaSubzona = {
         codigo: $("#codigo").val(),
-        subzona: $("#subzona").val(),
+        subzona: $("#lstSubzonaAgregar").val(),
         nombre: $("#nombre").val(),
         resumen: $("#resumen").val()
     };
@@ -134,9 +134,10 @@ function editar(id) {
             // Asignar un valor al input
             document.getElementById('id').value = data[0].id
             document.getElementById('codigo_mod').value = data[0].codigo
-            document.getElementById('subzona_mod').value = data[0].zona
+                // document.getElementById('subzona_mod').value = data[0].zona
             document.getElementById('nombre_mod').value = data[0].nombre
             document.getElementById('resumen_mod').value = data[0].resum
+            cargar_zona(data[0].zona, 'lstSubzonaMod');
 
             // Limpiar el cuerpo de la tabla
             $('#editarModal').modal('show'); // abrir
@@ -153,14 +154,14 @@ $(".fmr_subzonas_editar").submit(function(event) {
     event.preventDefault();
 
     codigo = $("#codigo_mod").val()
-    subzona = $("#subzona_mod").val()
+    subzona = $("#lstSubzonaMod").val()
     nombre = $("#nombre_mod").val()
     resumen = $("#resumen_mod").val()
 
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nueva subzona
     var nuevaSubzona = {
         codigo: $("#codigo_mod").val(),
-        subzona: $("#subzona_mod").val(),
+        subzona: $("#lstSubzonaMod").val(),
         nombre: $("#nombre_mod").val(),
         resumen: $("#resumen_mod").val(),
         id: $("#id").val()
@@ -262,4 +263,78 @@ function notificacion(titulo, icon, mensaje) {
         icon: icon,
         confirmButtonColor: color
     });
+}
+
+// // cuadramos lo que queremos imprimir
+document.getElementById('btnAgregar').addEventListener('click', function() {
+    cargar_zona('', 'lstSubzonaAgregar');
+});
+
+// Funcion para cargar las listas select con opcion de busqueda
+$('#btnBusquedaAgregar').click(function() {
+    cargar_zona('', 'lstSubzonaAgregar');
+});
+
+// Funcion para cargar las listas select con opcion de busqueda
+$('#btnBusquedaMod').click(function() {
+    cargar_zona('', 'lstSubzonaMod');
+});
+
+function cargar_zona(Id, nameSelect) {
+    var lstSubzona = $('#' + nameSelect);
+
+    // Limpiar el contenido actual del select
+
+    select = nameSelect
+
+    lstSubzona.empty();
+
+    if (Id !== "") {
+        var searchTerm = '';
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: 'ajax/zonasajax.php',
+            data: {
+                searchTerm: searchTerm,
+                proceso: "combo_zonas",
+                id: Id
+            },
+        }).then(function(registros) {
+            // Agregar nuevas opciones al select
+            console.table(registros)
+            $(registros).each(function(i, v) {
+                lstSubzona.append('<option value="' + v.id + '">' + v.text + '</option>');
+            });
+        });
+    } else {
+        // Agregar una opción por defecto al select
+        lstSubzona.append('<option value="" selected>Seleccione una zona</option>');
+        var searchTerm = '';
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: 'ajax/zonasajax.php',
+            data: {
+                searchTerm: searchTerm,
+                proceso: "combo_zonas",
+                id: Id
+            },
+        }).then(function(registros) {
+            // Agregar nuevas opciones al select
+            console.table(registros)
+            $(registros).each(function(i, v) {
+                lstSubzona.append('<option value="' + v.id + '">' + v.text + '</option>');
+            });
+        });
+
+    }
+}
+
+function generar() {
+    // Abre la URL del archivo PDF en una nueva pestaña
+    window.open('pdfs/generar_pdf_subzonas.php', '_blank');
+
 }

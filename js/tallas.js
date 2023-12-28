@@ -247,3 +247,9 @@ function notificacion(titulo, icon, mensaje) {
         confirmButtonmarca: color
     });
 }
+
+function generar() {
+    // Abre la URL del archivo PDF en una nueva pestaña
+    window.open('pdfs/generar_pdf_tallas.php', '_blank');
+
+}

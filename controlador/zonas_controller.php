@@ -27,6 +27,10 @@
 		$cmd = zonasModel::eliminar($id);
 	}
 
+	public function combo_zonas($nombre,$id)
+	{
+		$cmd = zonasModel::combo_zonas($nombre, $id);
+	}
 }
 
 ?>

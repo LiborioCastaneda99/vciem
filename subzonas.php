@@ -73,8 +73,15 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                             <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="-" id="">
                                 <div id="tableExample3" data-list='{"valueNames":["codigo","nombre"],"page":5,"pagination":true}'>
                                     <div class="row justify-content-end g-0">
-                                        <div class="col-auto col-sm-7 mb-3">
-                                            <button class="btn btn-outline-primary btn-sm me-1 mb-1" type="button" data-bs-toggle="modal" data-bs-target="#guardarModal">Registrar subzona</button>
+                                        <div class="d-flex align-items-center" id="table-contact-replace-element">
+                                            <button class="btn btn-falcon-default btn-sm" type="button" id="btnAgregar" data-bs-toggle="modal" data-bs-target="#guardarModal">
+                                                <span class="fas fa-plus" data-fa-transform="shrink-3"></span>
+                                                <span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1" title="Registrar">Agregar</span>
+                                            </button>
+                                            <button onclick="generar()" class="btn btn-falcon-default btn-sm mx-2" type="button">
+                                                <span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span>
+                                                <span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1">Exportar</span>
+                                            </button>
                                         </div>
                                         <div class="col-auto col-sm-5 mb-3">
                                             <form method="POST" action="#" id="" name="">
@@ -132,9 +139,12 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="form-label" for="subzona">Subzona</label>
-                                                <input class="form-control" id="subzona" name="subzona" type="text" required />
-                                                <div class="valid-feedback">¡Ok!</div>
+                                                <label>Subzona <span class="text-danger"> * </span></label>
+                                                <div class="input-group col-md-12 mb-2">
+                                                    <select class="form-select" id="lstSubzonaAgregar" name="lstSubzonaAgregar">
+                                                    </select>
+                                                    <span class="input-group-addon"><button class="btn btn-primary icon-search4 Search" type="button" id="btnBusquedaAgregar" name="btnBusquedaAgregar"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="form-label" for="nombre">Nombre</label>
@@ -179,9 +189,12 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="form-label" for="subzona_mod">Subzona</label>
-                                                <input class="form-control" id="subzona_mod" name="subzona_mod" type="text" required />
-                                                <div class="valid-feedback">¡Ok!</div>
+                                                <label>Subzona <span class="text-danger"> * </span></label>
+                                                <div class="input-group col-md-12 mb-2">
+                                                    <select class="form-select" id="lstSubzonaMod" name="lstSubzonaMod">
+                                                    </select>
+                                                    <span class="input-group-addon"><button class="btn btn-primary icon-search4 Search" type="button" id="btnBusquedaMod" name="btnBusquedaMod"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="form-label" for="nombre_mod">Nombre</label>

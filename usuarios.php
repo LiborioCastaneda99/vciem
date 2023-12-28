@@ -86,7 +86,6 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                             <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="-" id="">
                                 <div id="tableExample3" data-list='{"valueNames":["codigo","nombre","correo_electronico", "rol"],"page":5,"pagination":true}'>
                                     <div class="row justify-content-end g-0">
-
                                         <div class="d-flex align-items-center" id="table-contact-replace-element">
                                             <button class="btn btn-falcon-default btn-sm" type="button" id="btnAgregar" data-bs-toggle="modal" data-bs-target="#guardarModal">
                                                 <span class="fas fa-plus" data-fa-transform="shrink-3"></span>

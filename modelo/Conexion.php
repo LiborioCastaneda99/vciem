@@ -23,7 +23,7 @@ class Conexion
 		try {
 
 			$conexion = new PDO($server, $username, $passwd);
-			//$conexion = exec("SET CHARACTER SET utf8");
+			$conexion->exec("SET CHARACTER SET utf8");
 			$conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			// echo "<script>alert('AJCP :Conexión realizada Satisfactoriamente');</script>";
 

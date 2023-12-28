@@ -7,6 +7,7 @@ class clasesModel extends Conexion
     public static function get()
     {
         $dbconec = Conexion::Conectar();
+        $dbconec->exec("SET CHARACTER SET utf8");
 
         try {
             $query = "SELECT `id`, `codigo`, `nombre`, `resum` FROM tbclases WHERE activo = 1";
@@ -33,6 +34,7 @@ class clasesModel extends Conexion
     public static function get_id($id)
     {
         $dbconec = Conexion::Conectar();
+        $dbconec->exec("SET CHARACTER SET utf8");
 
         try {
             $query = "SELECT `id`, `codigo`, `nombre`, `resum` FROM tbclases WHERE id = $id";
@@ -58,6 +60,7 @@ class clasesModel extends Conexion
     public static function guardar($datos)
     {
         $dbconec = Conexion::Conectar();
+        $dbconec->exec("SET CHARACTER SET utf8");
 
         try {
             $codigo = $datos['codigo'];

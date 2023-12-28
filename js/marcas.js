@@ -251,12 +251,8 @@ function notificacion(titulo, icon, mensaje) {
     });
 }
 
-// cuadramos lo que queremos imprimir
-document.getElementById('printButton').addEventListener('click', function() {
-    var printWindow = window.open('', '_blank');
-    printWindow.document.write('<html><head><title>Tabla Imprimible</title></head><body>');
-    printWindow.document.write(document.getElementById('myTable').outerHTML);
-    printWindow.document.write('</body></html>');
-    printWindow.document.close();
-    printWindow.print();
-});
+function generar() {
+    // Abre la URL del archivo PDF en una nueva pestaña
+    window.open('pdfs/generar_pdf_marcas.php', '_blank');
+
+}

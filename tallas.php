@@ -73,8 +73,15 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                             <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="-" id="">
                                 <div id="tableExample3" data-list='{"valueNames":["codigo","nombre"],"page":5,"pagination":true}'>
                                     <div class="row justify-content-end g-0">
-                                        <div class="col-auto col-sm-7 mb-3">
-                                            <button class="btn btn-outline-primary btn-sm me-1 mb-1" type="button" data-bs-toggle="modal" data-bs-target="#guardarModal">Registrar talla</button>
+                                        <div class="d-flex align-items-center" id="table-contact-replace-element">
+                                            <button class="btn btn-falcon-default btn-sm" type="button" id="btnAgregar" data-bs-toggle="modal" data-bs-target="#guardarModal">
+                                                <span class="fas fa-plus" data-fa-transform="shrink-3"></span>
+                                                <span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1" title="Registrar">Agregar</span>
+                                            </button>
+                                            <button onclick="generar()" class="btn btn-falcon-default btn-sm mx-2" type="button">
+                                                <span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span>
+                                                <span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1">Exportar</span>
+                                            </button>
                                         </div>
                                         <div class="col-auto col-sm-5 mb-3">
                                             <form method="POST" action="#" id="" name="">

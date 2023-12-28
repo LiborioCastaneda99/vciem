@@ -254,3 +254,9 @@ function notificacion(titulo, icon, mensaje) {
         confirmButtonColor: color
     });
 }
+
+function generar() {
+    // Abre la URL del archivo PDF en una nueva pestaña
+    window.open('pdfs/generar_pdf_tipomoins.php', '_blank');
+
+}

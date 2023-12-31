@@ -97,8 +97,9 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             <thead class="bg-200">
                                                 <tr>
                                                     <th class="text-900 sort" data-sort="codigo">Código</th>
-                                                    <th class="text-900 sort" data-sort="subzona">Subzona</th>
+                                                    <th class="text-900 sort" data-sort="nombre">Nombre</th>
                                                     <th class="text-900 sort" data-sort="zona">Zona</th>
+                                                    <th class="text-900 sort" data-sort="subzona">Subzona</th>
                                                     <th class="text-900 sort" data-sort="ciudad">Ciudad</th>
                                                     <th class="text-900 no-sort pe-1 align-middle data-table-row-action">Editar</th>
                                                     <th class="text-900 no-sort pe-1 align-middle data-table-row-action">Eliminar</th>

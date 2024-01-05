@@ -97,9 +97,12 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             <thead class="bg-200">
                                                 <tr>
                                                     <th class="text-900 sort" data-sort="codigo">Código</th>
-                                                    <th class="text-900 sort" data-sort="nombre">Nombre</th>
                                                     <th class="text-900 sort" data-sort="zona">Zona</th>
                                                     <th class="text-900 sort" data-sort="subzona">Subzona</th>
+                                                    <th class="text-900 sort" data-sort="nombre">Nombre</th>
+                                                    <th class="text-900 sort" data-sort="direc">Direc</th>
+                                                    <th class="text-900 sort" data-sort="tel1">Teléfono 1</th>
+                                                    <th class="text-900 sort" data-sort="tel2">Teléfono 2</th>
                                                     <th class="text-900 sort" data-sort="ciudad">Ciudad</th>
                                                     <th class="text-900 no-sort pe-1 align-middle data-table-row-action">Editar</th>
                                                     <th class="text-900 no-sort pe-1 align-middle data-table-row-action">Eliminar</th>
@@ -179,7 +182,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <input class="form-control" id="ciudad" name="ciudad" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <!-- <div class="col-md-6">
                                                 <label class="form-label" for="vendedor">Vendedor</label>
                                                 <input class="form-control" id="vendedor" name="vendedor" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
@@ -481,7 +484,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <label class="form-label" for="emailq">emailq</label>
                                                 <input class="form-control" id="emailq" name="emailq" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
-                                            </div>
+                                            </div> -->
                                             <div class="modal-footer">
                                                 <div class="col-12 d-grid  gap-0">
                                                     <button class="btn btn-outline-primary me-1 mb-1" type="submit">Agregar cliente</button>
@@ -554,7 +557,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <input class="form-control" id="ciudad_mod" name="ciudad_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <!-- <div class="col-md-6">
                                                 <label class="form-label" for="vendedor_mod">Vendedor</label>
                                                 <input class="form-control" id="vendedor_mod" name="vendedor_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
@@ -856,7 +859,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <label class="form-label" for="emailq_mod">Emailq</label>
                                                 <input class="form-control" id="emailq_mod" name="emailq_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
-                                            </div>
+                                            </div> -->
                                             <div class="modal-footer">
                                                 <div class="col-12 d-grid  gap-0">
                                                     <button class="btn btn-outline-primary me-1 mb-1" type="submit">Modificar</button>

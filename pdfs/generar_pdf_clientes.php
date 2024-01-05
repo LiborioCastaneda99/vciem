@@ -39,16 +39,20 @@ $html = $style . '
 <p style="text-align: center;">Fecha de Generación: ' . $fechaGeneracion . '</p>
 <table style="width: 100%; border-collapse: collapse;">
     <tr>
-        <th style="width: 20%;text-align: center;">Codigo</th>
-        <th style="width: 20%;text-align: center;">Nombre</th>
+        <th style="width: 20%;text-align: center;">Código</th>
+        <th style="width: 20%;text-align: center;">Sucursal</th>
         <th style="width: 20%;text-align: center;">Zona</th>
         <th style="width: 20%;text-align: center;">Subzona</th>
+        <th style="width: 20%;text-align: center;">Nombre</th>
+        <th style="width: 20%;text-align: center;">Dirección</th>
+        <th style="width: 20%;text-align: center;">Teléfono 1</th>
+        <th style="width: 20%;text-align: center;">Teléfono 2</th>
         <th style="width: 20%;text-align: center;">Ciudad</th>
     </tr>
 ';
 
 // Realizar una consulta a la base de datos (asegúrate de tener una conexión establecida)
-$query = "SELECT `id`, `codigo`, `nombre`, `zona`, `subzona`, `ciudad` FROM tbclientes WHERE activo = 1";
+$query = "SELECT `id`, 'codigo', 'zona', 'subzona', 'nombre', 'direc', 'tel1', 'tel2', 'ciudad' FROM tbclientes WHERE activo = 1";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $lstResult = $stmt->fetchAll();
@@ -59,9 +63,13 @@ if (count($lstResult)) {
         $html .= '
             <tr>
                 <td style="text-align: center;">' . $result["codigo"] . '</td>
-                <td style="text-align: center;>' . $result["nombre"] . '</td>
+                <td style="text-align: center;">' . $result["sucursal"] . '</td>
                 <td style="text-align: center;>' . $result["zona"] . '</td>
                 <td style="text-align: center;>' . $result["subzona"] . '</td>
+                <td style="text-align: center;>' . $result["nombre"] . '</td>
+                <td style="text-align: center;>' . $result["direc"] . '</td>
+                <td style="text-align: center;>' . $result["tel1"] . '</td>
+                <td style="text-align: center;>' . $result["tel2"] . '</td>
                 <td style="text-align: center;>' . $result["ciudad"] . '</td>
             </tr>
         ';

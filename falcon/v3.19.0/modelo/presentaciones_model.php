@@ -74,12 +74,11 @@ class presentacionesModel extends Conexion
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-             // Verifica si el código ya existe
+            // Verifica si el código ya existe
             if ($result['count'] > 0) {
                 $response = array('status' => 'error', 'message' => 'El código ya existe en la base de datos');
                 echo json_encode($response);
-            } 
-            else {
+            } else {
                 // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
                 $query = "INSERT INTO presentaciones (codigo, nombre) VALUES (:codigo, :nombre)";
                 $stmt = $dbconec->prepare($query);
@@ -96,7 +95,7 @@ class presentacionesModel extends Conexion
 
                 // Devuelve la respuesta en formato JSON
                 echo json_encode($response);
-            }    
+            }
         } catch (Exception $e) {
             $data = "Error";
             echo json_encode($data);
@@ -114,22 +113,61 @@ class presentacionesModel extends Conexion
             $id = $datos['id'];
 
             // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
-            $query = "UPDATE presentaciones SET codigo=:codigo, nombre=:nombre WHERE id=:id";
+            $query = "SELECT COUNT(*) as count, codigo FROM presentaciones WHERE id = :id";
             $stmt = $dbconec->prepare($query);
             $stmt->bindParam(':id', $id);
-            $stmt->bindParam(':codigo', $codigo);
-            $stmt->bindParam(':nombre', $nombre);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $codigo_bd = $result['codigo'];
 
-            if ($stmt->execute()) {
-                // Si la inserción fue exitosa, devuelve un mensaje o los datos actualizados
-                $response = array('status' => 'success', 'message' => 'Presentacion modificada exitosamente');
+            if ($codigo != $codigo_bd) {
+                $queryC = "SELECT COUNT(*) as count, codigo FROM presentaciones WHERE codigo = :codigo";
+                $stmt = $dbconec->prepare($queryC);
+                $stmt->bindParam(':codigo', $codigo);
+                $stmt->execute();
+                // Obtiene el resultado
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                // Verifica si el código ya existe
+                if ($result['count'] > 0) {
+                    $response = array('status' => 'error', 'message' => 'El código ya existe en la base de datos.');
+                    echo json_encode($response);
+                } else {
+                    // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
+                    $query = "UPDATE presentaciones SET codigo=:codigo, nombre=:nombre WHERE id=:id";
+                    $stmt = $dbconec->prepare($query);
+                    $stmt->bindParam(':id', $id);
+                    $stmt->bindParam(':codigo', $codigo);
+                    $stmt->bindParam(':nombre', $nombre);
+                    if ($stmt->execute()) {
+                        // Si la inserción fue exitosa, devuelve un mensaje o los datos actualizados
+                        $response = array('status' => 'success', 'message' => 'Presentacion modificada exitosamente');
+                    } else {
+                        // Si hubo un error en la inserción, devuelve un mensaje de error
+                        $response = array('status' => 'error', 'message' => 'Error al modificar la presentacion');
+                    }
+
+                    // Devuelve la respuesta en formato JSON
+                    echo json_encode($response);
+                }
             } else {
-                // Si hubo un error en la inserción, devuelve un mensaje de error
-                $response = array('status' => 'error', 'message' => 'Error al modificar la presentacion');
-            }
+                // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
+                $query = "UPDATE presentaciones SET codigo=:codigo, nombre=:nombre WHERE id=:id";
+                $stmt = $dbconec->prepare($query);
+                $stmt->bindParam(':id', $id);
+                $stmt->bindParam(':codigo', $codigo);
+                $stmt->bindParam(':nombre', $nombre);
+                if ($stmt->execute()) {
+                    // Si la inserción fue exitosa, devuelve un mensaje o los datos actualizados
+                    $response = array('status' => 'success', 'message' => 'Presentacion modificada exitosamente');
+                } else {
+                    // Si hubo un error en la inserción, devuelve un mensaje de error
+                    $response = array('status' => 'error', 'message' => 'Error al modificar la presentacion');
+                }
 
-            // Devuelve la respuesta en formato JSON
-            echo json_encode($response);
+                // Devuelve la respuesta en formato JSON
+                echo json_encode($response);
+            }
         } catch (Exception $e) {
             $data = "Error";
             echo json_encode($data);

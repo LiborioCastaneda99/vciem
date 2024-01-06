@@ -173,24 +173,72 @@ class proveedoresModel extends Conexion
             $estado = $datos['estado'];
             $id = $datos['id'];
             // Consulta para verificar la existencia del código
-            $query = "SELECT COUNT(*) as count FROM proveedores WHERE codigo=:codigo";
+            $query = "SELECT COUNT(*) as count, codigo FROM proveedores WHERE id = :id";
             $stmt = $dbconec->prepare($query);
-            $stmt->bindParam(':codigo', $codigo);
+            $stmt->bindParam(':id', $id);
             $stmt->execute();
-
-            // Obtiene el resultado
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $codigo_bd = $result['codigo'];
 
-            // Verifica si el código ya existe
-            if ($result['count'] > 0) {
-                $response = array('status' => 'error', 'message' => 'El código ya existe en la base de datos.');
-                echo json_encode($response);
-            } else {
-                // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
-                $query = "UPDATE proveedores SET codigo=:codigo, suc=:suc, zona=:zona, subzona=:subzona, nombre=:nombre, 
+            if ($codigo != $codigo_bd) {
+                $queryC = "SELECT COUNT(*) as count, codigo FROM proveedores WHERE codigo = :codigo";
+                $stmt = $dbconec->prepare($queryC);
+                $stmt->bindParam(':codigo', $codigo);
+                $stmt->execute();
+
+                // Obtiene el resultado
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                // Verifica si el código ya existe
+                if ($result['count'] > 0) {
+                    $response = array('status' => 'error', 'message' => 'El código ya existe en la base de datos.');
+                    echo json_encode($response);
+                } else {
+                    // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
+                    $query = "UPDATE proveedores SET codigo=:codigo, suc=:suc, zona=:zona, subzona=:subzona, nombre=:nombre, 
                 dir=:dir, tel1=:tel1, tel2=:tel2, ciudad=:ciudad, cupo=:cupo, legal=:legal, fecha_ini=:fecha_ini, 
                 forma_pago=:fpago, correo=:correo, caract_dev=:caract_dev, digito=:digito, riva=:riva, rfte=:rfte, rica=:rica, 
                 estado=:estado WHERE id=:id";
+                    $stmt = $dbconec->prepare($query);
+                    $stmt->bindParam(':id', $id);
+                    $stmt->bindParam(':codigo', $codigo);
+                    $stmt->bindParam(':suc', $suc);
+                    $stmt->bindParam(':zona', $zona);
+                    $stmt->bindParam(':subzona', $subzona);
+                    $stmt->bindParam(':nombre', $nombre);
+                    $stmt->bindParam(':dir', $dir);
+                    $stmt->bindParam(':tel1', $tel1);
+                    $stmt->bindParam(':tel2', $tel2);
+                    $stmt->bindParam(':ciudad', $ciudad);
+                    $stmt->bindParam(':cupo', $cupo);
+                    $stmt->bindParam(':legal', $legal);
+                    $stmt->bindParam(':fecha_ini', $fecha_ini);
+                    $stmt->bindParam(':fpago', $fpago);
+                    $stmt->bindParam(':correo', $correo);
+                    $stmt->bindParam(':caract_dev', $caract_dev);
+                    $stmt->bindParam(':digito', $digito);
+                    $stmt->bindParam(':riva', $riva);
+                    $stmt->bindParam(':rfte', $rfte);
+                    $stmt->bindParam(':rica', $rica);
+                    $stmt->bindParam(':estado', $estado);
+
+                    if ($stmt->execute()) {
+                        // Si la inserción fue exitosa, devuelve un mensaje o los datos actualizados
+                        $response = array('status' => 'success', 'message' => 'La proveedor se ha modificado exitosamente.');
+                    } else {
+                        // Si hubo un error en la inserción, devuelve un mensaje de error
+                        $response = array('status' => 'error', 'message' => 'Error al modificar la proveedor.');
+                    }
+
+                    // Devuelve la respuesta en formato JSON
+                    echo json_encode($response);
+                }
+            } else {
+                // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
+                $query = "UPDATE proveedores SET codigo=:codigo, suc=:suc, zona=:zona, subzona=:subzona, nombre=:nombre, 
+            dir=:dir, tel1=:tel1, tel2=:tel2, ciudad=:ciudad, cupo=:cupo, legal=:legal, fecha_ini=:fecha_ini, 
+            forma_pago=:fpago, correo=:correo, caract_dev=:caract_dev, digito=:digito, riva=:riva, rfte=:rfte, rica=:rica, 
+            estado=:estado WHERE id=:id";
                 $stmt = $dbconec->prepare($query);
                 $stmt->bindParam(':id', $id);
                 $stmt->bindParam(':codigo', $codigo);

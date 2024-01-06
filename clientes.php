@@ -79,7 +79,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1" title="Registrar">Agregar</span>
                                             </button>
                                             <button onclick="generar()" class="btn btn-falcon-default btn-sm mx-2" type="button">
-                                                <span class="fas fa-extercali-link-alt" data-fa-transform="shrink-3"></span>
+                                                <span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span>
                                                 <span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1">Exportar</span>
                                             </button>
                                         </div>

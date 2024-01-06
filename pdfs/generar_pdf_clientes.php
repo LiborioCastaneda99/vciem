@@ -39,20 +39,20 @@ $html = $style . '
 <p style="text-align: center;">Fecha de Generación: ' . $fechaGeneracion . '</p>
 <table style="width: 100%; border-collapse: collapse;">
     <tr>
-        <th style="width: 20%;text-align: center;">Código</th>
-        <th style="width: 20%;text-align: center;">Sucursal</th>
-        <th style="width: 20%;text-align: center;">Zona</th>
-        <th style="width: 20%;text-align: center;">Subzona</th>
-        <th style="width: 20%;text-align: center;">Nombre</th>
-        <th style="width: 20%;text-align: center;">Dirección</th>
-        <th style="width: 20%;text-align: center;">Teléfono 1</th>
-        <th style="width: 20%;text-align: center;">Teléfono 2</th>
-        <th style="width: 20%;text-align: center;">Ciudad</th>
+        <th>Código</th>
+        <th>Zona</th>
+        <th>Subzona</th>
+        <th>Nombre</th>
+        <th>Direc</th>
+        <th>Teléfono 1</th>
+        <th>Teléfono 2</th>
+        <th>Ciudad</th>
     </tr>
 ';
 
 // Realizar una consulta a la base de datos (asegúrate de tener una conexión establecida)
-$query = "SELECT `id`, 'codigo', 'zona', 'subzona', 'nombre', 'direc', 'tel1', 'tel2', 'ciudad' FROM tbclientes WHERE activo = 1";
+$sql = "SELECT `id`, `codigo`, `sucursal`, `zona`, `subzona`, `nombre`, `direc`, `tel1`,  `tel2`, 
+`ciudad` FROM tbclientes WHERE activo = 1;";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $lstResult = $stmt->fetchAll();
@@ -63,19 +63,18 @@ if (count($lstResult)) {
         $html .= '
             <tr>
                 <td style="text-align: center;">' . $result["codigo"] . '</td>
-                <td style="text-align: center;">' . $result["sucursal"] . '</td>
-                <td style="text-align: center;>' . $result["zona"] . '</td>
-                <td style="text-align: center;>' . $result["subzona"] . '</td>
-                <td style="text-align: center;>' . $result["nombre"] . '</td>
-                <td style="text-align: center;>' . $result["direc"] . '</td>
-                <td style="text-align: center;>' . $result["tel1"] . '</td>
-                <td style="text-align: center;>' . $result["tel2"] . '</td>
-                <td style="text-align: center;>' . $result["ciudad"] . '</td>
+                <td>' . $result["zona"] . '</td>
+                <td>' . $result["subzona"] . '</td>
+                <td>' . $result["nombre"] . '</td>
+                <td>' . $result["direc"] . '</td>
+                <td>' . $result["tel1"] . '</td>
+                <td>' . $result["tel2"] . '</td>
+                <td>' . $result["ciudad"] . '</td>
             </tr>
         ';
     }
 } else {
-    $html .= '<tr><td colspan="2" style="text-align: center;">No se encontraron resultados.</td></tr>';
+    $html .= '<tr><td colspan="19" style="text-align: center;">No se encontraron resultados.</td></tr>';
 }
 
 $html .= '</table>';

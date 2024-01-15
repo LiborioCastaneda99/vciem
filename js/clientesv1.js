@@ -79,17 +79,29 @@ function obtenerDocumento(codigo) {
         data: { proceso: 'get_cod', codigo: codigo },
         dataType: 'json',
         success: function(data) {
-
-            document.getElementById('id').value = data[0].id
-            document.getElementById('codigo').value = data[0].codigo
-            document.getElementById('sucursal').value = data[0].sucursal
-            document.getElementById('nombre').value = data[0].nombre
-            document.getElementById('zona').value = data[0].zona
-            document.getElementById('subzona').value = data[0].subzona
-            document.getElementById('direc').value = data[0].direc
-            document.getElementById('correo').value = data[0].correo
-            document.getElementById('tel1').value = data[0].tel1
-            document.getElementById('tel2').value = data[0].tel2
+            if (data != "No hay clientes") {
+                document.getElementById('id').value = data[0].id
+                document.getElementById('codigo').value = data[0].codigo
+                document.getElementById('sucursal').value = data[0].sucursal
+                document.getElementById('nombre').value = data[0].nombre
+                document.getElementById('zona').value = data[0].zona
+                document.getElementById('subzona').value = data[0].subzona
+                document.getElementById('direc').value = data[0].direc
+                document.getElementById('correo').value = data[0].correo
+                document.getElementById('tel1').value = data[0].tel1
+                document.getElementById('tel2').value = data[0].tel2
+            } else {
+                document.getElementById('id').value = codigo
+                document.getElementById('codigo').value = codigo
+                document.getElementById('sucursal').value = ''
+                document.getElementById('nombre').value = ''
+                document.getElementById('zona').value = ''
+                document.getElementById('subzona').value = ''
+                document.getElementById('direc').value = ''
+                document.getElementById('correo').value = ''
+                document.getElementById('tel1').value = ''
+                document.getElementById('tel2').value = ''
+            }
 
         },
         error: function(error) {

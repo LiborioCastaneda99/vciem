@@ -96,7 +96,7 @@ class clientesModel extends Conexion
             $direc = $datos['direc'];
             $tel1 = $datos['tel1'];
             $tel2 = $datos['tel2'];
-            $ciudad = $datos['ciudad'];
+            // $ciudad = $datos['ciudad'];
             // $vendedor = $datos['vendedor'];
             // $cupo = $datos['cupo'];
             // $legal = $datos['legal'];
@@ -169,8 +169,8 @@ class clientesModel extends Conexion
             } else {
 
                 // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
-                $query = "INSERT INTO tbclientes (codigo, sucursal, zona, subzona, nombre, direc, tel1, tel2, ciudad) VALUES 
-                (:codigo, :sucursal, :zona, :subzona, :nombre, :direc, :tel1, :tel2, :ciudad)";
+                $query = "INSERT INTO tbclientes (codigo, sucursal, zona, subzona, nombre, direc, tel1, tel2) VALUES 
+                (:codigo, :sucursal, :zona, :subzona, :nombre, :direc, :tel1, :tel2)";
                 $stmt = $dbconec->prepare($query);
                 $stmt->bindParam(':codigo', $codigo);
                 $stmt->bindParam(':sucursal', $sucursal);
@@ -180,7 +180,7 @@ class clientesModel extends Conexion
                 $stmt->bindParam(':direc', $direc);
                 $stmt->bindParam(':tel1', $tel1);
                 $stmt->bindParam(':tel2', $tel2);
-                $stmt->bindParam(':ciudad', $ciudad);
+                // $stmt->bindParam(':ciudad', $ciudad);
                 // $stmt->bindParam(':vendedor', $vendedor);
                 // $stmt->bindParam(':cupo', $cupo);
                 // $stmt->bindParam(':legal', $legal);

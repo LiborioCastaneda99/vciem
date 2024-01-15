@@ -1,7 +1,7 @@
 <?php
 $className = "clientes";
-$model = "../modelo/" . $className . "_model.php";
-$controller = "../controlador/" . $className . "_controller.php";
+$model = "../modelo/" . $className . "_model_v1.php";
+$controller = "../controlador/" . $className . "_controller_v1.php";
 require_once($model);
 require_once($controller);
 
@@ -12,6 +12,7 @@ if (!empty($_POST)) {
 
     $proceso = (isset($_POST['proceso'])) ? $_POST['proceso'] : '';
     $id = (isset($_POST['id'])) ? $_POST['id'] : '';
+    $codigo = (isset($_POST['codigo'])) ? $_POST['codigo'] : '';
     $datos = $_POST;
 
     switch ($proceso) {

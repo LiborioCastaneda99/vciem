@@ -178,7 +178,7 @@ $(".fmr_clientes").submit(function(event) {
             // emailq: $("#emailq").val()
     };
     if (codigo == "" || sucursal == "" || zona == "" || subzona == "" || nombre == "" ||
-        direc == "" || tel1 == "" || tel2 == "" || ciudad == "") {
+        direc == "" || tel1 == "" || ciudad == "") {
         // alert("Por favor, completa todos los campos.");
         notificacion('Error', 'error', "Por favor, completa todos los campos.");
         return;

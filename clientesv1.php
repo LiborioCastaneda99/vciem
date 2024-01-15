@@ -224,13 +224,14 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                             </form>
                                                         </div>
                                                         <div class="tab-pane text-center px-sm-3 px-md-5" role="tabpanel" aria-labelledby="bootstrap-wizard-validation-tab4" id="bootstrap-wizard-validation-tab4">
-                                                            <div class="wizard-lottie-wrapper">
-                                                                <div class="lottie wizard-lottie mx-auto my-3" data-options='{"path":"../../assets/img/animated-icons/celebration.json"}'></div>
-                                                            </div>
+                                                            <form data-wizard-form="4">
+                                                                <input type="hidden" value="2" name="id_pestana" id="id_pestana">
+
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="card-footer bg-body-tertiary">
+                                                <div class="card-footer mt-4 bg-body-tertiary">
                                                     <div class="px-sm-3 px-md-5">
                                                         <ul class="pager wizard list-inline mb-0">
                                                             <li class="previous">

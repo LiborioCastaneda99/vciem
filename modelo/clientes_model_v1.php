@@ -63,7 +63,7 @@ class clientesModel extends Conexion
 
         try {
             $query = "SELECT `id`, `codigo`, `sucursal`, `zona`, `subzona`, `nombre`, `direc`, `tel1`,  `tel2`, 
-            `correo` FROM tbclientes WHERE codigo = $codigo";
+            `correo` FROM tbclientes WHERE codigo = $codigo AND activo = 0";
             $stmt = $dbconec->prepare($query);
             $stmt->execute();
 
@@ -72,10 +72,12 @@ class clientesModel extends Conexion
 
             if ($rows) {
                 // Devolver el array JSON con todos los tbclientes
-                echo json_encode($rows);
+                $response = array('status' => 'OK', 'datos' => $rows);
+                echo json_encode($response);
+
             } else {
-                $data = "No hay clientes";
-                echo json_encode($data);
+                $response = array('status' => 'Error', 'mensaje' => "No hay clientes");
+                echo json_encode($response);
             }
         } catch (Exception $e) {
             $data = "Error";
@@ -96,6 +98,8 @@ class clientesModel extends Conexion
             $direc = $datos['direc'];
             $tel1 = $datos['tel1'];
             $tel2 = $datos['tel2'];
+            $correo = $datos['correo'];
+            $activo = 0;
             // $ciudad = $datos['ciudad'];
             // $vendedor = $datos['vendedor'];
             // $cupo = $datos['cupo'];
@@ -169,17 +173,19 @@ class clientesModel extends Conexion
             } else {
 
                 // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
-                $query = "INSERT INTO tbclientes (codigo, sucursal, zona, subzona, nombre, direc, tel1, tel2) VALUES 
-                (:codigo, :sucursal, :zona, :subzona, :nombre, :direc, :tel1, :tel2)";
+                $query = "INSERT INTO tbclientes (codigo, sucursal, zona, subzona, nombre, direc, correo, tel1, tel2, activo) VALUES 
+                (:codigo, :sucursal, :zona, :subzona, :nombre, :direc, :correo, :tel1, :tel2, :activo)";
                 $stmt = $dbconec->prepare($query);
                 $stmt->bindParam(':codigo', $codigo);
                 $stmt->bindParam(':sucursal', $sucursal);
                 $stmt->bindParam(':zona', $zona);
                 $stmt->bindParam(':subzona', $subzona);
                 $stmt->bindParam(':nombre', $nombre);
+                $stmt->bindParam(':correo', $correo);
                 $stmt->bindParam(':direc', $direc);
                 $stmt->bindParam(':tel1', $tel1);
                 $stmt->bindParam(':tel2', $tel2);
+                $stmt->bindParam(':activo', $activo);
                 // $stmt->bindParam(':ciudad', $ciudad);
                 // $stmt->bindParam(':vendedor', $vendedor);
                 // $stmt->bindParam(':cupo', $cupo);
@@ -270,18 +276,21 @@ class clientesModel extends Conexion
             $tel1 = $datos['tel1'];
             $tel2 = $datos['tel2'];
             $ciudad = $datos['ciudad'];
+            $correo = $datos['correo'];
             $id = $datos['id'];
+            $activo = $datos['activo'];
             // Consulta para verificar la existencia del código
-            $query = "SELECT COUNT(*) as count, codigo FROM tbclientes WHERE id = :id";
+            $query = "SELECT COUNT(*) as count, codigo FROM tbclientes WHERE id = :id AND activo = :activo";
             $stmt = $dbconec->prepare($query);
             $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':activo', $activo);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $codigo_bd = $result['codigo'];
 
             // comparamos el codigo que llega y el que está
             if ($codigo != $codigo_bd) {
-                $queryC = "SELECT COUNT(*) as count, codigo FROM tbclientes WHERE codigo = :codigo";
+                $queryC = "SELECT COUNT(*) as count, codigo FROM tbclientes WHERE codigo = :codigo AND activo = 1";
                 $stmt = $dbconec->prepare($queryC);
                 $stmt->bindParam(':codigo', $codigo);
                 $stmt->execute();
@@ -295,7 +304,7 @@ class clientesModel extends Conexion
                 } else {
                     // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
                     $query = "UPDATE tbclientes SET codigo=:codigo, sucursal=:sucursal, nombre=:nombre, zona=:zona, subzona=:subzona, 
-                    direc=:direc, tel1=:tel1, tel2=:tel2, ciudad=:ciudad WHERE id=:id";
+                    direc=:direc, tel1=:tel1, tel2=:tel2, ciudad=:ciudad, correo=:correo WHERE id=:id";
                     $stmt = $dbconec->prepare($query);
                     $stmt->bindParam(':id', $id);
                     $stmt->bindParam(':codigo', $codigo);
@@ -307,6 +316,7 @@ class clientesModel extends Conexion
                     $stmt->bindParam(':tel1', $tel1);
                     $stmt->bindParam(':tel2', $tel2);
                     $stmt->bindParam(':ciudad', $ciudad);
+                    $stmt->bindParam(':correo', $correo);
                     // $stmt->bindParam(':vendedor', $vendedor);
                     // $stmt->bindParam(':cupo', $cupo);
                     // $stmt->bindParam(':legal', $legal);
@@ -377,7 +387,7 @@ class clientesModel extends Conexion
             } else {
                 // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
                 $query = "UPDATE tbclientes SET codigo=:codigo, sucursal=:sucursal, nombre=:nombre, zona=:zona, subzona=:subzona, 
-                direc=:direc, tel1=:tel1, tel2=:tel2, ciudad=:ciudad WHERE id=:id";
+                direc=:direc, tel1=:tel1, tel2=:tel2, ciudad=:ciudad, correo=:correo WHERE id=:id";
                 $stmt = $dbconec->prepare($query);
                 $stmt->bindParam(':id', $id);
                 $stmt->bindParam(':codigo', $codigo);
@@ -389,6 +399,7 @@ class clientesModel extends Conexion
                 $stmt->bindParam(':tel1', $tel1);
                 $stmt->bindParam(':tel2', $tel2);
                 $stmt->bindParam(':ciudad', $ciudad);
+                $stmt->bindParam(':correo', $correo);
 
                 if ($stmt->execute()) {
                     // Si la inserción fue exitosa, devuelve un mensaje o los datos actualizados

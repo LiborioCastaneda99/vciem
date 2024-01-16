@@ -79,28 +79,32 @@ function obtenerDocumento(codigo) {
         data: { proceso: 'get_cod', codigo: codigo },
         dataType: 'json',
         success: function(data) {
-            if (data != "No hay clientes") {
-                document.getElementById('id').value = data[0].id
-                document.getElementById('codigo').value = data[0].codigo
-                document.getElementById('sucursal').value = data[0].sucursal
-                document.getElementById('nombre').value = data[0].nombre
-                document.getElementById('zona').value = data[0].zona
-                document.getElementById('subzona').value = data[0].subzona
-                document.getElementById('direc').value = data[0].direc
-                document.getElementById('correo').value = data[0].correo
-                document.getElementById('tel1').value = data[0].tel1
-                document.getElementById('tel2').value = data[0].tel2
+            if (data.status == "OK") {
+                document.getElementsByName('codigo')[0].value = data.datos[0].codigo;
+                document.getElementsByName('sucursal')[0].value = data.datos[0].sucursal;
+                document.getElementsByName('nombre')[0].value = data.datos[0].nombre;
+                document.getElementsByName('zona')[0].value = data.datos[0].zona;
+                document.getElementsByName('subzona')[0].value = data.datos[0].subzona;
+                document.getElementsByName('direc')[0].value = data.datos[0].direc;
+                document.getElementsByName('correo')[0].value = data.datos[0].correo;
+                document.getElementsByName('tel1')[0].value = data.datos[0].tel1;
+                document.getElementsByName('tel2')[0].value = data.datos[0].tel2;
+                document.getElementById('id').value = data.datos[0].id;
+                document.getElementsByName('id_pestana1').value = '';
+
             } else {
-                document.getElementById('id').value = codigo
-                document.getElementById('codigo').value = codigo
-                document.getElementById('sucursal').value = ''
-                document.getElementById('nombre').value = ''
-                document.getElementById('zona').value = ''
-                document.getElementById('subzona').value = ''
-                document.getElementById('direc').value = ''
-                document.getElementById('correo').value = ''
-                document.getElementById('tel1').value = ''
-                document.getElementById('tel2').value = ''
+                document.getElementsByName('codigo')[0].value = codigo;
+                document.getElementsByName('sucursal')[0].value = '';
+                document.getElementsByName('nombre')[0].value = '';
+                document.getElementsByName('zona')[0].value = '';
+                document.getElementsByName('subzona')[0].value = '';
+                document.getElementsByName('direc')[0].value = '';
+                document.getElementsByName('correo')[0].value = '';
+                document.getElementsByName('tel1')[0].value = '';
+                document.getElementsByName('tel2')[0].value = '';
+                document.getElementById('id').value = '';
+                document.getElementsByName('id_pestana1').value = 1;
+
             }
 
         },
@@ -113,180 +117,130 @@ function obtenerDocumento(codigo) {
 // guardar
 $(".fmr_clientes").submit(function(event) {
     event.preventDefault();
-    codigo = $("#codigo").val()
-    sucursal = $("#sucursal").val()
-    zona = $("#zona").val()
-    subzona = $("#subzona").val()
-    nombre = $("#nombre").val()
-    direc = $("#direc").val()
-    tel1 = $("#tel1").val()
-    tel2 = $("#tel2").val()
-    ciudad = $("#ciudad").val()
-        // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevo cliente
+    var formulario = document.getElementById('fmr_clientes');
+
+    // Obtiene elementos por su nombre (en el HTML usas 'id' en lugar de 'name')
+    var codigo = document.getElementsByName('codigo')[0].value;
+    var sucursal = document.getElementsByName('sucursal')[0].value;
+    var nombre = document.getElementsByName('nombre')[0].value;
+    var zona = document.getElementsByName('zona')[0].value;
+    var subzona = document.getElementsByName('subzona')[0].value;
+    var direc = document.getElementsByName('direc')[0].value;
+    var correo = document.getElementsByName('correo')[0].value;
+    var tel1 = document.getElementsByName('tel1')[0].value;
+    var tel2 = document.getElementsByName('tel2')[0].value;
+    var id = document.getElementById('id').value;
+    var id_pestana1 = document.getElementById('id_pestana1').value;
+    var id_pestana2 = document.getElementById('id_pestana2').value;
+    console.log("id " + id)
+    console.log("id_pestana1 " + id_pestana1)
+    console.log("id_pestana2 " + id_pestana2)
+        // Accede al valor del atributo data-wizard-form
+    var valorDataWizardForm = formulario.getAttribute('data-wizard-form');
+
+    // Imprime el valor en la consola o haz lo que necesites con él
+    console.log('Valor de data-wizard-form:', valorDataWizardForm);
+    // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevo cliente
     var nuevoCliente = {
-        codigo: $("#codigo").val(),
-        sucursal: $("#sucursal").val(),
-        zona: $("#zona").val(),
-        subzona: $("#subzona").val(),
-        nombre: $("#nombre").val(),
-        direc: $("#direc").val(),
-        tel1: $("#tel1").val(),
-        tel2: $("#tel2").val(),
-        ciudad: $("#ciudad").val()
-            // vendedordor: $("#vendedordor").val(),
-            // cupo: $("#cupo").val(),
-            // legal: $("#legal").val(),
-            // fecha_ini: $("#fecha_ini").val(),
-            // forma_pago: $("#forma_pago").val(),
-            // correo: $("#correo").val(),
-            // cod_viejo: $("#cod_viejo").val(),
-            // caract_dev: $("#caract_dev").val(),
-            // digito: $("#digito").val(),
-            // riva: $("#riva").val(),
-            // rfte: $("#rfte").val(),
-            // rica: $("#rica").val(),
-            // alma: $("#alma").val(),
-            // cali: $("#cali").val(),
-            // tipo: $("#tipo").val(),
-            // distri: $("#distri").val(),
-            // genom: $("#genom").val(),
-            // geema: $("#geema").val(),
-            // getel1: $("#getel1").val(),
-            // getel2: $("#getel2").val(),
-            // conom: $("#conom").val(),
-            // coema: $("#coema").val(),
-            // cotel1: $("#cotel1").val(),
-            // cotel2: $("#cotel2").val(),
-            // panom: $("#panom").val(),
-            // paema: $("#paema").val(),
-            // patel1: $("#patel1").val(),
-            // patel2: $("#panom").val(),
-            // otnom: $("#otnom").val(),
-            // otema: $("#otema").val(),
-            // ottel1: $("#ottel1").val(),
-            // ottel2: $("#ottel2").val(),
-            // remis: $("#remis").val(),
-            // fbloq: $("#fbloq").val(),
-            // diaser: $("#diaser").val(),
-            // diater: $("#diater").val(),
-            // vlrarr: $("#vlrarr").val(),
-            // acta: $("#acta").val(),
-            // pacta: $("#pacta").val(),
-            // exclui: $("#exclui").val(),
-            // person: $("#person").val(),
-            // regime: $("#regime").val(),
-            // tipoid: $("#tipoid").val(),
-            // nomreg: $("#nomreg").val(),
-            // pais: $("#pais").val(),
-            // nom1: $("#nom1").val(),
-            // nom2: $("#nom2").val(),
-            // ape1: $("#ape1").val(),
-            // ape2: $("#ape2").val(),
-            // ofi: $("#ofi").val(),
-            // difici: $("#difici").val(),
-            // remval: $("#remval").val(),
-            // estado: $("#estado").val(),
-            // cono: $("#cono").val(),
-            // emailq: $("#emailq").val()
+        codigo: codigo,
+        sucursal: sucursal,
+        zona: zona,
+        subzona: subzona,
+        nombre: nombre,
+        direc: direc,
+        correo: correo,
+        tel1: tel1,
+        tel2: tel2,
     };
-    if (codigo == "" || sucursal == "" || zona == "" || subzona == "" || nombre == "" ||
-        direc == "" || tel1 == "" || ciudad == "") {
+    if (codigo == '' || sucursal == '' || zona == '' || subzona == '' || nombre == '' ||
+        direc == '' || correo == '' || tel1 == '') {
         // alert("Por favor, completa todos los campos.");
         notificacion('Error', 'error', "Por favor, completa todos los campos.");
         return;
     } else {
-        // Hacer la solicitud AJAX para guardar la nuevo cliente
-        $.ajax({
-            type: 'POST',
-            url: 'ajax/clientesajax.php',
-            data: {
-                proceso: 'guardar',
-                codigo: nuevoCliente.codigo,
-                sucursal: nuevoCliente.sucursal,
-                zona: nuevoCliente.zona,
-                subzona: nuevoCliente.subzona,
-                nombre: nuevoCliente.nombre,
-                direc: nuevoCliente.direc,
-                tel1: nuevoCliente.tel1,
-                tel2: nuevoCliente.tel2,
-                ciudad: nuevoCliente.ciudad,
-                // vendedor: nuevoCliente.vendedor,
-                // cupo: nuevoCliente.cupo,
-                // legal: nuevoCliente.legal,
-                // fecha_ini: nuevoCliente.fecha_ini,
-                // forma_pago: nuevoCliente.forma_pago,
-                // correo: nuevoCliente.correo,
-                // cod_viejo: nuevoCliente.cod_viejo,
-                // caract_dev: nuevoCliente.caract_dev,
-                // digito: nuevoCliente.digito,
-                // riva: nuevoCliente.riva,
-                // rfte: nuevoCliente.rfte,
-                // rica: nuevoCliente.rica,
-                // alma: nuevoCliente.alma,
-                // cali: nuevoCliente.cali,
-                // tipo: nuevoCliente.tipo,
-                // distri: nuevoCliente.distri,
-                // genom: nuevoCliente.genom,
-                // geema: nuevoCliente.geema,
-                // getel1: nuevoCliente.getel1,
-                // getel2: nuevoCliente.getel2,
-                // conom: nuevoCliente.conom,
-                // coema: nuevoCliente.coema,
-                // cotel1: nuevoCliente.cotel1,
-                // cotel2: nuevoCliente.cotel2,
-                // panom: nuevoCliente.panom,
-                // paema: nuevoCliente.paema,
-                // patel1: nuevoCliente.patel1,
-                // patel2: nuevoCliente.patel2,
-                // otnom: nuevoCliente.otnom,
-                // otema: nuevoCliente.otema,
-                // ottel1: nuevoCliente.ottel1,
-                // ottel2: nuevoCliente.ottel2,
-                // remis: nuevoCliente.remis,
-                // fbloq: nuevoCliente.fbloq,
-                // diaser: nuevoCliente.diaser,
-                // diater: nuevoCliente.diater,
-                // vlrarr: nuevoCliente.vlrarr,
-                // acta: nuevoCliente.acta,
-                // pacta: nuevoCliente.pacta,
-                // exclui: nuevoCliente.exclui,
-                // person: nuevoCliente.person,
-                // regime: nuevoCliente.regime,
-                // tipoid: nuevoCliente.tipoid,
-                // nomreg: nuevoCliente.nomreg,
-                // pais: nuevoCliente.pais,
-                // nom1: nuevoCliente.nom1,
-                // nom2: nuevoCliente.nom2,
-                // ape1: nuevoCliente.ape1,
-                // ape2: nuevoCliente.ape2,
-                // ofi: nuevoCliente.ofi,
-                // difici: nuevoCliente.difici,
-                // remval: nuevoCliente.remval,
-                // estado: nuevoCliente.estado,
-                // cono: nuevoCliente.cono,
-                // emailq: nuevoCliente.emailq
-            },
-            dataType: 'json',
-            success: function(response) {
-                if (response.status === 'success') {
-                    // cerramos el modal
-                    $('#guardarModal').modal('hide');
-                    // limpiamos el formulario
-                    $('#fmr_clientes')[0].reset();
-                    // mostramos la alerta
-                    notificacion('Éxito', 'success', response.message);
 
-                    cargar_tabla();
-                } else {
+        if (id_pestana1 == 1) {
+            // Hacer la solicitud AJAX para guardar la nuevo cliente
+            $.ajax({
+                type: 'POST',
+                url: 'ajax/clientesajaxv1.php',
+                data: {
+                    proceso: 'guardar',
+                    codigo: nuevoCliente.codigo,
+                    sucursal: nuevoCliente.sucursal,
+                    zona: nuevoCliente.zona,
+                    subzona: nuevoCliente.subzona,
+                    nombre: nuevoCliente.nombre,
+                    direc: nuevoCliente.direc,
+                    correo: nuevoCliente.correo,
+                    tel1: nuevoCliente.tel1,
+                    tel2: nuevoCliente.tel2,
+                    ciudad: nuevoCliente.ciudad,
+                },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status === 'success') {
+                        document.getElementById('id_pestana2').value = response.id
+
+                        // cerramos el modal
+                        // $('#guardarModal').modal('hide');
+                        // limpiamos el formulario
+                        // $('#fmr_clientes')[0].reset();
+                        // mostramos la alerta
+
+                        notificacion('Éxito', 'success', response.message);
+
+                        cargar_tabla();
+                    } else {
+                        // Error en la inserción, muestra mensaje de error con SweetAlert
+                        notificacion('Error', 'error', response.message);
+                    }
+                },
+                error: function() {
                     // Error en la inserción, muestra mensaje de error con SweetAlert
                     notificacion('Error', 'error', response.message);
                 }
-            },
-            error: function() {
-                // Error en la inserción, muestra mensaje de error con SweetAlert
-                notificacion('Error', 'error', response.message);
-            }
-        });
+            });
+        }
+        // solo para modificar
+        if (id > 0) {
+            // Hacer la solicitud AJAX para guardar la nuevo cliente
+            $.ajax({
+                type: 'POST',
+                url: 'ajax/clientesajaxv1.php',
+                data: {
+                    proceso: 'modificar',
+                    codigo: nuevoCliente.codigo,
+                    sucursal: nuevoCliente.sucursal,
+                    zona: nuevoCliente.zona,
+                    subzona: nuevoCliente.subzona,
+                    nombre: nuevoCliente.nombre,
+                    direc: nuevoCliente.direc,
+                    correo: nuevoCliente.correo,
+                    tel1: nuevoCliente.tel1,
+                    tel2: nuevoCliente.tel2,
+                    ciudad: nuevoCliente.ciudad,
+                    id: id,
+                    activo: 0,
+                },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status === 'success') {
+                        document.getElementById('id_pestana2').value = id
+                        notificacion('Éxito', 'success', response.message);
+
+                        cargar_tabla();
+                    } else {
+                        // Error en la inserción, muestra mensaje de error con SweetAlert
+                        notificacion('Error', 'error', response.message);
+                    }
+                },
+                error: function() {
+                    // Error en la inserción, muestra mensaje de error con SweetAlert
+                    notificacion('Error', 'error', response.message);
+                }
+            });
+        }
     }
 });
 

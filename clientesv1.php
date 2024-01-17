@@ -80,7 +80,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                 <div id="tableExample3" data-list='{"valueNames":["codigo","subzona"],"page":5,"pagination":true}'>
                                     <div class="row justify-content-end g-0">
                                         <div class="d-flex align-items-center" id="table-contact-replace-element">
-                                            <button class="btn btn-falcon-default btn-sm" type="button" id="btnAgregar" data-bs-toggle="modal" data-bs-target="#guardarModal">
+                                            <button onclick="abrir_modal()" class="btn btn-falcon-default btn-sm" type="button" id="btnAgregar" data-bs-toggle="modal">
                                                 <span class="fas fa-plus" data-fa-transform="shrink-3"></span>
                                                 <span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1" title="Registrar">Agregar</span>
                                             </button>
@@ -152,7 +152,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <ul class="nav justify-content-between nav-wizard">
                                                     <li class="nav-item">
                                                         <!-- definimos las opciones de llenado de clientes -->
-                                                        <a class="nav-link active fw-semi-bold" href="#bootstrap-wizard-validation-tab1" data-bs-toggle="tab" data-wizard-step="1">
+                                                        <a id="abrir" class="nav-link active fw-semi-bold" href="#bootstrap-wizard-validation-tab1" data-bs-toggle="tab" data-wizard-step="1">
                                                             <span class="nav-item-circle-parent">
                                                                 <span class="nav-item-circle">
                                                                     <span class="fas fa-lock"></span>
@@ -204,9 +204,9 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             <div class="card-body py-4" id="wizard-controller">
                                                 <div class="tab-content">
                                                     <div class="tab-pane active px-sm-3 px-md-5" role="tabpanel" aria-labelledby="bootstrap-wizard-validation-tab1" id="bootstrap-wizard-validation-tab1">
-                                                        <form id="fmr_clientes" class="fmr_clientes needs-validation" novalidate="novalidate" data-wizard-form="1">
+                                                        <form id="fmr_clientes1" class="fmr_clientes needs-validation" novalidate="novalidate" data-wizard-form="1">
                                                             <div class="row">
-                                                                <input type="hidden" value="" name="id_pestana1" id="id_pestana1">
+                                                                <input type="hidden" value="1" name="id_pestana1" id="id_pestana1">
                                                                 <input type="hidden" value="" name="id" id="id">
                                                                 <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-codigo">Código</label>
@@ -250,40 +250,40 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-tel2">Teléfono 2</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-tel2" name="tel2" type="number" required />
+                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-tel2" name="tel2" type="number" />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
                                                             </div>
                                                         </form>
                                                     </div>
                                                     <div class="tab-pane px-sm-3 px-md-5" role="tabpanel" aria-labelledby="bootstrap-wizard-validation-tab2" id="bootstrap-wizard-validation-tab2">
-                                                        <form  id="fmr_clientes" class="fmr_clientes needs-validation" novalidate="novalidate" data-wizard-form="2">
+                                                        <form id="fmr_clientes2" class="fmr_clientes needs-validation" novalidate="novalidate" data-wizard-form="2">
                                                             <div class="row">
-                                                                <input type="hidden" name="id_pestana2" id="id_pestana2">
+                                                                <input type="hidden" value="1" name="id_pestana2" id="id_pestana2">
 
                                                                 <div class="col-md-8">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-nombre1">Nombre</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-nombre1" name="nombre" type="text" required />
+                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-nombre1" name="nombre1" type="text" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-sucursal1">Sucursal</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-sucursal1" name="sucursal" type="text" required />
+                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-sucursal1" name="sucursal1" type="text" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-zona2">Zona</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-zona2" name="zona" type="text" required />
+                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-zona1">Zona</label>
+                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-zona1" name="zona1" type="text" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-subzona2">Subzona</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-subzona2" name="subzona" type="text" required />
+                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-subzona1">Subzona</label>
+                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-subzona1" name="subzona1" type="text" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
                                                                 <div class="col-md-6">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-direc2">Dirección</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-direc2" name="direc" type="text" required />
+                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-direc1">Dirección</label>
+                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-direc1" name="direc1" type="text" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
 
@@ -291,34 +291,45 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                         </form>
                                                     </div>
                                                     <div class="tab-pane px-sm-3 px-md-5" role="tabpanel" aria-labelledby="bootstrap-wizard-validation-tab3" id="bootstrap-wizard-validation-tab3">
-                                                        <form class="form-validation" data-wizard-form="2">
-                                                            <div class="row g-2">
-                                                                <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="bootstrap-wizard-validation-card-number">Card Number</label><input class="form-control" placeholder="XXXX XXXX XXXX XXXX" type="text" id="bootstrap-wizard-validation-card-number"></div>
+                                                        <form id="fmr_clientes3" class="fmr_clientes needs-validation" novalidate="novalidate" data-wizard-form="3">
+                                                            <div class="row">
+                                                                <input type="hidden" value="1" name="id_pestana3" id="id_pestana3">
+
+                                                                <div class="col-md-8">
+                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-nombre2">Nombre</label>
+                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-nombre2" name="nombre2" type="text" required />
+                                                                    <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
-                                                                <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="bootstrap-wizard-validation-card-name">Name on Card</label><input class="form-control" placeholder="John Doe" name="cardName" type="text" id="bootstrap-wizard-validation-card-name"></div>
+                                                                <div class="col-md-4">
+                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-sucursal2">Sucursal</label>
+                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-sucursal2" name="sucursal2" type="text" required />
+                                                                    <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row g-2">
-                                                                <div class="col-6">
-                                                                    <div class="mb-3"><label class="form-label" for="bootstrap-wizard-validation-card-holder-zip-code">Zip Code</label><input class="form-control" placeholder="1234" name="zipCode" type="text" id="bootstrap-wizard-validation-card-holder-zip-code"></div>
+                                                                <div class="col-md-4">
+                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-zona2">Zona</label>
+                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-zona2" name="zona2" type="text" required />
+                                                                    <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
-                                                                <div class="col-6">
-                                                                    <div class="form-group mb-0"><label class="form-label" for="bootstrap-wizard-validation-card-exp-date">Exp Date</label><input class="form-control" placeholder="15/2024" name="expDate" type="text" id="bootstrap-wizard-validation-card-exp-date"></div>
+                                                                <div class="col-md-4">
+                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-subzona2">Subzona</label>
+                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-subzona2" name="subzona2" type="text" required />
+                                                                    <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
-                                                                <div class="col-6">
-                                                                    <div class="form-group mb-0"><label class="form-label" for="bootstrap-wizard-validation-card-cvv">CVV</label><span class="ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Card verification value"><span class="fa fa-question-circle"></span></span><input class="form-control" placeholder="123" name="cvv" maxlength="3" pattern="[0-9]{3}" type="text" id="bootstrap-wizard-validation-card-cvv"></div>
+                                                                <div class="col-md-6">
+                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-direc2">Dirección</label>
+                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-direc2" name="direc2" type="text" required />
+                                                                    <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
+
                                                             </div>
                                                         </form>
                                                     </div>
                                                     <div class="tab-pane text-center px-sm-3 px-md-5" role="tabpanel" aria-labelledby="bootstrap-wizard-validation-tab4" id="bootstrap-wizard-validation-tab4">
                                                         <div class="wizard-lottie-wrapper">
-                                                            <div class="lottie wizard-lottie mx-auto my-3" data-options='{"path":"../../assets/img/animated-icons/celebration.json"}'></div>
+                                                            <!-- <div class="lottie wizard-lottie mx-auto my-3" data-options='{"path":"assets/img/animated-icons/celebration.json"}'></div> -->
                                                         </div>
-                                                        <h4 class="mb-1">Your account is all set!</h4>
-                                                        <p>Now you can access to your account</p><a class="btn btn-primary px-5 my-3" href="wizard.html.htm">Start Over</a>
+                                                        <h4 id="resp_titulo" class="mb-1">{resp_titulo}</h4>
+                                                        <p id="resp_mensaje">{resp_mensaje}</p><a class="btn btn-primary px-5 my-3" href="#" onclick="cerrar_modal()">Cerrar</a>
                                                     </div>
                                                 </div>
                                             </div>

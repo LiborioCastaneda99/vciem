@@ -114,392 +114,109 @@ function obtenerDocumento(codigo) {
     });
 }
 
-// guardar
-$(".fmr_clientes").submit(function(event) {
-    event.preventDefault();
-    var formulario = document.getElementById('fmr_clientes');
+// Función para obtener los datos de un formulario
+function obtenerDatosFormulario(formulario) {
+    var elementos = formulario.elements;
+    var datos = {};
 
-    // Obtiene elementos por su nombre (en el HTML usas 'id' en lugar de 'name')
-    var codigo = document.getElementsByName('codigo')[0].value;
-    var sucursal = document.getElementsByName('sucursal')[0].value;
-    var nombre = document.getElementsByName('nombre')[0].value;
-    var zona = document.getElementsByName('zona')[0].value;
-    var subzona = document.getElementsByName('subzona')[0].value;
-    var direc = document.getElementsByName('direc')[0].value;
-    var correo = document.getElementsByName('correo')[0].value;
-    var tel1 = document.getElementsByName('tel1')[0].value;
-    var tel2 = document.getElementsByName('tel2')[0].value;
-    var id = document.getElementById('id').value;
-    var id_pestana1 = document.getElementById('id_pestana1').value;
-    var id_pestana2 = document.getElementById('id_pestana2').value;
-    console.log("id " + id)
-    console.log("id_pestana1 " + id_pestana1)
-    console.log("id_pestana2 " + id_pestana2)
-        // Accede al valor del atributo data-wizard-form
-    var valorDataWizardForm = formulario.getAttribute('data-wizard-form');
-
-    // Imprime el valor en la consola o haz lo que necesites con él
-    console.log('Valor de data-wizard-form:', valorDataWizardForm);
-    // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevo cliente
-    var nuevoCliente = {
-        codigo: codigo,
-        sucursal: sucursal,
-        zona: zona,
-        subzona: subzona,
-        nombre: nombre,
-        direc: direc,
-        correo: correo,
-        tel1: tel1,
-        tel2: tel2,
-    };
-    if (codigo == '' || sucursal == '' || zona == '' || subzona == '' || nombre == '' ||
-        direc == '' || correo == '' || tel1 == '') {
-        // alert("Por favor, completa todos los campos.");
-        notificacion('Error', 'error', "Por favor, completa todos los campos.");
-        return;
-    } else {
-
-        if (id_pestana1 == 1) {
-            // Hacer la solicitud AJAX para guardar la nuevo cliente
-            $.ajax({
-                type: 'POST',
-                url: 'ajax/clientesajaxv1.php',
-                data: {
-                    proceso: 'guardar',
-                    codigo: nuevoCliente.codigo,
-                    sucursal: nuevoCliente.sucursal,
-                    zona: nuevoCliente.zona,
-                    subzona: nuevoCliente.subzona,
-                    nombre: nuevoCliente.nombre,
-                    direc: nuevoCliente.direc,
-                    correo: nuevoCliente.correo,
-                    tel1: nuevoCliente.tel1,
-                    tel2: nuevoCliente.tel2,
-                    ciudad: nuevoCliente.ciudad,
-                },
-                dataType: 'json',
-                success: function(response) {
-                    if (response.status === 'success') {
-                        document.getElementById('id_pestana2').value = response.id
-
-                        // cerramos el modal
-                        // $('#guardarModal').modal('hide');
-                        // limpiamos el formulario
-                        // $('#fmr_clientes')[0].reset();
-                        // mostramos la alerta
-
-                        notificacion('Éxito', 'success', response.message);
-
-                        cargar_tabla();
-                    } else {
-                        // Error en la inserción, muestra mensaje de error con SweetAlert
-                        notificacion('Error', 'error', response.message);
-                    }
-                },
-                error: function() {
-                    // Error en la inserción, muestra mensaje de error con SweetAlert
-                    notificacion('Error', 'error', response.message);
-                }
-            });
-        }
-        // solo para modificar
-        if (id > 0) {
-            // Hacer la solicitud AJAX para guardar la nuevo cliente
-            $.ajax({
-                type: 'POST',
-                url: 'ajax/clientesajaxv1.php',
-                data: {
-                    proceso: 'modificar',
-                    codigo: nuevoCliente.codigo,
-                    sucursal: nuevoCliente.sucursal,
-                    zona: nuevoCliente.zona,
-                    subzona: nuevoCliente.subzona,
-                    nombre: nuevoCliente.nombre,
-                    direc: nuevoCliente.direc,
-                    correo: nuevoCliente.correo,
-                    tel1: nuevoCliente.tel1,
-                    tel2: nuevoCliente.tel2,
-                    ciudad: nuevoCliente.ciudad,
-                    id: id,
-                    activo: 0,
-                },
-                dataType: 'json',
-                success: function(response) {
-                    if (response.status === 'success') {
-                        document.getElementById('id_pestana2').value = id
-                        notificacion('Éxito', 'success', response.message);
-
-                        cargar_tabla();
-                    } else {
-                        // Error en la inserción, muestra mensaje de error con SweetAlert
-                        notificacion('Error', 'error', response.message);
-                    }
-                },
-                error: function() {
-                    // Error en la inserción, muestra mensaje de error con SweetAlert
-                    notificacion('Error', 'error', response.message);
-                }
-            });
+    for (var i = 0; i < elementos.length; i++) {
+        var elemento = elementos[i];
+        if (elemento.tagName === 'INPUT' || elemento.tagName === 'SELECT' || elemento.tagName === 'TEXTAREA') {
+            datos[elemento.name] = elemento.value;
         }
     }
-});
 
-// editar
-function editar(id) {
-
-    // Hacer la solicitud AJAX al servidor
-    var urlprocess = 'ajax/clientesajax.php';
-    $.ajax({
-        type: 'POST',
-        url: urlprocess,
-        data: 'id=' + id + '&proceso=get_id',
-        dataType: 'json',
-        success: function(data) {
-
-            // Asignar un valor al input
-            document.getElementById('id').value = data[0].id
-            document.getElementById('codigo_mod').value = data[0].codigo
-            document.getElementById('sucursal_mod').value = data[0].sucursal
-            document.getElementById('zona_mod').value = data[0].zona
-            document.getElementById('subzona_mod').value = data[0].subzona
-            document.getElementById('nombre_mod').value = data[0].nombre
-            document.getElementById('direc_mod').value = data[0].direc
-            document.getElementById('tel1_mod').value = data[0].tel1
-            document.getElementById('tel2_mod').value = data[0].tel2
-            document.getElementById('ciudad_mod').value = data[0].ciudad
-                // document.getElementById('vendedordor_mod').value = data[0].vendedordor
-                // document.getElementById('cupo_mod').value = data[0].cupo
-                // document.getElementById('legal_mod').value = data[0].legal
-                // document.getElementById('fecha_ini_mod').value = data[0].fecha_ini
-                // document.getElementById('forma_pago_mod').value = data[0].forma_pago
-                // document.getElementById('correo_mod').value = data[0].correo
-                // document.getElementById('cod_viejo_mod').value = data[0].cod_viejo
-                // document.getElementById('caract_dev_mod').value = data[0].caract_dev
-                // document.getElementById('digito_mod').value = data[0].digito
-                // document.getElementById('riva_mod').value = data[0].riva
-                // document.getElementById('rfte_mod').value = data[0].rfte
-                // document.getElementById('rica_mod').value = data[0].rica
-                // document.getElementById('alma_mod').value = data[0].alma
-                // document.getElementById('cali_mod').value = data[0].cali
-                // document.getElementById('tipo_mod').value = data[0].tipo
-                // document.getElementById('distri_mod').value = data[0].distri
-                // document.getElementById('genom_mod').value = data[0].genom
-                // document.getElementById('geema_mod').value = data[0].geema
-                // document.getElementById('getel1_mod').value = data[0].getel1
-                // document.getElementById('getel2_mod').value = data[0].getel2
-                // document.getElementById('conom_mod').value = data[0].conom
-                // document.getElementById('coema_mod').value = data[0].coema
-                // document.getElementById('cotel1_mod').value = data[0].cotel1
-                // document.getElementById('cotel2_mod').value = data[0].cotel2
-                // document.getElementById('panom_mod').value = data[0].panom
-                // document.getElementById('paema_mod').value = data[0].paema
-                // document.getElementById('patel1_mod').value = data[0].patel1
-                // document.getElementById('patel2_mod').value = data[0].patel2
-                // document.getElementById('otnom_mod').value = data[0].otnom
-                // document.getElementById('otema_mod').value = data[0].otema
-                // document.getElementById('ottel1_mod').value = data[0].ottel1
-                // document.getElementById('ottel2_mod').value = data[0].ottel2
-                // document.getElementById('remis_mod').value = data[0].remis
-                // document.getElementById('fbloq_mod').value = data[0].fbloq
-                // document.getElementById('diaser_mod').value = data[0].diaser
-                // document.getElementById('diater_mod').value = data[0].diater
-                // document.getElementById('vlrarr_mod').value = data[0].vlrarr
-                // document.getElementById('acta_mod').value = data[0].acta
-                // document.getElementById('pacta_mod').value = data[0].pacta
-                // document.getElementById('exclui_mod').value = data[0].exclui
-                // document.getElementById('person_mod').value = data[0].person
-                // document.getElementById('regime_mod').value = data[0].regime
-                // document.getElementById('tipoid_mod').value = data[0].tipoid
-                // document.getElementById('nomreg_mod').value = data[0].nomreg
-                // document.getElementById('pais_mod').value = data[0].pais
-                // document.getElementById('nom1_mod').value = data[0].nom1
-                // document.getElementById('nom2_mod').value = data[0].nom2
-                // document.getElementById('ape1_mod').value = data[0].ape1
-                // document.getElementById('ape2_mod').value = data[0].ape2
-                // document.getElementById('ofi_mod').value = data[0].ofi
-                // document.getElementById('difici_mod').value = data[0].difici
-                // document.getElementById('remval_mod').value = data[0].remval
-                // document.getElementById('estado_mod').value = data[0].estado
-                // document.getElementById('cono_mod').value = data[0].cono
-                // document.getElementById('emailq_mod').value = data[0].emailq
-
-            // Limpiar el cuerpo de la tabla
-            $('#editarModal').modal('show'); // abrir
-
-        },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            notificacion('Error', 'error', response.message);
-        }
-    });
+    return datos;
 }
 
-$(".fmr_clientes_editar").submit(function(event) {
-    event.preventDefault();
-    codigo = $("#codigo_mod").val()
-    sucursal = $("#sucursal_mod").val()
-    zona = $("#zona_mod").val()
-    subzona = $("#subzona_mod").val()
-    nombre = $("#nombre_mod").val()
-    direc = $("#direc_mod").val()
-    tel1 = $("#tel1_mod").val()
-    tel2 = $("#tel2_mod").val()
-    ciudad = $("#ciudad_mod").val()
-        // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nuevo cliente
-    var nuevoCliente = {
-        codigo: $("#codigo_mod").val(),
-        sucursal: $("#sucursal_mod").val(),
-        zona: $("#zona_mod").val(),
-        subzona: $("#subzona_mod").val(),
-        nombre: $("#nombre_mod").val(),
-        direc: $("#direc_mod").val(),
-        tel1: $("#tel1_mod").val(),
-        tel2: $("#tel2_mod").val(),
-        ciudad: $("#ciudad_mod").val(),
-        // vendedordor: $("#vendedordor_mod").val(),
-        // cupo: $("#cupo_mod").val(),
-        // legal: $("#legal_mod").val(),
-        // fecha_ini: $("#fecha_ini_mod").val(),
-        // forma_pago: $("#forma_pago_mod").val(),
-        // correo: $("#correo_mod").val(),
-        // cod_viejo: $("#cod_viejo_mod").val(),
-        // caract_dev: $("#caract_dev_mod").val(),
-        // digito: $("#digito_mod").val(),
-        // riva: $("#riva_mod").val(),
-        // rfte: $("#rfte_mod").val(),
-        // rica: $("#rica_mod").val(),
-        // alma: $("#alma_mod").val(),
-        // cali: $("#cali_mod").val(),
-        // tipo: $("#tipo_mod").val(),
-        // distri: $("#distri_mod").val(),
-        // genom: $("#genom_mod").val(),
-        // geema: $("#geema_mod").val(),
-        // getel1: $("#getel1_mod").val(),
-        // getel2: $("#getel2_mod").val(),
-        // conom: $("#conom_mod").val(),
-        // coema: $("#coema_mod").val(),
-        // cotel1: $("#cotel1_mod").val(),
-        // cotel2: $("#cotel2_mod").val(),
-        // panom: $("#panom_mod").val(),
-        // paema: $("#paema_mod").val(),
-        // patel1: $("#patel1_mod").val(),
-        // patel2: $("#patel2_mod").val(),
-        // otnom: $("#otnom_mod").val(),
-        // otema: $("#otema_mod").val(),
-        // ottel1: $("#ottel1_mod").val(),
-        // ottel2: $("#ottel2_mod").val(),
-        // remis: $("#remis_mod").val(),
-        // fbloq: $("#fbloq_mod").val(),
-        // diaser: $("#diaser_mod").val(),
-        // diater: $("#diater_mod").val(),
-        // vlrarr: $("#vlrarr_mod").val(),
-        // acta: $("#acta_mod").val(),
-        // pacta: $("#pacta_mod").val(),
-        // exclui: $("#exclui_mod").val(),
-        // person: $("#person_mod").val(),
-        // regime: $("#regime_mod").val(),
-        // tipoid: $("#tipoid_mod").val(),
-        // nomreg: $("#nomreg_mod").val(),
-        // pais: $("#pais_mod").val(),
-        // nom1: $("#nom1_mod").val(),
-        // nom2: $("#nom2_mod").val(),
-        // ape1: $("#ape1_mod").val(),
-        // ape2: $("#ape2_mod").val(),
-        // ofi: $("#ofi_mod").val(),
-        // difici: $("#difici_mod").val(),
-        // remval: $("#remval_mod").val(),
-        // estado: $("#estado_mod").val(),
-        // cono: $("#cono_mod").val(),
-        // emailq: $("#emailq_mod").val(),
-        id: $("#id").val()
-    };
-    if (codigo == "" || sucursal == "" || zona == "" || subzona == "" || nombre == "" ||
-        direc == "" || tel1 == "" || tel2 == "" || ciudad == "") {
-        // alert("Por favor, completa todos los campos.");
-        notificacion('Error', 'error', "Por favor, completa todos los campos.");
-        return;
-    } else {
+// Función para obtener los datos de todos los formularios
+function obtenerDatosFormularios() {
+    var datos = {};
+
+    // Obtener datos del formulario 1
+    var formulario1 = document.getElementById('fmr_clientes1');
+    datos['fmr_clientes1'] = obtenerDatosFormulario(formulario1);
+
+    // Obtener datos del formulario 2
+    var formulario2 = document.getElementById('fmr_clientes2');
+    datos['fmr_clientes2'] = obtenerDatosFormulario(formulario2);
+
+    // Obtener datos del formulario 3
+    var formulario3 = document.getElementById('fmr_clientes3');
+    datos['fmr_clientes3'] = obtenerDatosFormulario(formulario3);
+
+    return datos;
+}
+
+// Función para validar que todos los formularios tengan valores
+function validarFormularios(datos) {
+    var datos_formateados = {};
+
+    for (var formulario in datos) {
+        if (datos.hasOwnProperty(formulario)) {
+            var datosFormulario = datos[formulario];
+            for (var campo in datosFormulario) {
+                if (datosFormulario.hasOwnProperty(campo)) {
+                    // Excluir campo tel2 del formulario 1 de la validación
+                    if (formulario === 'fmr_clientes1' && campo === 'tel2') {
+                        continue;
+                    }
+
+                    if (!datosFormulario[campo]) {
+                        console.log('El formulario ' + formulario + ' tiene un campo vacío: ' + campo);
+                        return false;
+                    }
+                    datos_formateados[campo] = datosFormulario[campo]
+                }
+            }
+        }
+    }
+    return { 'valido': true, 'datos': datos_formateados };
+}
+
+// Agregar evento al botón "Siguiente"
+var btnSiguiente = document.getElementById('btnSiguiente');
+btnSiguiente.addEventListener('click', function() {
+    var datosFormularios = obtenerDatosFormularios();
+    var resultadoValidacion = validarFormularios(datosFormularios);
+
+    if (resultadoValidacion.valido) {
+        console.log('Todos los formularios tienen valores válidos.');
+        console.table(resultadoValidacion.datos)
+        var datos_formulario_json = resultadoValidacion.datos
+
+        id = datos_formulario_json.id
+        console.log("id ===> ", id)
+
+        if (id == '') {
+            datos_formulario_json["proceso"] = "guardar"
+        } else {
+            datos_formulario_json["proceso"] = "modificar"
+        }
+
         // Hacer la solicitud AJAX para guardar la nuevo cliente
         $.ajax({
             type: 'POST',
-            url: 'ajax/clientesajax.php',
-            data: {
-                proceso: 'modificar',
-                codigo: nuevoCliente.codigo,
-                sucursal: nuevoCliente.sucursal,
-                zona: nuevoCliente.zona,
-                subzona: nuevoCliente.subzona,
-                nombre: nuevoCliente.nombre,
-                direc: nuevoCliente.direc,
-                tel1: nuevoCliente.tel1,
-                tel2: nuevoCliente.tel2,
-                ciudad: nuevoCliente.ciudad,
-                // vendedordor: nuevoCliente.vendedordor,
-                // cupo: nuevoCliente.cupo,
-                // legal: nuevoCliente.legal,
-                // fecha_ini: nuevoCliente.fecha_ini,
-                // forma_pago: nuevoCliente.forma_pago,
-                // correo: nuevoCliente.correo,
-                // cod_viejo: nuevoCliente.cod_viejo,
-                // caract_dev: nuevoCliente.caract_dev,
-                // digito: nuevoCliente.digito,
-                // rfte: nuevoCliente.rfte,
-                // riva: nuevoCliente.riva,
-                // rica: nuevoCliente.rica,
-                // alma: nuevoCliente.alma,
-                // cali: nuevoCliente.cali,
-                // tipo: nuevoCliente.tipo,
-                // distri: nuevoCliente.distri,
-                // genom: nuevoCliente.genom,
-                // geema: nuevoCliente.geema,
-                // getel1: nuevoCliente.getel1,
-                // getel2: nuevoCliente.getel2,
-                // conom: nuevoCliente.conom,
-                // coema: nuevoCliente.coema,
-                // cotel1: nuevoCliente.cotel1,
-                // cotel2: nuevoCliente.cotel2,
-                // panom: nuevoCliente.panom,
-                // paema: nuevoCliente.paema,
-                // patel1: nuevoCliente.patel1,
-                // patel2: nuevoCliente.patel2,
-                // otnom: nuevoCliente.otnom,
-                // otema: nuevoCliente.otema,
-                // ottel1: nuevoCliente.ottel1,
-                // ottel2: nuevoCliente.ottel2,
-                // remis: nuevoCliente.remis,
-                // fbloq: nuevoCliente.fbloq,
-                // diaser: nuevoCliente.diaser,
-                // diater: nuevoCliente.diater,
-                // vlrarr: nuevoCliente.vlrarr,
-                // acta: nuevoCliente.acta,
-                // pacta: nuevoCliente.pacta,
-                // exclui: nuevoCliente.exclui,
-                // person: nuevoCliente.person,
-                // regime: nuevoCliente.regime,
-                // tipoid: nuevoCliente.tipoid,
-                // nomreg: nuevoCliente.nomreg,
-                // pais: nuevoCliente.pais,
-                // nom1: nuevoCliente.nom1,
-                // nom2: nuevoCliente.nom2,
-                // ape1: nuevoCliente.ape1,
-                // ape2: nuevoCliente.ape2,
-                // ofi: nuevoCliente.ofi,
-                // difici: nuevoCliente.difici,
-                // remval: nuevoCliente.remval,
-                // estado: nuevoCliente.estado,
-                // cono: nuevoCliente.cono,
-                // emailq: nuevoCliente.emailq,
-                id: nuevoCliente.id
-            },
+            url: 'ajax/clientesajaxv1.php',
+            data: datos_formulario_json,
             dataType: 'json',
             success: function(response) {
                 if (response.status === 'success') {
                     // cerramos el modal
-                    $('#editarModal').modal('hide');
+                    // $('#guardarModal').modal('hide');
                     // limpiamos el formulario
-                    $('#fmr_clientes_editar')[0].reset();
+                    $('.fmr_clientes')[0].reset();
+
+                    // Selecciona el elemento por su ID
+                    var resp_titulo = document.getElementById('resp_titulo');
+                    var resp_mensaje = document.getElementById('resp_mensaje');
+
+                    // Actualiza el contenido del elemento con el valor
+                    resp_titulo.innerHTML = 'Éxito';
+                    resp_mensaje.innerHTML = response.message;
+
                     // mostramos la alerta
-                    notificacion('Éxito', 'success', response.message);
+                    // notificacion('Éxito', 'success', response.message);
 
                     cargar_tabla();
                 } else {
@@ -512,51 +229,15 @@ $(".fmr_clientes_editar").submit(function(event) {
                 notificacion('Error', 'error', response.message);
             }
         });
+
+
+        // Aquí puedes enviar los datos a través de Ajax o realizar otras acciones.
+    } else {
+        console.log('Al menos un formulario tiene campos vacíos.');
     }
 });
 
-// eliminar
-function eliminar(id) {
-
-    // Utiliza SweetAlert para confirmar la eliminación
-    Swal.fire({
-        title: '¿Estás seguro?',
-        text: '¿Seguro que deseas eliminar la cliente?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Sí, eliminarlo',
-        cancelButtonText: 'No, cancelar'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // Realiza la solicitud de eliminación al servidor (aquí deberías hacer tu llamada AJAX)
-            $.ajax({
-                type: 'POST',
-                url: 'ajax/clientesajax.php',
-                data: {
-                    proceso: 'eliminar',
-                    id: id
-                },
-                dataType: 'json',
-                success: function(response) {
-                    if (response.status === 'success') {
-                        notificacion('Éxito', 'success', response.message);
-
-                        cargar_tabla();
-                    } else {
-                        // Error en la inserción, muestra mensaje de error con SweetAlert
-                        notificacion('Error', 'error', response.message);
-                    }
-                },
-                error: function() {
-                    notificacion('Error', 'error', response.message)
-                }
-            });
-        }
-    });
-}
-
+// funcion para crear la notificacion
 function notificacion(titulo, icon, mensaje) {
     //Mensaje de notificación, muestra un mensaje con SweetAlert
     if (titulo == "Error") {
@@ -572,8 +253,24 @@ function notificacion(titulo, icon, mensaje) {
     });
 }
 
+// funcion para generar el pdf
 function generar() {
     // Abre la URL del archivo PDF en una nueva pestaña
     window.open('pdfs/generar_pdf_clientes.php', '_blank');
+
+}
+// Función para cerrar el modal
+function cerrar_modal() {
+    $('#guardarModal').modal('hide');
+}
+
+function abrir_modal() {
+    $('#fmr_clientes1')[0].reset();
+    $('#fmr_clientes2')[0].reset();
+    $('#fmr_clientes3')[0].reset();
+
+    $('#guardarModal').modal('show');
+    document.getElementById('abrir').click();
+
 
 }

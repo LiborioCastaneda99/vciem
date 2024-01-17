@@ -72,6 +72,7 @@ function cargar_tabla() {
 //consultar documento
 function obtenerDocumento(codigo) {
     var urlprocess = "ajax/clientesajaxv1.php";
+    var btnSiguiente = document.getElementById("btnSiguiente");
 
     $.ajax({
         type: 'POST',
@@ -79,37 +80,15 @@ function obtenerDocumento(codigo) {
         data: { proceso: 'get_cod', codigo: codigo },
         dataType: 'json',
         success: function(data) {
-            if (data.status == "OK") {
-                document.getElementsByName('codigo')[0].value = data.datos[0].codigo;
-                document.getElementsByName('sucursal')[0].value = data.datos[0].sucursal;
-                document.getElementsByName('nombre')[0].value = data.datos[0].nombre;
-                document.getElementsByName('zona')[0].value = data.datos[0].zona;
-                document.getElementsByName('subzona')[0].value = data.datos[0].subzona;
-                document.getElementsByName('direc')[0].value = data.datos[0].direc;
-                document.getElementsByName('correo')[0].value = data.datos[0].correo;
-                document.getElementsByName('tel1')[0].value = data.datos[0].tel1;
-                document.getElementsByName('tel2')[0].value = data.datos[0].tel2;
-                document.getElementById('id').value = data.datos[0].id;
-                document.getElementsByName('id_pestana1').value = '';
-
+            if (data.status == "Error") {
+                notificacion('Error', 'error', data.mensaje);
+                btnSiguiente.disabled = true;
             } else {
-                document.getElementsByName('codigo')[0].value = codigo;
-                document.getElementsByName('sucursal')[0].value = '';
-                document.getElementsByName('nombre')[0].value = '';
-                document.getElementsByName('zona')[0].value = '';
-                document.getElementsByName('subzona')[0].value = '';
-                document.getElementsByName('direc')[0].value = '';
-                document.getElementsByName('correo')[0].value = '';
-                document.getElementsByName('tel1')[0].value = '';
-                document.getElementsByName('tel2')[0].value = '';
-                document.getElementById('id').value = '';
-                document.getElementsByName('id_pestana1').value = 1;
-
+                btnSiguiente.disabled = false;
             }
-
         },
         error: function(error) {
-            console.log('Error al obtener datos: ', error);
+            notificacion('Error', 'error', error);
         }
     });
 }
@@ -159,6 +138,27 @@ function validarFormularios(datos) {
                 if (datosFormulario.hasOwnProperty(campo)) {
                     // Excluir campo tel2 del formulario 1 de la validación
                     if (formulario === 'fmr_clientes1' && campo === 'tel2') {
+                        if (!datosFormulario[campo]) {
+                            datos_formateados[campo] = ''
+                        } else {
+                            datos_formateados[campo] = datosFormulario[campo]
+                        }
+                        continue;
+                    }
+                    if (formulario === 'fmr_clientes2' && campo === 'tel2') {
+                        if (!datosFormulario[campo]) {
+                            datos_formateados[campo] = ''
+                        } else {
+                            datos_formateados[campo] = datosFormulario[campo]
+                        }
+                        continue;
+                    }
+                    if (formulario === 'fmr_clientes3' && campo === 'tel2') {
+                        if (!datosFormulario[campo]) {
+                            datos_formateados[campo] = ''
+                        } else {
+                            datos_formateados[campo] = datosFormulario[campo]
+                        }
                         continue;
                     }
 
@@ -184,15 +184,7 @@ btnSiguiente.addEventListener('click', function() {
         console.log('Todos los formularios tienen valores válidos.');
         console.table(resultadoValidacion.datos)
         var datos_formulario_json = resultadoValidacion.datos
-
-        id = datos_formulario_json.id
-        console.log("id ===> ", id)
-
-        if (id == '') {
-            datos_formulario_json["proceso"] = "guardar"
-        } else {
-            datos_formulario_json["proceso"] = "modificar"
-        }
+        datos_formulario_json["proceso"] = "guardar";
 
         // Hacer la solicitud AJAX para guardar la nuevo cliente
         $.ajax({
@@ -202,8 +194,6 @@ btnSiguiente.addEventListener('click', function() {
             dataType: 'json',
             success: function(response) {
                 if (response.status === 'success') {
-                    // cerramos el modal
-                    // $('#guardarModal').modal('hide');
                     // limpiamos el formulario
                     $('.fmr_clientes')[0].reset();
 

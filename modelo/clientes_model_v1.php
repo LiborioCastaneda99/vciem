@@ -63,7 +63,7 @@ class clientesModel extends Conexion
 
         try {
             $query = "SELECT `id`, `codigo`, `sucursal`, `zona`, `subzona`, `nombre`, `direc`, `tel1`,  `tel2`, 
-            `correo` FROM tbclientes WHERE codigo = $codigo AND activo = 0";
+            `correo` FROM tbclientes WHERE codigo = $codigo";
             $stmt = $dbconec->prepare($query);
             $stmt->execute();
 
@@ -72,11 +72,12 @@ class clientesModel extends Conexion
 
             if ($rows) {
                 // Devolver el array JSON con todos los tbclientes
-                $response = array('status' => 'OK', 'datos' => $rows);
+                // $response = array('status' => 'OK', 'datos' => $rows);
+                $response = array('status' => 'Error', 'mensaje' => "El cliente ya está registrado.");
                 echo json_encode($response);
 
             } else {
-                $response = array('status' => 'Error', 'mensaje' => "No hay clientes");
+                $response = array('status' => 'OK');
                 echo json_encode($response);
             }
         } catch (Exception $e) {
@@ -99,7 +100,6 @@ class clientesModel extends Conexion
             $tel1 = $datos['tel1'];
             $tel2 = $datos['tel2'];
             $correo = $datos['correo'];
-            $activo = 0;
             // $ciudad = $datos['ciudad'];
             // $vendedor = $datos['vendedor'];
             // $cupo = $datos['cupo'];
@@ -173,8 +173,8 @@ class clientesModel extends Conexion
             } else {
 
                 // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
-                $query = "INSERT INTO tbclientes (codigo, sucursal, zona, subzona, nombre, direc, correo, tel1, tel2, activo) VALUES 
-                (:codigo, :sucursal, :zona, :subzona, :nombre, :direc, :correo, :tel1, :tel2, :activo)";
+                $query = "INSERT INTO tbclientes (codigo, sucursal, zona, subzona, nombre, direc, correo, tel1, tel2) VALUES 
+                (:codigo, :sucursal, :zona, :subzona, :nombre, :direc, :correo, :tel1, :tel2)";
                 $stmt = $dbconec->prepare($query);
                 $stmt->bindParam(':codigo', $codigo);
                 $stmt->bindParam(':sucursal', $sucursal);
@@ -185,7 +185,6 @@ class clientesModel extends Conexion
                 $stmt->bindParam(':direc', $direc);
                 $stmt->bindParam(':tel1', $tel1);
                 $stmt->bindParam(':tel2', $tel2);
-                $stmt->bindParam(':activo', $activo);
                 // $stmt->bindParam(':ciudad', $ciudad);
                 // $stmt->bindParam(':vendedor', $vendedor);
                 // $stmt->bindParam(':cupo', $cupo);

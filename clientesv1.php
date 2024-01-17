@@ -207,7 +207,6 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                         <form id="fmr_clientes1" class="fmr_clientes needs-validation" novalidate="novalidate" data-wizard-form="1">
                                                             <div class="row">
                                                                 <input type="hidden" value="1" name="id_pestana1" id="id_pestana1">
-                                                                <input type="hidden" value="" name="id" id="id">
                                                                 <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-codigo">Código</label>
                                                                     <input class="form-control" id="bootstrap-wizard-validation-wizard-codigo" name="codigo" type="number" onchange="obtenerDocumento(this.value)" required>
@@ -340,7 +339,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                             <button class="btn btn-link ps-0" type="button"><span class="fas fa-chevron-left me-2" data-fa-transform="shrink-3"></span>Atrás</button>
                                                         </li>
                                                         <li class="next">
-                                                            <button class="btn btn-primary px-5 px-sm-6" type="submit" name="btnSiguiente" id="btnSiguiente">Siguiente<span class="fas fa-chevron-right ms-2" data-fa-transform="shrink-3"></span></button>
+                                                            <button class="btn btn-primary px-5 px-sm-6" disabled type="submit" name="btnSiguiente" id="btnSiguiente">Siguiente<span class="fas fa-chevron-right ms-2" data-fa-transform="shrink-3"></span></button>
                                                         </li>
                                                     </ul>
                                                 </div>

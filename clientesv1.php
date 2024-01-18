@@ -218,18 +218,23 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-sucursal">Sucursal</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-sucursal" name="sucursal" type="text" required />
+                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-lstSucursal">Sucursal</label> 
+                                                                    <select class="" id="lstSucursal" size="1" name="lstSucursal" required>
+                                                                    </select>
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-zona">Zona</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-zona" name="zona" type="text" required />
+                                                                    <!-- <input class="form-control" id="bootstrap-wizard-validation-wizard-zona" name="zona" type="text" required /> -->
+                                                                    <select class="" id="lstZonas" size="1" name="lstZonas" required onchange="cargar_selct(this.value)">
+                                                                    </select>
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-subzona">Subzona</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-subzona" name="subzona" type="text" required />
+                                                                    <!-- <input class="form-control" id="bootstrap-wizard-validation-wizard-subzona" name="subzona" type="text" required /> -->
+                                                                    <select class="" id="lstSubzonas" size="1" name="lstSubzonas" required>
+                                                                    </select>
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
                                                                 <div class="col-md-6">

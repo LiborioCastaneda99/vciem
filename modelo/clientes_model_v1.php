@@ -444,4 +444,114 @@ class clientesModel extends Conexion
             echo json_encode($data);
         }
     }
+
+    public static function combo_departamentos($searchTerm, $id)
+    {
+        $dbconec = Conexion::Conectar();
+        try {
+            $numberofrecords = 5;
+            if ($id != '') {
+                $search = $id; // Search text
+
+                // Mostrar resultados
+                $sql = "SELECT id,cod,nombre FROM departamentos where cod=:codigo";
+                $stmt = $dbconec->prepare($sql);
+                $stmt->bindValue(':codigo', $search, PDO::PARAM_STR);
+                $stmt->execute();
+                //Variable en array para ser procesado en el ciclo foreach
+                $lstResult = $stmt->fetchAll();
+            } else {
+                if ($searchTerm == '') {
+
+                    // Obtener registros a tarves de la consulta SQL
+                    $sql = "SELECT id,cod,nombre FROM departamentos ORDER BY nombre LIMIT :limit";
+                    $stmt = $dbconec->prepare($sql);
+                    $stmt->bindValue(':limit', (int) $numberofrecords, PDO::PARAM_INT);
+                    $stmt->execute();
+                    $lstResult = $stmt->fetchAll();
+                } else {
+                    $search = $searchTerm; // Search text
+                    // Mostrar resultados
+                    $sql = "SELECT id,cod,nombre FROM departamentos WHERE nombre like :nombre ORDER BY nombre LIMIT :limit";
+                    $stmt = $dbconec->prepare($sql);
+                    $stmt->bindValue(':nombre', '%' . $search . '%', PDO::PARAM_STR);
+                    $stmt->bindValue(':limit', (int) $numberofrecords, PDO::PARAM_INT);
+                    $stmt->execute();
+                    //Variable en array para ser procesado en el ciclo foreach
+                    $lstResult = $stmt->fetchAll();
+                }
+            }
+            $response = array();
+            // Leer los datos de MySQL
+
+            foreach ($lstResult as $result) {
+                $response[] = array(
+                    "id" => $result['cod'],
+                    "text" => $result['nombre']
+                );
+            }
+
+
+            echo json_encode($response);
+            $dbconec = NULL; //Cierra la conexion a la Base de datos
+        } catch (Exception $e) {
+
+            echo '<span class="label label-danger label-block">Error al cargar los datos</span>';
+        }
+    }
+
+    public static function combo_ciudades($searchTerm, $id)
+    {
+        $dbconec = Conexion::Conectar();
+        try {
+            $numberofrecords = 5;
+            if ($id != '') {
+                $search = $id; // Search text
+
+                // Mostrar resultados
+                $sql = "SELECT id,nombre FROM municipios where cod_departamento=:codigo";
+                $stmt = $dbconec->prepare($sql);
+                $stmt->bindValue(':codigo', $search, PDO::PARAM_STR);
+                $stmt->execute();
+                //Variable en array para ser procesado en el ciclo foreach
+                $lstResult = $stmt->fetchAll();
+            } else {
+                if ($searchTerm == '') {
+
+                    // Obtener registros a tarves de la consulta SQL
+                    $sql = "SELECT id,nombre FROM municipios ORDER BY nombre LIMIT :limit";
+                    $stmt = $dbconec->prepare($sql);
+                    $stmt->bindValue(':limit', (int) $numberofrecords, PDO::PARAM_INT);
+                    $stmt->execute();
+                    $lstResult = $stmt->fetchAll();
+                } else {
+                    $search = $searchTerm; // Search text
+                    // Mostrar resultados
+                    $sql = "SELECT id,nombre FROM municipios WHERE nombre like :nombre ORDER BY nombre LIMIT :limit";
+                    $stmt = $dbconec->prepare($sql);
+                    $stmt->bindValue(':nombre', '%' . $search . '%', PDO::PARAM_STR);
+                    $stmt->bindValue(':limit', (int) $numberofrecords, PDO::PARAM_INT);
+                    $stmt->execute();
+                    //Variable en array para ser procesado en el ciclo foreach
+                    $lstResult = $stmt->fetchAll();
+                }
+            }
+            $response = array();
+            // Leer los datos de MySQL
+
+            foreach ($lstResult as $result) {
+                $response[] = array(
+                    "id" => $result['id'],
+                    "text" => $result['nombre']
+                );
+            }
+
+
+            echo json_encode($response);
+            $dbconec = NULL; //Cierra la conexion a la Base de datos
+        } catch (Exception $e) {
+
+            echo '<span class="label label-danger label-block">Error al cargar los datos</span>';
+        }
+    }
 } // Fin de la clase

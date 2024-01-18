@@ -261,6 +261,129 @@ function abrir_modal() {
 
     $('#guardarModal').modal('show');
     document.getElementById('abrir').click();
+    cargar_departamentos("", 'lstSucursal', 'guardarModal')
+    cargar_departamentos("", 'lstZonas', 'guardarModal')
+    cargar_ciudades("", 'lstSubzonas', 'guardarModal')
 
+}
 
+function cargar_selct(id) {
+    cargar_ciudades(id, 'lstSubzonas', 'guardarModal')
+}
+
+function cargar_departamentos(Id, nameSelect, Modal) {
+    var lstRoles = $('#' + nameSelect);
+
+    if (Id != "") {
+        lstRoles.select2({
+            dropdownParent: $('#' + Modal)
+        });
+        // var lstRoles = $lstRoles
+        lstRoles.find('option').remove();
+        var searchTerm = '';
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: 'ajax/clientesajaxv1.php',
+            data: {
+                searchTerm: searchTerm,
+                proceso: "combo_departamentos",
+                id: Id
+            },
+        }).then(function(registros) {
+            $(registros).each(function(i, v) {
+                lstRoles.append('<option selected value="' + v.id + '">' + v.text + '</option>');
+            })
+            lstRoles.trigger({
+                type: 'select2:select',
+                params: {
+                    data: registros
+                }
+            });
+        });
+
+    } else {
+        lstRoles.select2({
+            placeholder: "Seleccione un departamento",
+            dropdownParent: $('#' + Modal),
+            ajax: {
+                url: "ajax/clientesajaxv1.php",
+                type: "post",
+                dataType: 'json',
+                delay: 150,
+                data: function(params) {
+                    return {
+                        searchTerm: params.term,
+                        proceso: "combo_departamentos",
+                        id: Id
+                    };
+                },
+                processResults: function(response) {
+                    return {
+                        results: response
+
+                    };
+                },
+                cache: true
+            }
+        });
+    }
+}
+
+function cargar_ciudades(Id, nameSelect, Modal) {
+    var lstRoles = $('#' + nameSelect);
+
+    if (Id != "") {
+        lstRoles.select2({
+            dropdownParent: $('#' + Modal)
+        });
+        // var lstRoles = $lstRoles
+        lstRoles.find('option').remove();
+        var searchTerm = '';
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: 'ajax/clientesajaxv1.php',
+            data: {
+                searchTerm: searchTerm,
+                proceso: "combo_ciudades",
+                id: Id
+            },
+        }).then(function(registros) {
+            $(registros).each(function(i, v) {
+                lstRoles.append('<option selected value="' + v.id + '">' + v.text + '</option>');
+            })
+            lstRoles.trigger({
+                type: 'select2:select',
+                params: {
+                    data: registros
+                }
+            });
+        });
+    } else {
+        lstRoles.select2({
+            placeholder: "Seleccione una ciudad",
+            dropdownParent: $('#' + Modal),
+            ajax: {
+                url: "ajax/clientesajaxv1.php",
+                type: "post",
+                dataType: 'json',
+                delay: 150,
+                data: function(params) {
+                    return {
+                        searchTerm: params.term,
+                        proceso: "combo_ciudades",
+                        id: Id
+                    };
+                },
+                processResults: function(response) {
+                    return {
+                        results: response
+
+                    };
+                },
+                cache: true
+            }
+        });
+    }
 }

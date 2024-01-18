@@ -17,5 +17,10 @@
 <link href="assets/css/user-rtl.min.css" rel="stylesheet" id="user-style-rtl">
 <link href="assets/css/user.min.css" rel="stylesheet" id="user-style-default">
 
-<script src="vendors/select2/select2.min.css"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<!-- <script src="vendors/select2/select2.min.css"></script> -->
+
+
+<script src="vendors/jquery/jquery.min.js"></script>
 <script src="vendors/select2-bootstrap-5-theme/select2-bootstrap-5-theme.min.css"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">

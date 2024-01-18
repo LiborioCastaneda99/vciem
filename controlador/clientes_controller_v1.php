@@ -32,6 +32,16 @@
 		$cmd = clientesModel::eliminar($id);
 	}
 
+	public function combo_departamentos($nombre,$id)
+	{
+		$cmd = clientesModel::combo_departamentos($nombre, $id);
+	}
+
+	public function combo_ciudades($nombre,$id)
+	{
+		$cmd = clientesModel::combo_ciudades($nombre, $id);
+	}
+
 }
 
 ?>

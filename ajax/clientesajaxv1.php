@@ -13,6 +13,7 @@ if (!empty($_POST)) {
     $proceso = (isset($_POST['proceso'])) ? $_POST['proceso'] : '';
     $id = (isset($_POST['id'])) ? $_POST['id'] : '';
     $codigo = (isset($_POST['codigo'])) ? $_POST['codigo'] : '';
+    $nombre = (isset($_POST['searchTerm'])) ? $_POST['searchTerm'] : '';
     $datos = $_POST;
 
     switch ($proceso) {
@@ -31,6 +32,12 @@ if (!empty($_POST)) {
             break;
         case 'modificar': // modificar
             $cl->modificar($datos);
+            break;
+        case 'combo_departamentos': // consultar registros por id
+            $cl->combo_departamentos($nombre,$id);
+            break;
+        case 'combo_ciudades': // consultar registros por id
+            $cl->combo_ciudades($nombre,$id);
             break;
         case 'eliminar': // eliminar
             $cl->eliminar($id);

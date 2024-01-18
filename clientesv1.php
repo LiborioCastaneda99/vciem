@@ -219,9 +219,10 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-lstSucursal">Sucursal</label> 
-                                                                    <select class="" id="lstSucursal" size="1" name="lstSucursal" required>
+                                                                    <select class="form-control" id="lstSucursal" size="1" name="lstSucursal" required="required">
                                                                     </select>
                                                                     <div class="valid-feedback">¡Ok!</div>
+                                                                    <div class="invalid-feedback">Por favor, seleccione uno</div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-zona">Zona</label>
@@ -229,6 +230,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                     <select class="" id="lstZonas" size="1" name="lstZonas" required onchange="cargar_selct(this.value)">
                                                                     </select>
                                                                     <div class="valid-feedback">¡Ok!</div>
+                                                                    <div class="invalid-feedback">Por favor, seleccione uno</div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-subzona">Subzona</label>
@@ -236,6 +238,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                     <select class="" id="lstSubzonas" size="1" name="lstSubzonas" required>
                                                                     </select>
                                                                     <div class="valid-feedback">¡Ok!</div>
+                                                                    <div class="invalid-feedback">Por favor, seleccione uno</div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-direc">Dirección</label>

@@ -75,7 +75,6 @@ class clientesModel extends Conexion
                 // $response = array('status' => 'OK', 'datos' => $rows);
                 $response = array('status' => 'Error', 'mensaje' => "El cliente ya está registrado.");
                 echo json_encode($response);
-
             } else {
                 $response = array('status' => 'OK');
                 echo json_encode($response);
@@ -89,73 +88,73 @@ class clientesModel extends Conexion
     public static function guardar($datos)
     {
         $dbconec = Conexion::Conectar();
-
+        die();
         try {
             $codigo = $datos['codigo'];
-            $sucursal = $datos['sucursal'];
-            $zona = $datos['zona'];
-            $subzona = $datos['subzona'];
+            $sucursal = $datos['lstSucursal'];
+            $zona = $datos['lstZonas'];
+            $subzona = $datos['lstSubzonas'];
             $nombre = $datos['nombre'];
             $direc = $datos['direc'];
             $tel1 = $datos['tel1'];
             $tel2 = $datos['tel2'];
             $correo = $datos['correo'];
             // $ciudad = $datos['ciudad'];
-            // $vendedor = $datos['vendedor'];
-            // $cupo = $datos['cupo'];
-            // $legal = $datos['legal'];
-            // $fecha_ini = $datos['fecha_ini'];
-            // $forma_pago = $datos['forma_pago'];
+            $vendedor = $datos['vende'];
+            $cupo = $datos['cupo'];
+            $legal = $datos['legal'];
+            $fecha_ini = $datos['fecha_ini'];
+            $forma_pago = $datos['forma_pago'];
             // $correo = $datos['correo'];
-            // $cod_viejo = $datos['cod_viejo'];
-            // $caract_dev = $datos['caract_dev'];
-            // $digito = $datos['digito'];
-            // $riva = $datos['riva'];
-            // $rfte = $datos['rfte'];
-            // $rica = $datos['rica'];
-            // $alma = $datos['alma'];
-            // $cali = $datos['cali'];
-            // $tipo = $datos['tipo'];
-            // $distri = $datos['distri'];
-            // $genom = $datos['genom'];
-            // $geema = $datos['geema'];
-            // $getel1 = $datos['getel1'];
-            // $getel2 = $datos['getel2'];
-            // $conom = $datos['conom'];
-            // $coema = $datos['coema'];
-            // $cotel1 = $datos['cotel1'];
-            // $cotel2 = $datos['cotel2'];
-            // $panom = $datos['panom'];
-            // $paema = $datos['paema'];
-            // $patel1 = $datos['patel1'];
-            // $patel2 = $datos['patel2'];
-            // $otnom = $datos['otnom'];
-            // $otema = $datos['otema'];
-            // $ottel1 = $datos['ottel1'];
-            // $ottel2 = $datos['ottel2'];
-            // $remis = $datos['remis'];
-            // $fbloq = $datos['fbloq'];
-            // $diaser = $datos['diaser'];
-            // $diater = $datos['diater'];
-            // $vlrarr = $datos['vlrarr'];
-            // $acta = $datos['acta'];
-            // $pacta = $datos['pacta'];
-            // $exclui = $datos['exclui'];
-            // $person = $datos['person'];
-            // $regime = $datos['regime'];
-            // $tipoid = $datos['tipoid'];
-            // $nomreg = $datos['nomreg'];
-            // $pais = $datos['pais'];
-            // $nom1 = $datos['nom1'];
-            // $nom2 = $datos['nom2'];
-            // $ape1 = $datos['ape1'];
-            // $ape2 = $datos['ape2'];
-            // $ofi = $datos['ofi'];
-            // $difici = $datos['difici'];
-            // $remval = $datos['remval'];
-            // $estado = $datos['estado'];
-            // $cono = $datos['cono'];
-            // $emailq = $datos['emailq'];
+            $cod_viejo = $datos['cod_viejo'];
+            $caract_dev = $datos['caract_dev'];
+            $digito = $datos['digito'];
+            $riva = $datos['riva'];
+            $rfte = $datos['rfte'];
+            $rica = $datos['rica'];
+            $alma = $datos['alma'];
+            $cali = $datos['cali'];
+            $tipo = $datos['tipo'];
+            $distri = $datos['distri'];
+            $genom = $datos['genom'];
+            $geema = $datos['geema'];
+            $getel1 = $datos['getel1'];
+            $getel2 = $datos['getel2'];
+            $conom = $datos['conom'];
+            $coema = $datos['coema'];
+            $cotel1 = $datos['cotel1'];
+            $cotel2 = $datos['cotel2'];
+            $panom = $datos['panom'];
+            $paema = $datos['paema'];
+            $patel1 = $datos['patel1'];
+            $patel2 = $datos['patel2'];
+            $otnom = $datos['otnom'];
+            $otema = $datos['otema'];
+            $ottel1 = $datos['ottel1'];
+            $ottel2 = $datos['ottel2'];
+            $remis = $datos['remis'];
+            $fbloq = $datos['fbloq'];
+            $diaser = $datos['diaser'];
+            $diater = $datos['diater'];
+            $vlrarr = $datos['vlrarr'];
+            $acta = $datos['acta'];
+            $pacta = $datos['pacta'];
+            $exclui = $datos['exclui'];
+            $person = $datos['person'];
+            $regime = $datos['regime'];
+            $tipoid = $datos['tipoid'];
+            $nomreg = $datos['nomreg'];
+            $pais = $datos['pais'];
+            $nom1 = $datos['nom1'];
+            $nom2 = $datos['nom2'];
+            $ape1 = $datos['ape1'];
+            $ape2 = $datos['ape2'];
+            $ofi = $datos['ofi'];
+            $difici = $datos['difici'];
+            $remval = $datos['remval'];
+            $estado = $datos['estado'];
+            $cono = $datos['cono'];
+            $emailq = $datos['emailq'];
 
             // Consulta para verificar la existencia del código
             $query = "SELECT COUNT(*) as count FROM tbclientes WHERE codigo = :codigo";
@@ -454,7 +453,7 @@ class clientesModel extends Conexion
                 $search = $id; // Search text
 
                 // Mostrar resultados
-                $sql = "SELECT id,cod,nombre FROM departamentos where cod=:codigo";
+                $sql = "SELECT id,codigo,nombre FROM tbzonas where codigo=:codigo";
                 $stmt = $dbconec->prepare($sql);
                 $stmt->bindValue(':codigo', $search, PDO::PARAM_STR);
                 $stmt->execute();
@@ -464,7 +463,7 @@ class clientesModel extends Conexion
                 if ($searchTerm == '') {
 
                     // Obtener registros a tarves de la consulta SQL
-                    $sql = "SELECT id,cod,nombre FROM departamentos ORDER BY nombre LIMIT :limit";
+                    $sql = "SELECT id,codigo,nombre FROM tbzonas ORDER BY nombre LIMIT :limit";
                     $stmt = $dbconec->prepare($sql);
                     $stmt->bindValue(':limit', (int) $numberofrecords, PDO::PARAM_INT);
                     $stmt->execute();
@@ -472,7 +471,7 @@ class clientesModel extends Conexion
                 } else {
                     $search = $searchTerm; // Search text
                     // Mostrar resultados
-                    $sql = "SELECT id,cod,nombre FROM departamentos WHERE nombre like :nombre ORDER BY nombre LIMIT :limit";
+                    $sql = "SELECT id,codigo,nombre FROM tbzonas WHERE nombre like :nombre ORDER BY nombre LIMIT :limit";
                     $stmt = $dbconec->prepare($sql);
                     $stmt->bindValue(':nombre', '%' . $search . '%', PDO::PARAM_STR);
                     $stmt->bindValue(':limit', (int) $numberofrecords, PDO::PARAM_INT);
@@ -486,7 +485,7 @@ class clientesModel extends Conexion
 
             foreach ($lstResult as $result) {
                 $response[] = array(
-                    "id" => $result['cod'],
+                    "id" => $result['codigo'],
                     "text" => $result['nombre']
                 );
             }
@@ -509,7 +508,7 @@ class clientesModel extends Conexion
                 $search = $id; // Search text
 
                 // Mostrar resultados
-                $sql = "SELECT id,nombre FROM municipios where cod_departamento=:codigo";
+                $sql = "SELECT id, codigo, nombre FROM tbsubzonas where id=:codigo";
                 $stmt = $dbconec->prepare($sql);
                 $stmt->bindValue(':codigo', $search, PDO::PARAM_STR);
                 $stmt->execute();
@@ -519,7 +518,7 @@ class clientesModel extends Conexion
                 if ($searchTerm == '') {
 
                     // Obtener registros a tarves de la consulta SQL
-                    $sql = "SELECT id,nombre FROM municipios ORDER BY nombre LIMIT :limit";
+                    $sql = "SELECT id, codigo, nombre FROM tbsubzonas ORDER BY nombre LIMIT :limit";
                     $stmt = $dbconec->prepare($sql);
                     $stmt->bindValue(':limit', (int) $numberofrecords, PDO::PARAM_INT);
                     $stmt->execute();
@@ -527,7 +526,62 @@ class clientesModel extends Conexion
                 } else {
                     $search = $searchTerm; // Search text
                     // Mostrar resultados
-                    $sql = "SELECT id,nombre FROM municipios WHERE nombre like :nombre ORDER BY nombre LIMIT :limit";
+                    $sql = "SELECT id, codigo, nombre FROM tbsubzonas WHERE nombre like :nombre ORDER BY nombre LIMIT :limit";
+                    $stmt = $dbconec->prepare($sql);
+                    $stmt->bindValue(':nombre', '%' . $search . '%', PDO::PARAM_STR);
+                    $stmt->bindValue(':limit', (int) $numberofrecords, PDO::PARAM_INT);
+                    $stmt->execute();
+                    //Variable en array para ser procesado en el ciclo foreach
+                    $lstResult = $stmt->fetchAll();
+                }
+            }
+            $response = array();
+            // Leer los datos de MySQL
+
+            foreach ($lstResult as $result) {
+                $response[] = array(
+                    "id" => $result['codigo'],
+                    "text" => $result['nombre']
+                );
+            }
+
+
+            echo json_encode($response);
+            $dbconec = NULL; //Cierra la conexion a la Base de datos
+        } catch (Exception $e) {
+
+            echo '<span class="label label-danger label-block">Error al cargar los datos</span>';
+        }
+    }
+
+    public static function combo_clientes($searchTerm, $id)
+    {
+        $dbconec = Conexion::Conectar();
+        try {
+            $numberofrecords = 5;
+            if ($id != '') {
+                $search = $id; // Search text
+
+                // Mostrar resultados
+                $sql = "SELECT id, codigo, nombre FROM tbclientes where id=:id";
+                $stmt = $dbconec->prepare($sql);
+                $stmt->bindValue(':id', $search, PDO::PARAM_STR);
+                $stmt->execute();
+                //Variable en array para ser procesado en el ciclo foreach
+                $lstResult = $stmt->fetchAll();
+            } else {
+                if ($searchTerm == '') {
+
+                    // Obtener registros a tarves de la consulta SQL
+                    $sql = "SELECT id, codigo, nombre FROM tbclientes ORDER BY nombre LIMIT :limit";
+                    $stmt = $dbconec->prepare($sql);
+                    $stmt->bindValue(':limit', (int) $numberofrecords, PDO::PARAM_INT);
+                    $stmt->execute();
+                    $lstResult = $stmt->fetchAll();
+                } else {
+                    $search = $searchTerm; // Search text
+                    // Mostrar resultados
+                    $sql = "SELECT id, codigo, nombre FROM tbclientes WHERE nombre like :nombre or codigo like :nombre ORDER BY nombre LIMIT :limit";
                     $stmt = $dbconec->prepare($sql);
                     $stmt->bindValue(':nombre', '%' . $search . '%', PDO::PARAM_STR);
                     $stmt->bindValue(':limit', (int) $numberofrecords, PDO::PARAM_INT);
@@ -542,6 +596,172 @@ class clientesModel extends Conexion
             foreach ($lstResult as $result) {
                 $response[] = array(
                     "id" => $result['id'],
+                    "text" => $result['codigo']." - ".$result['nombre']
+                );
+            }
+
+
+            echo json_encode($response);
+            $dbconec = NULL; //Cierra la conexion a la Base de datos
+        } catch (Exception $e) {
+
+            echo '<span class="label label-danger label-block">Error al cargar los datos</span>';
+        }
+    }
+
+
+    public static function combo_vendedores($searchTerm, $id)
+    {
+        $dbconec = Conexion::Conectar();
+        try {
+            $numberofrecords = 5;
+            if ($id != '') {
+                $search = $id; // Search text
+
+                // Mostrar resultados
+                $sql = "SELECT id, codigo, nombre FROM tbvendedores where id=:id";
+                $stmt = $dbconec->prepare($sql);
+                $stmt->bindValue(':id', $search, PDO::PARAM_STR);
+                $stmt->execute();
+                //Variable en array para ser procesado en el ciclo foreach
+                $lstResult = $stmt->fetchAll();
+            } else {
+                if ($searchTerm == '') {
+
+                    // Obtener registros a tarves de la consulta SQL
+                    $sql = "SELECT id, codigo, nombre FROM tbvendedores ORDER BY nombre LIMIT :limit";
+                    $stmt = $dbconec->prepare($sql);
+                    $stmt->bindValue(':limit', (int) $numberofrecords, PDO::PARAM_INT);
+                    $stmt->execute();
+                    $lstResult = $stmt->fetchAll();
+                } else {
+                    $search = $searchTerm; // Search text
+                    // Mostrar resultados
+                    $sql = "SELECT id, codigo, nombre FROM tbvendedores WHERE nombre like :nombre or codigo like :nombre ORDER BY nombre LIMIT :limit";
+                    $stmt = $dbconec->prepare($sql);
+                    $stmt->bindValue(':nombre', '%' . $search . '%', PDO::PARAM_STR);
+                    $stmt->bindValue(':limit', (int) $numberofrecords, PDO::PARAM_INT);
+                    $stmt->execute();
+                    //Variable en array para ser procesado en el ciclo foreach
+                    $lstResult = $stmt->fetchAll();
+                }
+            }
+            $response = array();
+            // Leer los datos de MySQL
+
+            foreach ($lstResult as $result) {
+                $response[] = array(
+                    "id" => $result['id'],
+                    "text" => $result['codigo']." - ".$result['nombre']
+                );
+            }
+
+
+            echo json_encode($response);
+            $dbconec = NULL; //Cierra la conexion a la Base de datos
+        } catch (Exception $e) {
+
+            echo '<span class="label label-danger label-block">Error al cargar los datos</span>';
+        }
+    }
+
+    public static function combo_ciudades_all($searchTerm, $id)
+    {
+        $dbconec = Conexion::Conectar();
+        try {
+            $numberofrecords = 5;
+            if ($id != '') {
+                $search = $id; // Search text
+
+                // Mostrar resultados
+                $sql = "SELECT id, codigo, nombre FROM tbsubzonas where zona=:codigo";
+                $stmt = $dbconec->prepare($sql);
+                $stmt->bindValue(':codigo', $search, PDO::PARAM_STR);
+                $stmt->execute();
+                //Variable en array para ser procesado en el ciclo foreach
+                $lstResult = $stmt->fetchAll();
+            } else {
+                if ($searchTerm == '') {
+
+                    // Obtener registros a tarves de la consulta SQL
+                    $sql = "SELECT id, codigo, nombre FROM tbsubzonas ORDER BY nombre LIMIT :limit";
+                    $stmt = $dbconec->prepare($sql);
+                    $stmt->bindValue(':limit', (int) $numberofrecords, PDO::PARAM_INT);
+                    $stmt->execute();
+                    $lstResult = $stmt->fetchAll();
+                } else {
+                    $search = $searchTerm; // Search text
+                    // Mostrar resultados
+                    $sql = "SELECT id, codigo, nombre FROM tbsubzonas WHERE nombre like :nombre ORDER BY nombre LIMIT :limit";
+                    $stmt = $dbconec->prepare($sql);
+                    $stmt->bindValue(':nombre', '%' . $search . '%', PDO::PARAM_STR);
+                    $stmt->bindValue(':limit', (int) $numberofrecords, PDO::PARAM_INT);
+                    $stmt->execute();
+                    //Variable en array para ser procesado en el ciclo foreach
+                    $lstResult = $stmt->fetchAll();
+                }
+            }
+            $response = array();
+            // Leer los datos de MySQL
+
+            foreach ($lstResult as $result) {
+                $response[] = array(
+                    "id" => $result['codigo'],
+                    "text" => $result['nombre']
+                );
+            }
+
+
+            echo json_encode($response);
+            $dbconec = NULL; //Cierra la conexion a la Base de datos
+        } catch (Exception $e) {
+
+            echo '<span class="label label-danger label-block">Error al cargar los datos</span>';
+        }
+    }
+
+    public static function combo_ciudades_cod($searchTerm, $id)
+    {
+        $dbconec = Conexion::Conectar();
+        try {
+            $numberofrecords = 5;
+            if ($id != '') {
+                $search = $id; // Search text
+
+                // Mostrar resultados
+                $sql = "SELECT id, codigo, nombre FROM tbsubzonas where codigo=:codigo";
+                $stmt = $dbconec->prepare($sql);
+                $stmt->bindValue(':codigo', $search, PDO::PARAM_STR);
+                $stmt->execute();
+                //Variable en array para ser procesado en el ciclo foreach
+                $lstResult = $stmt->fetchAll();
+            } else {
+                if ($searchTerm == '') {
+
+                    // Obtener registros a tarves de la consulta SQL
+                    $sql = "SELECT id, codigo, nombre FROM tbsubzonas ORDER BY nombre LIMIT :limit";
+                    $stmt = $dbconec->prepare($sql);
+                    $stmt->bindValue(':limit', (int) $numberofrecords, PDO::PARAM_INT);
+                    $stmt->execute();
+                    $lstResult = $stmt->fetchAll();
+                } else {
+                    $search = $searchTerm; // Search text
+                    // Mostrar resultados
+                    $sql = "SELECT id, codigo, nombre FROM tbsubzonas WHERE nombre like :nombre ORDER BY nombre LIMIT :limit";
+                    $stmt = $dbconec->prepare($sql);
+                    $stmt->bindValue(':nombre', '%' . $search . '%', PDO::PARAM_STR);
+                    $stmt->bindValue(':limit', (int) $numberofrecords, PDO::PARAM_INT);
+                    $stmt->execute();
+                    //Variable en array para ser procesado en el ciclo foreach
+                    $lstResult = $stmt->fetchAll();
+                }
+            }
+            $response = array();
+            // Leer los datos de MySQL
+
+            foreach ($lstResult as $result) {
+                $response[] = array(
+                    "id" => $result['codigo'],
                     "text" => $result['nombre']
                 );
             }

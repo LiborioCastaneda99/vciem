@@ -22,6 +22,9 @@ if (!empty($_POST))
         case 'get_id': // consultar registros por id
             $cl->get_id($id);
             break;
+        case 'get_id_productos': // consultar registros por id
+            $cl->get_id_productos($id);
+            break;
         case 'guardar': // guardar
 			$cl->guardar($datos);
 			break;
@@ -30,6 +33,9 @@ if (!empty($_POST))
             break;
         case 'eliminar': // eliminar
             $cl->eliminar($id);
+            break;
+        case 'listado_productos': // listado_productos
+            $cl->listado_productos();
             break;
 		default:
 			$data = "Error";

@@ -71,45 +71,20 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                     <div class="card-body pt-3">
                         <div class="tab-content">
                             <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="-" id="">
-                                <div id="tableExample3" data-list='{"valueNames":["codigo","descripcion"],"page":5,"pagination":true}'>
-                                    <div class="row justify-content-end g-0">
-                                        <div class="d-flex align-items-center" id="table-contact-replace-element">
-                                            <button class="btn btn-falcon-default btn-sm" type="button" id="btnAgregar" data-bs-toggle="modal" data-bs-target="#guardarModal">
-                                                <span class="fas fa-plus" data-fa-transform="shrink-3"></span>
-                                                <span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1" title="Registrar marca">Agregar</span>
-                                            </button>
-                                            <button onclick="generar()" class="btn btn-falcon-default btn-sm mx-2" type="button">
-                                                <span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span>
-                                                <span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1">Exportar</span>
-                                            </button>
-                                        </div>
-                                        <div class="col-auto col-sm-5 mb-3">
-                                            <form method="POST" action="#" id="" name="">
-                                                <div class="input-group"><input class="form-control form-control-sm shadow-none search" type="search" placeholder="Buscar..." aria-label="search" />
-                                                    <div class="input-group-text bg-transparent"><span class="fa fa-search fs-10 text-600"></span></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="table-responsive scrollbar">
-                                        <table id="myTable" class="table table-bordered table-striped fs-10 mb-0 ">
+                                <div class="table-responsive scrollbar">
 
-                                            <thead class="bg-200">
-                                                <tr>
-                                                    <th class="text-900 sort" data-sort="codigo">Codigo</th>
-                                                    <th class="text-900 sort" data-sort="descripcion">Descripción</th>
-                                                    <th class="text-900 no-sort pe-1 align-middle data-table-row-action">Editar</th>
-                                                    <th class="text-900 no-sort pe-1 align-middle data-table-row-action">Eliminar</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="list">
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="d-flex justify-content-center mt-3"><button class="btn btn-sm btn-falcon-default me-1" type="button" title="Previous" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
-                                        <ul class="pagination mb-0"></ul><button class="btn btn-sm btn-falcon-default ms-1" type="button" title="Next" data-list-pagination="next"><span class="fas fa-chevron-right"> </span></button>
-                                    </div>
+                                    <table id="tabla" class="table table-striped mb-0 data-table fs-10" data-datatables="data-datatables" style="width: 100%;">
+                                        <thead class="bg-200">
+                                            <tr>
+                                                <th class="text-900 sort">Código</th>
+                                                <th class="text-900 sort">Nombre</th>
+                                                <th class="text-900 text-center">Editar</th>
+                                                <th class="text-900 text-center">Eliminar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

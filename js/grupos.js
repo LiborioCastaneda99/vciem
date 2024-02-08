@@ -67,18 +67,18 @@ $(".fmr_grupos").submit(function(event) {
     event.preventDefault();
 
     codigo = $("#codigo").val()
-    clase = $("#clase").val()
+    clase = $("#lstClaseAgg").val()
     nombre = $("#nombre").val()
     resumen = $("#resumen").val()
     dias = $("#dias").val()
 
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevo grupo
     var nuevogrupo = {
-        codigo: $("#codigo").val(),
-        clase: $("#clase").val(),
-        nombre: $("#nombre").val(),
-        resumen: $("#resumen").val(),
-        dias: $("#dias").val()
+        codigo: codigo,
+        clase: clase,
+        nombre: nombre,
+        resumen: resumen,
+        dias: dias
     };
 
     if (codigo == "" || clase == "" || nombre == "" || resumen == "" || dias == "") {
@@ -137,10 +137,11 @@ function editar(id) {
             // Asignar un valor al input
             document.getElementById('id').value = data[0].id
             document.getElementById('codigo_mod').value = data[0].codigo
-            document.getElementById('clase_mod').value = data[0].clase
+                // document.getElementById('clase_mod').value = data[0].clase
             document.getElementById('nombre_mod').value = data[0].nombre
             document.getElementById('resumen_mod').value = data[0].resum
             document.getElementById('dias_mod').value = data[0].dias
+            cargar_clases(data[0].clase, 'lstClaseMod', 'editarModal');
 
             // Limpiar el cuerpo de la tabla
             $('#editarModal').modal('show'); // abrir
@@ -157,18 +158,18 @@ $(".fmr_grupos_editar").submit(function(event) {
     event.preventDefault();
 
     codigo = $("#codigo_mod").val()
-    clase = $("#clase_mod").val()
+    clase = $("#lstClaseMod").val()
     nombre = $("#nombre_mod").val()
     resumen = $("#resumen_mod").val()
     dias = $("#dias_mod").val()
 
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nuevo grupo
     var nuevogrupo = {
-        codigo: $("#codigo_mod").val(),
-        clase: $("#clase_mod").val(),
-        nombre: $("#nombre_mod").val(),
-        resumen: $("#resumen_mod").val(),
-        dias: $("#dias_mod").val(),
+        codigo: codigo,
+        clase: clase,
+        nombre: nombre,
+        resumen: resumen,
+        dias: dias,
         id: $("#id").val()
     };
 
@@ -275,4 +276,79 @@ function generar() {
     // Abre la URL del archivo PDF en una nueva pestaña
     window.open('pdfs/generar_pdf_grupos.php', '_blank');
 
+}
+
+// Funcion para cargar las listas select con opcion de busqueda
+$('#btnBusquedaClaseAgg').click(function() {
+    cargar_clases('', 'lstClaseAgg', 'editarModal');
+});
+
+// Funcion para cargar las listas select con opcion de busqueda
+$('#btnBusquedaClaseMod').click(function() {
+    cargar_clases('', 'lstClaseMod', 'editarModal');
+});
+
+// funcion para cargar las clases
+function cargar_clases(Id, nameSelect, Modal) {
+    var lstRoles = $('#' + nameSelect);
+    if (Id != "") {
+        lstRoles.select2({
+            dropdownParent: $('#' + Modal)
+        });
+        // var lstRoles = $lstRoles
+        lstRoles.find('option').remove();
+        var searchTerm = '';
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: 'ajax/gruposajax.php',
+            data: {
+                searchTerm: searchTerm,
+                proceso: 'combo_clases',
+                id: Id
+            },
+        }).then(function(registros) {
+            $(registros).each(function(i, v) {
+                lstRoles.append('<option selected value="' + v.id + '">' + v.text + '</option>');
+            })
+            lstRoles.trigger({
+                type: 'select2:select',
+                params: {
+                    data: registros
+                }
+            });
+        });
+
+    } else {
+        lstRoles.select2({
+            placeholder: "Seleccione una clase",
+            dropdownParent: $('#' + Modal),
+            ajax: {
+                url: "ajax/gruposajax.php",
+                type: "post",
+                dataType: 'json',
+                delay: 150,
+                data: function(params) {
+                    return {
+                        searchTerm: params.term,
+                        proceso: "combo_clases",
+                        id: Id
+                    };
+                },
+                processResults: function(response) {
+                    return {
+                        results: response
+
+                    };
+                },
+                cache: true
+            }
+        });
+    }
+}
+
+// abrir modal
+function abrirModal() {
+    $('#fmr_grupos')[0].reset();
+    cargar_clases('', 'lstClaseAgg', 'guardarModal')
 }

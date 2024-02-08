@@ -27,6 +27,12 @@
 		$cmd = gruposModel::eliminar($id);
 	}
 
+	public function combo_clases($nombre,$id)
+	{
+		$cmd = gruposModel::combo_clases($nombre, $id);
+	}
+
+
 }
 
 ?>

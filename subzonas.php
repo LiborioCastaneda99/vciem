@@ -71,49 +71,22 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                     <div class="card-body pt-3">
                         <div class="tab-content">
                             <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="-" id="">
-                                <div id="tableExample3" data-list='{"valueNames":["codigo","nombre"],"page":5,"pagination":true}'>
-                                    <div class="row justify-content-end g-0">
-                                        <div class="d-flex align-items-center" id="table-contact-replace-element">
-                                            <button class="btn btn-falcon-default btn-sm" type="button" id="btnAgregar" data-bs-toggle="modal" data-bs-target="#guardarModal">
-                                                <span class="fas fa-plus" data-fa-transform="shrink-3"></span>
-                                                <span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1" title="Registrar">Agregar</span>
-                                            </button>
-                                            <button onclick="generar()" class="btn btn-falcon-default btn-sm mx-2" type="button">
-                                                <span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span>
-                                                <span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1">Exportar</span>
-                                            </button>
-                                        </div>
-                                        <div class="col-auto col-sm-5 mb-3">
-                                            <form method="POST" action="#" id="" name="">
-                                                <div class="input-group"><input class="form-control form-control-sm shadow-none search" type="search" placeholder="Buscar..." aria-label="search" />
-                                                    <div class="input-group-text bg-transparent"><span class="fa fa-search fs-10 text-600"></span></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="table-responsive scrollbar">
-                                        <table id="myTable" class="table table-bordered table-striped fs-10 mb-0 ">
+                                <div class="table-responsive scrollbar">
 
-                                            <thead class="bg-200">
-                                                <tr>
-                                                    <th class="text-900 sort" data-sort="codigo">Código</th>
-                                                    <th class="text-900 sort" data-sort="subzona">Subzona</th>
-                                                    <th class="text-900 sort" data-sort="nombre">Nombre</th>
-                                                    <th class="text-900 sort" data-sort="resumen">Resumen</th>
-                                                    <th class="text-900 no-sort pe-1 align-middle data-table-row-action">Editar</th>
-                                                    <th class="text-900 no-sort pe-1 align-middle data-table-row-action">Eliminar</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="list">
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="d-flex justify-content-center mt-3">
-                                        <button class="btn btn-sm btn-falcon-default me-1" type="button" title="Previous" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
-                                        <ul class="pagination mb-0"></ul>
-                                        <button class="btn btn-sm btn-falcon-default ms-1" type="button" title="Next" data-list-pagination="next"><span class="fas fa-chevron-right"> </span></button>
-                                    </div>
+                                    <table id="tabla" class="table table-striped mb-0 data-table fs-10" data-datatables="data-datatables" style="width: 100%;">
+                                        <thead class="bg-200">
+                                            <tr>
+                                                <th class="text-900 sort">Código</th>
+                                                <th class="text-900 sort">Zona</th>
+                                                <th class="text-900 sort">Nombre</th>
+                                                <th class="text-900 sort">Resumen</th>
+                                                <th class="text-900 text-center">Editar</th>
+                                                <th class="text-900 text-center">Eliminar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -133,25 +106,25 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                 <div class="p-4">
                                     <div class="row">
                                         <form id="fmr_subzonas" method="POST" class="fmr_subzonas row g-2 needs-validation" novalidate="">
-                                            <div class="col-md-6">
+                                            <div class="col-md-3">
                                                 <label class="form-label" for="codigo">Código</label>
                                                 <input class="form-control" id="codigo" name="codigo" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label>Subzona <span class="text-danger"> * </span></label>
-                                                <div class="input-group col-md-12 mb-2">
-                                                    <select class="form-select" id="lstSubzonaAgregar" name="lstSubzonaAgregar">
+                                            <div class="col-md-9">
+                                                <label>Zona <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <select class="form-select selectpicker" id="lstZonaAgregar" size="1" name="lstZonaAgregar" required>
                                                     </select>
-                                                    <span class="input-group-addon"><button class="btn btn-primary icon-search4 Search" type="button" id="btnBusquedaAgregar" name="btnBusquedaAgregar"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                    <span class="input-group-addon"><button class="btn btn-primary icon-search4 Search" type="button" id="btnBusquedaZonaAgregar" name="btnBusquedaZonaAgregar" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-8">
                                                 <label class="form-label" for="nombre">Nombre</label>
                                                 <input class="form-control" id="nombre" name="nombre" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label class="form-label" for="resumen">Resumen</label>
                                                 <input class="form-control" id="resumen" name="resumen" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
@@ -182,26 +155,32 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                 <div class="p-4">
                                     <div class="row">
                                         <form id="fmr_subzonas_editar" method="POST" class="fmr_subzonas_editar row g-2 needs-validation" novalidate="">
-                                            <div class="col-md-6">
+                                            <div class="col-md-3">
                                                 <label class="form-label" for="codigo_mod">Código</label>
                                                 <input class="form-control" id="id" name="id" type="hidden" />
                                                 <input class="form-control" id="codigo_mod" name="codigo_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label>Subzona <span class="text-danger"> * </span></label>
-                                                <div class="input-group col-md-12 mb-2">
-                                                    <select class="form-select" id="lstSubzonaMod" name="lstSubzonaMod">
+                                            <div class="col-md-9">
+                                                <label>Zona <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <select class="form-select selectpicker" id="lstZonaMod" size="1" name="lstZonaMod" required onchange="cargar_select(this.value)">
                                                     </select>
-                                                    <span class="input-group-addon"><button class="btn btn-primary icon-search4 Search" type="button" id="btnBusquedaMod" name="btnBusquedaMod"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                    <span class="input-group-addon"><button class="btn btn-primary icon-search4 Search" type="button" id="btnBusquedaZonaMod" name="btnBusquedaZonaMod" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-8">
                                                 <label class="form-label" for="nombre_mod">Nombre</label>
-                                                <input class="form-control" id="nombre_mod" name="nombre_mod" type="text" required />
-                                                <div class="valid-feedback">¡Ok!</div>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <!-- <input class="form-control" id="nombre_mod" name="nombre_mod" type="text" required /> -->
+                                                    <select class="form-select selectpicker" id="lstSubzonaMod" style='width: 87%;' size="1" name="lstSubzonaMod" required>
+                                                    </select>
+                                                    <span class="input-group-addon"><button class="btn btn-primary icon-search4 Search" type="button" id="btnBusquedaSubzonaMod" name="btnBusquedaSubzonaMod" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
+
+                                                    <!-- <span class="input-group-addon"><button class="btn btn-primary icon-search4 Search" type="button" id="btnBusquedaSubzonaMod" name="btnBusquedaSubzonaMod"><span class="fas fa-search search-box-icon"></span></button></span> -->
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label class="form-label" for="resumen_mod">Resumen</label>
                                                 <input class="form-control" id="resumen_mod" name="resumen_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>

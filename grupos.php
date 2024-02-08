@@ -74,7 +74,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                 <div id="tableExample3" data-list='{"valueNames":["codigo","nombre"],"page":5,"pagination":true}'>
                                     <div class="row justify-content-end g-0">
                                         <div class="d-flex align-items-center" id="table-contact-replace-element">
-                                            <button class="btn btn-falcon-default btn-sm" type="button" id="btnAgregar" data-bs-toggle="modal" data-bs-target="#guardarModal">
+                                            <button onclick="abrirModal()" class="btn btn-falcon-default btn-sm" type="button" id="btnAgregar" data-bs-toggle="modal" data-bs-target="#guardarModal">
                                                 <span class="fas fa-plus" data-fa-transform="shrink-3"></span>
                                                 <span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1" title="Registrar">Agregar</span>
                                             </button>
@@ -134,15 +134,18 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                 <div class="p-4">
                                     <div class="row">
                                         <form id="fmr_grupos" method="POST" class="fmr_grupos row g-2 needs-validation" novalidate="">
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label class="form-label" for="codigo">Código</label>
                                                 <input class="form-control" id="codigo" name="codigo" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label class="form-label" for="clase">Clase</label>
-                                                <input class="form-control" id="clase" name="clase" type="text" required />
-                                                <div class="valid-feedback">¡Ok!</div>
+                                            <div class="col-md-8">
+                                                <label class="form-label" for="clase_mod">Clase</label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <select class="form-select selectpicker" id="lstClaseAgg" size="1" name="lstClaseAgg" required>
+                                                    </select>
+                                                    <span class="input-group-addon"><button class="btn btn-primary icon-search4 Search" type="button" id="btnBusquedaClaseAgg" name="btnBusquedaClaseAgg" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <label class="form-label" for="nombre">Nombre</label>
@@ -180,21 +183,23 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                             <div class="modal-body p-0">
                                 <div class="rounded-top-3 bg-body-tertiary py-3 ps-4 pe-6">
                                     <h4 class="mb-1" id="staticBackdropLabel">Editar grupo</h4>
-                                    <!-- <p class="fs-11 mb-0">Added by <a class="link-600 fw-semi-bold" href="#!">Antony</a></p> -->
                                 </div>
                                 <div class="p-4">
                                     <div class="row">
                                         <form id="fmr_grupos_editar" method="POST" class="fmr_grupos_editar row g-2 needs-validation" novalidate="">
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label class="form-label" for="codigo_mod">Código</label>
                                                 <input class="form-control" id="id" name="id" type="hidden" />
                                                 <input class="form-control" id="codigo_mod" name="codigo_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-8">
                                                 <label class="form-label" for="clase_mod">Clase</label>
-                                                <input class="form-control" id="clase_mod" name="clase_mod" type="text" required />
-                                                <div class="valid-feedback">¡Ok!</div>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <select class="form-select selectpicker" id="lstClaseMod" size="1" name="lstClaseMod" required>
+                                                    </select>
+                                                    <span class="input-group-addon"><button class="btn btn-primary icon-search4 Search" type="button" id="btnBusquedaClaseMod" name="btnBusquedaClaseMod" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <label class="form-label" for="nombre_mod">Nombre</label>

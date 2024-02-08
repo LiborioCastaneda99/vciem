@@ -32,6 +32,110 @@ class articulosModel extends Conexion
         }
     }
 
+    public static function listado_productos()
+    {
+        $conexion = Conexion::Conectar();
+        try {
+            $draw = $_POST['draw'];
+            $row = $_POST['start'];
+            $rowperpage = $_POST['length']; // Rows display per page
+            $columnIndex = $_POST['order'][0]['column']; // Column index
+            $columnName = $_POST['columns'][$columnIndex]['data']; // Column name
+            $columnSortOrder = $_POST['order'][0]['dir']; // asc or desc
+            $searchValue = $_POST['search']['value']; // Search value
+
+
+            // Configuración de las opciones de busqueda
+            $searchArray = array();
+            # Configuración del parametro de filtro 
+            $searchQuery = " ";
+            if ($searchValue != '') {
+                $searchQuery = " AND (
+					codigo LIKE :codigo or 
+					nombre LIKE :nombre or 
+					uxemp LIKE :uxemp or 
+					stmin LIKE :stmin or 
+                    stmax LIKE :stmax) ";
+                $searchArray = array(
+                    'codigo' => "%$searchValue%",
+                    'uxemp' => "%$searchValue%",
+                    'stmin' => "%$searchValue%",
+                    'nombre' => "%$searchValue%",
+                    'stmax' => "%$searchValue%"
+                );
+            }
+
+            ## Calcular el total numero de registros sin filtro
+            $sql = "SELECT COUNT(*) AS allcount ";
+            $sql .= " FROM tbarticulos";
+            $sql .= " WHERE activo = 1";
+            $stmt = $conexion->prepare($sql);
+            $stmt->execute();
+            $records = $stmt->fetch();
+            $totalRecords = $records['allcount'];
+
+            ## Total numero de registros con filtro
+            $sql = "SELECT COUNT(*) AS allcount ";
+            $sql .= " FROM tbarticulos";
+            $sql .= " WHERE activo = 1 " . $searchQuery . " ";
+            $stmt = $conexion->prepare($sql);
+            $stmt->execute($searchArray);
+            $records = $stmt->fetch();
+            $totalRecordwithFilter = $records['allcount'];
+
+            ## Obetener los registros de la tabla.
+            $sql = "SELECT `id`, `codigo`, `homol`, `nombre`, `clase`, `grupo`, `referencia`, `umedida`, 
+            `stmin`, `stmax`, `ctostan`, `ctoult`, `fecult`, `nal`, `pv1`, `pv2`, `pv3`, `ubicacion`, `uxemp`, 
+            `peso`, `iva`, `impo`, `flete`, `estado`, `canen`, `valen`, `pdes`, `ultpro`, `docpro` FROM tbarticulos";
+            $sql .= " WHERE activo = 1 " . $searchQuery . " ORDER BY " . $columnName . " " . $columnSortOrder . " LIMIT :limit,:offset";
+            $stmt = $conexion->prepare($sql);
+
+            // Bind values
+            foreach ($searchArray as $key => $search) {
+                $stmt->bindValue(':' . $key, $search, PDO::PARAM_STR);
+            }
+
+            $stmt->bindValue(':limit', (int) $row, PDO::PARAM_INT);
+            $stmt->bindValue(':offset', (int) $rowperpage, PDO::PARAM_INT);
+            $stmt->execute();
+            $empRecords = $stmt->fetchAll();
+
+            $data = array();
+
+            foreach ($empRecords as $row) {
+
+                # Los titulos de columnas colocados en el formulario deben corresponder exactamente con lo descrito aquí
+                // definimos los botones con sus funciones
+                $opEditar = "<button class='btn btn-outline-primary btn-sm me-1 mb-1' type='button' onclick=agregar({$row['id']})>
+                <span class='fas fa-cart-plus me-1' data-fa-transform='shrink-3'></span></button>";
+                // $opEliminar = "<button class='btn btn-outline-primary btn-sm me-1 mb-1' type='button' onclick=eliminar({$row['id']})>
+                // <span class='fas fa-trash me-1' data-fa-transform='shrink-3'></span></button>";
+
+                $data[] = array(
+                    'codigo' => $row['codigo'],
+                    'nombre' => $row['nombre'],
+                    'existencia' => $row['uxemp'],
+                    'vlr_minimo' => $row['stmin'],
+                    'vlr_sugerido' => $row['stmax'],
+                    'comprar' => $opEditar
+                );
+            }
+            ## respuesta
+            $response = array(
+                "draw" => intval($draw),
+                "iTotalRecords" => $totalRecords,
+                "iTotalDisplayRecords" => $totalRecordwithFilter,
+                "aaData" => $data
+            );
+            # Devuelve la información al formulario
+            echo json_encode($response);
+            $conexion = NULL;
+        } catch (Exception $e) {
+
+            echo '<span class="label label-danger label-block">Error al cargar los datos</span>';
+        }
+    }
+
     public static function get_id($id)
     {
         $dbconec = Conexion::Conectar();
@@ -52,6 +156,35 @@ class articulosModel extends Conexion
             } else {
                 $data = "No hay articulo";
                 echo json_encode($data);
+            }
+        } catch (Exception $e) {
+            $data = "Error";
+            echo json_encode($data);
+        }
+    }
+
+    public static function get_id_productos($id)
+    {
+        $dbconec = Conexion::Conectar();
+
+        try {
+            $query = "SELECT `id`, `codigo`, `homol`, `nombre`, `clase`, `grupo`, `referencia`, `umedida`, 
+            `stmin`, `stmax`, `ctostan`, `ctoult`, `fecult`, `nal`, `pv1`, `pv2`,  `pv3`, `ubicacion`, `uxemp`, 
+            `peso`, `iva`, `impo`, `flete`, `estado`, `canen`, `valen`, `pdes`, `ultpro`, `docpro` FROM tbarticulos WHERE codigo = $id";
+            $stmt = $dbconec->prepare($query);
+            $stmt->execute();
+
+            // Obtener todos los resultados como un array asociativo
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            if ($rows) {
+                // Devolver el array JSON con todos los tbarticulos
+                $response = array('status' => 'success', 'datos' => $rows);
+
+                echo json_encode($response);
+            } else {
+                $response = array('status' => 'error', 'message' => 'No hay productos con este codigo.');
+                echo json_encode($response);
             }
         } catch (Exception $e) {
             $data = "Error";

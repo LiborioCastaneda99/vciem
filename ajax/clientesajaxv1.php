@@ -34,10 +34,22 @@ if (!empty($_POST)) {
             $cl->modificar($datos);
             break;
         case 'combo_departamentos': // consultar registros por id
-            $cl->combo_departamentos($nombre,$id);
+            $cl->combo_departamentos($nombre, $id);
             break;
         case 'combo_ciudades': // consultar registros por id
-            $cl->combo_ciudades($nombre,$id);
+            $cl->combo_ciudades($nombre, $id);
+            break;
+        case 'combo_ciudades_all': // consultar registros por id
+            $cl->combo_ciudades_all($nombre, $id);
+            break;
+        case 'combo_ciudades_cod': // consultar registros por id
+            $cl->combo_ciudades_cod($nombre, $id);
+            break;
+        case 'combo_clientes': // consultar registros por id
+            $cl->combo_clientes($nombre, $id);
+            break;
+        case 'combo_vendedores': // consultar registros por id
+            $cl->combo_vendedores($nombre, $id);
             break;
         case 'eliminar': // eliminar
             $cl->eliminar($id);

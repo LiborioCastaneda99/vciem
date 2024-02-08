@@ -9,7 +9,9 @@ class gruposModel extends Conexion
         $dbconec = Conexion::Conectar();
 
         try {
-            $query = "SELECT `id`, `codigo`, `clase`, `nombre`, `resum`, `dias` FROM tbgrupos WHERE activo = 1";
+            $query = "SELECT G.`id`, G.`codigo`, C.nombre As clase, G.`nombre`, G.`resum`, G.`dias` FROM tbgrupos As G 
+            INNER JOIN tbclases As C ON C.id = G.clase 
+            WHERE G.activo = 1";
             $stmt = $dbconec->prepare($query);
             $stmt->execute();
 
@@ -215,6 +217,60 @@ class gruposModel extends Conexion
         } catch (Exception $e) {
             $data = "Error";
             echo json_encode($data);
+        }
+    }
+
+    public static function combo_clases($searchTerm, $id)
+    {
+        $dbconec = Conexion::Conectar();
+        try {
+            $numberofrecords = 5;
+            if ($id != '') {
+                $search = $id; // Search text
+
+                // Mostrar resultados
+                $sql = "SELECT id, codigo, nombre FROM tbclases where activo = 1 AND id=:codigo";
+                $stmt = $dbconec->prepare($sql);
+                $stmt->bindValue(':codigo', $search, PDO::PARAM_STR);
+                $stmt->execute();
+                //Variable en array para ser procesado en el ciclo foreach
+                $lstResult = $stmt->fetchAll();
+            } else {
+                if ($searchTerm == '') {
+
+                    // Obtener registros a tarves de la consulta SQL
+                    $sql = "SELECT id, codigo, nombre FROM tbclases WHERE activo = 1 ORDER BY nombre LIMIT :limit";
+                    $stmt = $dbconec->prepare($sql);
+                    $stmt->bindValue(':limit', (int) $numberofrecords, PDO::PARAM_INT);
+                    $stmt->execute();
+                    $lstResult = $stmt->fetchAll();
+                } else {
+                    $search = $searchTerm; // Search text
+                    // Mostrar resultados
+                    $sql = "SELECT id, codigo, nombre FROM tbclases WHERE activo = 1 AND nombre like :nombre ORDER BY nombre LIMIT :limit";
+                    $stmt = $dbconec->prepare($sql);
+                    $stmt->bindValue(':nombre', '%' . $search . '%', PDO::PARAM_STR);
+                    $stmt->bindValue(':limit', (int) $numberofrecords, PDO::PARAM_INT);
+                    $stmt->execute();
+                    //Variable en array para ser procesado en el ciclo foreach
+                    $lstResult = $stmt->fetchAll();
+                }
+            }
+            $response = array();
+            // Leer los datos de MySQL
+
+            foreach ($lstResult as $result) {
+                $response[] = array(
+                    "id" => $result['id'],
+                    "text" => $result['nombre']
+                );
+            }
+
+            echo json_encode($response);
+            $dbconec = NULL; //Cierra la conexion a la Base de datos
+        } catch (Exception $e) {
+
+            echo '<span class="label label-danger label-block">Error al cargar los datos</span>';
         }
     }
 } // Fin de la clase

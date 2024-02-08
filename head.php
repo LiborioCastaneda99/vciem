@@ -17,7 +17,8 @@
 <link href="assets/css/user-rtl.min.css" rel="stylesheet" id="user-style-rtl">
 <link href="assets/css/user.min.css" rel="stylesheet" id="user-style-default">
 
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> -->
+<link href="vendors/select2/select2.min.css" rel="stylesheet" />
 <!-- <script src="vendors/select2/select2.min.css"></script> -->
 
 

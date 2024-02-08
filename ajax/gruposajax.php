@@ -31,6 +31,9 @@ if (!empty($_POST))
         case 'eliminar': // eliminar
             $cl->eliminar($id);
             break;
+        case 'combo_clases': // consultar registros por id
+            $cl->combo_clases($nombre,$id);
+            break;
 		default:
 			$data = "Error";
 			echo json_encode($data);

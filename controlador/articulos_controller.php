@@ -1,5 +1,5 @@
 <?php
-	class articulosModelo
+class articulosModelo
 {
 
 	public function guardar($datos)
@@ -17,6 +17,11 @@
 		$cmd = articulosModel::get_id($id);
 	}
 
+	public function get_id_productos($id)
+	{
+		$cmd = articulosModel::get_id_productos($id);
+	}
+
 	public function modificar($datos)
 	{
 		$cmd = articulosModel::modificar($datos);
@@ -27,6 +32,8 @@
 		$cmd = articulosModel::eliminar($id);
 	}
 
+	public function listado_productos()
+	{
+		$cmd = articulosModel::listado_productos();
+	}
 }
-
-?>

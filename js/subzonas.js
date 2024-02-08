@@ -2,62 +2,122 @@ $(document).ready(function() {
     cargar_tabla()
 });
 
-// consultar
 function cargar_tabla() {
-    // Hacer la solicitud AJAX al servidor
-    var urlprocess = 'ajax/subzonasajax.php';
-    $.ajax({
-        type: 'POST',
-        url: urlprocess,
-        data: 'proceso=get',
-        dataType: 'json',
-        success: function(data) {
-            // Limpiar el cuerpo de la tabla
-            $('#myTable tbody').empty();
-
-            if (data.length > 0) {
-
-                // Agregar filas con los datos obtenidos
-                $.each(data, function(index, item) {
-                    $('#myTable tbody').append(
-                        '<tr>' +
-                        '<td class="codigo">' + item.codigo + '</td>' +
-                        '<td class="subzona">' + item.zona + '</td>' +
-                        '<td class="nombre">' + item.nombre + '</td>' +
-                        '<td class="resumen">' + item.resum + '</td>' +
-                        '<td class="text-center"><button class="btn btn-outline-primary me-1 mb-1" type="button" onclick=editar(' + item.id + ')>' +
-                        '<span class="fas fa-edit me-1" data-fa-transform="shrink-3"></span></button></td>' +
-                        '<td class="text-center"><button class="btn btn-outline-primary me-1 mb-1" type="button" onclick=eliminar(' + item.id + ')>' +
-                        '<span class="fas fa-trash ms-1" data-fa-transform="shrink-3"></span></button></td>' +
-                        '</tr>'
-                    );
-                });
-
-                // Inicializar List.js después de agregar datos
-                var options = {
-                    valueNames: ['codigo', 'zona', 'nombre', 'resum'],
-                    item: '<tr><td class="codigo"></td><td class="subzona"></td><td class="nombre"></td><td class="resumen"></td></tr>'
-                };
-                var userList = new List('myTable', options);
-
-                // Actualizar la lista después de agregar los datos
-                userList.update();
-
-                // Re-inicializar la búsqueda después de la actualización de la lista
-                var input = document.querySelector('.search');
-                var searchList = new List('myTable', { valueNames: ['codigo', 'zona', 'nombre', 'resum'], page: 5 });
-                input.addEventListener('input', function() {
-                    searchList.search(input.value);
-                });
-            } else {
-                // Mostrar un mensaje indicando que no hay subzonas disponibles
-                $('#myTable tbody').html('<tr><td colspan="4" class="text-center">No hay subzonas disponibles</td></tr>');
+    $('#tabla').dataTable().fnDestroy();
+    $('#tabla').DataTable({
+        "responsive": true,
+        dom: 'lBfrtip',
+        buttons: [{
+                className: 'btn btn-falcon-default btn-sm mx-2',
+                text: '<span class="fas fa-plus" data-fa-transform="shrink-3"></span> ' +
+                    'Agregar ',
+                action: function() {
+                    abrirModal();
+                }
+            },
+            {
+                extend: 'collection',
+                init: (api, node, config) => $(node).removeClass('btn-secondary'),
+                className: 'btn btn-falcon-default btn-sm mx-2',
+                text: '<span class="fas fa-file-export" data-fa-transform="shrink-3"></span> ' +
+                    'Exportar',
+                buttons: [{
+                        extend: 'csvHtml5',
+                        titleAttr: 'Csv',
+                        className: 'btn btn-falcon-default btn-sm mx-2',
+                        text: '<span class="fas fa-file-csv" data-fa-transform="shrink-3"></span> ' +
+                            'Exportar a CSV ',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3]
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        className: 'btn btn-falcon-default btn-sm mx-2',
+                        text: '<span class="fas fa-file-csv" data-fa-transform="shrink-3"></span> ' +
+                            'Exportar a Excel ',
+                        titleAttr: 'Csv',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3]
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        text: '<span class="fas fa-file-pdf" data-fa-transform="shrink-3"></span> ' +
+                            'Exportar a PDF ',
+                        className: 'btn btn-falcon-default btn-sm mx-2',
+                        titleAttr: 'Csv',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3]
+                        }
+                    },
+                ],
+            },
+            {
+                extend: 'print',
+                init: (api, node, config) => $(node).removeClass('btn-secondary'),
+                className: 'btn btn-falcon-default btn-sm mx-2',
+                text: '<span class="fas fa-print" data-fa-transform="shrink-3"></span> ' +
+                    'Imprimir ',
+                exportOptions: {
+                    columns: [0, 1, 2, 3]
+                }
             }
+        ],
+        "columnDefs": [{
+                // El numero correspode a la ultima columna iniciando en 0
+                "targets": [4, 5],
+                "orderable": false,
+                "width": "70px",
+                "className": "text-center",
+            },
+            {
+                // El numero correspode a la ultima columna iniciando en 0
+                "targets": [0],
+                "width": "120px",
+            }
+        ],
+        "language": {
+            "url": "vendors/datatables.net/spanish.txt"
         },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            notificacion('Error', 'error', response.message);
+        "lengthMenu": [10, 25, 50, 75, 100, 500, 1000],
+        "lengthChange": true,
+        "order": [
+            [0, "desc"]
+        ],
+        'processing': true,
+        'serverSide': true,
+        'serverMethod': 'post',
+        'ajax': {
+            'url': 'ajax/subzonasajax.php',
+            'data': {
+                'proceso': 'get'
+            },
+            'method': 'POST'
+        },
+        'columns': [{
+                data: 'codigo'
+            },
+            {
+                data: 'zona'
+            },
+            {
+                data: 'nombre'
+            },
+            {
+                data: 'resum'
+            },
+            {
+                data: 'editar'
+            },
+            {
+                data: 'eliminar'
+            },
+        ],
+        drawCallback: function() {
+            $(".btn-group").addClass("btn-group-sm");
         }
+
     });
 }
 
@@ -66,19 +126,19 @@ $(".fmr_subzonas").submit(function(event) {
     event.preventDefault();
 
     codigo = $("#codigo").val()
-    subzona = $("#lstSubzonaAgregar").val()
+    zona = $("#lstZonaAgregar").val()
     nombre = $("#nombre").val()
     resumen = $("#resumen").val()
 
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nueva subzona
     var nuevaSubzona = {
-        codigo: $("#codigo").val(),
-        subzona: $("#lstSubzonaAgregar").val(),
-        nombre: $("#nombre").val(),
-        resumen: $("#resumen").val()
+        codigo: codigo,
+        zona: zona,
+        nombre: nombre,
+        resumen: resumen
     };
 
-    if (codigo == "" || subzona == "" || nombre == "" || resumen == "") {
+    if (codigo == "" || zona == "" || nombre == "" || resumen == "") {
         // alert("Por favor, completa todos los campos.");
         notificacion('Error', 'error', "Por favor, completa todos los campos.");
         return;
@@ -90,7 +150,7 @@ $(".fmr_subzonas").submit(function(event) {
             data: {
                 proceso: 'guardar',
                 codigo: nuevaSubzona.codigo,
-                subzona: nuevaSubzona.subzona,
+                zona: nuevaSubzona.zona,
                 nombre: nuevaSubzona.nombre,
                 resumen: nuevaSubzona.resumen
 
@@ -134,14 +194,10 @@ function editar(id) {
             // Asignar un valor al input
             document.getElementById('id').value = data[0].id
             document.getElementById('codigo_mod').value = data[0].codigo
-                // document.getElementById('subzona_mod').value = data[0].zona
-            document.getElementById('nombre_mod').value = data[0].nombre
             document.getElementById('resumen_mod').value = data[0].resum
-            cargar_zona(data[0].zona, 'lstSubzonaMod');
-
-            // Limpiar el cuerpo de la tabla
+            cargar_departamentos(data[0].codigo_zona, 'lstZonaMod', 'editarModal')
+            cargar_ciudades(data[0].id, 'lstSubzonaMod', 'editarModal', 'combo_ciudades')
             $('#editarModal').modal('show'); // abrir
-
         },
         error: function() {
             // Error en la inserción, muestra mensaje de error con SweetAlert
@@ -150,24 +206,46 @@ function editar(id) {
     });
 }
 
+
+// abrir modal
+function abrirModal() {
+
+    $('#fmr_subzonas')[0].reset();
+    cargar_departamentos('', 'lstZonaAgregar', 'guardarModal')
+    $('#guardarModal').modal('show');
+
+}
+
 $(".fmr_subzonas_editar").submit(function(event) {
     event.preventDefault();
 
     codigo = $("#codigo_mod").val()
+    zona = $("#lstZonaMod").val()
     subzona = $("#lstSubzonaMod").val()
     nombre = $("#nombre_mod").val()
     resumen = $("#resumen_mod").val()
 
+    // Obtener el elemento select
+    var miSelect = document.getElementById("lstSubzonaMod");
+    // Obtener el índice de la opción seleccionada
+    var indiceSeleccionado = miSelect.selectedIndex;
+    // Obtener el texto de la opción seleccionada
+    var textoSeleccionado = miSelect.options[indiceSeleccionado].text;
+    // Mostrar el texto en la consola (puedes hacer lo que quieras con el texto)
+    console.log("Texto seleccionado: " + textoSeleccionado);
+
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nueva subzona
     var nuevaSubzona = {
-        codigo: $("#codigo_mod").val(),
-        subzona: $("#lstSubzonaMod").val(),
-        nombre: $("#nombre_mod").val(),
-        resumen: $("#resumen_mod").val(),
+        codigo: codigo,
+        zona: zona,
+        subzona: subzona,
+        subzonaName: textoSeleccionado,
+        nombre: nombre,
+        resumen: resumen,
         id: $("#id").val()
     };
 
-    if (codigo == "" || subzona == "" || nombre == "" || resumen == "") {
+    if (codigo == "" || zona == "" || subzona == "" || nombre == "" || resumen == "") {
         // alert("Por favor, completa todos los campos.");
         notificacion('Error', 'error', "Por favor, completa todos los campos.");
         return;
@@ -179,7 +257,9 @@ $(".fmr_subzonas_editar").submit(function(event) {
             data: {
                 proceso: 'modificar',
                 codigo: nuevaSubzona.codigo,
+                zona: nuevaSubzona.zona,
                 subzona: nuevaSubzona.subzona,
+                subzonaName: nuevaSubzona.subzonaName,
                 nombre: nuevaSubzona.nombre,
                 resumen: nuevaSubzona.resumen,
                 id: nuevaSubzona.id
@@ -265,76 +345,138 @@ function notificacion(titulo, icon, mensaje) {
     });
 }
 
-// // cuadramos lo que queremos imprimir
-document.getElementById('btnAgregar').addEventListener('click', function() {
-    cargar_zona('', 'lstSubzonaAgregar');
+// Funcion para cargar las listas select con opcion de busqueda
+$('#btnBusquedaZonaAgregar').click(function() {
+    cargar_departamentos('', 'lstZonaAgregar', 'guardarModal');
 });
 
 // Funcion para cargar las listas select con opcion de busqueda
-$('#btnBusquedaAgregar').click(function() {
-    cargar_zona('', 'lstSubzonaAgregar');
+$('#btnBusquedaZonaMod').click(function() {
+    cargar_departamentos('', 'lstZonaMod', 'editarModal');
 });
 
 // Funcion para cargar las listas select con opcion de busqueda
-$('#btnBusquedaMod').click(function() {
-    cargar_zona('', 'lstSubzonaMod');
+$('#btnBusquedaSubzonaMod').click(function() {
+    cargar_ciudades('', 'lstSubzonaMod', 'editarModal', 'combo_ciudades');
 });
 
-function cargar_zona(Id, nameSelect) {
-    var lstSubzona = $('#' + nameSelect);
+function cargar_select(id) {
+    cargar_ciudades(id, 'lstSubzonaMod', 'editarModal', 'combo_ciudades_all')
+}
 
-    // Limpiar el contenido actual del select
+function cargar_departamentos(Id, nameSelect, Modal) {
+    var lstRoles = $('#' + nameSelect);
 
-    select = nameSelect
-
-    lstSubzona.empty();
-
-    if (Id !== "") {
+    if (Id != "") {
+        lstRoles.select2({
+            dropdownParent: $('#' + Modal)
+        });
+        // var lstRoles = $lstRoles
+        lstRoles.find('option').remove();
         var searchTerm = '';
-
         $.ajax({
             type: 'POST',
             dataType: 'json',
-            url: 'ajax/zonasajax.php',
+            url: 'ajax/clientesajaxv1.php',
             data: {
                 searchTerm: searchTerm,
-                proceso: "combo_zonas",
+                proceso: 'combo_departamentos',
                 id: Id
             },
         }).then(function(registros) {
-            // Agregar nuevas opciones al select
-            console.table(registros)
             $(registros).each(function(i, v) {
-                lstSubzona.append('<option value="' + v.id + '">' + v.text + '</option>');
+                lstRoles.append('<option selected value="' + v.id + '">' + v.text + '</option>');
+            })
+            lstRoles.trigger({
+                type: 'select2:select',
+                params: {
+                    data: registros
+                }
             });
         });
+
     } else {
-        // Agregar una opción por defecto al select
-        lstSubzona.append('<option value="" selected>Seleccione una zona</option>');
-        var searchTerm = '';
+        lstRoles.select2({
+            placeholder: "Seleccione un departamento",
+            dropdownParent: $('#' + Modal),
+            ajax: {
+                url: "ajax/clientesajaxv1.php",
+                type: "post",
+                dataType: 'json',
+                delay: 150,
+                data: function(params) {
+                    return {
+                        searchTerm: params.term,
+                        proceso: "combo_departamentos",
+                        id: Id
+                    };
+                },
+                processResults: function(response) {
+                    return {
+                        results: response
 
-        $.ajax({
-            type: 'POST',
-            dataType: 'json',
-            url: 'ajax/zonasajax.php',
-            data: {
-                searchTerm: searchTerm,
-                proceso: "combo_zonas",
-                id: Id
-            },
-        }).then(function(registros) {
-            // Agregar nuevas opciones al select
-            console.table(registros)
-            $(registros).each(function(i, v) {
-                lstSubzona.append('<option value="' + v.id + '">' + v.text + '</option>');
-            });
+                    };
+                },
+                cache: true
+            }
         });
-
     }
 }
 
-function generar() {
-    // Abre la URL del archivo PDF en una nueva pestaña
-    window.open('pdfs/generar_pdf_subzonas.php', '_blank');
+function cargar_ciudades(Id, nameSelect, Modal, Proceso) {
+    var lstRoles = $('#' + nameSelect);
 
+    if (Id != "") {
+        lstRoles.select2({
+            dropdownParent: $('#' + Modal)
+        });
+        // var lstRoles = $lstRoles
+        lstRoles.find('option').remove();
+        var searchTerm = '';
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: 'ajax/clientesajaxv1.php',
+            data: {
+                searchTerm: searchTerm,
+                proceso: Proceso,
+                id: Id
+            },
+        }).then(function(registros) {
+            $(registros).each(function(i, v) {
+                lstRoles.append('<option selected value="' + v.id + '">' + v.text + '</option>');
+            })
+            lstRoles.trigger({
+                type: 'select2:select',
+                params: {
+                    data: registros
+                }
+            });
+        });
+    } else {
+        lstRoles.select2({
+            placeholder: "Seleccione una ciudad",
+            dropdownParent: $('#' + Modal),
+            ajax: {
+                url: "ajax/clientesajaxv1.php",
+                type: "post",
+                dataType: 'json',
+                delay: 150,
+                data: function(params) {
+                    return {
+                        searchTerm: params.term,
+                        proceso: "combo_ciudades",
+                        id: Id
+                    };
+                },
+                processResults: function(response) {
+                    return {
+                        results: response
+
+                    };
+                },
+                cache: true
+            }
+        });
+    }
 }

@@ -43,37 +43,101 @@ $html = $style . '
         <th style="width: 80%;">Nombre</th>
     </tr>
 ';
+?>
+<!DOCTYPE html>
+<html lang="en">
 
-// Realizar una consulta a la base de datos (asegúrate de tener una conexión establecida)
-$sql = "SELECT `id`, `codigo`, descripcion As nombre FROM colores WHERE activo = 1;";
-$stmt = $conn->prepare($sql);
-$stmt->execute();
-$lstResult = $stmt->fetchAll();
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura</title>
+    <style>
+        /* Estilos para la factura */
+        body {
+            font-family: Arial, sans-serif;
+        }
 
-// Obtener registros a traves de la consulta SQL
-if (count($lstResult)) {
-    foreach ($lstResult as $result) {
-        $html .= '
-            <tr>
-                <td style="text-align: center;">' . $result["codigo"] . '</td>
-                <td>' . $result["nombre"] . '</td>
-            </tr>
-        ';
-    }
-} else {
-    $html .= '<tr><td colspan="2" style="text-align: center;">No se encontraron resultados.</td></tr>';
-}
+        .invoice {
+            /* width: 100%; */
+            /* max-width: 800px; */
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
 
-$html .= '</table>';
-$pdf->setTitle('Reporte de colores - Visual100');
-$pdf->writeHTML($html, true, false, true, false, '');
+        .invoice-header,
+        .invoice-body {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .invoice-footer {
+            margin-bottom: 20px;
+            text-align: right;
+        }
 
-// Obtén el número total de páginas después de escribir el contenido HTML
-$numeroTotalPaginas = $pdf->getNumPages();
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
-// Configurar el pie de página después de obtener el número total de páginas
-$pdf->setFooterData(array(0, 0, 0), array(0, 0, 0));  // Configurar el espacio del pie de página
-$pdf->SetMargins(10, 10, 10);
+        .invoice-table th,
+        .invoice-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
 
-// Nombrar el archivo PDF y descargarlo
-$pdf->Output('reporte_colores.pdf', 'I');
+        .invoice-total {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="invoice">
+        <div class="invoice-header">
+            <h1>Factura de venta</h1>
+            <p>Fecha: 6 de febrero de 2024</p>
+            <p>Cliente: Juan Pérez</p>
+            <p>Caja: Juan Pérez</p>
+            <p>Factura No.: 12345</p>
+        </div>
+        <div class="invoice-body">
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Código</th>
+                        <th>Descripción</th>
+                        <th>UM</th>
+                        <th>Cant</th>
+                        <th>Vlr.Unit</th>
+                        <th>Desc</th>
+                        <th>Vlr.Desc</th>
+                        <th>Vlr.Unit Final</th>
+                        <th>% Imp</th>
+                        <th>Vlr. Imp</th>
+                        <th>Vlr. Parcial</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Producto 1</td>
+                        <td>2</td>
+                        <td>$10.00</td>
+                        <td>$20.00</td>
+                    </tr>
+                    <!-- Agrega más filas según los productos -->
+                </tbody>
+            </table>
+        </div>
+        <div class="invoice-footer">
+            <p>Subtotal: $20.00</p>
+            <p>Impuestos: $2.00</p>
+            <p class="invoice-total">Total: $22.00</p>
+        </div>
+    </div>
+</body>
+
+</html>

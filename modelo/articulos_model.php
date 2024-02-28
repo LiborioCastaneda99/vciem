@@ -424,4 +424,48 @@ class articulosModel extends Conexion
             echo json_encode($data);
         }
     }
+
+
+    public static function get_consecutivo($id_factura)
+    {
+
+        $dbconec = Conexion::Conectar();
+
+        try {
+
+            // se obtiene el alias de la factura
+            $query = "SELECT id, resumen FROM tipo_facturas WHERE id = :id";
+            $stmt = $dbconec->prepare($query);
+            $stmt->bindParam(':id', $id_factura);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $alias = $result['resumen'];
+
+
+            // se consulta el consecutivo
+            $query = "SELECT COUNT(*) as count FROM consecutivo WHERE id_factura = :id_factura";
+            $stmt = $dbconec->prepare($query);
+            $stmt->bindParam(':id_factura', $id_factura);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $total = $result['count'] + 1;
+            $consecutivo = $alias . $total;
+            $proceso = 1;
+
+            // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
+            $query = "INSERT INTO consecutivo (id_factura, consecutivo, proceso) VALUES (:id_factura, :consecutivo, :proceso)";
+            $stmt = $dbconec->prepare($query);
+            $stmt->bindParam(':id_factura', $id_factura);
+            $stmt->bindParam(':consecutivo', $consecutivo);
+            $stmt->bindParam(':proceso', $proceso);
+            $stmt->bindParam(':proceso', $proceso);
+            $stmt->execute();
+
+            $response = array('status' => 'success', 'datos' => $consecutivo);
+            echo json_encode($response);
+        } catch (Exception $e) {
+            $data = "Error";
+            echo json_encode($data);
+        }
+    }
 } // Fin de la clase

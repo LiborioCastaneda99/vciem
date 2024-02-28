@@ -27,6 +27,16 @@
 		$cmd = nombodsModel::eliminar($id);
 	}
 
+	public function combo_caja($nombre, $id)
+	{
+		$cmd = nombodsModel::combo_caja($nombre, $id);
+	}
+
+	public function combo_factura($nombre, $id)
+	{
+		$cmd = nombodsModel::combo_factura($nombre, $id);
+	}
+
 }
 
 ?>

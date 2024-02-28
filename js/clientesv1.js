@@ -2,69 +2,130 @@ $(document).ready(function() {
     cargar_tabla()
 });
 
-// consultar
+//consultar
 function cargar_tabla() {
-    // Hacer la solicitud AJAX al servidor
-    var urlprocess = 'ajax/clientesajax.php';
-    $.ajax({
-        type: 'POST',
-        url: urlprocess,
-        data: 'proceso=get',
-        dataType: 'json',
-        success: function(data) {
-            // Limpiar el cuerpo de la tabla
-            $('#myTable tbody').empty();
-
-            if (data.length > 0) {
-
-                // Agregar filas con los datos obtenidos
-                $.each(data, function(index, item) {
-                    $('#myTable tbody').append(
-                        '<tr>' +
-                        '<td class="codigo">' + item.codigo + '</td>' +
-                        '<td class="zona">' + item.zona + '</td>' +
-                        '<td class="subzona">' + item.subzona + '</td>' +
-                        '<td class="nombre">' + item.nombre + '</td>' +
-                        '<td class="direc">' + item.direc + '</td>' +
-                        '<td class="tel1">' + item.tel1 + '</td>' +
-                        '<td class="tel2">' + item.tel2 + '</td>' +
-                        // '<td class="ciudad">' + item.ciudad + '</td>' +
-                        '<td class="text-center"><button class="btn btn-outline-primary me-1 mb-1" type="button" onclick=editar(' + item.id + ')>' +
-                        '<span class="fas fa-edit me-1" data-fa-transform="shrink-3"></span></button></td>' +
-                        '<td class="text-center"><button class="btn btn-outline-primary me-1 mb-1" type="button" onclick=eliminar(' + item.id + ')>' +
-                        '<span class="fas fa-trash ms-1" data-fa-transform="shrink-3"></span></button></td>' +
-                        '</tr>'
-                    );
-                });
-
-                // Inicializar List.js después de agregar datos
-                var options = {
-                    valueNames: ['codigo', 'zona', 'subzona', 'nombre', 'direc', 'tel1', 'tel2', 'ciudad'],
-                    item: '<tr><td class="codigo"></td><td class="zona"></td><td class="subzona"></td><td class="nombre"></td><td class="direc">' +
-                        '<td class="nombre"></td><td class="direc"></td><td class="tel1"></td><td class="tel2"></td><td class="ciudad"></td>'
-                };
-                var userList = new List('myTable', options);
-
-                // Actualizar la lista después de agregar los datos
-                userList.update();
-
-                // Re-inicializar la búsqueda después de la actualización de la lista
-                var input = document.querySelector('.search');
-                var searchList = new List('myTable', {
-                    valueNames: ['codigo', 'zona', 'subzona', 'nombre', 'direc', 'tel1', 'tel2', 'ciudad'],
-                    page: 5
-                });
-                input.addEventListener('input', function() {
-                    searchList.search(input.value);
-                });
-            } else {
-                // Mostrar un mensaje indicando que no hay clientes disponibles
-                $('#myTable tbody').html('<tr><td colspan="8" class="text-center">No hay clientes disponibles</td></tr>');
+    $('#tabla').dataTable().fnDestroy();
+    $('#tabla').DataTable({
+        "responsive": true,
+        dom: 'lBfrtip',
+        buttons: [{
+                className: 'btn btn-falcon-default btn-sm mx-2',
+                text: '<span class="fas fa-plus" data-fa-transform="shrink-3"></span> ' +
+                    'Agregar ',
+                action: function() {
+                    abrirModal();
+                }
+            },
+            {
+                extend: 'collection',
+                init: (api, node, config) => $(node).removeClass('btn-secondary'),
+                className: 'btn btn-falcon-default btn-sm mx-2',
+                text: '<span class="fas fa-file-export" data-fa-transform="shrink-3"></span> ' +
+                    'Exportar',
+                buttons: [{
+                        extend: 'csvHtml5',
+                        titleAttr: 'Csv',
+                        className: 'btn btn-falcon-default btn-sm mx-2',
+                        text: '<span class="fas fa-file-csv" data-fa-transform="shrink-3"></span> ' +
+                            'Exportar a CSV ',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5, 6]
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        className: 'btn btn-falcon-default btn-sm mx-2',
+                        text: '<span class="fas fa-file-csv" data-fa-transform="shrink-3"></span> ' +
+                            'Exportar a Excel ',
+                        titleAttr: 'Csv',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5, 6]
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        text: '<span class="fas fa-file-pdf" data-fa-transform="shrink-3"></span> ' +
+                            'Exportar a PDF ',
+                        className: 'btn btn-falcon-default btn-sm mx-2',
+                        titleAttr: 'Csv',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5, 6]
+                        }
+                    },
+                ],
+            },
+            {
+                extend: 'print',
+                init: (api, node, config) => $(node).removeClass('btn-secondary'),
+                className: 'btn btn-falcon-default btn-sm mx-2',
+                text: '<span class="fas fa-print" data-fa-transform="shrink-3"></span> ' +
+                    'Imprimir ',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4, 5, 6]
+                }
             }
+        ],
+        "columnDefs": [{
+                // El numero correspode a la ultima columna iniciando en 0
+                "targets": [7, 8],
+                "orderable": false,
+                "width": "70px",
+                "className": "text-center",
+            },
+            {
+                // El numero correspode a la ultima columna iniciando en 0
+                "targets": [0],
+                "width": "120px",
+            }
+        ],
+        "language": {
+            "url": "vendors/datatables.net/spanish.txt"
         },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            notificacion('Error', 'error', response.message);
+        "lengthMenu": [10, 25, 50, 75, 100, 500, 1000],
+        "lengthChange": true,
+        "order": [
+            [0, "desc"]
+        ],
+        'processing': true,
+        'serverSide': true,
+        'serverMethod': 'post',
+        'ajax': {
+            'url': 'ajax/clientesajaxv1.php',
+            'data': {
+                'proceso': 'get'
+            },
+            'method': 'POST'
+        },
+        'columns': [{
+                data: 'codigo'
+            },
+            {
+                data: 'zona'
+            },
+            {
+                data: 'subzona'
+            },
+            {
+                data: 'nombre'
+            },
+            {
+                data: 'direc'
+            },
+            {
+                data: 'tel1'
+            },
+            {
+                data: 'tel2'
+            },
+            {
+                data: 'editar'
+            },
+            {
+                data: 'eliminar'
+            },
+        ],
+        drawCallback: function() {
+            $(".btn-group").addClass("btn-group-sm");
         }
     });
 }
@@ -109,20 +170,20 @@ function obtenerDatosFormulario(formulario) {
 }
 
 // Función para obtener los datos de todos los formularios
-function obtenerDatosFormularios() {
+function obtenerDatosFormularios(frm1, frm2, frm3) {
     var datos = {};
 
     // Obtener datos del formulario 1
-    var formulario1 = document.getElementById('fmr_clientes1');
-    datos['fmr_clientes1'] = obtenerDatosFormulario(formulario1);
+    var formulario1 = document.getElementById(frm1);
+    datos[frm1] = obtenerDatosFormulario(formulario1);
 
     // Obtener datos del formulario 2
-    var formulario2 = document.getElementById('fmr_clientes2');
-    datos['fmr_clientes2'] = obtenerDatosFormulario(formulario2);
+    var formulario2 = document.getElementById(frm2);
+    datos[frm2] = obtenerDatosFormulario(formulario2);
 
     // Obtener datos del formulario 3
-    var formulario3 = document.getElementById('fmr_clientes3');
-    datos['fmr_clientes3'] = obtenerDatosFormulario(formulario3);
+    var formulario3 = document.getElementById(frm3);
+    datos[frm3] = obtenerDatosFormulario(formulario3);
 
     return datos;
 }
@@ -177,7 +238,7 @@ function validarFormularios(datos) {
 // Agregar evento al botón "Siguiente"
 var btnSiguiente = document.getElementById('btnSiguiente');
 btnSiguiente.addEventListener('click', function() {
-    var datosFormularios = obtenerDatosFormularios();
+    var datosFormularios = obtenerDatosFormularios('fmr_clientes1', 'fmr_clientes2', 'fmr_clientes3');
     var resultadoValidacion = validarFormularios(datosFormularios);
 
     if (resultadoValidacion.valido) {
@@ -200,6 +261,57 @@ btnSiguiente.addEventListener('click', function() {
                     // Selecciona el elemento por su ID
                     var resp_titulo = document.getElementById('resp_titulo');
                     var resp_mensaje = document.getElementById('resp_mensaje');
+
+                    // Actualiza el contenido del elemento con el valor
+                    resp_titulo.innerHTML = 'Éxito';
+                    resp_mensaje.innerHTML = response.message;
+
+                    cargar_tabla();
+                } else {
+                    // Error en la inserción, muestra mensaje de error con SweetAlert
+                    notificacion('Error', 'error', response.message);
+                }
+            },
+            error: function() {
+                // Error en la inserción, muestra mensaje de error con SweetAlert
+                notificacion('Error', 'error', response.message);
+            }
+        });
+
+
+        // Aquí puedes enviar los datos a través de Ajax o realizar otras acciones.
+    } else {
+        console.log('Al menos un formulario tiene campos vacíos.');
+    }
+});
+
+
+// Agregar evento al botón "Modificar"
+var btnSiguiente = document.getElementById('btnSiguienteMod');
+btnSiguiente.addEventListener('click', function() {
+    var datosFormularios = obtenerDatosFormularios('fmr_clientes1_mod', 'fmr_clientes2_mod', 'fmr_clientes3_mod');
+    var resultadoValidacion = validarFormularios(datosFormularios);
+
+    if (resultadoValidacion.valido) {
+        console.log('Todos los formularios tienen valores válidos.');
+        console.table(resultadoValidacion.datos)
+        var datos_formulario_json = resultadoValidacion.datos
+        datos_formulario_json["proceso"] = "modificar";
+
+        // Hacer la solicitud AJAX para modificar la nuevo cliente
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/clientesajaxv1.php',
+            data: datos_formulario_json,
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // limpiamos el formulario
+                    $('.fmr_clientes_mod')[0].reset();
+
+                    // Selecciona el elemento por su ID
+                    var resp_titulo = document.getElementById('resp_titulo_mod');
+                    var resp_mensaje = document.getElementById('resp_mensaje_mod');
 
                     // Actualiza el contenido del elemento con el valor
                     resp_titulo.innerHTML = 'Éxito';
@@ -251,16 +363,28 @@ function cerrar_modal() {
     $('#guardarModal').modal('hide');
 }
 
-function abrir_modal() {
-    $('#fmr_clientes1')[0].reset();
-    $('#fmr_clientes2')[0].reset();
-    $('#fmr_clientes3')[0].reset();
+function abrirModal() {
+    // $('#fmr_clientes1')[0].reset();
+    // $('#fmr_clientes2')[0].reset();
+    // $('#fmr_clientes3')[0].reset();
+    // Limpiar los campos del modal
+    document.getElementById('fmr_clientes1').reset();
+    document.getElementById('fmr_clientes2').reset();
+    document.getElementById('fmr_clientes3').reset();
+
+    // Restablecer el estado de cualquier otro elemento si es necesario
+    document.getElementById('abrir').click(); // Hacer clic en la primera pestaña para restablecerla como activa
+
+    // Cerrar el modal si está abierto
+    $('#guardarModal').modal('hide');
 
     $('#guardarModal').modal('show');
-    document.getElementById('abrir').click();
+    // document.getElementById('abrir').click();
     cargar_departamentos("", 'lstSucursal', 'guardarModal')
     cargar_departamentos("", 'lstZonas', 'guardarModal')
     cargar_ciudades("", 'lstSubzonas', 'guardarModal')
+    cargar_ciudades("", 'lstSubzonas', 'guardarModal')
+    cargar_vendedores('', 'vende', 'guardarModal');
 
 }
 
@@ -385,6 +509,69 @@ function cargar_ciudades(Id, nameSelect, Modal, Proceso) {
     }
 }
 
+// Funcion para cargar las listas select con opcion de busqueda de vendedores
+$('#btnBusquedaVendedoresFact').click(function() {
+    cargar_vendedores('', 'vende', 'guardarModal');
+});
+
+function cargar_vendedores(Id, nameSelect, Modal) {
+    var lstRoles = $('#' + nameSelect);
+
+    if (Id != "") {
+        lstRoles.select2({
+            dropdownParent: $('#' + Modal)
+        });
+        // var lstRoles = $lstRoles
+        lstRoles.find('option').remove();
+        var searchTerm = '';
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: 'ajax/clientesajaxv1.php',
+            data: {
+                searchTerm: searchTerm,
+                proceso: 'combo_vendedores',
+                id: Id
+            },
+        }).then(function(registros) {
+            $(registros).each(function(i, v) {
+                lstRoles.append('<option selected value="' + v.id + '">' + v.text + '</option>');
+            })
+            lstRoles.trigger({
+                type: 'select2:select',
+                params: {
+                    data: registros
+                }
+            });
+        });
+
+    } else {
+        lstRoles.select2({
+            placeholder: "Seleccione un vendedor",
+            dropdownParent: $('#' + Modal),
+            ajax: {
+                url: "ajax/clientesajaxv1.php",
+                type: "post",
+                dataType: 'json',
+                delay: 150,
+                data: function(params) {
+                    return {
+                        searchTerm: params.term,
+                        proceso: "combo_vendedores",
+                        id: Id
+                    };
+                },
+                processResults: function(response) {
+                    return {
+                        results: response
+
+                    };
+                },
+                cache: true
+            }
+        });
+    }
+}
 
 // editar
 function editar(id) {
@@ -414,61 +601,28 @@ function editar(id) {
             cargar_ciudades(data[0].subzona, 'lstSubzonas_mod', 'editarModal', 'combo_ciudades_cod')
 
 
-            // document.getElementsByName('ciudad_mod')[0].value = data[0].ciudad
-            // document.getElementsByName('vendedordor_mod')[0].value = data[0].vendedordor
-            // document.getElementsByName('cupo_mod')[0].value = data[0].cupo
-            // document.getElementsByName('legal_mod')[0].value = data[0].legal
-            // document.getElementsByName('fecha_ini_mod')[0].value = data[0].fecha_ini
-            // document.getElementsByName('forma_pago_mod')[0].value = data[0].forma_pago
-            // document.getElementsByName('cod_viejo_mod')[0].value = data[0].cod_viejo
-            // document.getElementsByName('caract_dev_mod')[0].value = data[0].caract_dev
-            // document.getElementsByName('digito_mod')[0].value = data[0].digito
-            // document.getElementsByName('riva_mod')[0].value = data[0].riva
-            // document.getElementsByName('rfte_mod')[0].value = data[0].rfte
-            // document.getElementsByName('rica_mod')[0].value = data[0].rica
-            // document.getElementsByName('alma_mod')[0].value = data[0].alma
-            // document.getElementsByName('cali_mod')[0].value = data[0].cali
-            // document.getElementsByName('tipo_mod')[0].value = data[0].tipo
-            // document.getElementsByName('distri_mod')[0].value = data[0].distri
-            // document.getElementsByName('genom_mod')[0].value = data[0].genom
-            // document.getElementsByName('geema_mod')[0].value = data[0].geema
-            // document.getElementsByName('getel1_mod')[0].value = data[0].getel1
-            // document.getElementsByName('getel2_mod')[0].value = data[0].getel2
-            // document.getElementsByName('conom_mod')[0].value = data[0].conom
-            // document.getElementsByName('coema_mod')[0].value = data[0].coema
-            // document.getElementsByName('cotel1_mod')[0].value = data[0].cotel1
-            // document.getElementsByName('cotel2_mod')[0].value = data[0].cotel2
-            // document.getElementsByName('panom_mod')[0].value = data[0].panom
-            // document.getElementsByName('paema_mod')[0].value = data[0].paema
-            // document.getElementsByName('patel1_mod')[0].value = data[0].patel1
-            // document.getElementsByName('patel2_mod')[0].value = data[0].patel2
-            // document.getElementsByName('otnom_mod')[0].value = data[0].otnom
-            // document.getElementsByName('otema_mod')[0].value = data[0].otema
-            // document.getElementsByName('ottel1_mod')[0].value = data[0].ottel1
-            // document.getElementsByName('ottel2_mod')[0].value = data[0].ottel2
-            // document.getElementsByName('remis_mod')[0].value = data[0].remis
-            // document.getElementsByName('fbloq_mod')[0].value = data[0].fbloq
-            // document.getElementsByName('diaser_mod')[0].value = data[0].diaser
-            // document.getElementsByName('diater_mod')[0].value = data[0].diater
-            // document.getElementsByName('vlrarr_mod')[0].value = data[0].vlrarr
-            // document.getElementsByName('acta_mod')[0].value = data[0].acta
-            // document.getElementsByName('pacta_mod')[0].value = data[0].pacta
-            // document.getElementsByName('exclui_mod')[0].value = data[0].exclui
-            // document.getElementsByName('person_mod')[0].value = data[0].person
-            // document.getElementsByName('regime_mod')[0].value = data[0].regime
-            // document.getElementsByName('tipoid_mod')[0].value = data[0].tipoid
-            // document.getElementsByName('nomreg_mod')[0].value = data[0].nomreg
-            // document.getElementsByName('pais_mod')[0].value = data[0].pais
-            // document.getElementsByName('nom1_mod')[0].value = data[0].nom1
-            // document.getElementsByName('nom2_mod')[0].value = data[0].nom2
-            // document.getElementsByName('ape1_mod')[0].value = data[0].ape1
-            // document.getElementsByName('ape2_mod')[0].value = data[0].ape2
-            // document.getElementsByName('ofi_mod')[0].value = data[0].ofi
-            // document.getElementsByName('difici_mod')[0].value = data[0].difici
-            // document.getElementsByName('remval_mod')[0].value = data[0].remval
-            // document.getElementsByName('estado_mod')[0].value = data[0].estado
-            // document.getElementsByName('cono_mod')[0].value = data[0].cono
-            // document.getElementsByName('emailq_mod')[0].value = data[0].emailq
+            document.getElementsByName('vende_mod')[0].value = data[0].vendedor
+            document.getElementsByName('legal_mod')[0].value = data[0].legal
+            document.getElementsByName('cupo_mod')[0].value = data[0].cupo
+            document.getElementsByName('fing_mod')[0].value = data[0].fecha_ini
+            document.getElementsByName('fpago_mod')[0].value = data[0].forma_pago
+            document.getElementsByName('digito_mod')[0].value = data[0].digito
+            document.getElementsByName('chdev_mod')[0].value = data[0].caract_dev
+            document.getElementsByName('riva_mod')[0].value = data[0].riva
+            document.getElementsByName('rfte_mod')[0].value = data[0].rfte
+            document.getElementsByName('rica_mod')[0].value = data[0].rica
+            document.getElementsByName('tipo_mod')[0].value = data[0].tipo
+            document.getElementsByName('distri_mod')[0].value = data[0].distri
+            document.getElementsByName('clase_mod')[0].value = data[0].cali
+            document.getElementsByName('person_mod')[0].value = data[0].person
+            document.getElementsByName('regime_mod')[0].value = data[0].regime
+            document.getElementsByName('pais_mod')[0].value = data[0].pais
+            document.getElementsByName('tipoid_mod')[0].value = data[0].tipoid
+            document.getElementsByName('nom1_mod')[0].value = data[0].nom1
+            document.getElementsByName('nom2_mod')[0].value = data[0].nom2
+            document.getElementsByName('ape1_mod')[0].value = data[0].ape1
+            document.getElementsByName('ape2_mod')[0].value = data[0].ape2
+
 
             // Limpiar el cuerpo de la tabla
             $('#editarModal').modal('show'); // abrir

@@ -22,6 +22,11 @@ class articulosModelo
 		$cmd = articulosModel::get_id_productos($id);
 	}
 
+	public function get_consecutivo($id)
+	{
+		$cmd = articulosModel::get_consecutivo($id);
+	}
+
 	public function modificar($datos)
 	{
 		$cmd = articulosModel::modificar($datos);

@@ -10,7 +10,7 @@ if (!isset($usuario_id)) {
     header('Location: login.php');
 }
 
-$permisoRequerido = "ver_subzonas";
+$permisoRequerido = "ver_facturacion";
 // Verificar si el usuario tiene el permiso requerido
 if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
     // Mostrar un mensaje de error o redirigir a otra página
@@ -64,7 +64,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                     <div class="card-header bg-body-tertiary">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h6 class="mb-0">Facturación</h6>
+                                <h6 class="mb-0">Ventas</h6>
                             </div>
                         </div>
                     </div>
@@ -80,21 +80,21 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <div class="form-group col-md-12 mb-2">
                                                     <select class="form-select selectpicker" id="lstClientesFact" size="1" name="lstClientesFact" required>
                                                     </select>
-                                                    <span class="input-group-addon"><button class="btn btn-primary icon-search4 Search" type="button" id="btnBusquedaClientesFact" name="btnBusquedaClientesFact" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaClientesFact" name="btnBusquedaClientesFact" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <label>Factura <span class="text-danger"> * </span></label>
                                                 <div class="form-group col-md-12 mb-2">
-                                                    <select class="form-select selectpicker" id="lstZonaAgregar" size="1" name="lstZonaAgregar" required>
+                                                    <select class="form-select selectpicker lstFacturaFact" id="lstFacturaFact" size="1" name="lstFacturaFact" required>
                                                     </select>
-                                                    <span class="input-group-addon"><button class="btn btn-primary icon-search4 Search" type="button" id="btnBusquedaZonaAgregar" name="btnBusquedaZonaAgregar" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaFacturaFact" name="btnBusquedaFacturaFact" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
                                                 <label>Consecutivo <span class="text-danger"> * </span></label>
                                                 <div class="form-group col-md-12 mb-2">
-                                                    <input type="text" class="form-control" id="consecutivo" name="consecutivo" disabled>
+                                                    <input type="text" class="form-control" id="consecutivo" name="consecutivo" readonly>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -102,31 +102,31 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <div class="form-group col-md-12 mb-2">
                                                     <select class="form-select selectpicker" id="lstVendedoresFact" size="1" name="lstVendedoresFact" required>
                                                     </select>
-                                                    <span class="input-group-addon"><button class="btn btn-primary icon-search4 Search" type="button" id="btnBusquedaVendedoresFact" name="btnBusquedaVendedoresFact" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaVendedoresFact" name="btnBusquedaVendedoresFact" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <label>Caja <span class="text-danger"> * </span></label>
                                                 <div class="form-group col-md-12 mb-2">
-                                                    <select class="form-select selectpicker" id="lstZonaAgregar" size="1" name="lstZonaAgregar" required>
+                                                    <select class="form-select selectpicker" id="lstCajaFact" size="1" name="lstCajaFact" required>
                                                     </select>
-                                                    <span class="input-group-addon"><button class="btn btn-primary icon-search4 Search" type="button" id="btnBusquedaZonaAgregar" name="btnBusquedaZonaAgregar" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaCajaFact" name="btnBusquedaCajaFact" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
                                                 <label>Total <span class="text-danger"> * </span></label>
                                                 <div class="form-group col-md-12 mb-2">
-                                                    <input type="text" class="form-control" id="total" name="total" disabled>
+                                                    <input type="text" class="form-control" id="total" name="total" readonly>
                                                 </div>
                                             </div>
 
                                             <hr>
 
-                                            <div class="row mt-4">
+                                            <div class="mt-4">
                                                 <div class="form-group col-md-12 mb-2">
-                                                    <span class="input-group-addon">
-                                                        <button class="btn btn-primary icon-search4 Search" type="button" id="btnBuscarProducto" name="btnBuscarProducto" title="Buscar producto o servicio">
-                                                            <span class="fas fa-search search-box-icon"></span>
+                                                    <span class="input-group-addon d-grid  gap-0">
+                                                        <button class="btn btn-outline-dark me-1 mb-1 icon-search4 Search" type="button" id="btnBuscarProducto" name="btnBuscarProducto" title="Buscar producto o servicio">
+                                                            Buscar productos <span class="fas fa-search search-box-icon"></span>
                                                         </button>
                                                     </span>
                                                 </div>
@@ -138,7 +138,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                             <input class="form-control" type="text" name="codigo" id="codigo" onchange="">
                                                         </td>
                                                         <td>
-                                                            <input class="form-control" type="text" name="descripcion" id="descripcion" disabled>
+                                                            <input class="form-control" type="text" name="descripcion" id="descripcion" readonly>
                                                         </td>
                                                         <td>
                                                             <input class="form-control" type="text" name="um" id="um">
@@ -150,27 +150,27 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                             <input class="form-control" type="text" name="vlr_unitario" id="vlr_unitario">
                                                         </td>
                                                         <td>
-                                                            <input class="form-control" type="text" name="desc" id="desc" disabled>
+                                                            <input class="form-control" type="text" name="desc" id="desc" readonly>
                                                         </td>
                                                         <td>
                                                             <input class="form-control" type="text" name="vlr_descuento" id="vlr_descuento">
                                                         </td>
                                                         <td>
-                                                            <input class="form-control" type="text" name="vlr_unit_final" id="vlr_unit_final" disabled>
+                                                            <input class="form-control" type="text" name="vlr_unit_final" id="vlr_unit_final" readonly>
                                                         </td>
                                                         <td>
-                                                            <input class="form-control" type="text" name="imp" id="imp" disabled>
+                                                            <input class="form-control" type="text" name="imp" id="imp" readonly>
                                                         </td>
                                                         <td>
-                                                            <input class="form-control" type="text" name="vlr_impuesto" id="vlr_impuesto" disabled>
+                                                            <input class="form-control" type="text" name="vlr_impuesto" id="vlr_impuesto" readonly>
                                                         </td>
                                                         <td>
                                                             <input class="form-control" type="text" name="vlr_parcial" id="vlr_parcial">
                                                         </td>
                                                         <td>
-                                                            <div class="form-group col-md-12 mb-2">
-                                                                <span class="input-group-addon">
-                                                                    <button class="btn btn-primary icon-search4 Search" type="button" id="btnAgregarProducto" name="btnAgregarProducto" title="Agregar producto o servicio">
+                                                            <div class="form-group col-md-12">
+                                                                <span class="input-group-addon col-12 d-grid  gap-0">
+                                                                    <button class="btn btn-outline-success icon-search4 Search" type="button" id="btnAgregarProducto" name="btnAgregarProducto" title="Agregar producto o servicio">
                                                                         <span class="fas fa-cart-plus search-box-icon"></span>
                                                                     </button>
                                                                 </span>
@@ -192,10 +192,13 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                         <th>% Imp</th>
                                                         <th>Vlr. Imp</th>
                                                         <th>Vlr. Parcial</th>
-                                                        <th>Acción</th>
+                                                        <th style="width: 150px;" class="text-center">Acción</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="cuerpoTabla">
+                                                    <tr id="no_hay_registros" class="oculto">
+                                                        <td colspan="13" class="text-center">No hay registros agregados.</td>
+                                                    </tr>
                                                     <!-- Las filas se agregarán dinámicamente aquí -->
                                                 </tbody>
                                             </table>
@@ -204,21 +207,41 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             <div class="col-md-6">
                                                 <label>Nota</label>
                                                 <div class="form-group col-md-12 mb-2">
-                                                    <textarea class="form-control" name="" id="" cols="50" rows="2"></textarea>
+                                                    <textarea class="form-control" name="notaFact" id="notaFact" cols="50" rows="2"></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-md-3 text-end">
                                                 <label>Descuentos</label>
                                                 <div class="form-group col-md-12 mb-2">
-                                                    <p id="descuentos"></p>
+                                                    <p class="descuentosFact" id="descuentos"></p>
                                                 </div>
                                             </div>
                                             <div class="col-md-3 text-end">
                                                 <label>Subtotal</label>
                                                 <div class="form-group col-md-12 mb-2">
-                                                    <p id="subtotal"></p>
+                                                    <p class="subtotalFact" id="subtotal"></p>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-2 d-grid  gap-0 mt-4">
+                                                <button class="btn btn-outline-primary me-1 mb-1 btnFacturar" id="btnFacturar" type="button"><span class="fas fa-file-invoice-dollar search-box-icon"></span> Facturar</button>
+                                            </div>
+                                            <div class="col-md-2 d-grid  gap-0 mt-4">
+                                                <button class="btn btn-outline-primary me-1 mb-1 btnVerFactura" id="btnVerFactura" type="button"><span class="fas fa-eye search-box-icon"></span> Ver factura</button>
+                                            </div>
+                                            <div class="col-md-2 d-grid  gap-0 mt-4">
+                                                <button class="btn btn-outline-primary me-1 mb-1 btnNuevaFactura" id="btnNuevaFactura" type="button"><span class="fas fa-plus search-box-icon"></span> Nueva factura</button>
+                                            </div>
+                                            <div class="col-md-2 d-grid  gap-0 mt-4">
+                                                <button class="btn btn-outline-primary me-1 mb-1 btnBolsas" id="btnBolsas" type="button"><span class="fas fa-shopping-bag search-box-icon"></span> Bolsas</button>
+                                            </div>
+                                            <div class="col-md-2 d-grid  gap-0 mt-4">
+                                                <button class="btn btn-outline-primary me-1 mb-1 btnFacturaEspera" id="btnFacturaEspera" type="button"><span class="fas fa-clock search-box-icon"></span> Factura en espera</button>
+                                            </div>
+                                            <div class="col-md-2 d-grid  gap-0 mt-4">
+                                                <button class="btn btn-outline-primary me-1 mb-1 btnBorrarFactura" id="btnBorrarFactura" type="button"><span class="fas fa-trash search-box-icon"></span> Borrar factura</button>
+                                            </div>
+
                                         </form>
                                     </div>
                                 </div>
@@ -268,49 +291,71 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                             <div class="position-absolute top-0 end-0 mt-3 me-3 z-1"><button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button></div>
                             <div class="modal-body p-0">
                                 <div class="rounded-top-3 bg-body-tertiary py-3 ps-4 pe-6">
-                                    <h4 class="mb-1" id="staticBackdropLabel">Editar subzona</h4>
+                                    <h4 class="mb-1" id="staticBackdropLabel">Editar producto</h4>
                                     <!-- <p class="fs-11 mb-0">Added by <a class="link-600 fw-semi-bold" href="#!">Antony</a></p> -->
                                 </div>
                                 <div class="p-4">
-                                    <div class="row">
-                                        <form id="fmr_subzonas_editar" method="POST" class="fmr_subzonas_editar row g-2 needs-validation" novalidate="">
-                                            <div class="col-md-3">
-                                                <label class="form-label" for="codigo_mod">Código</label>
-                                                <input class="form-control" id="id" name="id" type="hidden" />
-                                                <input class="form-control" id="codigo_mod" name="codigo_mod" type="text" required />
-                                                <div class="valid-feedback">¡Ok!</div>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <label>Zona <span class="text-danger"> * </span></label>
-                                                <div class="form-group col-md-12 mb-2">
-                                                    <select class="form-select selectpicker" id="lstZonaMod" size="1" name="lstZonaMod" required onchange="cargar_select(this.value)">
-                                                    </select>
-                                                    <span class="input-group-addon"><button class="btn btn-primary icon-search4 Search" type="button" id="btnBusquedaZonaMod" name="btnBusquedaZonaMod" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <label class="form-label" for="nombre_mod">Nombre</label>
-                                                <div class="form-group col-md-12 mb-2">
-                                                    <!-- <input class="form-control" id="nombre_mod" name="nombre_mod" type="text" required /> -->
-                                                    <select class="form-select selectpicker" id="lstSubzonaMod" style='width: 87%;' size="1" name="lstSubzonaMod" required>
-                                                    </select>
-                                                    <span class="input-group-addon"><button class="btn btn-primary icon-search4 Search" type="button" id="btnBusquedaSubzonaMod" name="btnBusquedaSubzonaMod" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
+                                    <form class="formEditar" id="formEditar" class="row g-2">
+                                        <div class="row">
 
-                                                    <!-- <span class="input-group-addon"><button class="btn btn-primary icon-search4 Search" type="button" id="btnBusquedaSubzonaMod" name="btnBusquedaSubzonaMod"><span class="fas fa-search search-box-icon"></span></button></span> -->
+                                            <input type="hidden" id="idProducto">
+                                            <input type="hidden" id="impEditar">
+
+                                            <div class="col-md-3">
+                                                <label>Código <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <input type="text" class="form-control" id="codigoEditar" readonly>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-9">
+                                                <label>Descripción <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <input type="text" class="form-control" id="descripcionEditar" readonly>
+                                                </div>
+                                            </div>
+
                                             <div class="col-md-4">
-                                                <label class="form-label" for="resumen_mod">Resumen</label>
-                                                <input class="form-control" id="resumen_mod" name="resumen_mod" type="text" required />
-                                                <div class="valid-feedback">¡Ok!</div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <div class="col-12 d-grid  gap-0">
-                                                    <button class="btn btn-outline-primary me-1 mb-1" type="submit">Modificar</button>
+                                                <label>Valor Unitario Inicial <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <input type="text" class="form-control" id="vlrUnitarioInicialEditar" readonly>
                                                 </div>
                                             </div>
-                                        </form>
-                                    </div>
+
+                                            <div class="col-md-4">
+                                                <label>Cantidad <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <input type="text" class="form-control" id="cantidadEditar">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <label>Valor Unitario Final <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <input type="text" class="form-control" id="vlrUnitarioFinalEditar">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label>Valor Parcial <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <input type="text" class="form-control" id="vlrParcialEditar">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label>Descuento <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <input type="text" class="form-control" id="descuentoEditar">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer mt-3">
+                                                <div class="col-12 d-grid  gap-0">
+                                                    <button class="btn btn-outline-primary me-1 mb-1 btnModificar" id="btnModificar" type="button">Modificar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

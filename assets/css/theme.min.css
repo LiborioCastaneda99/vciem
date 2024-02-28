@@ -1444,6 +1444,10 @@ progress {
     width: 25%
 }
 
+.oculto {
+    display: none;
+}
+
 .row-cols-5>* {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 auto;
@@ -2886,7 +2890,6 @@ progress {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 auto;
         flex: 0 0 auto;
-        width: 50%
     }
     .col-xxl-7 {
         -webkit-box-flex: 0;

@@ -7,6 +7,11 @@
 		$cmd = facturacionModel::guardar($datos);
 	}
 
+	public function guardar_factura_espera($datos)
+	{
+		$cmd = facturacionModel::guardar_factura_espera($datos);
+	}
+
 	public function get()
 	{
 		$cmd = facturacionModel::get();
@@ -15,6 +20,11 @@
 	public function get_id($id)
 	{
 		$cmd = facturacionModel::get_id($id);
+	}
+
+	public function consultar_factura_espera($datos)
+	{
+		$cmd = facturacionModel::consultar_factura_espera($datos);
 	}
 
 	public function modificar($datos)

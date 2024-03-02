@@ -9,7 +9,7 @@ class facturacionModel extends Conexion
         $dbconec = Conexion::Conectar();
 
         try {
-            $query = "SELECT `id`, `codigo`, `nombre`, `dir`, `tel`, `nit` FROM tbnombod WHERE activo = 1";
+            $query = "SELECT id, codigo, nombre, dir, tel, nit FROM tbnombod WHERE activo = 1";
             $stmt = $dbconec->prepare($query);
             $stmt->execute();
 
@@ -35,7 +35,7 @@ class facturacionModel extends Conexion
         $dbconec = Conexion::Conectar();
 
         try {
-            $query = "SELECT `id`, `codigo`, `nombre`, `dir`, `tel`, `nit` FROM tbnombod WHERE id = $id";
+            $query = "SELECT id, codigo, nombre, dir, tel, nit FROM tbnombod WHERE id = $id";
             $stmt = $dbconec->prepare($query);
             $stmt->execute();
 
@@ -55,7 +55,200 @@ class facturacionModel extends Conexion
         }
     }
 
+    public static function consultar_factura_espera($datos)
+    {
+        $dbconec = Conexion::Conectar();
+
+        try {
+
+            $cliente = $datos['cliente'];
+
+            $query = "SELECT id, cliente, factura, consecutivo, atiende, caja, total, descuentos, subtotal, nota 
+            FROM ventas_espera 
+            WHERE cliente = :cliente AND espera = 1 ORDER BY id DESC LIMIT 1";
+            $stmt = $dbconec->prepare($query);
+            $stmt->bindParam(':cliente', $cliente);
+            $stmt->execute();
+            $resp_venta = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($resp_venta) {
+
+                $venta_id = $resp_venta['id'];
+                $query = "SELECT id, venta_id, codigo, descripcion, um, cantidad As cant, vlr_unitario, 
+                descuento As 'desc', vlr_descuento, vlr_unit_final, REPLACE(impuesto, '%', '') AS imp, vlr_impuesto, vlr_parcial 
+                FROM detalle_ventas_espera 
+                WHERE venta_id = :venta_id";
+                $stmt = $dbconec->prepare($query);
+                $stmt->bindParam(':venta_id', $venta_id);
+                $stmt->execute();
+                $resp_detalle = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                $response['venta'] = $resp_venta;
+                $response['detalle'] = $resp_detalle;
+                $response['status'] = 'success';
+
+                // Obtener todos los resultados como un array asociativo
+                echo json_encode($response);
+            } else {
+                $response = array('status' => 'error', 'message' => 'No hay facturas en espera.');
+                echo json_encode($response);
+            }
+        } catch (Exception $e) {
+            $data = "Error";
+            echo json_encode($data);
+        }
+    }
+
     public static function guardar($datos)
+    {
+        $dbconec = Conexion::Conectar();
+        $fact = new facturacionModel();
+
+        try {
+
+            // $datos = json_decode($_POST['datos'], true);
+
+            $datos = $datos['datos'];
+            $cliente = $datos["cliente"];
+            $factura = $datos["factura"];
+            $consecutivo = $datos["consecutivo"];
+            $atiende = $datos["atiende"];
+            $caja = $datos["caja"];
+            $total = $datos["total"];
+            $nota = $datos["nota"];
+            $subtotal = $datos["subtotal"];
+            $descuentos = $datos["descuentos"];
+            $detalles = $datos['detalles'];
+            $fac_efecti = $datos['fac_efecti'];
+            $fac_tdebit = $datos['fac_tdebit'];
+            $fac_tcredi = $datos['fac_tcredi'];
+            $fac_tchequ = $datos['fac_tchequ'];
+            $fac_tvales = $datos['fac_tvales'];
+            $fac_tcambi = $datos['fac_tcambi'];
+
+            if (
+                isset($cliente, $factura, $consecutivo, $atiende, $caja, $total, $subtotal, $descuentos)
+                && !empty($cliente) && !empty($factura) && !empty($consecutivo) && !empty($atiende)
+                && !empty($caja) && !empty($total) && !empty($subtotal) && !empty($descuentos)
+            ) {
+
+                foreach ($detalles as $d) {
+
+                    // Obtener la cantidad disponible del producto desde la base de datos (esto es solo un ejemplo)
+                    $cantidad_disponible = $fact->obtenerCantidadDisponible($d['codigo']);
+                    $cantidad_disponible_espera = $fact->obtenerCantidadDisponibleEspera($cliente, $d['codigo']);
+                    $total_disponible = $cantidad_disponible + $cantidad_disponible_espera;
+                    // Verificar si hay suficientes cantidades disponibles
+                    if ($total_disponible >= $d['cant']) {
+
+                        if ($cantidad_disponible_espera > 0) {
+                            // Realiza la inserción en la base de datos (ajusta diaso según tu configuración)
+                            $query = "UPDATE tbarticulos SET uxemp=uxemp+$cantidad_disponible_espera WHERE codigo=:codigo";
+                            $stmt = $dbconec->prepare($query);
+                            $stmt->bindParam(':codigo', $d['codigo']);
+                            $stmt->execute();
+                        }
+
+                        // Realizar la operación, como procesar el pedido, restar la cantidad del inventario, etc.
+                        // $response = array('status' => 'error', 'message' => 'Lo sentimos, no hay suficiente cantidad disponible de este producto.');
+                    } else {
+                        // Mostrar un mensaje de error al usuario
+                        $response = array('status' => 'error', 'message' => 'Lo sentimos, no hay suficiente cantidad disponible de este producto,
+                        solo hay disponible: ' . $total_disponible . ' unidades, para el producto con el código: ' . $d['codigo'] . '.');
+                        echo json_encode($response);
+                        return;
+                    }
+                }
+
+                // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
+                $query = "INSERT INTO ventas (cliente, factura, consecutivo, atiende, caja, total, descuentos, subtotal, nota) VALUES (:cliente, :factura, :consecutivo, :atiende, :caja, :total, :descuentos, :subtotal, :nota)";
+                $stmt = $dbconec->prepare($query);
+                $stmt->bindParam(':cliente', $cliente);
+                $stmt->bindParam(':factura', $factura);
+                $stmt->bindParam(':consecutivo', $consecutivo);
+                $stmt->bindParam(':atiende', $atiende);
+                $stmt->bindParam(':caja', $caja);
+                $stmt->bindParam(':total', $total);
+                $stmt->bindParam(':nota', $nota);
+                $stmt->bindParam(':subtotal', $subtotal);
+                $stmt->bindParam(':descuentos', $descuentos);
+                $stmt->execute();
+                $ultimoIdInsertado = $dbconec->lastInsertId();
+
+                // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
+                $query = "INSERT INTO pagos_ventas (id_ventas, fac_efecti, fac_tdebit, fac_tcredi, fac_tchequ, fac_tvales, fac_tcambi) 
+                VALUES (:id_ventas, :fac_efecti, :fac_tdebit, :fac_tcredi, :fac_tchequ, :fac_tvales, :fac_tcambi)";
+                $stmt = $dbconec->prepare($query);
+                $stmt->bindParam(':id_ventas', $ultimoIdInsertado);
+                $stmt->bindParam(':fac_efecti', $fac_efecti);
+                $stmt->bindParam(':fac_tdebit', $fac_tdebit);
+                $stmt->bindParam(':fac_tcredi', $fac_tcredi);
+                $stmt->bindParam(':fac_tchequ', $fac_tchequ);
+                $stmt->bindParam(':fac_tvales', $fac_tvales);
+                $stmt->bindParam(':fac_tcambi', $fac_tcambi);
+                $stmt->execute();
+
+                foreach ($detalles as $key) {
+
+                    // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
+                    $query = "INSERT INTO detalle_ventas (venta_id, codigo, descripcion, um, cantidad, vlr_unitario, descuento, vlr_descuento, vlr_unit_final, impuesto, vlr_impuesto, vlr_parcial) 
+                    VALUES (:venta_id, :codigo, :descripcion, :um, :cantidad, :vlr_unitario, :descuento, :vlr_descuento, :vlr_unit_final, :impuesto, :vlr_impuesto, :vlr_parcial)";
+                    $stmt = $dbconec->prepare($query);
+                    $stmt->bindParam(':venta_id', $ultimoIdInsertado);
+                    $stmt->bindParam(':codigo', $key['codigo']);
+                    $stmt->bindParam(':descripcion', $key['descripcion']);
+                    $stmt->bindParam(':um', $key['um']);
+                    $stmt->bindParam(':cantidad', $key['cant']);
+                    $stmt->bindParam(':vlr_unitario', $key['vlrUnitario']);
+                    $stmt->bindParam(':descuento', $key['desc']);
+                    $stmt->bindParam(':vlr_descuento', $key['vlrDesc']);
+                    $stmt->bindParam(':vlr_unit_final', $key['vlrUnitFinal']);
+                    $stmt->bindParam(':impuesto', $key['imp']);
+                    $stmt->bindParam(':vlr_impuesto', $key['vlrImp']);
+                    $stmt->bindParam(':vlr_parcial', $key['vlrParcial']);
+                    $stmt->execute();
+
+                    // Realiza la inserción en la base de datos (ajusta diaso según tu configuración)
+                    $query = "UPDATE tbarticulos SET uxemp=uxemp-{$key['cant']} WHERE codigo=:codigo";
+                    $stmt = $dbconec->prepare($query);
+                    $stmt->bindParam(':codigo', $key['codigo']);
+                    $stmt->execute();
+                }
+
+                // Realiza la inserción en la base de datos (ajusta diaso según tu configuración)
+                $query = "UPDATE consecutivo SET proceso=0, espera=0 WHERE consecutivo=:consecutivo";
+                $stmt = $dbconec->prepare($query);
+                $stmt->bindParam(':consecutivo', $consecutivo);
+                $stmt->execute();
+
+                // Realiza la inserción en la base de datos (ajusta diaso según tu configuración)
+                $query = "UPDATE ventas_espera SET espera=0 WHERE consecutivo=:consecutivo";
+                $stmt = $dbconec->prepare($query);
+                $stmt->bindParam(':consecutivo', $consecutivo);
+                $stmt->execute();
+
+                if ($stmt->execute()) {
+                    // $fact->actualizarVentaEspera($cliente, '+');
+                    // Si la inserción fue exitosa, devuelve un mensaje o los datos actualizados
+                    $response = array('status' => 'success', 'message' => 'Se ha registrado la factura correctamente');
+                } else {
+                    // Si hubo un error en la inserción, devuelve un mensaje de error
+                    $response = array('status' => 'error', 'message' => 'Error al guardar el nombod');
+                }
+
+                // Devuelve la respudiasa en formato JSON
+                echo json_encode($response);
+            } else {
+                $response = array('status' => 'error', 'message' => 'Error al guardar la factura, por favor llenar todos los datos.');
+                echo json_encode($response);
+            }
+        } catch (Exception $e) {
+            $data = "Error";
+            echo json_encode($data);
+        }
+    }
+
+    public static function guardar_factura_espera($datos)
     {
         $dbconec = Conexion::Conectar();
         $fact = new facturacionModel();
@@ -100,8 +293,11 @@ class facturacionModel extends Conexion
                     }
                 }
 
+                // actualizamos el consecutivo que tenga en espera
+                $fact->actualizarVentaEspera($cliente);
+
                 // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
-                $query = "INSERT INTO ventas (`cliente`, `factura`, `consecutivo`, `atiende`, `caja`, `total`, `descuentos`, `subtotal`, `nota`) VALUES (:cliente, :factura, :consecutivo, :atiende, :caja, :total, :descuentos, :subtotal, :nota)";
+                $query = "INSERT INTO ventas_espera (cliente, factura, consecutivo, atiende, caja, total, descuentos, subtotal, nota) VALUES (:cliente, :factura, :consecutivo, :atiende, :caja, :total, :descuentos, :subtotal, :nota)";
                 $stmt = $dbconec->prepare($query);
                 $stmt->bindParam(':cliente', $cliente);
                 $stmt->bindParam(':factura', $factura);
@@ -118,7 +314,7 @@ class facturacionModel extends Conexion
                 foreach ($detalles as $key) {
 
                     // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
-                    $query = "INSERT INTO detalle_ventas (`venta_id`, `codigo`, `descripcion`, `um`, `cantidad`, `vlr_unitario`, `descuento`, `vlr_descuento`, `vlr_unit_final`, `impuesto`, `vlr_impuesto`, `vlr_parcial`) 
+                    $query = "INSERT INTO detalle_ventas_espera (venta_id, codigo, descripcion, um, cantidad, vlr_unitario, descuento, vlr_descuento, vlr_unit_final, impuesto, vlr_impuesto, vlr_parcial) 
                     VALUES (:venta_id, :codigo, :descripcion, :um, :cantidad, :vlr_unitario, :descuento, :vlr_descuento, :vlr_unit_final, :impuesto, :vlr_impuesto, :vlr_parcial)";
                     $stmt = $dbconec->prepare($query);
                     $stmt->bindParam(':venta_id', $ultimoIdInsertado);
@@ -143,17 +339,16 @@ class facturacionModel extends Conexion
                 }
 
                 // Realiza la inserción en la base de datos (ajusta diaso según tu configuración)
-                $query = "UPDATE consecutivo SET proceso=0 WHERE consecutivo=:consecutivo";
+                $query = "UPDATE consecutivo SET espera=1 WHERE consecutivo=:consecutivo";
                 $stmt = $dbconec->prepare($query);
                 $stmt->bindParam(':consecutivo', $consecutivo);
-                $stmt->execute();
 
                 if ($stmt->execute()) {
                     // Si la inserción fue exitosa, devuelve un mensaje o los datos actualizados
-                    $response = array('status' => 'success', 'message' => 'Se ha registrado la factura correctamente');
+                    $response = array('status' => 'success', 'message' => 'Se ha registrado la factura en espera correctamente');
                 } else {
                     // Si hubo un error en la inserción, devuelve un mensaje de error
-                    $response = array('status' => 'error', 'message' => 'Error al guardar el nombod');
+                    $response = array('status' => 'error', 'message' => 'Error al guardar la factura');
                 }
 
                 // Devuelve la respudiasa en formato JSON
@@ -195,6 +390,129 @@ class facturacionModel extends Conexion
         }
     }
 
+    // Función para obtener la cantidad disponible de un producto específico
+    function obtenerCantidadDisponibleEspera($cliente, $codigo)
+    {
+        // Conexión a la base de datos (debes completar con tus propios detalles de conexión)
+        $dbconec = Conexion::Conectar();
+        error_log("cliente => " . $cliente);
+        error_log("codigo => " . $codigo);
+
+        // Consulta SQL para obtener los consecutivos de ventas esperadas
+        $query = "SELECT id, consecutivo FROM ventas_espera WHERE cliente = :cliente AND espera = 1 AND activo = 1";
+        $stmt = $dbconec->prepare($query);
+        $stmt->bindParam(':cliente', $cliente);
+        $stmt->execute();
+        $rows = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $cantidad = 0;
+        // Verificar si se obtuvo algún resultado
+        if ($rows > 0) {
+            // Realizar la actualización en la base de datos
+            // foreach ($rows as $value) {
+
+            // Consulta SQL para obtener los consecutivos de ventas esperadas
+            $venta_id = $rows['id'];
+            $query = "SELECT id, codigo, cantidad FROM detalle_ventas_espera WHERE venta_id = :venta_id AND codigo = :codigo";
+            $stmt = $dbconec->prepare($query);
+            $stmt->bindParam(':venta_id', $venta_id);
+            $stmt->bindParam(':codigo', $codigo);
+            $stmt->execute();
+            $resp_detalle = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach ($resp_detalle as $valor) {
+                // $codigo = $valor['codigo'];
+                $cantidad += $valor['cantidad'];
+            }
+            // }
+            error_log("cantidad => " . $cantidad);
+            // Devolver true si se actualizaron los registros
+            return $cantidad;
+        } else {
+            // Devolver false si no se encontraron registros para actualizar
+            return $cantidad;
+        }
+
+
+
+        // Consulta SQL para obtener la cantidad disponible del producto
+        $query = "SELECT uxemp As  cantidad_disponible FROM tbarticulos WHERE codigo = :codigo AND activo = 1";
+        $stmt = $dbconec->prepare($query);
+        $stmt->bindParam(':codigo', $producto_id);
+        $stmt->execute();
+
+        // Obtiene el resultado
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // Verificar si se obtuvo un resultado
+        if ($result['cantidad_disponible'] > 0) {
+            // Obtener el resultado como un arreglo asociativo
+
+            // Obtener y devolver la cantidad disponible del producto
+            return $result['cantidad_disponible'];
+        } else {
+            // Si no se encontró ninguna fila, devolver 0 (o cualquier valor que desees en caso de no encontrar el producto)
+            return 0;
+        }
+    }
+
+    // Función para obtener la cantidad disponible de un producto específico
+    function actualizarVentaEspera($cliente)
+    {
+        // Conexión a la base de datos (debes completar con tus propios detalles de conexión)
+        $dbconec = Conexion::Conectar();
+
+        // Consulta SQL para obtener los consecutivos de ventas esperadas
+        $query = "SELECT id, consecutivo FROM ventas_espera WHERE cliente = :cliente AND espera = 1 AND activo = 1";
+        $stmt = $dbconec->prepare($query);
+        $stmt->bindParam(':cliente', $cliente);
+        $stmt->execute();
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Verificar si se obtuvo algún resultado
+        if ($rows) {
+            // Realizar la actualización en la base de datos
+            foreach ($rows as $value) {
+                $consecutivo = $value['consecutivo'];
+                $query = "UPDATE consecutivo SET espera = 0 WHERE consecutivo = :consecutivo AND espera = 1 AND proceso = 1";
+                $stmt = $dbconec->prepare($query);
+                $stmt->bindParam(':consecutivo', $consecutivo);
+                $stmt->execute();
+
+                // se actualzia la factura principal
+                $id = $value['id'];
+                $query = "UPDATE ventas_espera SET espera = 0 WHERE id = :id AND espera = 1";
+                $stmt = $dbconec->prepare($query);
+                $stmt->bindParam(':id', $id);
+                $stmt->execute();
+
+                // Consulta SQL para obtener los consecutivos de ventas esperadas
+                $venta_id = $value['id'];
+                $query = "SELECT id, codigo, cantidad FROM detalle_ventas_espera WHERE venta_id = :venta_id";
+                $stmt = $dbconec->prepare($query);
+                $stmt->bindParam(':venta_id', $venta_id);
+                $stmt->execute();
+                $resp_detalle = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                foreach ($resp_detalle as $valor) {
+                    $codigo = $valor['codigo'];
+                    $cantidad = $valor['cantidad'];
+
+                    // Se suman los registros
+                    $query = "UPDATE tbarticulos SET uxemp=uxemp-$cantidad WHERE codigo=:codigo";
+                    $stmt = $dbconec->prepare($query);
+                    $stmt->bindParam(':codigo', $codigo);
+                    $stmt->execute();
+                }
+            }
+
+            // Devolver true si se actualizaron los registros
+            return true;
+        } else {
+            // Devolver false si no se encontraron registros para actualizar
+            return false;
+        }
+    }
 
     public static function modificar($datos)
     {

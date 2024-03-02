@@ -125,6 +125,15 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             <div class="mt-4">
                                                 <div class="form-group col-md-12 mb-2">
                                                     <span class="input-group-addon d-grid  gap-0">
+                                                        <button class="btn btn-outline-dark me-1 mb-1 icon-search4 Search" type="button" id="btnBuscarFacturaEspera" name="btnBuscarFacturaEspera" title="Buscar producto o servicio">
+                                                            Buscar factura en espera <span class="fas fa-search search-box-icon"></span>
+                                                        </button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="">
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <span class="input-group-addon d-grid  gap-0">
                                                         <button class="btn btn-outline-dark me-1 mb-1 icon-search4 Search" type="button" id="btnBuscarProducto" name="btnBuscarProducto" title="Buscar producto o servicio">
                                                             Buscar productos <span class="fas fa-search search-box-icon"></span>
                                                         </button>
@@ -224,7 +233,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             </div>
 
                                             <div class="col-md-2 d-grid  gap-0 mt-4">
-                                                <button class="btn btn-outline-primary me-1 mb-1 btnFacturar" id="btnFacturar" type="button"><span class="fas fa-file-invoice-dollar search-box-icon"></span> Facturar</button>
+                                                <button class="btn btn-outline-primary me-1 mb-1 btnPagar" id="btnPagar" type="button"><span class="fas fa-file-invoice-dollar search-box-icon"></span> Facturar</button>
                                             </div>
                                             <div class="col-md-2 d-grid  gap-0 mt-4">
                                                 <button class="btn btn-outline-primary me-1 mb-1 btnVerFactura" id="btnVerFactura" type="button"><span class="fas fa-eye search-box-icon"></span> Ver factura</button>
@@ -277,6 +286,36 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             <tbody>
                                             </tbody>
                                         </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- modal consultar cliente -->
+                <div class="modal fade" id="buscarFactura" data-bs-keyboard="false" data-bs-backdrop="static" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg mt-6" role="document">
+                        <div class="modal-content border-0">
+                            <div class="position-absolute top-0 end-0 mt-3 me-3 z-1"><button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                            <div class="modal-body p-0">
+                                <div class="rounded-top-3 bg-body-tertiary py-3 ps-4 pe-6">
+                                    <h4 class="mb-1" id="staticBackdropLabel">Buscar factura</h4>
+                                    <!-- <p class="fs-11 mb-0">Added by <a class="link-600 fw-semi-bold" href="#!">Antony</a></p> -->
+                                </div>
+                                <div class="p-4">
+
+                                    <div class="col-md-12">
+                                        <label>Clientes <span class="text-danger"> * </span></label>
+                                        <div class="form-group col-md-12 mb-2">
+                                            <select class="form-select selectpicker lstClientesFactEsp" id="lstClientesFactEsp" size="1" name="lstClientesFactEsp" required>
+                                            </select>
+                                            <span class="input-group-addon">
+                                                <button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnConsultarFactEsp" name="btnConsultarFactEsp" style="width: 15.7%;">
+                                                    <span class="fas fa-check check-box-icon"></span>
+                                                </button>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -353,6 +392,71 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <div class="col-12 d-grid  gap-0">
                                                     <button class="btn btn-outline-primary me-1 mb-1 btnModificar" id="btnModificar" type="button">Modificar</button>
                                                 </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- modal pagar -->
+                <div class="modal fade" id="pagarFactura" data-bs-keyboard="false" data-bs-backdrop="static" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg mt-6" role="document">
+                        <div class="modal-content border-0">
+                            <div class="position-absolute top-0 end-0 mt-3 me-3 z-1"><button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                            <div class="modal-body p-0">
+                                <div class="rounded-top-3 bg-body-tertiary py-3 ps-4 pe-6">
+                                    <h4 class="mb-1" id="staticBackdropLabel">Pagar factura</h4>
+                                    <!-- <p class="fs-11 mb-0">Added by <a class="link-600 fw-semi-bold" href="#!">Antony</a></p> -->
+                                </div>
+                                <div class="p-4">
+                                    <form action="" method="post" id="payForm">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h2>Total a pagar <span id="pay_total_"></span></h2>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <label for="fac_efecti">Efectivo</label>
+                                                <input type="number" min="0" class="form-control pay-field" id="fac_efecti" name="fac_efecti" value="0">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <label for="fac_tdebit">Tarjeta debito</label>
+                                                <input type="number" min="0" class="form-control pay-field" id="fac_tdebit" name="fac_tdebit" value="0">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <label for="fac_tcredi">Tarjeta credito</label>
+                                                <input type="number" min="0" class="form-control pay-field" id="fac_tcredi" name="fac_tcredi" value="0">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <label for="fac_tchequ">Cheque</label>
+                                                <input type="number" min="0" class="form-control pay-field" id="fac_tchequ" name="fac_tchequ" value="0">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <label for="fac_tvales">Vales</label>
+                                                <input type="number" min="0" class="form-control pay-field" id="fac_tvales" name="fac_tvales" value="0">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <label for="fac_cambio">Cambio</label>
+                                                <input type="number" readonly class="form-control pay-field" id="fac_cambio" name="fac_cambio" value="0">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer mt-3">
+                                            <div class="col-12 d-grid  gap-0">
+                                                <button class="btn btn-outline-primary me-1 mb-1 btnFacturar" id="btnFacturar" type="button">Facturar</button>
                                             </div>
                                         </div>
                                     </form>

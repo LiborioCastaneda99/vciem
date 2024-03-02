@@ -32,6 +32,165 @@ $('#btnBuscarProducto').click(function() {
     cargar_productos();
 });
 
+// Funcion para cargar las listas select con opcion de busqueda
+$('#btnPagar').click(function() {
+    var total = parseFloat(document.getElementById("total").value);
+    if (total === 0) {
+        notificacion('Error', 'error', 'Debe llenar todos los campos.')
+    } else {
+        $('#pagarFactura').modal('show');
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    var payForm = document.getElementById("payForm");
+    var payFields = payForm.querySelectorAll(".pay-field");
+
+    payFields.forEach(function(field) {
+        field.addEventListener("change", function() {
+            validarSumaCampos();
+        });
+    });
+});
+
+// Función para validar la suma de los campos
+function validarSumaCampos() {
+    var fac_efecti = parseFloat(document.getElementById("fac_efecti").value);
+    var fac_tdebit = parseFloat(document.getElementById("fac_tdebit").value);
+    var fac_tcredi = parseFloat(document.getElementById("fac_tcredi").value);
+    var fac_tchequ = parseFloat(document.getElementById("fac_tchequ").value);
+    var fac_tvales = parseFloat(document.getElementById("fac_tvales").value);
+    var total = parseFloat(document.getElementById("pay_total_").textContent);
+
+    var sumaCampos = fac_efecti + fac_tdebit + fac_tcredi + fac_tchequ + fac_tvales;
+    var facCambioInput = document.getElementById("fac_cambio");
+
+    // Validar si la suma de los campos es menor que el total
+    if (sumaCampos < total) {
+        // Mostrar el mensaje de error debajo del input de cambio
+        mostrarMensajeError("La suma de los campos debe ser mayor o igual al total.");
+    } else {
+        // Ocultar el mensaje de error si la validación pasa
+        ocultarMensajeError();
+    }
+
+    // Actualizar el valor del input de cambio
+    facCambioInput.value = sumaCampos - total;
+}
+
+// Función para mostrar el mensaje de error debajo del input de cambio
+function mostrarMensajeError(mensaje) {
+    // Verificar si ya hay un mensaje de error presente
+    var errorMessage = document.querySelector(".error-message");
+    if (!errorMessage) {
+        // Crear un elemento para el mensaje de error
+        errorMessage = document.createElement("div");
+        errorMessage.className = "error-message text-danger";
+        errorMessage.textContent = mensaje;
+
+        // Insertar el mensaje de error después del input de cambio
+        var facCambioInput = document.getElementById("fac_cambio");
+        facCambioInput.parentNode.insertBefore(errorMessage, facCambioInput.nextSibling);
+    }
+}
+
+// Función para ocultar el mensaje de error
+function ocultarMensajeError() {
+    var errorMessage = document.querySelector(".error-message");
+    if (errorMessage) {
+        errorMessage.parentNode.removeChild(errorMessage);
+    }
+}
+
+// Funcion para cargar las listas select con opcion de busqueda
+$('#btnConsultarFactEsp').click(function() {
+    // $('#buscarProductos').modal('show');
+    var cliente_id = parseFloat($('#lstClientesFactEsp').val());
+
+    // Hacer la solicitud AJAX al servidor
+    var urlprocess = 'ajax/facturacionajax.php';
+    $.ajax({
+        type: 'POST',
+        url: urlprocess,
+        data: 'cliente=' + cliente_id + '&proceso=consultar_factura_espera',
+        dataType: 'json',
+        success: function(response) {
+            if (response.status == 'success') {
+
+                tabla_factura(response.detalle)
+                valores = response.detalle
+                ventas = response.venta
+
+                cargar_clientes(ventas.cliente, 'lstClientesFact', '');
+                cargar_vendedores(ventas.atiende, 'lstVendedoresFact', '');
+                cargar_caja(ventas.caja, 'lstCajaFact', '');
+                cargar_factura(ventas.factura, 'lstFacturaFact', '');
+
+                document.getElementById('consecutivo').value = ventas.consecutivo
+                    // Obtener el elemento textarea por su ID
+                var textarea = document.getElementById('notaFact');
+                // Establecer el texto dentro del textarea
+                textarea.value = ventas.nota
+
+                // document.getElementById('codigo').value = data[0].codigo
+                // document.getElementById('codigo').value = data[0].codigo
+                // document.getElementById('codigo').value = data[0].codigo
+                actualizarTotales();
+
+                $('#buscarFactura').modal('hide');
+
+
+                // Función para agregar un nuevo campo de entrada para un producto
+                // function agregarCampoProducto() {
+                // contadorProductos++; // Incrementar el contador de productos
+
+                // document.getElementById('codigo').value = data[0].codigo
+                // document.getElementById('descripcion').value = data[0].nombre
+                // document.getElementById('um').value = "N/A"
+                // document.getElementById('cant').value = 1
+                // document.getElementById('vlr_unitario').value = data[0].stmin
+                // document.getElementById('desc').value = "%"
+                // document.getElementById('vlr_descuento').value = 0
+                // document.getElementById('vlr_unit_final').value = data[0].stmin
+                // document.getElementById('imp').value = 19
+                // document.getElementById('vlr_impuesto').value = (data[0].stmin * 0.19)
+                // document.getElementById('vlr_parcial').value = parseFloat(data[0].stmin)
+                // $('#buscarProductos').modal('hide');
+
+                // const codigoCampo = document.getElementById('codigo');
+
+                // // Obtener referencia a los demás campos de entrada de texto
+                // const campos = document.querySelectorAll('input[type="text"]:not(#codigo)');
+                // // Verificar si el campo de código está vacío
+                // if (codigoCampo.value.trim() === '') {
+                //     // Si está vacío, iterar sobre los otros campos y deshabilitarlos
+                //     campos.forEach(function(campo) {
+                //         campo.disabled = true;
+                //     });
+                // } else {
+                //     // Si el campo de código tiene un valor, habilitar los otros campos
+                //     campos.forEach(function(campo) {
+                //         campo.disabled = false;
+                //     });
+                // }
+            } else {
+                notificacion('Error', 'error', response.message);
+            }
+
+        },
+        error: function() {
+            // Error en la inserción, muestra mensaje de error con SweetAlert
+            notificacion('Error', 'error', response.message);
+        }
+    });
+});
+
+// Funcion para cargar las listas select con opcion de busqueda
+$('#btnBuscarFacturaEspera').click(function() {
+    $('#buscarFactura').modal('show');
+    cargar_clientes_modal('', 'lstClientesFactEsp', 'buscarFactura');
+});
+
 // cargamos la tabla de los productos
 function cargar_productos() {
     $('#tablaListadoProductos').dataTable().fnDestroy();
@@ -529,6 +688,103 @@ $('.btnFacturar').click(function() {
     var descuentos = $('#descuentos').text(); // Esto obtiene el texto dentro del elemento <p>
     var subtotal = $('#subtotal').text(); // Esto obtiene el texto dentro del elemento <p>
 
+    var fac_efecti = parseFloat(document.getElementById("fac_efecti").value);
+    var fac_tdebit = parseFloat(document.getElementById("fac_tdebit").value);
+    var fac_tcredi = parseFloat(document.getElementById("fac_tcredi").value);
+    var fac_tchequ = parseFloat(document.getElementById("fac_tchequ").value);
+    var fac_tvales = parseFloat(document.getElementById("fac_tvales").value);
+    var fac_tcambi = parseFloat(document.getElementById("fac_cambio").value);
+    // var total = parseFloat(document.getElementById("pay_total_").textContent);
+
+    var sumTotal = fac_efecti + fac_tdebit + fac_tcredi + fac_tchequ + fac_tvales;
+
+    // Crear un objeto con los datos recolectados
+    var datos = {
+        cliente: cliente,
+        factura: factura,
+        consecutivo: consecutivo,
+        atiende: atiende,
+        caja: caja,
+        total: total,
+        nota: nota,
+        subtotal: subtotal,
+        descuentos: descuentos,
+        fac_efecti: fac_efecti,
+        fac_tdebit: fac_tdebit,
+        fac_tcredi: fac_tcredi,
+        fac_tchequ: fac_tchequ,
+        fac_tvales: fac_tvales,
+        fac_tcambi: fac_tcambi,
+        detalles: [] // Aquí se agregarán los detalles de la factura
+    };
+
+    // Recorrer las filas de la tabla de detalles y agregar los datos de cada fila al objeto 'datos'
+    $('#cuerpoTabla tr').each(function(index, fila) {
+        var detalle = {
+            codigo: $(fila).find('.codigo').text(),
+            descripcion: $(fila).find('.descripcion').text(),
+            um: $(fila).find('.um').text(),
+            cant: $(fila).find('.cant').text(),
+            vlrUnitario: $(fila).find('.vlr_unitario').text(),
+            desc: $(fila).find('.desc').text(),
+            vlrDesc: $(fila).find('.vlr_descuento').text(),
+            vlrUnitFinal: $(fila).find('.vlr_unit_final').text(),
+            imp: $(fila).find('.imp').text(),
+            vlrImp: $(fila).find('.vlr_impuesto').text(),
+            vlrParcial: $(fila).find('.vlr_parcial').text()
+        };
+        datos.detalles.push(detalle);
+    });
+
+    if (sumTotal > 0 && fac_tcambi >= 0) {
+        // Realizar la solicitud AJAX al servidor
+        $.ajax({
+            url: 'ajax/facturacionajax.php', // La URL del script PHP que maneja la solicitud
+            method: 'POST', // El método de solicitud
+            dataType: 'json', // El tipo de datos que esperamos recibir del servidor
+            data: { proceso: 'guardar_factura', datos: datos }, // Los datos que se enviarán al servidor
+
+            // Función que se ejecuta cuando la solicitud se completa con éxito
+            success: function(response) {
+                console.log(response)
+                if (response.status == 'success') {
+                    $('#pagarFactura').modal('hide');
+
+                    notificacion("Exito", response.status, response.message)
+                    limpiarCamposFactura();
+
+                    valores = {}
+                    contadorTabla = 0;
+                    delete valores;
+
+                    tabla_factura(valores);
+                    actualizarTotales();
+
+                } else {
+                    notificacion("Error", response.status, response.message)
+                }
+                // consecutivoP.value = response.datos
+            }
+        });
+    } else {
+        notificacion("Realizar pago", "warning", "Para prodeceder con el pago, el valor del cambio debe ser positivo.")
+    }
+});
+
+// Capturar el evento de clic en el botón "Facturar" producto
+$('.btnFacturaEspera').click(function() {
+
+    // Obtener los valores de los campos de entrada
+    var cliente = $('#lstClientesFact').val();
+    var factura = $('#lstFacturaFact').val();
+    var consecutivo = $('#consecutivo').val();
+    var atiende = $('#lstVendedoresFact').val();
+    var caja = $('#lstCajaFact').val();
+    var total = $('#total').val();
+    var nota = $('#notaFact').val();
+    var descuentos = $('#descuentos').text(); // Esto obtiene el texto dentro del elemento <p>
+    var subtotal = $('#subtotal').text(); // Esto obtiene el texto dentro del elemento <p>
+
     // Crear un objeto con los datos recolectados
     var datos = {
         cliente: cliente,
@@ -566,7 +822,7 @@ $('.btnFacturar').click(function() {
         url: 'ajax/facturacionajax.php', // La URL del script PHP que maneja la solicitud
         method: 'POST', // El método de solicitud
         dataType: 'json', // El tipo de datos que esperamos recibir del servidor
-        data: { proceso: 'guardar_factura', datos: datos }, // Los datos que se enviarán al servidor
+        data: { proceso: 'guardar_factura_espera', datos: datos }, // Los datos que se enviarán al servidor
 
         // Función que se ejecuta cuando la solicitud se completa con éxito
         success: function(response) {
@@ -693,6 +949,22 @@ function limpiarCamposFactura() {
     document.getElementById('descuentos').textContent = ''; // Limpiar los descuentos
     document.getElementById('subtotal').textContent = ''; // Limpiar el subtotal
     document.getElementById('notaFact').value = ''; // Limpiar la nota
+
+    // Obtener referencias a los campos
+    var fac_efectiInput = document.getElementById("fac_efecti");
+    var fac_tdebitInput = document.getElementById("fac_tdebit");
+    var fac_tcrediInput = document.getElementById("fac_tcredi");
+    var fac_tchequInput = document.getElementById("fac_tchequ");
+    var fac_tvalesInput = document.getElementById("fac_tvales");
+    var fac_cambioInput = document.getElementById("fac_cambio");
+
+    // Limpiar los campos estableciendo su valor a cero o una cadena vacía
+    fac_efectiInput.value = 0;
+    fac_tdebitInput.value = 0;
+    fac_tcrediInput.value = 0;
+    fac_tchequInput.value = 0;
+    fac_tvalesInput.value = 0;
+    fac_cambioInput.value = 0;
 }
 
 // Función para calcular y actualizar el subtotal
@@ -704,15 +976,24 @@ function actualizarTotales() {
 
     // Recorrer todas las filas de la tabla y sumar los valores parciales de cada producto
     $('#tablaProductos tbody tr').each(function() {
-        subtotal += parseFloat($(this).find('.vlr_parcial').text()) - parseFloat($(this).find('.vlr_impuesto').text());
-        descuentos += parseFloat($(this).find('.vlr_descuento').text());
-        total += parseFloat($(this).find('.vlr_parcial').text());
+        var vlr_parcial = parseFloat($(this).find('.vlr_parcial').text());
+        var vlr_impuesto = parseFloat($(this).find('.vlr_impuesto').text());
+        var vlr_descuento = parseFloat($(this).find('.vlr_descuento').text());
+
+        if (!isNaN(vlr_parcial) && !isNaN(vlr_impuesto) && !isNaN(vlr_descuento)) {
+            subtotal += vlr_parcial - vlr_impuesto;
+            descuentos += vlr_descuento;
+            total += vlr_parcial;
+        }
     });
 
     // Actualizar el valor del subtotal en la interfaz de usuario
     $('#subtotal').text(subtotal.toFixed(2));
     $('#descuentos').text(descuentos.toFixed(2));
     totalP.value = total;
+
+    var payTotalSpan = document.getElementById("pay_total_");
+    payTotalSpan.textContent = total;
 }
 
 // Función para limpiar los inputs después de agregar un producto
@@ -775,6 +1056,65 @@ function cargar_clientes(Id, nameSelect, Modal) {
     } else {
         lstRoles.select2({
             placeholder: "Seleccione un cliente",
+            ajax: {
+                url: "ajax/clientesajaxv1.php",
+                type: "post",
+                dataType: 'json',
+                delay: 150,
+                data: function(params) {
+                    return {
+                        searchTerm: params.term,
+                        proceso: "combo_clientes",
+                        id: Id
+                    };
+                },
+                processResults: function(response) {
+                    return {
+                        results: response
+
+                    };
+                },
+                cache: true
+            }
+        });
+    }
+}
+
+function cargar_clientes_modal(Id, nameSelect, Modal) {
+    var lstRoles = $('#' + nameSelect);
+
+    if (Id != "") {
+        lstRoles.select2({
+            dropdownParent: $('#' + Modal)
+        });
+        // var lstRoles = $lstRoles
+        lstRoles.find('option').remove();
+        var searchTerm = '';
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: 'ajax/clientesajaxv1.php',
+            data: {
+                searchTerm: searchTerm,
+                proceso: 'combo_clientes',
+                id: Id
+            },
+        }).then(function(registros) {
+            $(registros).each(function(i, v) {
+                lstRoles.append('<option selected value="' + v.id + '">' + v.text + '</option>');
+            })
+            lstRoles.trigger({
+                type: 'select2:select',
+                params: {
+                    data: registros
+                }
+            });
+        });
+
+    } else {
+        lstRoles.select2({
+            placeholder: "Seleccione un cliente",
+            dropdownParent: $('#' + Modal),
             ajax: {
                 url: "ajax/clientesajaxv1.php",
                 type: "post",

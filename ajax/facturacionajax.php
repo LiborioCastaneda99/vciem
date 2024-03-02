@@ -24,9 +24,15 @@ if (!empty($_POST))
         case 'get_id': // consultar registros por id
             $cl->get_id($id);
             break;
+        case 'consultar_factura_espera': // consultar registros por id
+            $cl->consultar_factura_espera($datos);
+            break;
         case 'guardar_factura': // guardar
 			$cl->guardar($datos);
 			break;
+        case 'guardar_factura_espera': // guardar
+            $cl->guardar_factura_espera($datos);
+            break;
         case 'modificar': // modificar
             $cl->modificar($datos);
             break;

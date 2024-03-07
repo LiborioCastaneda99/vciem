@@ -229,8 +229,12 @@ class facturacionModel extends Conexion
 
                 if ($stmt->execute()) {
                     // $fact->actualizarVentaEspera($cliente, '+');
+                    $id_encriptado = $fact->encryptID($ultimoIdInsertado, 'clave_secreta');
+
                     // Si la inserción fue exitosa, devuelve un mensaje o los datos actualizados
-                    $response = array('status' => 'success', 'message' => 'Se ha registrado la factura correctamente');
+                    $response = array('status' => 'success', 'message' => 'Se ha registrado la factura correctamente, imprimir tu factura aquí. <br> 
+                    <a href="pdfs/generar_pdf_pos.php?id=' . $id_encriptado . '" target="_blank">En formato tirilla POS.</a> <br>
+                    <a href="pdfs/generar_factura_carta.php?id=' . $id_encriptado . '" target="_blank">En formato carta.</a>');
                 } else {
                     // Si hubo un error en la inserción, devuelve un mensaje de error
                     $response = array('status' => 'error', 'message' => 'Error al guardar el nombod');
@@ -246,6 +250,13 @@ class facturacionModel extends Conexion
             $data = "Error";
             echo json_encode($data);
         }
+    }
+
+    // Función para encriptar el ID
+    function encryptID($id, $key)
+    {
+        $encrypted = openssl_encrypt($id, 'AES-256-CBC', $key, 0, substr($key, 0, 16));
+        return base64_encode($encrypted);
     }
 
     public static function guardar_factura_espera($datos)

@@ -1013,7 +1013,7 @@ function notificacion(titulo, icon, mensaje) {
     }
     Swal.fire({
         title: titulo,
-        text: mensaje,
+        html: mensaje,
         icon: icon,
         confirmButtonColor: color
     });

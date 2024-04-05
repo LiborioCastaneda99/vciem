@@ -13,6 +13,8 @@ if (!empty($_POST))
 
 	$proceso = (isset($_POST['proceso'])) ? $_POST['proceso'] : '';
 	$id = (isset($_POST['id'])) ? $_POST['id'] : '';
+	$otro = (isset($_POST['otro'])) ? $_POST['otro'] : '';
+    $nombre = (isset($_POST['searchTerm'])) ? $_POST['searchTerm'] : '';
     $datos = $_POST;
 
     switch ($proceso) {
@@ -33,6 +35,9 @@ if (!empty($_POST))
             break;
         case 'combo_clases': // consultar registros por id
             $cl->combo_clases($nombre,$id);
+            break;
+        case 'combo_grupos': // eliminar
+            $cl->combo_grupos($nombre, $id, $otro);
             break;
 		default:
 			$data = "Error";

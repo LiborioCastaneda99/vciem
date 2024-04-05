@@ -26,6 +26,11 @@
 	{
 		$cmd = clasesModel::eliminar($id);
 	}
+	
+	public function combo_clase($nombre, $id)
+	{
+		$cmd = clasesModel::combo_clase($nombre, $id);
+	}
 
 }
 

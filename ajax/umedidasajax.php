@@ -14,6 +14,7 @@ if (!empty($_POST))
 	$proceso = (isset($_POST['proceso'])) ? $_POST['proceso'] : '';
 	$id = (isset($_POST['id'])) ? $_POST['id'] : '';
     $datos = $_POST;
+    $nombre = (isset($_POST['searchTerm'])) ? $_POST['searchTerm'] : '';
 
     switch ($proceso) {
 		case 'get': // consultar registros
@@ -30,6 +31,9 @@ if (!empty($_POST))
             break;
         case 'eliminar': // eliminar
             $cl->eliminar($id);
+            break;
+        case 'combo_umedida': // eliminar
+            $cl->combo_umedida($nombre, $id);
             break;
 		default:
 			$data = "Error";

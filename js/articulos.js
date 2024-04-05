@@ -1,99 +1,414 @@
 $(document).ready(function() {
-    cargar_tabla()
+    cargar_tabla();
 });
 
-// consultar
+//consultar
 function cargar_tabla() {
-    // Hacer la solicitud AJAX al servidor
-    var urlprocess = 'ajax/articulosajax.php';
-    $.ajax({
-        type: 'POST',
-        url: urlprocess,
-        data: 'proceso=get',
-        dataType: 'json',
-        success: function(data) {
-            // Limpiar el cuerpo de la tabla
-            $('#myTable tbody').empty();
-
-            if (data.length > 0) {
-
-                // Agregar filas con los datos obtenidos
-                $.each(data, function(index, item) {
-                    $('#myTable tbody').append(
-                        '<tr>' +
-                        '<td class="codigo">' + item.codigo + '</td>' +
-                        '<td class="homol">' + item.homol + '</td>' +
-                        '<td class="nombre">' + item.nombre + '</td>' +
-                        '<td class="clase">' + item.clase + '</td>' +
-                        '<td class="grupo">' + item.grupo + '</td>' +
-                        '<td class="referencia">' + item.referencia + '</td>' +
-                        '<td class="umedida">' + item.umedida + '</td>' +
-                        '<td class="stmin">' + item.stmin + '</td>' +
-                        '<td class="stmax">' + item.stmax + '</td>' +
-                        '<td class="ctostan">' + item.ctostan + '</td>' +
-                        '<td class="ctoult">' + item.ctoult + '</td>' +
-                        '<td class="fecult">' + item.fecult + '</td>' +
-                        '<td class="nal">' + item.nal + '</td>' +
-                        '<td class="pv1">' + item.pv1 + '</td>' +
-                        '<td class="pv2">' + item.pv2 + '</td>' +
-                        '<td class="pv3">' + item.pv3 + '</td>' +
-                        '<td class="ubicacion">' + item.ubicacion + '</td>' +
-                        '<td class="uxemp">' + item.uxemp + '</td>' +
-                        '<td class="peso">' + item.peso + '</td>' +
-                        '<td class="iva">' + item.iva + '</td>' +
-                        '<td class="impo">' + item.impo + '</td>' +
-                        '<td class="flete">' + item.flete + '</td>' +
-                        '<td class="estado">' + item.estado + '</td>' +
-                        '<td class="canen">' + item.canen + '</td>' +
-                        '<td class="valen">' + item.valen + '</td>' +
-                        '<td class="pdes">' + item.pdes + '</td>' +
-                        '<td class="ultpro">' + item.ultpro + '</td>' +
-                        '<td class="docpro">' + item.docpro + '</td>' +
-                        '<td class="text-center"><button class="btn btn-outline-primary me-1 mb-1" type="button" onclick=editar(' + item.id + ')>' +
-                        '<span class="fas fa-edit me-1" data-fa-transform="shrink-3"></span></button></td>' +
-                        '<td class="text-center"><button class="btn btn-outline-primary me-1 mb-1" type="button" onclick=eliminar(' + item.id + ')>' +
-                        '<span class="fas fa-trash ms-1" data-fa-transform="shrink-3"></span></button></td>' +
-                        '</tr>'
-                    );
-                });
-
-                // Inicializar List.js después de agregar datos
-                var options = {
-                    valueNames: ['codigo', 'homol', 'clase', 'grupo', 'nombre', 'referencia', 'umedida', 'stmin', 'stmax', 'ctostan', 'ctoult', 'fecult', 'nal', 'pv1',
-                        'pv2', 'pv3', 'ubicacion', 'uxemp', 'peso', 'iva', 'impo', 'flete', 'estado', 'canen', 'valen', 'pdes', 'ultpro', 'docpro'
-                    ],
-                    item: '<tr><td class="codigo"></td><td class="homol"></td><td class="nombre"></td><td class="clase"></td><td class="grupo"></td>' +
-                        '<td class="referencia"></td><td class="umedida"></td><td class="stmin"></td><td class="stmax"></td><td class="ctostan"></td><td class="ctoult"></td>' +
-                        '<td class="fecult"></td><td class="nal"></td><td class="pv1"></td><td class="pv2"></td><td class="pv3"></td><td class="ubicacion"></td>' +
-                        '<td class="uxemp"></td><td class="peso"></td><td class="iva"></td><td class="impo"></td><td class="flete"></td>' +
-                        '<td class="estado"></td><td class="canen"></td><td class="valen"></td><td class="pdes"></td><td class="ultpro"></td><td class="docpro"></td></tr>'
-                };
-                var userList = new List('myTable', options);
-
-                // Actualizar la lista después de agregar los datos
-                userList.update();
-
-                // Re-inicializar la búsqueda después de la actualización de la lista
-                var input = document.querySelector('.search');
-                var searchList = new List('myTable', {
-                    valueNames: ['codigo', 'homol', 'clase', 'grupo', 'nombre', 'referencia', 'umedida', 'stmin', 'stmax', 'ctostan', 'ctoult', 'fecult', 'nal', 'pv1',
-                        'pv2', 'pv3', 'ubicacion', 'uxemp', 'peso', 'estado', 'iva', 'impo', 'flete', 'estado', 'canen', 'valen', 'pdes', 'ultpro', 'docpro'
-                    ],
-                    page: 5
-                });
-                input.addEventListener('input', function() {
-                    searchList.search(input.value);
-                });
-            } else {
-                // Mostrar un mensaje indicando que no hay articulos disponibles
-                $('#myTable tbody').html('<tr><td colspan="18" class="text-center">No hay articulos disponibles</td></tr>');
+    $('#tabla').dataTable().fnDestroy();
+    $('#tabla').DataTable({
+        "responsive": true,
+        dom: 'lBfrtip',
+        buttons: [{
+                className: 'btn btn-falcon-default btn-sm mx-2',
+                text: '<span class="fas fa-plus" data-fa-transform="shrink-3"></span> ' +
+                    'Agregar ',
+                action: function() {
+                    abrirModal();
+                }
+            },
+            {
+                extend: 'collection',
+                init: (api, node, config) => $(node).removeClass('btn-secondary'),
+                className: 'btn btn-falcon-default btn-sm mx-2',
+                text: '<span class="fas fa-file-export" data-fa-transform="shrink-3"></span> ' +
+                    'Exportar',
+                buttons: [{
+                        extend: 'csvHtml5',
+                        titleAttr: 'Csv',
+                        className: 'btn btn-falcon-default btn-sm mx-2',
+                        text: '<span class="fas fa-file-csv" data-fa-transform="shrink-3"></span> ' +
+                            'Exportar a CSV ',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        className: 'btn btn-falcon-default btn-sm mx-2',
+                        text: '<span class="fas fa-file-csv" data-fa-transform="shrink-3"></span> ' +
+                            'Exportar a Excel ',
+                        titleAttr: 'Csv',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        text: '<span class="fas fa-file-pdf" data-fa-transform="shrink-3"></span> ' +
+                            'Exportar a PDF ',
+                        className: 'btn btn-falcon-default btn-sm mx-2',
+                        titleAttr: 'Csv',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
+                        }
+                    },
+                ],
+            },
+            {
+                extend: 'print',
+                init: (api, node, config) => $(node).removeClass('btn-secondary'),
+                className: 'btn btn-falcon-default btn-sm mx-2',
+                text: '<span class="fas fa-print" data-fa-transform="shrink-3"></span> ' +
+                    'Imprimir ',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
+                }
             }
+        ],
+        "columnDefs": [{
+                // El numero correspode a la ultima columna iniciando en 0
+                "targets": [28, 29],
+                "orderable": false,
+                "width": "70px",
+                "className": "text-center",
+            },
+            {
+                // El numero correspode a la ultima columna iniciando en 0
+                "targets": [0],
+                "width": "120px",
+            }
+        ],
+        "language": {
+            "url": "vendors/datatables.net/spanish.txt"
         },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            notificacion('Error', 'error', response.message);
+        "lengthMenu": [10, 25, 50, 75, 100, 500, 1000],
+        "lengthChange": true,
+        "order": [
+            [0, "desc"]
+        ],
+        'processing': true,
+        'serverSide': true,
+        'serverMethod': 'post',
+        'ajax': {
+            'url': 'ajax/articulosajax.php',
+            'data': {
+                'proceso': 'get'
+            },
+            'method': 'POST'
+        },
+        'columns': [{
+                data: 'codigo'
+            },
+            {
+                data: 'homol'
+            },
+            {
+                data: 'nombre'
+            },
+            {
+                data: 'clase'
+            },
+            {
+                data: 'grupo'
+            },
+            {
+                data: 'referencia'
+            },
+            {
+                data: 'umedida'
+            },
+            {
+                data: 'stmin'
+            },
+            {
+                data: 'stmax'
+            },
+            {
+                data: 'ctostan'
+            },
+            {
+                data: 'ctoult'
+            },
+            {
+                data: 'fecult'
+            },
+            {
+                data: 'nal'
+            },
+            {
+                data: 'pv1'
+            },
+            {
+                data: 'pv2'
+            },
+            {
+                data: 'pv3'
+            },
+            {
+                data: 'ubicacion'
+            },
+            {
+                data: 'uxemp'
+            },
+            {
+                data: 'peso'
+            },
+            {
+                data: 'iva'
+            },
+            {
+                data: 'impo'
+            },
+            {
+                data: 'flete'
+            },
+            {
+                data: 'estado'
+            },
+            {
+                data: 'canen'
+            },
+            {
+                data: 'valen'
+            },
+            {
+                data: 'pdes'
+            },
+            {
+                data: 'ultpro'
+            },
+            {
+                data: 'docpro'
+            },
+            {
+                data: 'editar'
+            },
+            {
+                data: 'eliminar'
+            },
+        ],
+        drawCallback: function() {
+            $(".btn-group").addClass("btn-group-sm");
         }
     });
+}
+
+function abrirModal() {
+
+    // Cerrar el modal si está abierto
+    $('#guardarModal').modal('hide');
+
+    $('#guardarModal').modal('show');
+    cargar_clase('', 'clase', 'guardarModal');
+    cargar_grupo('', 'grupo', 'guardarModal', 0)
+    cargar_umedida('', 'umedida', 'guardarModal');
+}
+
+// Funcion para cargar las listas select con opcion de busqueda de Clase
+$('#btnBusquedaClaseAgg').click(function() {
+    cargar_clase('', 'clase', 'guardarModal');
+});
+
+// Funcion para cargar las listas select con opcion de busqueda de Clase
+$('#btnBusquedaClaseMod').click(function() {
+    cargar_clase('', 'clase_mod', 'editarModal');
+});
+
+function cargar_clase(Id, nameSelect, Modal) {
+    var lstRoles = $('#' + nameSelect);
+
+    if (Id != "") {
+        lstRoles.select2({
+            dropdownParent: $('#' + Modal)
+        });
+        // var lstRoles = $lstRoles
+        lstRoles.find('option').remove();
+        var searchTerm = '';
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: 'ajax/clasesajax.php',
+            data: {
+                searchTerm: searchTerm,
+                proceso: 'combo_clase',
+                id: Id
+            },
+        }).then(function(registros) {
+            $(registros).each(function(i, v) {
+                lstRoles.append('<option selected value="' + v.id + '">' + v.text + '</option>');
+            })
+            lstRoles.trigger({
+                type: 'select2:select',
+                params: {
+                    data: registros
+                }
+            });
+        });
+
+    } else {
+        lstRoles.select2({
+            placeholder: "Seleccione una clase",
+            dropdownParent: $('#' + Modal),
+            ajax: {
+                url: "ajax/clasesajax.php",
+                type: "post",
+                dataType: 'json',
+                delay: 150,
+                data: function(params) {
+                    return {
+                        searchTerm: params.term,
+                        proceso: "combo_clase",
+                        id: Id
+                    };
+                },
+                processResults: function(response) {
+                    return {
+                        results: response
+
+                    };
+                },
+                cache: true
+            }
+        });
+    }
+}
+
+// Funcion para cargar las listas select con opcion de busqueda de umedida
+$('#btnBusquedaUmedidaAgg').click(function() {
+    cargar_umedida('', 'umedida', 'guardarModal');
+});
+
+// Funcion para cargar las listas select con opcion de busqueda de umedida
+$('#btnBusquedaUmedidaMod').click(function() {
+    cargar_umedida('', 'umedida_mod', 'editarModal');
+});
+
+function cargar_umedida(Id, nameSelect, Modal) {
+    var lstRoles = $('#' + nameSelect);
+
+    if (Id != "") {
+        lstRoles.select2({
+            dropdownParent: $('#' + Modal)
+        });
+        // var lstRoles = $lstRoles
+        lstRoles.find('option').remove();
+        var searchTerm = '';
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: 'ajax/umedidasajax.php',
+            data: {
+                searchTerm: searchTerm,
+                proceso: 'combo_umedida',
+                id: Id
+            },
+        }).then(function(registros) {
+            $(registros).each(function(i, v) {
+                lstRoles.append('<option selected value="' + v.id + '">' + v.text + '</option>');
+            })
+            lstRoles.trigger({
+                type: 'select2:select',
+                params: {
+                    data: registros
+                }
+            });
+        });
+
+    } else {
+        lstRoles.select2({
+            placeholder: "Seleccione una umedida",
+            dropdownParent: $('#' + Modal),
+            ajax: {
+                url: "ajax/umedidasajax.php",
+                type: "post",
+                dataType: 'json',
+                delay: 150,
+                data: function(params) {
+                    return {
+                        searchTerm: params.term,
+                        proceso: "combo_umedida",
+                        id: Id
+                    };
+                },
+                processResults: function(response) {
+                    return {
+                        results: response
+
+                    };
+                },
+                cache: true
+            }
+        });
+    }
+}
+
+function cargar_select(id) {
+    cargar_grupo(id, 'grupo', 'guardarModal', 0)
+}
+
+function cargar_select_mod(id) {
+    cargar_grupo(id, 'grupo_mod', 'editarModal', 0)
+}
+
+
+function cargar_grupo(Id, nameSelect, Modal, Otro) {
+    var lstRoles = $('#' + nameSelect);
+
+    if (Id != "") {
+        lstRoles.select2({
+            dropdownParent: $('#' + Modal)
+        });
+        // var lstRoles = $lstRoles
+        lstRoles.find('option').remove();
+        var searchTerm = '';
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: 'ajax/gruposajax.php',
+            data: {
+                searchTerm: searchTerm,
+                proceso: 'combo_grupos',
+                id: Id,
+                otro: Otro
+            },
+        }).then(function(registros) {
+            $(registros).each(function(i, v) {
+                lstRoles.append('<option selected value="' + v.id + '">' + v.text + '</option>');
+            })
+            lstRoles.trigger({
+                type: 'select2:select',
+                params: {
+                    data: registros
+                }
+            });
+        });
+
+    } else {
+        lstRoles.select2({
+            placeholder: "Seleccione un grupo",
+            dropdownParent: $('#' + Modal),
+            ajax: {
+                url: "ajax/gruposajax.php",
+                type: "post",
+                dataType: 'json',
+                delay: 150,
+                data: function(params) {
+                    return {
+                        searchTerm: params.term,
+                        proceso: "combo_grupos",
+                        id: Id
+                    };
+                },
+                processResults: function(response) {
+                    return {
+                        results: response
+
+                    };
+                },
+                cache: true
+            }
+        });
+    }
 }
 
 // guardar
@@ -209,9 +524,13 @@ function editar(id) {
             document.getElementById('homol_mod').value = data[0].homol
             document.getElementById('nombre_mod').value = data[0].nombre
             document.getElementById('clase_mod').value = data[0].clase
-            document.getElementById('grupo_mod').value = data[0].grupo
+            cargar_clase(data[0].clase, 'clase_mod', 'editarModal');
+            cargar_grupo(data[0].grupo, 'grupo_mod', 'editarModal', 1);
+
             document.getElementById('referencia_mod').value = data[0].referencia
             document.getElementById('umedida_mod').value = data[0].umedida
+            cargar_umedida(data[0].umedida, 'umedida_mod', 'editarModal');
+
             document.getElementById('stmin_mod').value = data[0].stmin
             document.getElementById('stmax_mod').value = data[0].stmax
             document.getElementById('ctostan_mod').value = data[0].ctostan

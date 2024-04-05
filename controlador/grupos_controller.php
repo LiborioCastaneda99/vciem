@@ -32,6 +32,11 @@
 		$cmd = gruposModel::combo_clases($nombre, $id);
 	}
 
+	public function combo_grupos($nombre,$id, $otro)
+	{
+		$cmd = gruposModel::combo_grupos($nombre, $id, $otro);
+	}
+
 
 }
 

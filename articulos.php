@@ -70,74 +70,46 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                     </div>
                     <div class="card-body pt-3">
                         <div class="tab-content">
-                            <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="-" id="">
-                                <div id="tableExample3" data-list='{"valueNames":["codigo","nombre"],"page":5,"pagination":true}'>
-                                    <div class="row justify-content-end g-0">
-                                        <div class="d-flex align-items-center" id="table-contact-replace-element">
-                                            <button class="btn btn-falcon-default btn-sm" type="button" id="btnAgregar" data-bs-toggle="modal" data-bs-target="#guardarModal">
-                                                <span class="fas fa-plus" data-fa-transform="shrink-3"></span>
-                                                <span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1" title="Registrar">Agregar</span>
-                                            </button>
-                                            <button onclick="generar()" class="btn btn-falcon-default btn-sm mx-2" type="button">
-                                                <span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span>
-                                                <span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1">Exportar</span>
-                                            </button>
-                                        </div>
-                                        <div class="col-auto col-sm-5 mb-3">
-                                            <form method="POST" action="#" id="" name="">
-                                                <div class="input-group"><input class="form-control form-control-sm shadow-none search" type="search" placeholder="Buscar..." aria-label="search" />
-                                                    <div class="input-group-text bg-transparent"><span class="fa fa-search fs-10 text-600"></span></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="table-responsive scrollbar">
-                                        <table id="myTable" class="table table-bordered table-striped fs-10 mb-0 ">
-
-                                            <thead class="bg-200">
-                                                <tr>
-                                                    <th class="text-900 sort" data-sort="codigo">Código</th>
-                                                    <th class="text-900 sort" data-sort="homol">Homologación</th>
-                                                    <th class="text-900 sort" data-sort="nombre">Nombre</th>
-                                                    <th class="text-900 sort" data-sort="clase">Clase</th>
-                                                    <th class="text-900 sort" data-sort="grupo">Grupo</th>
-                                                    <th class="text-900 sort" data-sort="referencia">Referencia</th>
-                                                    <th class="text-900 sort" data-sort="umedida">Umedida</th>
-                                                    <th class="text-900 sort" data-sort="stmin">Stmin</th>
-                                                    <th class="text-900 sort" data-sort="stmax">Stmax</th>
-                                                    <th class="text-900 sort" data-sort="ctostan">Ctostan</th>
-                                                    <th class="text-900 sort" data-sort="ctoult">Ctoult</th>
-                                                    <th class="text-900 sort" data-sort="fecult">Fecult</th>
-                                                    <th class="text-900 sort" data-sort="nal">Nal</th>
-                                                    <th class="text-900 sort" data-sort="pv1">Pv1</th>
-                                                    <th class="text-900 sort" data-sort="pv2">Pv2</th>
-                                                    <th class="text-900 sort" data-sort="pv3">Pv3</th>
-                                                    <th class="text-900 sort" data-sort="ubicacion">Ubicación</th>
-                                                    <th class="text-900 sort" data-sort="uxemp">Uxemp</th>
-                                                    <th class="text-900 sort" data-sort="peso">Peso</th>
-                                                    <th class="text-900 sort" data-sort="iva">IVA</th>
-                                                    <th class="text-900 sort" data-sort="impo">Impo</th>
-                                                    <th class="text-900 sort" data-sort="flete">Flete</th>
-                                                    <th class="text-900 sort" data-sort="estado">Estado</th>
-                                                    <th class="text-900 sort" data-sort="canen">Canen</th>
-                                                    <th class="text-900 sort" data-sort="valen">Valen</th>
-                                                    <th class="text-900 sort" data-sort="pdes">Pdes</th>
-                                                    <th class="text-900 sort" data-sort="ultpro">Ultpro</th>
-                                                    <th class="text-900 sort" data-sort="docpro">Docpro</th>
-                                                    <th class="text-900 no-sort pe-1 align-middle data-table-row-action">Editar</th>
-                                                    <th class="text-900 no-sort pe-1 align-middle data-table-row-action">Eliminar</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="list">
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="d-flex justify-content-center mt-3">
-                                        <button class="btn btn-sm btn-falcon-default me-1" type="button" title="Previous" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
-                                        <ul class="pagination mb-0"></ul>
-                                        <button class="btn btn-sm btn-falcon-default ms-1" type="button" title="Next" data-list-pagination="next"><span class="fas fa-chevron-right"> </span></button>
-                                    </div>
+                            <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="-" id>
+                                <div class="table-responsive scrollbar">
+                                    <table id="tabla" class="table table-striped mb-0 data-table fs-10" data-datatables="data-datatables" style="width: 100%;">
+                                        <thead class="bg-200">
+                                            <tr>
+                                                <th class="text-900 sort">Código</th>
+                                                <th class="text-900 sort">Homologación</th>
+                                                <th class="text-900 sort">Nombre</th>
+                                                <th class="text-900 sort">Clase</th>
+                                                <th class="text-900 sort">Grupo</th>
+                                                <th class="text-900 sort">Referencia</th>
+                                                <th class="text-900 sort">Umedida</th>
+                                                <th class="text-900 sort">Stmin</th>
+                                                <th class="text-900 sort">Stmax</th>
+                                                <th class="text-900 sort">Ctostan</th>
+                                                <th class="text-900 sort">Ctoult</th>
+                                                <th class="text-900 sort">Fecult</th>
+                                                <th class="text-900 sort">Nal</th>
+                                                <th class="text-900 sort">Pv1</th>
+                                                <th class="text-900 sort">Pv2</th>
+                                                <th class="text-900 sort">Pv3</th>
+                                                <th class="text-900 sort">Ubicación</th>
+                                                <th class="text-900 sort">Uxemp</th>
+                                                <th class="text-900 sort">Peso</th>
+                                                <th class="text-900 sort">IVA</th>
+                                                <th class="text-900 sort">Impo</th>
+                                                <th class="text-900 sort">Flete</th>
+                                                <th class="text-900 sort">Estado</th>
+                                                <th class="text-900 sort">Canen</th>
+                                                <th class="text-900 sort">Valen</th>
+                                                <th class="text-900 sort">Pdes</th>
+                                                <th class="text-900 sort">Ultpro</th>
+                                                <th class="text-900 sort">Docpro</th>
+                                                <th class="text-900 text-center">Editar</th>
+                                                <th class="text-900 text-center">Eliminar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -146,7 +118,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
 
                 <!-- modal registro -->
                 <div class="modal fade" id="guardarModal" data-bs-keyboard="false" data-bs-backdrop="static" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg mt-6" role="document">
+                    <div class="modal-dialog modal-xl mt-6" role="document">
                         <div class="modal-content border-0">
                             <div class="position-absolute top-0 end-0 mt-3 me-3 z-1"><button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button></div>
                             <div class="modal-body p-0">
@@ -157,67 +129,76 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                 <div class="p-4">
                                     <div class="row">
                                         <form id="fmr_articulos" method="POST" action="#" class="fmr_articulos row g-2 needs-validation" novalidate="">
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="codigo">Código</label>
                                                 <input class="form-control" id="codigo" name="codigo" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="homol">Homologación</label>
                                                 <input class="form-control" id="homol" name="homol" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label class="form-label" for="nombre">Nombre</label>
                                                 <input class="form-control" id="nombre" name="nombre" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label class="form-label" for="clase">Clase</label>
-                                                <input class="form-control" id="clase" name="clase" type="text" required />
-                                                <div class="valid-feedback">¡Ok!</div>
+                                            <div class="col-md-4">
+                                                <label>Clase</label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <select class="form-select selectpicker" id="clase" size="1" name="clase" onchange="cargar_select(this.value)" required>
+                                                    </select>
+                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaClaseAgg" name="btnBusquedaClaseAgg" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label class="form-label" for="grupo">Grupo</label>
-                                                <input class="form-control" id="grupo" name="grupo" type="text" required />
-                                                <div class="valid-feedback">¡Ok!</div>
+                                            <div class="col-md-4">
+                                                <label>Grupo</label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <select class="form-select selectpicker" id="grupo" size="1" name="grupo" required>
+                                                    </select>
+                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaGrupoAgg" name="btnBusquedaGrupoAgg" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label class="form-label" for="referencia">Referencia</label>
                                                 <input class="form-control" id="referencia" name="referencia" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label class="form-label" for="umedida">Umedida</label>
-                                                <input class="form-control" id="umedida" name="umedida" type="text" required />
-                                                <div class="valid-feedback">¡Ok!</div>
+                                            <div class="col-md-4">
+                                                <label>Umedida</label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <select class="form-select selectpicker" id="umedida" size="1" name="umedida" required>
+                                                    </select>
+                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaUmedidaAgg" name="btnBusquedaUmedidaAgg" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="stmin">Stmin</label>
                                                 <input class="form-control" id="stmin" name="stmin" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="stmax">Stmax</label>
                                                 <input class="form-control" id="stmax" name="stmax" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="ctostan">Ctostan</label>
                                                 <input class="form-control" id="ctostan" name="ctostan" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="ctoult">Ctoult</label>
                                                 <input class="form-control" id="ctoult" name="ctoult" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="fecult">Fecult</label>
                                                 <input class="form-control" id="fecult" name="fecult" type="date" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="nal">Nal</label>
                                                 <select name="nal" id="nal" class="form-control">
                                                     <option value="0" disabled selected>Seleccione</option>
@@ -226,77 +207,77 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 </select>
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="pv1">Pv1</label>
                                                 <input class="form-control" id="pv1" name="pv1" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="pv2">Pv2</label>
                                                 <input class="form-control" id="pv2" name="pv2" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="pv3">Pv3</label>
                                                 <input class="form-control" id="pv3" name="pv3" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="ubicacion">Ubicación</label>
                                                 <input class="form-control" id="ubicacion" name="ubicacion" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="uxemp">Uxemp</label>
                                                 <input class="form-control" id="uxemp" name="uxemp" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="peso">Peso</label>
                                                 <input class="form-control" id="peso" name="peso" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="iva">Iva</label>
                                                 <input class="form-control" id="iva" name="iva" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="impo">Impo</label>
                                                 <input class="form-control" id="impo" name="impo" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="flete">Flete</label>
                                                 <input class="form-control" id="flete" name="flete" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="estado">Estado</label>
                                                 <input class="form-control" id="estado" name="estado" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="canen">Canen</label>
                                                 <input class="form-control" id="canen" name="canen" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="valen">Valen</label>
                                                 <input class="form-control" id="valen" name="valen" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label class="form-label" for="pdes">Pdes</label>
                                                 <input class="form-control" id="pdes" name="pdes" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label class="form-label" for="ultpro">Ultpro</label>
                                                 <input class="form-control" id="ultpro" name="ultpro" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label class="form-label" for="docpro">Docpro</label>
                                                 <input class="form-control" id="docpro" name="docpro" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
@@ -316,7 +297,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
 
                 <!-- modal editar -->
                 <div class="modal fade" id="editarModal" data-bs-keyboard="false" data-bs-backdrop="static" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg mt-6" role="document">
+                    <div class="modal-dialog modal-xl mt-6" role="document">
                         <div class="modal-content border-0">
                             <div class="position-absolute top-0 end-0 mt-3 me-3 z-1"><button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button></div>
                             <div class="modal-body p-0">
@@ -327,68 +308,77 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                 <div class="p-4">
                                     <div class="row">
                                         <form id="fmr_articulos_editar" method="POST" class="fmr_articulos_editar row g-2 needs-validation" novalidate="">
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="codigo_mod">Código</label>
                                                 <input class="form-control" id="id" name="id" type="hidden" />
                                                 <input class="form-control" id="codigo_mod" name="codigo_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="homol_mod">Homologación</label>
                                                 <input class="form-control" id="homol_mod" name="homol_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label class="form-label" for="nombre_mod">Nombre</label>
                                                 <input class="form-control" id="nombre_mod" name="nombre_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label class="form-label" for="clase_mod">Clase</label>
-                                                <input class="form-control" id="clase_mod" name="clase_mod" type="text" required />
-                                                <div class="valid-feedback">¡Ok!</div>
+                                            <div class="col-md-4">
+                                                <label>Clase</label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <select class="form-select selectpicker" id="clase_mod" size="1" name="clase_mod" onchange="cargar_select_mod(this.value)" required>
+                                                    </select>
+                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaClaseMod" name="btnBusquedaClaseMod" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label class="form-label" for="grupo_mod">Grupo</label>
-                                                <input class="form-control" id="grupo_mod" name="grupo_mod" type="text" required />
-                                                <div class="valid-feedback">¡Ok!</div>
+                                            <div class="col-md-4">
+                                                <label>Grupo</label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <select class="form-select selectpicker" id="grupo_mod" size="1" name="grupo_mod" required>
+                                                    </select>
+                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaGrupoMod" name="btnBusquedaGrupoMod" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label class="form-label" for="referencia_mod">Referencia</label>
                                                 <input class="form-control" id="referencia_mod" name="referencia_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label class="form-label" for="umedida_mod">Umedida</label>
-                                                <input class="form-control" id="umedida_mod" name="umedida_mod" type="text" required />
-                                                <div class="valid-feedback">¡Ok!</div>
+                                            <div class="col-md-4">
+                                                <label>Unidad medida</label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <select class="form-select selectpicker" id="umedida_mod" size="1" name="umedida_mod" required>
+                                                    </select>
+                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaUmedidaMod" name="btnBusquedaUmedidaMod" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="stmin_mod">Stmin</label>
                                                 <input class="form-control" id="stmin_mod" name="stmin_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="stmax_mod">Stmax</label>
                                                 <input class="form-control" id="stmax_mod" name="stmax_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="ctostan_mod">Ctostan</label>
                                                 <input class="form-control" id="ctostan_mod" name="ctostan_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="ctoult_mod">Ctoult</label>
                                                 <input class="form-control" id="ctoult_mod" name="ctoult_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="fecult_mod">Fecult</label>
                                                 <input class="form-control" id="fecult_mod" name="fecult_mod" type="date" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="nal_mod">Nal</label>
                                                 <select name="nal_mod" id="nal_mod" class="form-control">
                                                     <option value="0" disabled selected>Seleccione</option>
@@ -397,77 +387,77 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 </select>
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="pv1_mod">Pv1</label>
                                                 <input class="form-control" id="pv1_mod" name="pv1_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="pv2_mod">Pv2</label>
                                                 <input class="form-control" id="pv2_mod" name="pv2_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="pv3_mod">Pv3</label>
                                                 <input class="form-control" id="pv3_mod" name="pv3_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="ubicacion_mod">Ubicación</label>
                                                 <input class="form-control" id="ubicacion_mod" name="ubicacion_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="uxemp_mod">Uxemp</label>
                                                 <input class="form-control" id="uxemp_mod" name="uxemp_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="peso_mod">Peso</label>
                                                 <input class="form-control" id="peso_mod" name="peso_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="iva_mod">Iva</label>
                                                 <input class="form-control" id="iva_mod" name="iva_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="impo_mod">Impo</label>
                                                 <input class="form-control" id="impo_mod" name="impo_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="flete_mod">Flete</label>
                                                 <input class="form-control" id="flete_mod" name="flete_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="estado_mod">Estado</label>
                                                 <input class="form-control" id="estado_mod" name="estado_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="canen_mod">Canen</label>
                                                 <input class="form-control" id="canen_mod" name="canen_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="valen_mod">Valen</label>
                                                 <input class="form-control" id="valen_mod" name="valen_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label class="form-label" for="pdes_mod">Pdes</label>
                                                 <input class="form-control" id="pdes_mod" name="pdes_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label class="form-label" for="ultpro_mod">Ultpro</label>
                                                 <input class="form-control" id="ultpro_mod" name="ultpro_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label class="form-label" for="docpro_mod">Docpro</label>
                                                 <input class="form-control" id="docpro_mod" name="docpro_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>

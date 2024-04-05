@@ -27,6 +27,11 @@
 		$cmd = umedidasModel::eliminar($id);
 	}
 
+	public function combo_umedida($nombre, $id)
+	{
+		$cmd = umedidasModel::combo_umedida($nombre, $id);
+	}
+
 }
 
 ?>

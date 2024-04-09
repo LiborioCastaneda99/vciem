@@ -6,27 +6,98 @@ class tallasModel extends Conexion
 
     public static function get()
     {
-        $dbconec = Conexion::Conectar();
-
+        $conexion = Conexion::Conectar();
         try {
-            $query = "SELECT `id`, `codigo`, `nombre` FROM tbtallas WHERE activo = 1";
-            $stmt = $dbconec->prepare($query);
-            $stmt->execute();
+            $draw = $_POST['draw'];
+            $row = $_POST['start'];
+            $rowperpage = $_POST['length']; // Rows display per page
+            $columnIndex = $_POST['order'][0]['column']; // Column index
+            $columnName = $_POST['columns'][$columnIndex]['data']; // Column name
+            $columnSortOrder = $_POST['order'][0]['dir']; // asc or desc
+            $searchValue = $_POST['search']['value']; // Search value
 
-            // Obtener todos los resultados como un array asociativo
-            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            if ($rows) {
-                // Devolver el array JSON con todos los tbtallas
-                echo json_encode($rows);
-            } else {
-
-                $data = "";
-                echo json_encode($data);
+            // Configuración de las opciones de busqueda
+            $searchArray = array();
+            # Configuración del parametro de filtro 
+            $searchQuery = " ";
+            if ($searchValue != '') {
+                $searchQuery = " AND (
+					codigo LIKE :codigo or 
+					nombre LIKE :nombre) ";
+                $searchArray = array(
+                    'codigo' => "%$searchValue%",
+                    'nombre' => "%$searchValue%"
+                );
             }
+
+            ## Calcular el total numero de registros sin filtro
+            $sql = "SELECT COUNT(*) ";
+            $sql .= " AS allcount FROM tbtallas";
+            $sql .= " WHERE activo = 1";
+            error_log("sql => " . $sql);
+            $stmt = $conexion->prepare($sql);
+            $stmt->execute();
+            $records = $stmt->fetch();
+            $totalRecords = $records['allcount'];
+
+            ## Total numero de registros con filtro
+            $sql = "SELECT COUNT(*)";
+            $sql .= " AS allcount FROM tbtallas";
+            $sql .= " WHERE activo = 1 " . $searchQuery . " ";
+            error_log("sql => " . $sql);
+            $stmt = $conexion->prepare($sql);
+            $stmt->execute($searchArray);
+            $records = $stmt->fetch();
+            $totalRecordwithFilter = $records['allcount'];
+
+            ## Obetener los registros de la tabla.
+            $sql = "SELECT id, codigo, nombre FROM tbtallas";
+            $sql .= " WHERE activo = 1 " . $searchQuery . " ORDER BY " . $columnName . " " . $columnSortOrder . " LIMIT :limit,:offset";
+            error_log("sql => " . $sql);
+            $stmt = $conexion->prepare($sql);
+
+            // Bind values
+            foreach ($searchArray as $key => $search) {
+                $stmt->bindValue(':' . $key, $search, PDO::PARAM_STR);
+            }
+
+            $stmt->bindValue(':limit', (int) $row, PDO::PARAM_INT);
+            $stmt->bindValue(':offset', (int) $rowperpage, PDO::PARAM_INT);
+            $stmt->execute();
+            $empRecords = $stmt->fetchAll();
+
+            $data = array();
+
+            foreach ($empRecords as $row) {
+
+                # Los titulos de columnas colocados en el formulario deben corresponder exactamente con lo descrito aquí
+                // definimos los botones con sus funciones
+                $opEditar = "<button class='btn btn-outline-primary btn-sm me-1 mb-1' type='button' onclick=editar({$row['id']})>
+                <span class='fas fa-edit me-1' data-fa-transform='shrink-3'></span></button>";
+                $opEliminar = "<button class='btn btn-outline-primary btn-sm me-1 mb-1' type='button' onclick=eliminar({$row['id']})>
+                <span class='fas fa-trash me-1' data-fa-transform='shrink-3'></span></button>";
+
+                $data[] = array(
+                    'codigo' => $row['codigo'],
+                    'nombre' => $row['nombre'],
+                    'editar' => $opEditar,
+                    'eliminar' => $opEliminar
+                );
+            }
+            ## respuesta
+            $response = array(
+                "draw" => intval($draw),
+                "iTotalRecords" => $totalRecords,
+                "iTotalDisplayRecords" => $totalRecordwithFilter,
+                "aaData" => $data
+            );
+            # Devuelve la información al formulario
+            echo json_encode($response);
+            $conexion = NULL;
         } catch (Exception $e) {
-            $data = "Error";
-            echo json_encode($data);
+
+            echo '<span class="label label-danger label-block">Error al cargar los datos</span>';
         }
     }
 

@@ -70,66 +70,38 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                     </div>
                     <div class="card-body pt-3">
                         <div class="tab-content">
-                            <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="-" id="">
-                                <div id="tableExample3" data-list='{"valueNames":["codigo","nombre"],"page":5,"pagination":true}'>
-                                    <div class="row justify-content-end g-0">
-                                        <div class="d-flex align-items-center" id="table-contact-replace-element">
-                                            <button class="btn btn-falcon-default btn-sm" type="button" id="btnAgregar" data-bs-toggle="modal" data-bs-target="#guardarModal">
-                                                <span class="fas fa-plus" data-fa-transform="shrink-3"></span>
-                                                <span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1" title="Registrar">Agregar</span>
-                                            </button>
-                                            <button onclick="generar()" class="btn btn-falcon-default btn-sm mx-2" type="button">
-                                                <span class="fas fa-external-link-alt" data-fa-transform="shrink-3"></span>
-                                                <span class="d-none d-sm-inline-block d-xl-none d-xxl-inline-block ms-1">Exportar</span>
-                                            </button>
-                                        </div>
-                                        <div class="col-auto col-sm-5 mb-3">
-                                            <form method="POST" action="#" id="" name="">
-                                                <div class="input-group"><input class="form-control form-control-sm shadow-none search" type="search" placeholder="Buscar..." aria-label="search" />
-                                                    <div class="input-group-text bg-transparent"><span class="fa fa-search fs-10 text-600"></span></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="table-responsive scrollbar">
-                                        <table id="myTable" class="table table-bordered table-striped fs-10 mb-0 ">
-
-                                            <thead class="bg-200">
-                                                <tr>
-                                                    <th class="text-900 sort" data-sort="codigo">Código</th>
-                                                    <th class="text-900 sort" data-sort="suc">Sucursal</th>
-                                                    <th class="text-900 sort" data-sort="zona">Zona</th>
-                                                    <th class="text-900 sort" data-sort="subzona">Subzona</th>
-                                                    <th class="text-900 sort" data-sort="nombre">Nombre</th>
-                                                    <th class="text-900 sort" data-sort="dir">Dirección</th>
-                                                    <th class="text-900 sort" data-sort="tel1">Teléfono 1</th>
-                                                    <th class="text-900 sort" data-sort="tel2">Teléfono 2</th>
-                                                    <th class="text-900 sort" data-sort="ciudad">Ciudad</th>
-                                                    <th class="text-900 sort" data-sort="cupo">Cupo</th>
-                                                    <th class="text-900 sort" data-sort="legal">Legal</th>
-                                                    <th class="text-900 sort" data-sort="fecha_ini">Fecha Inicial</th>
-                                                    <th class="text-900 sort" data-sort="fpago">Forma de Pago</th>
-                                                    <th class="text-900 sort" data-sort="correo">Correo</th>
-                                                    <th class="text-900 sort" data-sort="caract_dev">Caract. Devolución</th>
-                                                    <th class="text-900 sort" data-sort="digito">Dígito</th>
-                                                    <th class="text-900 sort" data-sort="riva">Retención de IVA</th>
-                                                    <th class="text-900 sort" data-sort="rfte">Retención de Fuente</th>
-                                                    <th class="text-900 sort" data-sort="rica">Retención de ICA</th>
-                                                    <th class="text-900 sort" data-sort="estado">Estado</th>
-                                                    <th class="text-900 no-sort pe-1 align-middle data-table-row-action">Editar</th>
-                                                    <th class="text-900 no-sort pe-1 align-middle data-table-row-action">Eliminar</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="list">
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="d-flex justify-content-center mt-3">
-                                        <button class="btn btn-sm btn-falcon-default me-1" type="button" title="Previous" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
-                                        <ul class="pagination mb-0"></ul>
-                                        <button class="btn btn-sm btn-falcon-default ms-1" type="button" title="Next" data-list-pagination="next"><span class="fas fa-chevron-right"> </span></button>
-                                    </div>
+                            <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="-" id>
+                                <div class="table-responsive scrollbar">
+                                    <table id="tabla" class="table table-striped mb-0 data-table fs-10" data-datatables="data-datatables" style="width: 100%;">
+                                        <thead class="bg-200">
+                                            <tr>
+                                                <th class="text-900 sort">Código</th>
+                                                <th class="text-900 sort">Sucursal</th>
+                                                <th class="text-900 sort">Zona</th>
+                                                <th class="text-900 sort">Subzona</th>
+                                                <th class="text-900 sort">Nombre</th>
+                                                <th class="text-900 sort">Dirección</th>
+                                                <th class="text-900 sort">Teléfono 1</th>
+                                                <th class="text-900 sort">Teléfono 2</th>
+                                                <th class="text-900 sort">Ciudad</th>
+                                                <th class="text-900 sort">Cupo</th>
+                                                <th class="text-900 sort">Legal</th>
+                                                <th class="text-900 sort">Fecha Inicial</th>
+                                                <th class="text-900 sort">Forma de Pago</th>
+                                                <th class="text-900 sort">Correo</th>
+                                                <th class="text-900 sort">Caract. Devolución</th>
+                                                <th class="text-900 sort">Dígito</th>
+                                                <th class="text-900 sort">Retención de IVA</th>
+                                                <th class="text-900 sort">Retención de Fuente</th>
+                                                <th class="text-900 sort">Retención de ICA</th>
+                                                <th class="text-900 sort">Estado</th>
+                                                <th class="text-900 text-center">Editar</th>
+                                                <th class="text-900 text-center">Eliminar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -138,7 +110,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
 
                 <!-- modal registro -->
                 <div class="modal fade" id="guardarModal" data-bs-keyboard="false" data-bs-backdrop="static" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg mt-6" role="document">
+                    <div class="modal-dialog modal-xl mt-6" role="document">
                         <div class="modal-content border-0">
                             <div class="position-absolute top-0 end-0 mt-3 me-3 z-1"><button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button></div>
                             <div class="modal-body p-0">
@@ -149,87 +121,115 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                 <div class="p-4">
                                     <div class="row">
                                         <form id="fmr_proveedores" method="POST" class="fmr_proveedores row g-2 needs-validation" novalidate="">
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="codigo">Código</label>
                                                 <input class="form-control" id="codigo" name="codigo" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label class="form-label" for="suc">Sucursal</label>
-                                                <input class="form-control" id="suc" name="suc" type="text" required />
-                                                <div class="valid-feedback">¡Ok!</div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label class="form-label" for="zona">Zona</label>
-                                                <input class="form-control" id="zona" name="zona" type="text" required />
-                                                <div class="valid-feedback">¡Ok!</div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label class="form-label" for="subzona">Subzona</label>
-                                                <input class="form-control" id="subzona" name="subzona" type="text" required />
-                                                <div class="valid-feedback">¡Ok!</div>
-                                            </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-3">
                                                 <label class="form-label" for="nombre">Nombre</label>
                                                 <input class="form-control" id="nombre" name="nombre" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-3">
                                                 <label class="form-label" for="dir">Dirección</label>
                                                 <input class="form-control" id="dir" name="dir" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="tel1">Teléfono 1</label>
                                                 <input class="form-control" id="tel1" name="tel1" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="tel2">Teléfono 2</label>
                                                 <input class="form-control" id="tel2" name="tel2" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label class="form-label" for="ciudad">Ciudad</label>
-                                                <input class="form-control" id="ciudad" name="ciudad" type="text" required />
+                                            <div class="col-md-4">
+                                                <label>Sucursal</label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <select class="form-select selectpicker" id="suc" size="1" name="suc" required>
+                                                    </select>
+                                                    <span class="input-group-addon">
+                                                        <button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaSucursal" name="btnBusquedaSucursal" style="width: 15.7%;">
+                                                            <span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
                                                 <div class="valid-feedback">¡Ok!</div>
+                                                <div class="invalid-feedback">Por favor, seleccione uno</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
+                                                <label>Zona</label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <select class="form-select selectpicker" id="zona" size="1" name="zona" onchange="cargar_select_agg(this.value)" required>
+                                                    </select>
+                                                    <span class="input-group-addon">
+                                                        <button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaZona" name="btnBusquedaZona" style="width: 15.7%;">
+                                                            <span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
+                                                <div class="valid-feedback">¡Ok!</div>
+                                                <div class="invalid-feedback">Por favor, seleccione uno</div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Subzona</label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <select class="form-select selectpicker" id="subzona" size="1" name="subzona" required>
+                                                    </select>
+                                                    <span class="input-group-addon">
+                                                        <button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaSubzona" name="btnBusquedaSubzona" style="width: 15.7%;">
+                                                            <span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
+                                                <div class="valid-feedback">¡Ok!</div>
+                                                <div class="invalid-feedback">Por favor, seleccione uno</div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Ciudad</label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <select class="form-select selectpicker" id="ciudad" size="1" name="ciudad" required>
+                                                    </select>
+                                                    <span class="input-group-addon">
+                                                        <button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaCiudadAgg" name="btnBusquedaCiudadAgg" style="width: 15.7%;">
+                                                            <span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
+                                                <div class="valid-feedback">¡Ok!</div>
+                                                <div class="invalid-feedback">Por favor, seleccione uno</div>
+                                            </div>
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="cupo">Cupo</label>
                                                 <input class="form-control" id="cupo" name="cupo" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label class="form-label" for="legal">Información Legal</label>
                                                 <input class="form-control" id="legal" name="legal" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="fecha_ini">Fecha de Inicio</label>
                                                 <input class="form-control" id="fecha_ini" name="fecha_ini" type="date" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="fpago">Forma de Pago</label>
                                                 <input class="form-control" id="fpago" name="fpago" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-3">
                                                 <label class="form-label" for="correo">Correo</label>
                                                 <input class="form-control" id="correo" name="correo" type="email" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="caract_dev">Caract. Devolución</label>
                                                 <input class="form-control" id="caract_dev" name="caract_dev" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="digito">Dígito</label>
                                                 <input class="form-control" id="digito" name="digito" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-3">
                                                 <label class="form-label" for="riva">Retención de IVA</label>
                                                 <select name="riva" id="riva" class="form-control">
                                                     <option value="0" disabled selected>Seleccione</option>
@@ -239,7 +239,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <!-- <input class="form-control" id="riva" name="riva" type="text" required /> -->
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label class="form-label" for="rfte">Retención de Fuente</label>
                                                 <select name="rfte" id="rfte" class="form-control">
                                                     <option value="0" disabled selected>Seleccione</option>
@@ -249,7 +249,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <!-- <input class="form-control" id="rfte" name="rfte" type="text" required /> -->
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label class="form-label" for="rica">Retención de ICA</label>
                                                 <select name="rica" id="rica" class="form-control">
                                                     <option value="0" disabled selected>Seleccione</option>
@@ -259,7 +259,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <!-- <input class="form-control" id="rica" name="rica" type="text" required /> -->
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label class="form-label" for="estado">Estado</label>
                                                 <input class="form-control" id="estado" name="estado" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
@@ -279,7 +279,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
 
                 <!-- modal editar -->
                 <div class="modal fade" id="editarModal" data-bs-keyboard="false" data-bs-backdrop="static" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg mt-6" role="document">
+                    <div class="modal-dialog modal-xl mt-6" role="document">
                         <div class="modal-content border-0">
                             <div class="position-absolute top-0 end-0 mt-3 me-3 z-1"><button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button></div>
                             <div class="modal-body p-0">
@@ -290,88 +290,116 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                 <div class="p-4">
                                     <div class="row">
                                         <form id="fmr_proveedores_editar" method="POST" class="fmr_proveedores_editar row g-2 needs-validation" novalidate="">
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="codigo_mod">Código</label>
                                                 <input class="form-control" id="id" name="id" type="hidden" />
                                                 <input class="form-control" id="codigo_mod" name="codigo_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label class="form-label" for="suc_mod">Sucursal</label>
-                                                <input class="form-control" id="suc_mod" name="suc_mod" type="text" required />
-                                                <div class="valid-feedback">¡Ok!</div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label class="form-label" for="zona_mod">Zona</label>
-                                                <input class="form-control" id="zona_mod" name="zona_mod" type="text" required />
-                                                <div class="valid-feedback">¡Ok!</div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label class="form-label" for="subzona_mod">Subzona</label>
-                                                <input class="form-control" id="subzona_mod" name="subzona_mod" type="text" required />
-                                                <div class="valid-feedback">¡Ok!</div>
-                                            </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-3">
                                                 <label class="form-label" for="nombre_mod">Nombre</label>
                                                 <input class="form-control" id="nombre_mod" name="nombre_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-3">
                                                 <label class="form-label" for="dir_mod">Dirección</label>
                                                 <input class="form-control" id="dir_mod" name="dir_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="tel1_mod">Teléfono 1</label>
                                                 <input class="form-control" id="tel1_mod" name="tel1_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="tel2_mod">Teléfono 2</label>
                                                 <input class="form-control" id="tel2_mod" name="tel2_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label class="form-label" for="ciudad_mod">Ciudad</label>
-                                                <input class="form-control" id="ciudad_mod" name="ciudad_mod" type="text" required />
+                                            <div class="col-md-4">
+                                                <label>Sucursal</label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <select class="form-select selectpicker" id="suc_mod" size="1" name="suc_mod" required>
+                                                    </select>
+                                                    <span class="input-group-addon">
+                                                        <button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaSucursalMod" name="btnBusquedaSucursalMod" style="width: 15.7%;">
+                                                            <span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
                                                 <div class="valid-feedback">¡Ok!</div>
+                                                <div class="invalid-feedback">Por favor, seleccione uno</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
+                                                <label>Zona</label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <select class="form-select selectpicker" id="zona_mod" size="1" name="zona_mod" onchange="cargar_select(this.value)" required>
+                                                    </select>
+                                                    <span class="input-group-addon">
+                                                        <button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaZonaMod" name="btnBusquedaZonaMod" style="width: 15.7%;">
+                                                            <span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
+                                                <div class="valid-feedback">¡Ok!</div>
+                                                <div class="invalid-feedback">Por favor, seleccione uno</div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Subzona</label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <select class="form-select selectpicker" id="subzona_mod" size="1" name="subzona_mod" required>
+                                                    </select>
+                                                    <span class="input-group-addon">
+                                                        <button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaSubzonaMod" name="btnBusquedaSubzonaMod" style="width: 15.7%;">
+                                                            <span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
+                                                <div class="valid-feedback">¡Ok!</div>
+                                                <div class="invalid-feedback">Por favor, seleccione uno</div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Ciudad</label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <select class="form-select selectpicker" id="ciudad_mod" size="1" name="ciudad_mod" required>
+                                                    </select>
+                                                    <span class="input-group-addon">
+                                                        <button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaCiudadMod" name="btnBusquedaCiudadMod" style="width: 15.7%;">
+                                                            <span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
+                                                <div class="valid-feedback">¡Ok!</div>
+                                                <div class="invalid-feedback">Por favor, seleccione uno</div>
+                                            </div>
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="cupo_mod">Cupo</label>
                                                 <input class="form-control" id="cupo_mod" name="cupo_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label class="form-label" for="legal_mod">Información Legal</label>
                                                 <input class="form-control" id="legal_mod" name="legal_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="fecha_ini_mod">Fecha de Inicio</label>
                                                 <input class="form-control" id="fecha_ini_mod" name="fecha_ini_mod" type="date" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="fpago_mod">Forma de Pago</label>
                                                 <input class="form-control" id="fpago_mod" name="fpago_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-3">
                                                 <label class="form-label" for="correo_mod">Correo</label>
                                                 <input class="form-control" id="correo_mod" name="correo_mod" type="email" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="caract_dev_mod">Caract. Devolución</label>
                                                 <input class="form-control" id="caract_dev_mod" name="caract_dev_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-2">
                                                 <label class="form-label" for="digito_mod">Dígito</label>
                                                 <input class="form-control" id="digito_mod" name="digito_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-3">
                                                 <label class="form-label" for="riva_mod">Retención de IVA</label>
                                                 <select name="riva_mod" id="riva_mod" class="form-control">
                                                     <option value="0" disabled selected>Seleccione</option>
@@ -381,7 +409,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <!-- <input class="form-control" id="riva" name="riva" type="text" required /> -->
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label class="form-label" for="rfte_mod">Retención de Fuente</label>
                                                 <select name="rfte_mod" id="rfte_mod" class="form-control">
                                                     <option value="0" disabled selected>Seleccione</option>
@@ -391,7 +419,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <!-- <input class="form-control" id="rfte" name="rfte" type="text" required /> -->
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label class="form-label" for="rica_mod">Retención de ICA</label>
                                                 <select name="rica_mod" id="rica_mod" class="form-control">
                                                     <option value="0" disabled selected>Seleccione</option>
@@ -401,7 +429,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <!-- <input class="form-control" id="rica" name="rica" type="text" required /> -->
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label class="form-label" for="estado_mod">Estado</label>
                                                 <input class="form-control" id="estado_mod" name="estado_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>

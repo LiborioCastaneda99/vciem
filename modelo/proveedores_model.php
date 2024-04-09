@@ -6,29 +6,165 @@ class proveedoresModel extends Conexion
 
     public static function get()
     {
-        $dbconec = Conexion::Conectar();
-
+        $conexion = Conexion::Conectar();
         try {
-            $query = "SELECT `id`, `codigo`, `suc`, `zona`, `subzona`, `nombre`, `dir`, `tel1`, 
-            `tel2`, `ciudad`, `cupo`, `legal`, `fecha_ini`, `forma_pago`, `correo`, `caract_dev`, 
-            `digito`, `riva`, `rfte`, `rica`, `estado` FROM proveedores WHERE activo = 1";
-            $stmt = $dbconec->prepare($query);
-            $stmt->execute();
+            $draw = $_POST['draw'];
+            $row = $_POST['start'];
+            $rowperpage = $_POST['length']; // Rows display per page
+            $columnIndex = $_POST['order'][0]['column']; // Column index
+            $columnName = $_POST['columns'][$columnIndex]['data']; // Column name
+            $columnSortOrder = $_POST['order'][0]['dir']; // asc or desc
+            $searchValue = $_POST['search']['value']; // Search value
 
-            // Obtener todos los resultados como un array asociativo
-            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            if ($rows) {
-                // Devolver el array JSON con todos los proveedores
-                echo json_encode($rows);
-            } else {
-
-                $data = "";
-                echo json_encode($data);
+            // Configuración de las opciones de busqueda
+            $searchArray = array();
+            # Configuración del parametro de filtro 
+            $searchQuery = " ";
+            if ($searchValue != '') {
+                $searchQuery = " AND (
+                    P.codigo LIKE :codigo OR
+                    P.suc LIKE :suc OR
+                    S.nombre LIKE :zona OR
+                    D.nombre LIKE :subzona OR
+                    C.nombre LIKE :nombre OR
+                    P.dir LIKE :dir OR
+                    P.tel1 LIKE :tel1 OR
+                    P.tel2 LIKE :tel2 OR
+                    CS.nombre LIKE :ciudad OR
+                    P.cupo LIKE :cupo OR
+                    P.legal LIKE :legal OR
+                    P.fecha_ini LIKE :fecha_ini OR
+                    P.forma_pago LIKE :forma_pago OR
+                    P.correo LIKE :correo OR
+                    P.caract_dev LIKE :caract_dev OR
+                    P.digito LIKE :digito OR
+                    P.riva LIKE :riva OR
+                    P.rfte LIKE :rfte OR
+                    P.rica LIKE :rica OR
+                    P.estado LIKE :estado
+                )";
+                $searchArray = array(
+                    'codigo' => "%$searchValue%",
+                    'suc'  => "%$searchValue%",
+                    'zona'  => "%$searchValue%",
+                    'subzona'  => "%$searchValue%",
+                    'nombre'  => "%$searchValue%",
+                    'dir'  => "%$searchValue%",
+                    'tel1'  => "%$searchValue%",
+                    'tel2'  => "%$searchValue%",
+                    'ciudad'  => "%$searchValue%",
+                    'cupo'  => "%$searchValue%",
+                    'legal'  => "%$searchValue%",
+                    'fecha_ini'  => "%$searchValue%",
+                    'forma_pago'  => "%$searchValue%",
+                    'correo'  => "%$searchValue%",
+                    'caract_dev'  => "%$searchValue%",
+                    'digito'  => "%$searchValue%",
+                    'riva'  => "%$searchValue%",
+                    'rfte'  => "%$searchValue%",
+                    'rica'  => "%$searchValue%",
+                    'estado'  => "%$searchValue%",
+                );
             }
+
+            ## Calcular el total numero de registros sin filtro
+            $sql = "SELECT COUNT(*) ";
+            $sql .= " AS allcount FROM proveedores";
+            $sql .= " WHERE activo = 1";
+            error_log("sql => " . $sql);
+            $stmt = $conexion->prepare($sql);
+            $stmt->execute();
+            $records = $stmt->fetch();
+            $totalRecords = $records['allcount'];
+
+            ## Total numero de registros con filtro
+            $sql = "SELECT COUNT(*)";
+            $sql .= " AS allcount FROM proveedores As P
+            INNER JOIN tbzonas As S ON S.codigo = P.suc
+            INNER JOIN tbzonas As D ON D.codigo = P.zona
+            INNER JOIN tbsubzonas As C ON C.codigo = P.subzona AND C.zona = P.zona
+            INNER JOIN tbciudades As CS ON CS.id = P.ciudad";
+            $sql .= " WHERE P.activo = 1 " . $searchQuery . " ";
+            error_log("sql => " . $sql);
+            $stmt = $conexion->prepare($sql);
+            $stmt->execute($searchArray);
+            $records = $stmt->fetch();
+            $totalRecordwithFilter = $records['allcount'];
+
+            ## Obetener los registros de la tabla.
+            $sql = "SELECT P.id, P.codigo, S.nombre As suc, D.nombre As zona, C.nombre As subzona, P.nombre, P.dir, P.tel1, 
+            P.tel2, CS.nombre AS ciudad, P.cupo, P.legal, P.fecha_ini, P.forma_pago, P.correo, P.caract_dev, 
+            P.digito, P.riva, P.rfte, P.rica, P.estado 
+            FROM proveedores As P
+            INNER JOIN tbzonas As S ON S.codigo = P.suc
+            INNER JOIN tbzonas As D ON D.codigo = P.zona
+            INNER JOIN tbsubzonas As C ON C.codigo = P.subzona AND C.zona = P.zona
+            INNER JOIN tbciudades As CS ON CS.id = P.ciudad
+            ";
+            $sql .= " WHERE P.activo = 1 " . $searchQuery . " ORDER BY " . $columnName . " " . $columnSortOrder . " LIMIT :limit,:offset";
+            error_log("sql => " . $sql);
+            $stmt = $conexion->prepare($sql);
+
+            // Bind values
+            foreach ($searchArray as $key => $search) {
+                $stmt->bindValue(':' . $key, $search, PDO::PARAM_STR);
+            }
+
+            $stmt->bindValue(':limit', (int) $row, PDO::PARAM_INT);
+            $stmt->bindValue(':offset', (int) $rowperpage, PDO::PARAM_INT);
+            $stmt->execute();
+            $empRecords = $stmt->fetchAll();
+
+            $data = array();
+
+            foreach ($empRecords as $row) {
+
+                # Los titulos de columnas colocados en el formulario deben corresponder exactamente con lo descrito aquí
+                // definimos los botones con sus funciones
+                $opEditar = "<button class='btn btn-outline-primary btn-sm me-1 mb-1' type='button' onclick=editar({$row['id']})>
+                <span class='fas fa-edit me-1' data-fa-transform='shrink-3'></span></button>";
+                $opEliminar = "<button class='btn btn-outline-primary btn-sm me-1 mb-1' type='button' onclick=eliminar({$row['id']})>
+                <span class='fas fa-trash me-1' data-fa-transform='shrink-3'></span></button>";
+
+                $data[] = array(
+                    'codigo' => $row['codigo'],
+                    'suc'  => $row['suc'],
+                    'zona'  => $row['zona'],
+                    'subzona'  => $row['subzona'],
+                    'nombre'  => $row['nombre'],
+                    'dir'  => $row['dir'],
+                    'tel1'  => $row['tel1'],
+                    'tel2'  => $row['tel2'],
+                    'ciudad'  => $row['ciudad'],
+                    'cupo'  => $row['cupo'],
+                    'legal'  => $row['legal'],
+                    'fecha_ini'  => $row['fecha_ini'],
+                    'forma_pago'  => $row['forma_pago'],
+                    'correo'  => $row['correo'],
+                    'caract_dev'  => $row['caract_dev'],
+                    'digito'  => $row['digito'],
+                    'riva'  => $row['riva'],
+                    'rfte'  => $row['rfte'],
+                    'rica'  => $row['rica'],
+                    'estado'  => $row['estado'],
+                    'editar' => $opEditar,
+                    'eliminar' => $opEliminar
+                );
+            }
+            ## respuesta
+            $response = array(
+                "draw" => intval($draw),
+                "iTotalRecords" => $totalRecords,
+                "iTotalDisplayRecords" => $totalRecordwithFilter,
+                "aaData" => $data
+            );
+            # Devuelve la información al formulario
+            echo json_encode($response);
+            $conexion = NULL;
         } catch (Exception $e) {
-            $data = "Error";
-            echo json_encode($data);
+
+            echo '<span class="label label-danger label-block">Error al cargar los datos</span>';
         }
     }
 
@@ -37,9 +173,9 @@ class proveedoresModel extends Conexion
         $dbconec = Conexion::Conectar();
 
         try {
-            $query = "SELECT `id`, `codigo`, `suc`, `zona`, `subzona`, `nombre`, `dir`, `tel1`, 
-            `tel2`, `ciudad`, `cupo`, `legal`, `fecha_ini`, `forma_pago`, `correo`, `caract_dev`, 
-            `digito`, `riva`, `rfte`, `rica`, `estado` FROM proveedores WHERE id = $id";
+            $query = "SELECT id, codigo, suc, zona, subzona, nombre, dir, tel1, 
+            tel2, ciudad, cupo, legal, fecha_ini, forma_pago, correo, caract_dev, 
+            digito, riva, rfte, rica, estado FROM proveedores WHERE id = $id";
             $stmt = $dbconec->prepare($query);
             $stmt->execute();
 

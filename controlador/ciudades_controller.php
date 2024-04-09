@@ -27,6 +27,10 @@
 		$cmd = ciudadesModel::eliminar($id);
 	}
 
+	public function combo_ciudades($nombre, $id)
+	{
+		$cmd = ciudadesModel::combo_ciudades($nombre, $id);
+	}
 }
 
 ?>

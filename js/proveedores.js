@@ -1,90 +1,350 @@
 $(document).ready(function() {
-    cargar_tabla()
+    cargar_tabla();
 });
 
-// consultar
+//consultar
 function cargar_tabla() {
-    // Hacer la solicitud AJAX al servidor
-    var urlprocess = 'ajax/proveedoresajax.php';
-    $.ajax({
-        type: 'POST',
-        url: urlprocess,
-        data: 'proceso=get',
-        dataType: 'json',
-        success: function(data) {
-            // Limpiar el cuerpo de la tabla
-            $('#myTable tbody').empty();
-
-            if (data.length > 0) {
-
-                // Agregar filas con los datos obtenidos
-                $.each(data, function(index, item) {
-                    $('#myTable tbody').append(
-                        '<tr>' +
-                        '<td class="codigo">' + item.codigo + '</td>' +
-                        '<td class="suc">' + item.suc + '</td>' +
-                        '<td class="zona">' + item.zona + '</td>' +
-                        '<td class="subzona">' + item.subzona + '</td>' +
-                        '<td class="nombre">' + item.nombre + '</td>' +
-                        '<td class="dir">' + item.dir + '</td>' +
-                        '<td class="tel1">' + item.tel1 + '</td>' +
-                        '<td class="tel2">' + item.tel2 + '</td>' +
-                        '<td class="ciudad">' + item.ciudad + '</td>' +
-                        '<td class="cupo">' + item.cupo + '</td>' +
-                        '<td class="legal">' + item.legal + '</td>' +
-                        '<td class="fecha_ini">' + item.fecha_ini + '</td>' +
-                        '<td class="fpago">' + item.forma_pago + '</td>' +
-                        '<td class="correo">' + item.correo + '</td>' +
-                        '<td class="caract_dev">' + item.caract_dev + '</td>' +
-                        '<td class="digito">' + item.digito + '</td>' +
-                        '<td class="riva">' + item.riva + '</td>' +
-                        '<td class="rfte">' + item.rfte + '</td>' +
-                        '<td class="rica">' + item.rica + '</td>' +
-                        '<td class="estado">' + item.estado + '</td>' +
-                        '<td class="text-center"><button class="btn btn-outline-primary me-1 mb-1" type="button" onclick=editar(' + item.id + ')>' +
-                        '<span class="fas fa-edit me-1" data-fa-transform="shrink-3"></span></button></td>' +
-                        '<td class="text-center"><button class="btn btn-outline-primary me-1 mb-1" type="button" onclick=eliminar(' + item.id + ')>' +
-                        '<span class="fas fa-trash ms-1" data-fa-transform="shrink-3"></span></button></td>' +
-                        '</tr>'
-                    );
-                });
-
-                // Inicializar List.js después de agregar datos
-                var options = {
-                    valueNames: ['codigo', 'suc', 'zona', 'subzona', 'nombre', 'dir', 'tel1', 'tel2', 'ciudad', 'cupo', 'legal', 'fecha_ini', 'fpago', 'correo',
-                        'caract_dev', 'digito', 'riva', 'rfte', 'rica', 'estado'
-                    ],
-                    item: '<tr><td class="codigo"></td><td class="suc"></td><td class="zona"></td><td class="subzona"></td><td class="nombre"></td>' +
-                        '<td class="dir"></td><td class="tel1"></td><td class="tel2"></td><td class="ciudad"></td><td class="cupo"></td><td class="legal"></td>' +
-                        '<td class="fecha_ini"></td><td class="fpago"></td><td class="correo"></td><td class="caract_dev"></td><td class="digito"></td>' +
-                        '<td class="riva"></td><td class="rfte"></td><td class="rica"></td><td class="estado"></td></tr>'
-                };
-                var userList = new List('myTable', options);
-
-                // Actualizar la lista después de agregar los datos
-                userList.update();
-
-                // Re-inicializar la búsqueda después de la actualización de la lista
-                var input = document.querySelector('.search');
-                var searchList = new List('myTable', {
-                    valueNames: ['codigo', 'suc', 'zona', 'subzona', 'nombre', 'dir', 'tel1', 'tel2', 'ciudad', 'cupo', 'legal', 'fecha_ini', 'fpago', 'correo',
-                        'caract_dev', 'digito', 'riva', 'rfte', 'rica', 'estado'
-                    ],
-                    page: 5
-                });
-                input.addEventListener('input', function() {
-                    searchList.search(input.value);
-                });
-            } else {
-                // Mostrar un mensaje indicando que no hay proveedores disponibles
-                $('#myTable tbody').html('<tr><td colspan="18" class="text-center">No hay proveedores disponibles</td></tr>');
+    $('#tabla').dataTable().fnDestroy();
+    $('#tabla').DataTable({
+        "responsive": true,
+        dom: 'lBfrtip',
+        buttons: [{
+                className: 'btn btn-falcon-default btn-sm mx-2',
+                text: '<span class="fas fa-plus" data-fa-transform="shrink-3"></span> ' +
+                    'Agregar ',
+                action: function() {
+                    abrirModal();
+                }
+            },
+            {
+                extend: 'collection',
+                init: (api, node, config) => $(node).removeClass('btn-secondary'),
+                className: 'btn btn-falcon-default btn-sm mx-2',
+                text: '<span class="fas fa-file-export" data-fa-transform="shrink-3"></span> ' +
+                    'Exportar',
+                buttons: [{
+                        extend: 'csvHtml5',
+                        titleAttr: 'Csv',
+                        className: 'btn btn-falcon-default btn-sm mx-2',
+                        text: '<span class="fas fa-file-csv" data-fa-transform="shrink-3"></span> ' +
+                            'Exportar a CSV ',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        className: 'btn btn-falcon-default btn-sm mx-2',
+                        text: '<span class="fas fa-file-csv" data-fa-transform="shrink-3"></span> ' +
+                            'Exportar a Excel ',
+                        titleAttr: 'Csv',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        text: '<span class="fas fa-file-pdf" data-fa-transform="shrink-3"></span> ' +
+                            'Exportar a PDF ',
+                        className: 'btn btn-falcon-default btn-sm mx-2',
+                        titleAttr: 'Csv',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+                        }
+                    },
+                ],
+            },
+            {
+                extend: 'print',
+                init: (api, node, config) => $(node).removeClass('btn-secondary'),
+                className: 'btn btn-falcon-default btn-sm mx-2',
+                text: '<span class="fas fa-print" data-fa-transform="shrink-3"></span> ' +
+                    'Imprimir ',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+                }
             }
+        ],
+        "columnDefs": [{
+                // El numero correspode a la ultima columna iniciando en 0
+                "targets": [20, 21],
+                "orderable": false,
+                "width": "70px",
+                "className": "text-center",
+            },
+            {
+                // El numero correspode a la ultima columna iniciando en 0
+                "targets": [0],
+                "width": "120px",
+            }
+        ],
+        "language": {
+            "url": "vendors/datatables.net/spanish.txt"
         },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            notificacion('Error', 'error', response.message);
+        "lengthMenu": [10, 25, 50, 75, 100, 500, 1000],
+        "lengthChange": true,
+        "order": [
+            [0, "desc"]
+        ],
+        'processing': true,
+        'serverSide': true,
+        'serverMethod': 'post',
+        'ajax': {
+            'url': 'ajax/proveedoresajax.php',
+            'data': {
+                'proceso': 'get'
+            },
+            'method': 'POST'
+        },
+        'columns': [{ data: 'codigo' },
+            { data: 'suc' },
+            { data: 'zona' },
+            { data: 'subzona' },
+            { data: 'nombre' },
+            { data: 'dir' },
+            { data: 'tel1' },
+            { data: 'tel2' },
+            { data: 'ciudad' },
+            { data: 'cupo' },
+            { data: 'legal' },
+            { data: 'fecha_ini' },
+            { data: 'forma_pago' },
+            { data: 'correo' },
+            { data: 'caract_dev' },
+            { data: 'digito' },
+            { data: 'riva' },
+            { data: 'rfte' },
+            { data: 'rica' },
+            { data: 'estado' },
+            { data: 'editar' },
+            { data: 'eliminar' },
+        ],
+        drawCallback: function() {
+            $(".btn-group").addClass("btn-group-sm");
         }
     });
+}
+
+function abrirModal() {
+
+    // Cerrar el modal si está abierto
+    $('#guardarModal').modal('hide');
+
+    $('#guardarModal').modal('show');
+    // document.getElementById('abrir').click();
+    cargar_departamentos("", 'suc', 'guardarModal')
+    cargar_departamentos("", 'zona', 'guardarModal')
+    cargar_ciudades("", 'subzona', 'guardarModal')
+    cargar_ciudades_sola("", 'ciudad', 'guardarModal')
+}
+
+// Funcion para cargar las listas select con opcion de busqueda de vendedores
+$('#btnBusquedaSucursalMod').click(function() {
+    cargar_departamentos('', 'suc_mod', 'editarModal');
+});
+
+// Funcion para cargar las listas select con opcion de busqueda de vendedores
+$('#btnBusquedaZonaMod').click(function() {
+    cargar_departamentos('', 'zona_mod', 'editarModal')
+});
+
+// Funcion para cargar las listas select con opcion de busqueda de vendedores
+$('#btnBusquedaSubzonaMod').click(function() {
+    cargar_departamentos('', 'subzona_mod', 'editarModal', 'combo_ciudades_all')
+});
+
+// Funcion para cargar las listas select con opcion de busqueda de vendedores
+$('#btnBusquedaCiudadAgg').click(function() {
+    cargar_ciudades_sola('', 'ciudad', 'guardarModal')
+});
+
+// Funcion para cargar las listas select con opcion de busqueda de vendedores
+$('#btnBusquedaCiudadMod').click(function() {
+    cargar_ciudades_sola('', 'ciudad_mod', 'editarModal')
+});
+
+function cargar_select(id) {
+    cargar_ciudades(id, 'subzona_mod', 'editarModal', 'combo_ciudades_all')
+}
+
+function cargar_select_agg(id) {
+    cargar_ciudades(id, 'subzona', 'guardarModal', 'combo_ciudades_all')
+}
+
+function cargar_ciudades_sola(Id, nameSelect, Modal) {
+    var lstRoles = $('#' + nameSelect);
+
+    if (Id != "") {
+        lstRoles.select2({
+            dropdownParent: $('#' + Modal)
+        });
+        // var lstRoles = $lstRoles
+        lstRoles.find('option').remove();
+        var searchTerm = '';
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: 'ajax/ciudadesajax.php',
+            data: {
+                searchTerm: searchTerm,
+                proceso: 'combo_ciudades',
+                id: Id
+            },
+        }).then(function(registros) {
+            $(registros).each(function(i, v) {
+                lstRoles.append('<option selected value="' + v.id + '">' + v.text + '</option>');
+            })
+            lstRoles.trigger({
+                type: 'select2:select',
+                params: {
+                    data: registros
+                }
+            });
+        });
+
+    } else {
+        lstRoles.select2({
+            placeholder: "Seleccione una ciudad",
+            dropdownParent: $('#' + Modal),
+            ajax: {
+                url: "ajax/ciudadesajax.php",
+                type: "post",
+                dataType: 'json',
+                delay: 150,
+                data: function(params) {
+                    return {
+                        searchTerm: params.term,
+                        proceso: "combo_ciudades",
+                        id: Id
+                    };
+                },
+                processResults: function(response) {
+                    return {
+                        results: response
+
+                    };
+                },
+                cache: true
+            }
+        });
+    }
+}
+
+function cargar_departamentos(Id, nameSelect, Modal) {
+    var lstRoles = $('#' + nameSelect);
+
+    if (Id != "") {
+        lstRoles.select2({
+            dropdownParent: $('#' + Modal)
+        });
+        // var lstRoles = $lstRoles
+        lstRoles.find('option').remove();
+        var searchTerm = '';
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: 'ajax/clientesajaxv1.php',
+            data: {
+                searchTerm: searchTerm,
+                proceso: 'combo_departamentos',
+                id: Id
+            },
+        }).then(function(registros) {
+            $(registros).each(function(i, v) {
+                lstRoles.append('<option selected value="' + v.id + '">' + v.text + '</option>');
+            })
+            lstRoles.trigger({
+                type: 'select2:select',
+                params: {
+                    data: registros
+                }
+            });
+        });
+
+    } else {
+        lstRoles.select2({
+            placeholder: "Seleccione un departamento",
+            dropdownParent: $('#' + Modal),
+            ajax: {
+                url: "ajax/clientesajaxv1.php",
+                type: "post",
+                dataType: 'json',
+                delay: 150,
+                data: function(params) {
+                    return {
+                        searchTerm: params.term,
+                        proceso: "combo_departamentos",
+                        id: Id
+                    };
+                },
+                processResults: function(response) {
+                    return {
+                        results: response
+
+                    };
+                },
+                cache: true
+            }
+        });
+    }
+}
+
+function cargar_ciudades(Id, nameSelect, Modal, Proceso) {
+    var lstRoles = $('#' + nameSelect);
+
+    if (Id != "") {
+        lstRoles.select2({
+            dropdownParent: $('#' + Modal)
+        });
+        // var lstRoles = $lstRoles
+        lstRoles.find('option').remove();
+        var searchTerm = '';
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: 'ajax/clientesajaxv1.php',
+            data: {
+                searchTerm: searchTerm,
+                proceso: Proceso,
+                id: Id
+            },
+        }).then(function(registros) {
+            $(registros).each(function(i, v) {
+                lstRoles.append('<option selected value="' + v.id + '">' + v.text + '</option>');
+            })
+            lstRoles.trigger({
+                type: 'select2:select',
+                params: {
+                    data: registros
+                }
+            });
+        });
+    } else {
+        lstRoles.select2({
+            placeholder: "Seleccione una ciudad",
+            dropdownParent: $('#' + Modal),
+            ajax: {
+                url: "ajax/clientesajaxv1.php",
+                type: "post",
+                dataType: 'json',
+                delay: 150,
+                data: function(params) {
+                    return {
+                        searchTerm: params.term,
+                        proceso: "combo_ciudades",
+                        id: Id
+                    };
+                },
+                processResults: function(response) {
+                    return {
+                        results: response
+
+                    };
+                },
+                cache: true
+            }
+        });
+    }
 }
 
 // guardar
@@ -211,14 +471,15 @@ function editar(id) {
             // Asignar un valor al input
             document.getElementById('id').value = data[0].id
             document.getElementById('codigo_mod').value = data[0].codigo
-            document.getElementById('suc_mod').value = data[0].suc
-            document.getElementById('zona_mod').value = data[0].zona
-            document.getElementById('subzona_mod').value = data[0].subzona
+            cargar_departamentos(data[0].suc, 'suc_mod', 'editarModal')
+            cargar_departamentos(data[0].zona, 'zona_mod', 'editarModal')
+            cargar_ciudades(data[0].subzona, 'subzona_mod', 'editarModal', 'combo_ciudades_cod')
             document.getElementById('nombre_mod').value = data[0].nombre
             document.getElementById('dir_mod').value = data[0].dir
             document.getElementById('tel1_mod').value = data[0].tel1
             document.getElementById('tel2_mod').value = data[0].tel2
             document.getElementById('ciudad_mod').value = data[0].ciudad
+            cargar_ciudades_sola(data[0].ciudad, 'ciudad_mod', 'editarModal')
             document.getElementById('cupo_mod').value = data[0].cupo
             document.getElementById('legal_mod').value = data[0].legal
             document.getElementById('fecha_ini_mod').value = data[0].fecha_ini

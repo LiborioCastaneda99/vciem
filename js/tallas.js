@@ -2,59 +2,115 @@ $(document).ready(function() {
     cargar_tabla()
 });
 
-// consultar
+//consultar
 function cargar_tabla() {
-    // Hacer la solicitud AJAX al servidor
-    var urlprocess = 'ajax/tallasajax.php';
-    $.ajax({
-        type: 'POST',
-        url: urlprocess,
-        data: 'proceso=get',
-        dataType: 'json',
-        success: function(data) {
-            // Limpiar el cuerpo de la tabla
-            $('#myTable tbody').empty();
-
-            if (data.length > 0) {
-
-                // Agregar filas con los datos obtenidos
-                $.each(data, function(index, item) {
-                    $('#myTable tbody').append(
-                        '<tr>' +
-                        '<td class="codigo">' + item.codigo + '</td>' +
-                        '<td class="nombre">' + item.nombre + '</td>' +
-                        '<td class="text-center"><button class="btn btn-outline-primary me-1 mb-1" type="button" onclick=editar(' + item.id + ')>' +
-                        '<span class="fas fa-edit me-1" data-fa-transform="shrink-3"></span></button></td>' +
-                        '<td class="text-center"><button class="btn btn-outline-primary me-1 mb-1" type="button" onclick=eliminar(' + item.id + ')>' +
-                        '<span class="fas fa-trash ms-1" data-fa-transform="shrink-3"></span></button></td>' +
-                        '</tr>'
-                    );
-                });
-
-                // Inicializar List.js después de agregar datos
-                var options = {
-                    valueNames: ['codigo', 'nombre'],
-                    item: '<tr><td class="codigo"></td><td class="nombre"></td></tr>'
-                };
-                var userList = new List('myTable', options);
-
-                // Actualizar la lista después de agregar los datos
-                userList.update();
-
-                // Re-inicializar la búsqueda después de la actualización de la lista
-                var input = document.querySelector('.search');
-                var searchList = new List('myTable', { valueNames: ['codigo', 'nombre'], page: 5 });
-                input.addEventListener('input', function() {
-                    searchList.search(input.value);
-                });
-            } else {
-                // Mostrar un mensaje indicando que no hay tallas disponibles
-                $('#myTable tbody').html('<tr><td colspan="2" class="text-center">No hay tallas disponibles</td></tr>');
+    $('#tabla').dataTable().fnDestroy();
+    $('#tabla').DataTable({
+        "responsive": true,
+        dom: 'lBfrtip',
+        buttons: [{
+                className: 'btn btn-falcon-default btn-sm mx-2',
+                text: '<span class="fas fa-plus" data-fa-transform="shrink-3"></span> ' +
+                    'Agregar ',
+                action: function() {
+                    abrirModal();
+                }
+            },
+            {
+                extend: 'collection',
+                init: (api, node, config) => $(node).removeClass('btn-secondary'),
+                className: 'btn btn-falcon-default btn-sm mx-2',
+                text: '<span class="fas fa-file-export" data-fa-transform="shrink-3"></span> ' +
+                    'Exportar',
+                buttons: [{
+                        extend: 'csvHtml5',
+                        titleAttr: 'Csv',
+                        className: 'btn btn-falcon-default btn-sm mx-2',
+                        text: '<span class="fas fa-file-csv" data-fa-transform="shrink-3"></span> ' +
+                            'Exportar a CSV ',
+                        exportOptions: {
+                            columns: [0, 1]
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        className: 'btn btn-falcon-default btn-sm mx-2',
+                        text: '<span class="fas fa-file-csv" data-fa-transform="shrink-3"></span> ' +
+                            'Exportar a Excel ',
+                        titleAttr: 'Csv',
+                        exportOptions: {
+                            columns: [0, 1]
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        text: '<span class="fas fa-file-pdf" data-fa-transform="shrink-3"></span> ' +
+                            'Exportar a PDF ',
+                        className: 'btn btn-falcon-default btn-sm mx-2',
+                        titleAttr: 'Csv',
+                        exportOptions: {
+                            columns: [0, 1]
+                        }
+                    },
+                ],
+            },
+            {
+                extend: 'print',
+                init: (api, node, config) => $(node).removeClass('btn-secondary'),
+                className: 'btn btn-falcon-default btn-sm mx-2',
+                text: '<span class="fas fa-print" data-fa-transform="shrink-3"></span> ' +
+                    'Imprimir ',
+                exportOptions: {
+                    columns: [0, 1]
+                }
             }
+        ],
+        "columnDefs": [{
+                // El numero correspode a la ultima columna iniciando en 0
+                "targets": [2, 3],
+                "orderable": false,
+                "width": "70px",
+                "className": "text-center",
+            },
+            {
+                // El numero correspode a la ultima columna iniciando en 0
+                "targets": [0],
+                "width": "120px",
+            }
+        ],
+        "language": {
+            "url": "vendors/datatables.net/spanish.txt"
         },
-        error: function() {
-            // Error en la inserción, muestra mensaje de error con SweetAlert
-            notificacion('Error', 'error', response.message);
+        "lengthMenu": [10, 25, 50, 75, 100, 500, 1000],
+        "lengthChange": true,
+        "order": [
+            [0, "desc"]
+        ],
+        'processing': true,
+        'serverSide': true,
+        'serverMethod': 'post',
+        'ajax': {
+            'url': 'ajax/tallasajax.php',
+            'data': {
+                'proceso': 'get'
+            },
+            'method': 'POST'
+        },
+        'columns': [{
+                data: 'codigo'
+            },
+            {
+                data: 'nombre'
+            },
+            {
+                data: 'editar'
+            },
+            {
+                data: 'eliminar'
+            },
+        ],
+        drawCallback: function() {
+            $(".btn-group").addClass("btn-group-sm");
         }
     });
 }
@@ -248,8 +304,10 @@ function notificacion(titulo, icon, mensaje) {
     });
 }
 
-function generar() {
-    // Abre la URL del archivo PDF en una nueva pestaña
-    window.open('pdfs/generar_pdf_tallas.php', '_blank');
+// abrir modal
+function abrirModal() {
+
+    $('#fmr_tallas')[0].reset();
+    $('#guardarModal').modal('show');
 
 }

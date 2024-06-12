@@ -174,6 +174,7 @@ class clientesModel extends Conexion
 
     public static function guardar($datos)
     {
+        error_log("DATOOOOOOOSSSSSSS MODELO ===========>>>>>>>>>>>>>>> ". json_encode($datos));
         $dbconec = Conexion::Conectar();
         try {
             $codigo = $datos['codigo'];
@@ -190,7 +191,7 @@ class clientesModel extends Conexion
             $vende = $datos['vende'];
             $legal = $datos['legal'];
             $cupo = $datos['cupo'];
-            $fing = $datos['fing'];
+            $fing = $datos['fing_ing'];
             $fpago = $datos['fpago'];
             $chdev = $datos['chdev'];
             $riva = $datos['riva'];
@@ -228,6 +229,7 @@ class clientesModel extends Conexion
                 fecha_ini, forma_pago, caract_dev, riva, rfte, rica, tipo, distri, cali, person, regime, pais, tipoid, nom1, nom2, ape1, ape2) VALUES 
                 (:codigo, :digito, :sucursal, :zona, :subzona, :nombre, :direc, :correo, :tel1, :tel2, :vende, :legal, :cupo, :fing, :fpago, 
                 :chdev, :riva, :rfte, :rica, :tipo, :distri, :clase, :person, :regime, :pais, :tipoid, :nom1, :nom2, :ape1, :ape2)";
+                error_log("INSERTTTTTTT ==========>>>>>>>>>>>>>>>>> ". $query);
                 $stmt = $dbconec->prepare($query);
                 $stmt->bindParam(':codigo', $codigo);
                 $stmt->bindParam(':digito', $digito);

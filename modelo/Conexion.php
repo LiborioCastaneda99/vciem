@@ -16,7 +16,7 @@ class Conexion
 		$host = 'localhost'; //localhost
 		$dbname = 'vciem'; //bdd
 		$username = 'root'; //usuario
-		$passwd = '12345'; //contra
+		$passwd = 'finsocial123'; //contra
 
 		$server = $driver . ':dbname=' . $dbname.';host=' . $host ;
 

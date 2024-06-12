@@ -29,6 +29,7 @@ if (!empty($_POST)) {
             break;
         case 'guardar': // guardar
             $cl->guardar($datos);
+            error_log("DATOOOOOOS =====>>>>>>>>> ". json_encode($datos));
             break;
         case 'modificar': // modificar
             $cl->modificar($datos);

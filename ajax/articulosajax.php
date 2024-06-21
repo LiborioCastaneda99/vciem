@@ -5,7 +5,7 @@ $controller = "../controlador/". $className ."_controller.php";
 require_once($model);
 require_once($controller);
 
-$cl = new articulosModelo();  //Instanciamiento de clase...
+$cl = new articulosModel();  //Instanciamiento de clase...
 
 if (!empty($_POST))
 {

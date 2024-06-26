@@ -187,7 +187,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-lstSucursal">Sucursal</label>
-                                                                    <select class="form-control" id="lstSucursal" size="1" name="lstSucursal" required="required">
+                                                                    <select class="form-select" id="lstSucursal" size="1" name="lstSucursal" required="required">
                                                                     </select>
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                     <div class="invalid-feedback">Por favor, seleccione uno</div>
@@ -201,7 +201,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
 
                                                                 <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-zona">Zona</label> <br>
-                                                                    <select class="" id="lstZonas" size="1" name="lstZonas" required onchange="cargar_select(this.value)">
+                                                                    <select class="form-select" id="lstZonas" size="1" name="lstZonas" required onchange="cargar_select(this.value)">
                                                                     </select>
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                     <div class="invalid-feedback">Por favor, seleccione uno</div>
@@ -209,7 +209,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                 <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-subzona">Subzona</label>
                                                                     <!-- <input class="form-control" id="bootstrap-wizard-validation-wizard-subzona" name="subzona" type="text" required /> -->
-                                                                    <select class="" id="lstSubzonas" size="1" name="lstSubzonas" required>
+                                                                    <select class="form-select" id="lstSubzonas" size="1" name="lstSubzonas" required>
                                                                     </select>
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                     <div class="invalid-feedback">Por favor, seleccione uno</div>
@@ -283,6 +283,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                     <label>Rete IVA</label>
                                                                     <div class="form-group col-md-12 mb-2">
                                                                         <select class="form-select" id="riva" size="1" name="riva" required>
+                                                                            <option value="" selected disabled>Seleccione...</option>
                                                                             <option value="0">No</option>
                                                                             <option value="1">Si</option>
                                                                         </select>
@@ -292,6 +293,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                     <label>Rete Fuente</label>
                                                                     <div class="form-group col-md-12 mb-2">
                                                                         <select class="form-select" id="rfte" size="1" name="rfte" required>
+                                                                            <option value="" selected disabled>Seleccione...</option>
                                                                             <option value="0">No</option>
                                                                             <option value="1">Si</option>
                                                                         </select>
@@ -301,6 +303,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                     <label>Rete ICA</label>
                                                                     <div class="form-group col-md-12 mb-2">
                                                                         <select class="form-select" id="rica" size="1" name="rica" required>
+                                                                            <option value="" selected disabled>Seleccione...</option>
                                                                             <option value="0">No</option>
                                                                             <option value="1">Si</option>
                                                                         </select>
@@ -309,6 +312,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                 <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-tipo">Tipo Cliente</label>
                                                                     <select class="form-select" id="tipo" size="1" name="tipo" required>
+                                                                        <option value="" selected disabled>Seleccione...</option>  
                                                                         <option value="1">Común</option>
                                                                         <option value="2">Simplificado</option>
                                                                         <option value="3">Gran Contribuyente</option>
@@ -319,6 +323,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                 <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-distri">Distribuidor</label>
                                                                     <select class="form-select" id="distri" size="1" name="distri" required>
+                                                                        <option value="" selected disabled>Seleccione...</option>
                                                                         <option value="C">Cliente</option>
                                                                         <option value="D">Distribuidor</option>
                                                                     </select>
@@ -328,6 +333,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                 <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-clase">Clase Cliente</label>
                                                                     <select class="form-select" id="clase" size="1" name="clase" required>
+                                                                        <option value="" selected disabled>Seleccione...</option>
                                                                         <option value="I">Insuficiente</option>
                                                                         <option value="R">Regular</option>
                                                                         <option value="B">Bueno</option>
@@ -348,6 +354,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                 <div class="col-md-3">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-person">Tipo Persona</label>
                                                                     <select class="form-select" id="person" size="1" name="person" required>
+                                                                        <option value="" selected disabled>Seleccione...</option>
                                                                         <option value="1">Jurídico</option>
                                                                         <option value="2">Natural</option>
                                                                     </select>
@@ -357,6 +364,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                 <div class="col-md-3">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-regime">Tipo Regimen</label>
                                                                     <select class="form-select" id="regime" size="1" name="regime" required>
+                                                                        <option value="" selected disabled>Seleccione...</option>
                                                                         <option value="0">Simple</option>
                                                                         <option value="2">Ordinario</option>
                                                                     </select>
@@ -366,6 +374,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                 <div class="col-md-3">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-pais">Codigo Pais</label>
                                                                     <select class="form-select" id="pais" size="1" name="pais" required>
+                                                                        <option value="" selected disabled>Seleccione...</option>
                                                                         <option value="CO">Colombia</option>
                                                                     </select>
                                                                     <!-- <input class="form-control" id="bootstrap-wizard-validation-wizard-pais" name="pais" type="text" required />
@@ -374,6 +383,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                 <div class="col-md-3">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-tipoid">Tipo Identificación</label>
                                                                     <select class="form-select" id="tipoid" size="1" name="tipoid" required>
+                                                                        <option value="" selected disabled>Seleccione...</option>
                                                                         <option value="13">CC</option>
                                                                         <option value="31">NIT</option>
                                                                         <option value="12">TI</option>

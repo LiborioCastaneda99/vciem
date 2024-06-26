@@ -14,9 +14,9 @@ class Conexion
 
 		$driver = 'mysql'; //mysql no cambiar
 		$host = 'localhost'; //localhost
-		$dbname = 'vciem'; //bdd
-		$username = 'root'; //usuario
-		$passwd = 'finsocial123'; //contra
+		$dbname = 'u592877425_vciem'; //bdd
+		$username = 'u592877425_vciem'; //usuario
+		$passwd = 'Vc12345-*'; //contra
 
 		$server = $driver . ':dbname=' . $dbname.';host=' . $host ;
 

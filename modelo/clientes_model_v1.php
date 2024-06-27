@@ -174,7 +174,6 @@ class clientesModel extends Conexion
 
     public static function guardar($datos)
     {
-        error_log("DATOOOOOOOSSSSSSS MODELO ===========>>>>>>>>>>>>>>> ". json_encode($datos));
         $dbconec = Conexion::Conectar();
         try {
             $codigo = $datos['codigo'];
@@ -264,7 +263,7 @@ class clientesModel extends Conexion
 
                 if ($stmt->execute()) {
                     // Si la inserción fue exitosa, devuelve un mensaje o los datos actualizados
-                    $response = array('status' => 'success', 'message' => 'La cliente se ha guardado correctamente');
+                    $response = array('status' => 'success', 'message' => 'El cliente se ha guardado correctamente');
                 } else {
                     // Si hubo un error en la inserción, devuelve un mensaje de error
                     $response = array('status' => 'error', 'message' => 'Error al guardar el color');

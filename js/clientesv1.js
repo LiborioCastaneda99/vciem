@@ -8,7 +8,6 @@ $(document).ready(function () {
 
 function longitudCampo(campo, max){
     var input = $(campo)
-    console.log("input => ", input )
 
     var maxLength = max;
 
@@ -18,8 +17,6 @@ function longitudCampo(campo, max){
         }
     });
 }   
-
-
 
 //consultar
 function cargar_tabla() {
@@ -237,7 +234,7 @@ function validarFormularios(datos) {
             }
             continue;
           }
-          if (formulario === "fmr_clientes2" && campo === "tel2") {
+          if (formulario === "fmr_clientes3" && campo === "nom2") {
             if (!datosFormulario[campo]) {
               datos_formateados[campo] = "";
             } else {
@@ -245,7 +242,7 @@ function validarFormularios(datos) {
             }
             continue;
           }
-          if (formulario === "fmr_clientes3" && campo === "tel2") {
+          if (formulario === "fmr_clientes3" && campo === "ape2") {
             if (!datosFormulario[campo]) {
               datos_formateados[campo] = "";
             } else {
@@ -268,7 +265,7 @@ function validarFormularios(datos) {
   return { valido: true, datos: datos_formateados };
 }
 
-// Agregar evento al botón "Siguiente"
+// Agregar evento al botón "Guardar"
 var btnSiguiente = document.getElementById("btnSiguiente");
 btnSiguiente.addEventListener("click", function () {
   var datosFormularios = obtenerDatosFormularios(
@@ -279,8 +276,6 @@ btnSiguiente.addEventListener("click", function () {
   var resultadoValidacion = validarFormularios(datosFormularios);
 
   if (resultadoValidacion.valido) {
-    console.log("Todos los formularios tienen valores válidos.");
-    console.table(resultadoValidacion.datos);
     var datos_formulario_json = resultadoValidacion.datos;
     datos_formulario_json["proceso"] = "guardar";
 
@@ -293,7 +288,9 @@ btnSiguiente.addEventListener("click", function () {
       success: function (response) {
         if (response.status === "success") {
           // limpiamos el formulario
-          $(".fmr_clientes")[0].reset();
+          $(".fmr_clientes1")[0].reset();
+          $(".fmr_clientes2")[0].reset();
+          $(".fmr_clientes3")[0].reset();
 
           // Selecciona el elemento por su ID
           var resp_titulo = document.getElementById("resp_titulo");

@@ -96,10 +96,10 @@ function cargar_tabla() {
             'method': 'POST'
         },
         'columns': [{
-                data: 'codigo'
+                data: 'zona'
             },
             {
-                data: 'zona'
+                data: 'codigo'
             },
             {
                 data: 'nombre'
@@ -125,15 +125,15 @@ function cargar_tabla() {
 $(".fmr_subzonas").submit(function(event) {
     event.preventDefault();
 
-    codigo = $("#codigo").val()
     zona = $("#lstZonaAgregar").val()
+    codigo = $("#codigo").val()
     nombre = $("#nombre").val()
     resumen = $("#resumen").val()
 
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nueva subzona
     var nuevaSubzona = {
-        codigo: codigo,
         zona: zona,
+        codigo: codigo,
         nombre: nombre,
         resumen: resumen
     };
@@ -149,8 +149,8 @@ $(".fmr_subzonas").submit(function(event) {
             url: 'ajax/subzonasajax.php',
             data: {
                 proceso: 'guardar',
-                codigo: nuevaSubzona.codigo,
                 zona: nuevaSubzona.zona,
+                codigo: nuevaSubzona.codigo,
                 nombre: nuevaSubzona.nombre,
                 resumen: nuevaSubzona.resumen
 

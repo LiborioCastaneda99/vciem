@@ -95,14 +95,18 @@ function cargar_tabla() {
             },
             'method': 'POST'
         },
-        'columns': [{
+        'columns': [
+            {
+                data: 'codigo_zona'
+            },
+            {
                 data: 'zona'
             },
             {
-                data: 'codigo'
+                data: 'codigo_subzona'
             },
             {
-                data: 'nombre'
+                data: 'subzona'
             },
             {
                 data: 'resum'

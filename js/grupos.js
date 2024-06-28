@@ -96,13 +96,16 @@ function cargar_tabla() {
             'method': 'POST'
         },
         'columns': [{
-                data: 'codigo'
+                data: 'codigo_clase'
             },
             {
                 data: 'clase'
             },
             {
-                data: 'nombre'
+                data: 'codigo_grupo'
+            },
+            {
+                data: 'grupo'
             },
             {
                 data: 'resum'

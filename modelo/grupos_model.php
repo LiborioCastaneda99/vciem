@@ -58,10 +58,10 @@ class gruposModel extends Conexion
             $totalRecordwithFilter = $records['allcount'];
 
             ## Obetener los registros de la tabla.
-            $sql = "SELECT G.id, G.codigo, C.nombre As clase, G.nombre, G.resum, G.dias 
+            $sql = "SELECT G.id, G.codigo As codigo_grupo, C.codigo As codigo_clase, C.nombre As clase, G.nombre As grupo, G.resum, G.dias 
             FROM tbgrupos As G 
             INNER JOIN tbclases As C ON C.id = G.clase";
-            $sql .= " WHERE G.activo = 1 " . $searchQuery . " ORDER BY " . $columnName . " " . $columnSortOrder . " LIMIT :limit,:offset";
+            $sql .= " WHERE G.activo = 1 " . $searchQuery . " ORDER BY C.codigo, G.codigo, " . $columnName . " " . $columnSortOrder . " LIMIT :limit,:offset";
             error_log("sql => " . $sql);
             $stmt = $conexion->prepare($sql);
 
@@ -87,9 +87,10 @@ class gruposModel extends Conexion
                 <span class='fas fa-trash me-1' data-fa-transform='shrink-3'></span></button>";
 
                 $data[] = array(
-                    'codigo' => $row['codigo'],
+                    'codigo_clase' => $row['codigo_clase'],
                     'clase' => $row['clase'],
-                    'nombre' => $row['nombre'],
+                    'codigo_grupo' => $row['codigo_grupo'],
+                    'grupo' => $row['grupo'],
                     'resum' => $row['resum'],
                     'dias' => $row['dias'],
                     'editar' => $opEditar,

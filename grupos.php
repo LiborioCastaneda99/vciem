@@ -76,9 +76,10 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                     <table id="tabla" class="table table-striped mb-0 data-table fs-10" data-datatables="data-datatables" style="width: 100%;">
                                         <thead class="bg-200">
                                             <tr>
-                                                <th class="text-900 sort">Código</th>
+                                                <th class="text-900 sort">Código Clase</th>
                                                 <th class="text-900 sort">Clase</th>
-                                                <th class="text-900 sort">Nombre</th>
+                                                <th class="text-900 sort">Código Grupo</th>
+                                                <th class="text-900 sort">Grupo</th>
                                                 <th class="text-900 sort">Resumen</th>
                                                 <th class="text-900 sort">Días</th>
                                                 <th class="text-900 text-center">Editar</th>

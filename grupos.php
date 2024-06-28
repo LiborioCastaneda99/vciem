@@ -107,18 +107,18 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                 <div class="p-4">
                                     <div class="row">
                                         <form id="fmr_grupos" method="POST" class="fmr_grupos row g-2 needs-validation" novalidate="">
-                                            <div class="col-md-4">
-                                                <label class="form-label" for="codigo">Código</label>
-                                                <input class="form-control" id="codigo" name="codigo" type="text" required />
-                                                <div class="valid-feedback">¡Ok!</div>
-                                            </div>
                                             <div class="col-md-8">
-                                                <label class="form-label" for="clase_mod">Clase</label>
+                                                <label class="form-label" for="lstClaseAgg">Clase</label>
                                                 <div class="form-group col-md-12 mb-2">
                                                     <select class="form-select selectpicker" id="lstClaseAgg" size="1" name="lstClaseAgg" required>
                                                     </select>
                                                     <span class="input-group-addon"><button class="btn btn-primary icon-search4 Search" type="button" id="btnBusquedaClaseAgg" name="btnBusquedaClaseAgg" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
                                                 </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label" for="codigo">Código</label>
+                                                <input class="form-control" id="codigo" name="codigo" type="text" required />
+                                                <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-12">
                                                 <label class="form-label" for="nombre">Nombre</label>
@@ -160,12 +160,6 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                 <div class="p-4">
                                     <div class="row">
                                         <form id="fmr_grupos_editar" method="POST" class="fmr_grupos_editar row g-2 needs-validation" novalidate="">
-                                            <div class="col-md-4">
-                                                <label class="form-label" for="codigo_mod">Código</label>
-                                                <input class="form-control" id="id" name="id" type="hidden" />
-                                                <input class="form-control" id="codigo_mod" name="codigo_mod" type="text" required />
-                                                <div class="valid-feedback">¡Ok!</div>
-                                            </div>
                                             <div class="col-md-8">
                                                 <label class="form-label" for="clase_mod">Clase</label>
                                                 <div class="form-group col-md-12 mb-2">
@@ -173,6 +167,12 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                     </select>
                                                     <span class="input-group-addon"><button class="btn btn-primary icon-search4 Search" type="button" id="btnBusquedaClaseMod" name="btnBusquedaClaseMod" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
                                                 </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label" for="codigo_mod">Código</label>
+                                                <input class="form-control" id="id" name="id" type="hidden" />
+                                                <input class="form-control" id="codigo_mod" name="codigo_mod" type="text" required />
+                                                <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-12">
                                                 <label class="form-label" for="nombre_mod">Nombre</label>

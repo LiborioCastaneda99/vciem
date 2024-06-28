@@ -76,8 +76,8 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                     <table id="tabla" class="table table-striped mb-0 data-table fs-10" data-datatables="data-datatables" style="width: 100%;">
                                         <thead class="bg-200">
                                             <tr>
-                                                <th class="text-900 sort">Código</th>
                                                 <th class="text-900 sort">Zona</th>
+                                                <th class="text-900 sort">Código</th>
                                                 <th class="text-900 sort">Nombre</th>
                                                 <th class="text-900 sort">Resumen</th>
                                                 <th class="text-900 text-center">Editar</th>
@@ -106,11 +106,6 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                 <div class="p-4">
                                     <div class="row">
                                         <form id="fmr_subzonas" method="POST" class="fmr_subzonas row g-2 needs-validation" novalidate="">
-                                            <div class="col-md-3">
-                                                <label class="form-label" for="codigo">Código</label>
-                                                <input class="form-control" id="codigo" name="codigo" type="text" required />
-                                                <div class="valid-feedback">¡Ok!</div>
-                                            </div>
                                             <div class="col-md-9">
                                                 <label>Zona <span class="text-danger"> * </span></label>
                                                 <div class="form-group col-md-12 mb-2">
@@ -118,6 +113,11 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                     </select>
                                                     <span class="input-group-addon"><button class="btn btn-primary icon-search4 Search" type="button" id="btnBusquedaZonaAgregar" name="btnBusquedaZonaAgregar" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
                                                 </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="form-label" for="codigo">Código</label>
+                                                <input class="form-control" id="codigo" name="codigo" type="text" required />
+                                                <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-8">
                                                 <label class="form-label" for="nombre">Nombre</label>

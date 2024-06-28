@@ -39,7 +39,7 @@ class gruposModel extends Conexion
 
             ## Calcular el total numero de registros sin filtro
             $sql = "SELECT COUNT(*) ";
-            $sql .= " AS allcount FROM tbvendedores As G";
+            $sql .= " AS allcount FROM tbgrupos AS G";
             $sql .= " WHERE G.activo = 1";
             error_log("sql => " . $sql);
             $stmt = $conexion->prepare($sql);
@@ -49,7 +49,7 @@ class gruposModel extends Conexion
 
             ## Total numero de registros con filtro
             $sql = "SELECT COUNT(*)";
-            $sql .= " AS allcount FROM tbvendedores As G";
+            $sql .= " AS allcount FROM tbgrupos As G";
             $sql .= " WHERE G.activo = 1 " . $searchQuery . " ";
             error_log("sql => " . $sql);
             $stmt = $conexion->prepare($sql);

@@ -136,7 +136,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             </div>
                                             <div class="col-md-2">
                                                 <label class="form-label" for="homol">Homologación</label>
-                                                <input class="form-control" id="homol" name="homol" type="text" required />
+                                                <input class="form-control" id="homol" name="homol" type="text" required readonly value=""/>
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-4">
@@ -200,7 +200,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             </div>
                                             <div class="col-md-2">
                                                 <label class="form-label" for="nal">Nal</label>
-                                                <select name="nal" id="nal" class="form-control">
+                                                <select name="nal" id="nal" class="form-select">
                                                     <option value="0" disabled selected>Seleccione</option>
                                                     <option value="N">NACIONAL</option>
                                                     <option value="I">IMPORTADO</option>
@@ -254,7 +254,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             </div>
                                             <div class="col-md-2">
                                                 <label class="form-label" for="estado">Estado</label>
-                                                <input class="form-control" id="estado" name="estado" type="text" required />
+                                                <input class="form-control" id="estado" name="estado" type="text" required readonly value=""     />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">

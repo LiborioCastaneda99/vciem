@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     cargar_tabla();
 });
 
@@ -9,74 +9,74 @@ function cargar_tabla() {
         "responsive": true,
         dom: 'lBfrtip',
         buttons: [{
+            className: 'btn btn-falcon-default btn-sm mx-2',
+            text: '<span class="fas fa-plus" data-fa-transform="shrink-3"></span> ' +
+                'Agregar ',
+            action: function () {
+                abrirModal();
+            }
+        },
+        {
+            extend: 'collection',
+            init: (api, node, config) => $(node).removeClass('btn-secondary'),
+            className: 'btn btn-falcon-default btn-sm mx-2',
+            text: '<span class="fas fa-file-export" data-fa-transform="shrink-3"></span> ' +
+                'Exportar',
+            buttons: [{
+                extend: 'csvHtml5',
+                titleAttr: 'Csv',
                 className: 'btn btn-falcon-default btn-sm mx-2',
-                text: '<span class="fas fa-plus" data-fa-transform="shrink-3"></span> ' +
-                    'Agregar ',
-                action: function() {
-                    abrirModal();
-                }
-            },
-            {
-                extend: 'collection',
-                init: (api, node, config) => $(node).removeClass('btn-secondary'),
-                className: 'btn btn-falcon-default btn-sm mx-2',
-                text: '<span class="fas fa-file-export" data-fa-transform="shrink-3"></span> ' +
-                    'Exportar',
-                buttons: [{
-                        extend: 'csvHtml5',
-                        titleAttr: 'Csv',
-                        className: 'btn btn-falcon-default btn-sm mx-2',
-                        text: '<span class="fas fa-file-csv" data-fa-transform="shrink-3"></span> ' +
-                            'Exportar a CSV ',
-                        exportOptions: {
-                            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
-                        }
-                    },
-                    {
-                        extend: 'excelHtml5',
-                        className: 'btn btn-falcon-default btn-sm mx-2',
-                        text: '<span class="fas fa-file-csv" data-fa-transform="shrink-3"></span> ' +
-                            'Exportar a Excel ',
-                        titleAttr: 'Csv',
-                        exportOptions: {
-                            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
-                        }
-                    },
-                    {
-                        extend: 'pdfHtml5',
-                        text: '<span class="fas fa-file-pdf" data-fa-transform="shrink-3"></span> ' +
-                            'Exportar a PDF ',
-                        className: 'btn btn-falcon-default btn-sm mx-2',
-                        titleAttr: 'Csv',
-                        exportOptions: {
-                            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
-                        }
-                    },
-                ],
-            },
-            {
-                extend: 'print',
-                init: (api, node, config) => $(node).removeClass('btn-secondary'),
-                className: 'btn btn-falcon-default btn-sm mx-2',
-                text: '<span class="fas fa-print" data-fa-transform="shrink-3"></span> ' +
-                    'Imprimir ',
+                text: '<span class="fas fa-file-csv" data-fa-transform="shrink-3"></span> ' +
+                    'Exportar a CSV ',
                 exportOptions: {
                     columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
                 }
-            }
-        ],
-        "columnDefs": [{
-                // El numero correspode a la ultima columna iniciando en 0
-                "targets": [28, 29],
-                "orderable": false,
-                "width": "70px",
-                "className": "text-center",
             },
             {
-                // El numero correspode a la ultima columna iniciando en 0
-                "targets": [0],
-                "width": "120px",
+                extend: 'excelHtml5',
+                className: 'btn btn-falcon-default btn-sm mx-2',
+                text: '<span class="fas fa-file-csv" data-fa-transform="shrink-3"></span> ' +
+                    'Exportar a Excel ',
+                titleAttr: 'Csv',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
+                }
+            },
+            {
+                extend: 'pdfHtml5',
+                text: '<span class="fas fa-file-pdf" data-fa-transform="shrink-3"></span> ' +
+                    'Exportar a PDF ',
+                className: 'btn btn-falcon-default btn-sm mx-2',
+                titleAttr: 'Csv',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
+                }
+            },
+            ],
+        },
+        {
+            extend: 'print',
+            init: (api, node, config) => $(node).removeClass('btn-secondary'),
+            className: 'btn btn-falcon-default btn-sm mx-2',
+            text: '<span class="fas fa-print" data-fa-transform="shrink-3"></span> ' +
+                'Imprimir ',
+            exportOptions: {
+                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
             }
+        }
+        ],
+        "columnDefs": [{
+            // El numero correspode a la ultima columna iniciando en 0
+            "targets": [28, 29],
+            "orderable": false,
+            "width": "70px",
+            "className": "text-center",
+        },
+        {
+            // El numero correspode a la ultima columna iniciando en 0
+            "targets": [0],
+            "width": "120px",
+        }
         ],
         "language": {
             "url": "vendors/datatables.net/spanish.txt"
@@ -97,97 +97,97 @@ function cargar_tabla() {
             'method': 'POST'
         },
         'columns': [{
-                data: 'codigo'
-            },
-            {
-                data: 'homol'
-            },
-            {
-                data: 'nombre'
-            },
-            {
-                data: 'clase'
-            },
-            {
-                data: 'grupo'
-            },
-            {
-                data: 'referencia'
-            },
-            {
-                data: 'umedida'
-            },
-            {
-                data: 'stmin'
-            },
-            {
-                data: 'stmax'
-            },
-            {
-                data: 'ctostan'
-            },
-            {
-                data: 'ctoult'
-            },
-            {
-                data: 'fecult'
-            },
-            {
-                data: 'nal'
-            },
-            {
-                data: 'pv1'
-            },
-            {
-                data: 'pv2'
-            },
-            {
-                data: 'pv3'
-            },
-            {
-                data: 'ubicacion'
-            },
-            {
-                data: 'uxemp'
-            },
-            {
-                data: 'peso'
-            },
-            {
-                data: 'iva'
-            },
-            {
-                data: 'impo'
-            },
-            {
-                data: 'flete'
-            },
-            {
-                data: 'estado'
-            },
-            {
-                data: 'canen'
-            },
-            {
-                data: 'valen'
-            },
-            {
-                data: 'pdes'
-            },
-            {
-                data: 'ultpro'
-            },
-            {
-                data: 'docpro'
-            },
-            {
-                data: 'editar'
-            },
-            {
-                data: 'eliminar'
-            },
+            data: 'codigo'
+        },
+        {
+            data: 'homol'
+        },
+        {
+            data: 'nombre'
+        },
+        {
+            data: 'clase'
+        },
+        {
+            data: 'grupo'
+        },
+        {
+            data: 'referencia'
+        },
+        {
+            data: 'umedida'
+        },
+        {
+            data: 'stmin'
+        },
+        {
+            data: 'stmax'
+        },
+        {
+            data: 'ctostan'
+        },
+        {
+            data: 'ctoult'
+        },
+        {
+            data: 'fecult'
+        },
+        {
+            data: 'nal'
+        },
+        {
+            data: 'pv1'
+        },
+        {
+            data: 'pv2'
+        },
+        {
+            data: 'pv3'
+        },
+        {
+            data: 'ubicacion'
+        },
+        {
+            data: 'uxemp'
+        },
+        {
+            data: 'peso'
+        },
+        {
+            data: 'iva'
+        },
+        {
+            data: 'impo'
+        },
+        {
+            data: 'flete'
+        },
+        {
+            data: 'estado'
+        },
+        {
+            data: 'canen'
+        },
+        {
+            data: 'valen'
+        },
+        {
+            data: 'pdes'
+        },
+        {
+            data: 'ultpro'
+        },
+        {
+            data: 'docpro'
+        },
+        {
+            data: 'editar'
+        },
+        {
+            data: 'eliminar'
+        },
         ],
-        drawCallback: function() {
+        drawCallback: function () {
             $(".btn-group").addClass("btn-group-sm");
         }
     });
@@ -199,18 +199,39 @@ function abrirModal() {
     $('#guardarModal').modal('hide');
 
     $('#guardarModal').modal('show');
+    
+    // cargar_clase('', 'clase', 'guardarModal', function() {
+    //     cargar_grupo('', 'grupo', 'guardarModal', 0);
+    // });
+
     cargar_clase('', 'clase', 'guardarModal');
     cargar_grupo('', 'grupo', 'guardarModal', 0)
     cargar_umedida('', 'umedida', 'guardarModal');
+
+    let fechaActual = new Date();
+    var dia = fechaActual.getDate();
+    var mes = fechaActual.getMonth() + 1;
+    var anio = fechaActual.getFullYear();
+
+    let fechaFormateada =
+        anio +
+        "-" +
+        (mes < 10 ? "0" : "") +
+        mes +
+        "-" +
+        (dia < 10 ? "0" : "") +
+        dia;
+
+    $("#fecult").val(fechaFormateada);
 }
 
 // Funcion para cargar las listas select con opcion de busqueda de Clase
-$('#btnBusquedaClaseAgg').click(function() {
+$('#btnBusquedaClaseAgg').click(function () {
     cargar_clase('', 'clase', 'guardarModal');
 });
 
 // Funcion para cargar las listas select con opcion de busqueda de Clase
-$('#btnBusquedaClaseMod').click(function() {
+$('#btnBusquedaClaseMod').click(function () {
     cargar_clase('', 'clase_mod', 'editarModal');
 });
 
@@ -233,8 +254,8 @@ function cargar_clase(Id, nameSelect, Modal) {
                 proceso: 'combo_clase',
                 id: Id
             },
-        }).then(function(registros) {
-            $(registros).each(function(i, v) {
+        }).then(function (registros) {
+            $(registros).each(function (i, v) {
                 lstRoles.append('<option selected value="' + v.id + '">' + v.text + '</option>');
             })
             lstRoles.trigger({
@@ -254,14 +275,14 @@ function cargar_clase(Id, nameSelect, Modal) {
                 type: "post",
                 dataType: 'json',
                 delay: 150,
-                data: function(params) {
+                data: function (params) {
                     return {
                         searchTerm: params.term,
                         proceso: "combo_clase",
                         id: Id
                     };
                 },
-                processResults: function(response) {
+                processResults: function (response) {
                     return {
                         results: response
 
@@ -274,12 +295,12 @@ function cargar_clase(Id, nameSelect, Modal) {
 }
 
 // Funcion para cargar las listas select con opcion de busqueda de umedida
-$('#btnBusquedaUmedidaAgg').click(function() {
+$('#btnBusquedaUmedidaAgg').click(function () {
     cargar_umedida('', 'umedida', 'guardarModal');
 });
 
 // Funcion para cargar las listas select con opcion de busqueda de umedida
-$('#btnBusquedaUmedidaMod').click(function() {
+$('#btnBusquedaUmedidaMod').click(function () {
     cargar_umedida('', 'umedida_mod', 'editarModal');
 });
 
@@ -302,8 +323,8 @@ function cargar_umedida(Id, nameSelect, Modal) {
                 proceso: 'combo_umedida',
                 id: Id
             },
-        }).then(function(registros) {
-            $(registros).each(function(i, v) {
+        }).then(function (registros) {
+            $(registros).each(function (i, v) {
                 lstRoles.append('<option selected value="' + v.id + '">' + v.text + '</option>');
             })
             lstRoles.trigger({
@@ -323,14 +344,14 @@ function cargar_umedida(Id, nameSelect, Modal) {
                 type: "post",
                 dataType: 'json',
                 delay: 150,
-                data: function(params) {
+                data: function (params) {
                     return {
                         searchTerm: params.term,
                         proceso: "combo_umedida",
                         id: Id
                     };
                 },
-                processResults: function(response) {
+                processResults: function (response) {
                     return {
                         results: response
 
@@ -371,8 +392,8 @@ function cargar_grupo(Id, nameSelect, Modal, Otro) {
                 id: Id,
                 otro: Otro
             },
-        }).then(function(registros) {
-            $(registros).each(function(i, v) {
+        }).then(function (registros) {
+            $(registros).each(function (i, v) {
                 lstRoles.append('<option selected value="' + v.id + '">' + v.text + '</option>');
             })
             lstRoles.trigger({
@@ -392,14 +413,14 @@ function cargar_grupo(Id, nameSelect, Modal, Otro) {
                 type: "post",
                 dataType: 'json',
                 delay: 150,
-                data: function(params) {
+                data: function (params) {
                     return {
                         searchTerm: params.term,
                         proceso: "combo_grupos",
                         id: Id
                     };
                 },
-                processResults: function(response) {
+                processResults: function (response) {
                     return {
                         results: response
 
@@ -412,7 +433,7 @@ function cargar_grupo(Id, nameSelect, Modal, Otro) {
 }
 
 // guardar
-$(".fmr_articulos").submit(function(event) {
+$(".fmr_articulos").submit(function (event) {
     event.preventDefault();
 
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito un nuevo articulo
@@ -483,7 +504,7 @@ $(".fmr_articulos").submit(function(event) {
             docpro: nuevoarticulo.docpro
         },
         dataType: 'json',
-        success: function(response) {
+        success: function (response) {
             if (response.status === 'success') {
                 // cerramos el modal
                 $('#guardarModal').modal('hide');
@@ -498,7 +519,7 @@ $(".fmr_articulos").submit(function(event) {
                 notificacion('Error', 'error', response.message);
             }
         },
-        error: function() {
+        error: function () {
             // Error en la inserción, muestra mensaje de error con SweetAlert
             notificacion('Error', 'error', response.message);
         }
@@ -516,7 +537,7 @@ function editar(id) {
         url: urlprocess,
         data: 'id=' + id + '&proceso=get_id',
         dataType: 'json',
-        success: function(data) {
+        success: function (data) {
 
             // Asignar un valor al input
             document.getElementById('id').value = data[0].id
@@ -557,14 +578,14 @@ function editar(id) {
             $('#editarModal').modal('show'); // abrir
 
         },
-        error: function() {
+        error: function () {
             // Error en la inserción, muestra mensaje de error con SweetAlert
             notificacion('Error', 'error', response.message);
         }
     });
 }
 
-$(".fmr_articulos_editar").submit(function(event) {
+$(".fmr_articulos_editar").submit(function (event) {
     event.preventDefault();
 
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nuevo articulo
@@ -637,7 +658,7 @@ $(".fmr_articulos_editar").submit(function(event) {
             id: nuevoarticulo.id
         },
         dataType: 'json',
-        success: function(response) {
+        success: function (response) {
             if (response.status === 'success') {
                 // cerramos el modal
                 $('#editarModal').modal('hide');
@@ -652,7 +673,7 @@ $(".fmr_articulos_editar").submit(function(event) {
                 notificacion('Error', 'error', response.message);
             }
         },
-        error: function() {
+        error: function () {
             // Error en la inserción, muestra mensaje de error con SweetAlert
             notificacion('Error', 'error', response.message);
         }
@@ -684,7 +705,7 @@ function eliminar(id) {
                     id: id
                 },
                 dataType: 'json',
-                success: function(response) {
+                success: function (response) {
                     if (response.status === 'success') {
                         notificacion('Éxito', 'success', response.message);
 
@@ -694,7 +715,7 @@ function eliminar(id) {
                         notificacion('Error', 'error', response.message);
                     }
                 },
-                error: function() {
+                error: function () {
                     notificacion('Error', 'error', response.message)
                 }
             });

@@ -233,15 +233,16 @@ class clasesModel extends Conexion
                 }
             } else {
                 // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
-                $queryUdt = "UPDATE tbclases SET codigo=:codigo, nombre=:nombre WHERE id=:id";
+                $queryUdt = "UPDATE tbclases SET codigo=:codigo, nombre=:nombre, resum=:resumen WHERE id=:id";
                 $stmt = $dbconec->prepare($queryUdt);
                 $stmt->bindParam(':id', $id);
                 $stmt->bindParam(':codigo', $codigo);
                 $stmt->bindParam(':nombre', $nombre);
+                $stmt->bindParam(':resumen', $resumen);
 
                 if ($stmt->execute()) {
                     // Si la inserción fue exitosa, devuelve un mensaje o los datos actualizados
-                    $response = array('status' => 'success', 'message' => 'La marca se ha modificado exitosamente.');
+                    $response = array('status' => 'success', 'message' => 'La clase se ha modificado exitosamente.');
                 } else {
                     // Si hubo un error en la inserción, devuelve un mensaje de error
                     $response = array('status' => 'error', 'message' => 'Error al modificar la marca.');

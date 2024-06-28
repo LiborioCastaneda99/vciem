@@ -9,7 +9,7 @@ class subzonasModel extends Conexion
         $dbconec = Conexion::Conectar();
 
         try {
-            $query = "SELECT SZ.id, SZ.codigo AS codigo_subzona, Z.codigo As codigo_zona, Z.nombre As nombre_zona, SZ.nombre, SZ.resum, SZ.activo, SZ.created_at 
+            $query = "SELECT SZ.id, SZ.codigo, Z.codigo As codigo_zona, Z.nombre As nombre_zona, SZ.nombre, SZ.resum, SZ.activo, SZ.created_at 
             FROM `tbsubzonas` AS SZ
             INNER JOIN tbzonas AS Z ON Z.codigo = SZ.zona
             WHERE SZ.activo = 1 AND SZ.id = $id";
@@ -43,9 +43,10 @@ class subzonasModel extends Conexion
             $resumen = $datos['resumen'];
 
             // Consulta para verificar la existencia del código
+            $codigo_concat = $zona . $codigo;
             $query = "SELECT COUNT(*) as count FROM tbsubzonas WHERE codigo = :codigo AND zona = :zona AND activo = 1";
             $stmt = $dbconec->prepare($query);
-            $stmt->bindParam(':codigo', $codigo);
+            $stmt->bindParam(':codigo', $codigo_concat);
             $stmt->bindParam(':zona', $zona);
             $stmt->execute();
 
@@ -71,7 +72,7 @@ class subzonasModel extends Conexion
                 // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
                 $query = "INSERT INTO tbsubzonas (codigo, zona, nombre, resum) VALUES (:codigo, :zona, :nombre, :resumen)";
                 $stmt = $dbconec->prepare($query);
-                $stmt->bindParam(':codigo', $codigo);
+                $stmt->bindParam(':codigo', $codigo_concat);
                 $stmt->bindParam(':zona', $zona);
                 $stmt->bindParam(':nombre', $nombre);
                 $stmt->bindParam(':resumen', $resumen);
@@ -100,8 +101,7 @@ class subzonasModel extends Conexion
         try {
             $codigo = $datos['codigo'];
             $zona = $datos['zona'];
-            $subzona = $datos['subzona'];
-            $nombre = $datos['subzonaName'];
+            $nombre = $datos['nombre'];
             $resumen = $datos['resumen'];
             $id = $datos['id'];
             // Consulta para verificar la existencia del código
@@ -258,7 +258,7 @@ class subzonasModel extends Conexion
             Z.nombre As nombre_zona, SZ.nombre As nombre_subzona, SZ.resum, SZ.activo, SZ.created_at 
             FROM `tbsubzonas` AS SZ
             INNER JOIN tbzonas AS Z ON Z.codigo = SZ.zona";
-            $sql .= " WHERE SZ.activo = 1 " . $searchQuery . " ORDER BY Z.codigo, " . $columnName . " " . $columnSortOrder . " LIMIT :limit,:offset";
+            $sql .= " WHERE SZ.activo = 1 " . $searchQuery . " ORDER BY Z.codigo, SZ.codigo, " . $columnName . " " . $columnSortOrder . " LIMIT :limit,:offset";
             $stmt = $conexion->prepare($sql);
 
             // Bind values
@@ -277,7 +277,7 @@ class subzonasModel extends Conexion
 
                 # Los titulos de columnas colocados en el formulario deben corresponder exactamente con lo descrito aquí
                 // definimos los botones con sus funciones
-                $opEditar = "<button clas s='btn btn-outline-primary btn-sm me-1 mb-1' type='button' onclick=editar({$row['id']})>
+                $opEditar = "<button class='btn btn-outline-primary btn-sm me-1 mb-1' type='button' onclick=editar({$row['id']})>
                 <span class='fas fa-edit me-1' data-fa-transform='shrink-3'></span></button>";
                 $opEliminar = "<button class='btn btn-outline-primary btn-sm me-1 mb-1' type='button' onclick=eliminar({$row['id']})>
                 <span class='fas fa-trash me-1' data-fa-transform='shrink-3'></span></button>";

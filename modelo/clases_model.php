@@ -237,6 +237,7 @@ class clasesModel extends Conexion
                 $stmt = $dbconec->prepare($queryUdt);
                 $stmt->bindParam(':id', $id);
                 $stmt->bindParam(':codigo', $codigo);
+                $stmt->bindParam(':resumen', $resumen);
                 $stmt->bindParam(':nombre', $nombre);
                 $stmt->bindParam(':resumen', $resumen);
 
@@ -245,7 +246,7 @@ class clasesModel extends Conexion
                     $response = array('status' => 'success', 'message' => 'La clase se ha modificado exitosamente.');
                 } else {
                     // Si hubo un error en la inserción, devuelve un mensaje de error
-                    $response = array('status' => 'error', 'message' => 'Error al modificar la marca.');
+                    $response = array('status' => 'error', 'message' => 'Error al modificar la clase.');
                 }
 
                 // Devuelve la respuesta en formato JSON

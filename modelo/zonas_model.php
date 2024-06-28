@@ -55,7 +55,7 @@ class zonasModel extends Conexion
 
             ## Obetener los registros de la tabla.
             $sql = "SELECT id, codigo, nombre, resum FROM tbzonas";
-            $sql .= " WHERE activo = 1 " . $searchQuery . " ORDER BY " . $columnName . " " . $columnSortOrder . " LIMIT :limit,:offset";
+            $sql .= " WHERE activo = 1 " . $searchQuery . " ORDER BY codigo," . $columnName . " " . $columnSortOrder . " LIMIT :limit,:offset";
             error_log("sql => " . $sql);
             $stmt = $conexion->prepare($sql);
 

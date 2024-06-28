@@ -156,12 +156,6 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                 <div class="p-4">
                                     <div class="row">
                                         <form id="fmr_subzonas_editar" method="POST" class="fmr_subzonas_editar row g-2 needs-validation" novalidate="">
-                                            <div class="col-md-3">
-                                                <label class="form-label" for="codigo_mod">Código</label>
-                                                <input class="form-control" id="id" name="id" type="hidden" />
-                                                <input class="form-control" id="codigo_mod" name="codigo_mod" type="text" required />
-                                                <div class="valid-feedback">¡Ok!</div>
-                                            </div>
                                             <div class="col-md-9">
                                                 <label>Zona <span class="text-danger"> * </span></label>
                                                 <div class="form-group col-md-12 mb-2">
@@ -170,16 +164,16 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                     <span class="input-group-addon"><button class="btn btn-primary icon-search4 Search" type="button" id="btnBusquedaZonaMod" name="btnBusquedaZonaMod" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
                                                 </div>
                                             </div>
+                                            <div class="col-md-3">
+                                                <label class="form-label" for="codigo_mod">Código</label>
+                                                <input class="form-control" id="id" name="id" type="hidden" />
+                                                <input class="form-control" id="codigo_mod" name="codigo_mod" type="text" required />
+                                                <div class="valid-feedback">¡Ok!</div>
+                                            </div>
                                             <div class="col-md-8">
                                                 <label class="form-label" for="nombre_mod">Nombre</label>
-                                                <div class="form-group col-md-12 mb-2">
-                                                    <!-- <input class="form-control" id="nombre_mod" name="nombre_mod" type="text" required /> -->
-                                                    <select class="form-select selectpicker" id="lstSubzonaMod" style='width: 87%;' size="1" name="lstSubzonaMod" required>
-                                                    </select>
-                                                    <span class="input-group-addon"><button class="btn btn-primary icon-search4 Search" type="button" id="btnBusquedaSubzonaMod" name="btnBusquedaSubzonaMod" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
-
-                                                    <!-- <span class="input-group-addon"><button class="btn btn-primary icon-search4 Search" type="button" id="btnBusquedaSubzonaMod" name="btnBusquedaSubzonaMod"><span class="fas fa-search search-box-icon"></span></button></span> -->
-                                                </div>
+                                                <input class="form-control" id="nombre_mod" name="nombre_mod" type="text" required />
+                                                <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-4">
                                                 <label class="form-label" for="resumen_mod">Resumen</label>
@@ -208,7 +202,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
 
     <!-- ===============================================--><!--    JavaScripts--><!-- ===============================================-->
     <?php require_once("script.php"); ?>
-    <script src="js/subzonas.js"></script>
+    <script src="parcial/subzonas.js"></script>
 </body>
 
 </html>

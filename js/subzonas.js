@@ -1,5 +1,6 @@
 $(document).ready(function() {
     cargar_tabla()
+    longitudCampo("#codigo", 3);
 });
 
 function cargar_tabla() {
@@ -484,3 +485,15 @@ function cargar_ciudades(Id, nameSelect, Modal, Proceso) {
         });
     }
 }
+
+function longitudCampo(campo, max){
+    var input = $(campo)
+
+    var maxLength = max;
+
+    input.on('input', function() {
+        if ($(this).val().length > maxLength) {
+            $(this).val($(this).val().slice(0, maxLength)); 
+        }
+    });
+} 

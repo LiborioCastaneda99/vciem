@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    cargar_tabla()
+    cargar_tabla();
     longitudCampo("#codigo", 3);
 });
 
@@ -200,8 +200,8 @@ function editar(id) {
             document.getElementById('id').value = data[0].id
             document.getElementById('codigo_mod').value = data[0].codigo
             document.getElementById('resumen_mod').value = data[0].resum
+            document.getElementById('nombre_mod').value = data[0].nombre
             cargar_departamentos(data[0].codigo_zona, 'lstZonaMod', 'editarModal')
-            cargar_ciudades(data[0].id, 'lstSubzonaMod', 'editarModal', 'combo_ciudades')
             $('#editarModal').modal('show'); // abrir
         },
         error: function() {
@@ -226,31 +226,19 @@ $(".fmr_subzonas_editar").submit(function(event) {
 
     codigo = $("#codigo_mod").val()
     zona = $("#lstZonaMod").val()
-    subzona = $("#lstSubzonaMod").val()
     nombre = $("#nombre_mod").val()
     resumen = $("#resumen_mod").val()
-
-    // Obtener el elemento select
-    var miSelect = document.getElementById("lstSubzonaMod");
-    // Obtener el índice de la opción seleccionada
-    var indiceSeleccionado = miSelect.selectedIndex;
-    // Obtener el texto de la opción seleccionada
-    var textoSeleccionado = miSelect.options[indiceSeleccionado].text;
-    // Mostrar el texto en la consola (puedes hacer lo que quieras con el texto)
-    console.log("Texto seleccionado: " + textoSeleccionado);
 
     // Supongamos que este código se ejecuta después de que se ha guardado con éxito una nueva subzona
     var nuevaSubzona = {
         codigo: codigo,
         zona: zona,
-        subzona: subzona,
-        subzonaName: textoSeleccionado,
         nombre: nombre,
         resumen: resumen,
         id: $("#id").val()
     };
 
-    if (codigo == "" || zona == "" || subzona == "" || nombre == "" || resumen == "") {
+    if (codigo == "" || zona == "" || nombre == "" || resumen == "") {
         // alert("Por favor, completa todos los campos.");
         notificacion('Error', 'error', "Por favor, completa todos los campos.");
         return;
@@ -263,8 +251,6 @@ $(".fmr_subzonas_editar").submit(function(event) {
                 proceso: 'modificar',
                 codigo: nuevaSubzona.codigo,
                 zona: nuevaSubzona.zona,
-                subzona: nuevaSubzona.subzona,
-                subzonaName: nuevaSubzona.subzonaName,
                 nombre: nuevaSubzona.nombre,
                 resumen: nuevaSubzona.resumen,
                 id: nuevaSubzona.id
@@ -360,15 +346,6 @@ $('#btnBusquedaZonaMod').click(function() {
     cargar_departamentos('', 'lstZonaMod', 'editarModal');
 });
 
-// Funcion para cargar las listas select con opcion de busqueda
-$('#btnBusquedaSubzonaMod').click(function() {
-    cargar_ciudades('', 'lstSubzonaMod', 'editarModal', 'combo_ciudades');
-});
-
-function cargar_select(id) {
-    cargar_ciudades(id, 'lstSubzonaMod', 'editarModal', 'combo_ciudades_all')
-}
-
 function cargar_departamentos(Id, nameSelect, Modal) {
     var lstRoles = $('#' + nameSelect);
 
@@ -413,64 +390,6 @@ function cargar_departamentos(Id, nameSelect, Modal) {
                     return {
                         searchTerm: params.term,
                         proceso: "combo_departamentos",
-                        id: Id
-                    };
-                },
-                processResults: function(response) {
-                    return {
-                        results: response
-
-                    };
-                },
-                cache: true
-            }
-        });
-    }
-}
-
-function cargar_ciudades(Id, nameSelect, Modal, Proceso) {
-    var lstRoles = $('#' + nameSelect);
-
-    if (Id != "") {
-        lstRoles.select2({
-            dropdownParent: $('#' + Modal)
-        });
-        // var lstRoles = $lstRoles
-        lstRoles.find('option').remove();
-        var searchTerm = '';
-        $.ajax({
-            type: 'POST',
-            dataType: 'json',
-            url: 'ajax/clientesajaxv1.php',
-            data: {
-                searchTerm: searchTerm,
-                proceso: Proceso,
-                id: Id
-            },
-        }).then(function(registros) {
-            $(registros).each(function(i, v) {
-                lstRoles.append('<option selected value="' + v.id + '">' + v.text + '</option>');
-            })
-            lstRoles.trigger({
-                type: 'select2:select',
-                params: {
-                    data: registros
-                }
-            });
-        });
-    } else {
-        lstRoles.select2({
-            placeholder: "Seleccione una ciudad",
-            dropdownParent: $('#' + Modal),
-            ajax: {
-                url: "ajax/clientesajaxv1.php",
-                type: "post",
-                dataType: 'json',
-                delay: 150,
-                data: function(params) {
-                    return {
-                        searchTerm: params.term,
-                        proceso: "combo_ciudades",
                         id: Id
                     };
                 },

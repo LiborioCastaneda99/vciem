@@ -9,7 +9,8 @@ class subzonasModel extends Conexion
         $dbconec = Conexion::Conectar();
 
         try {
-            $query = "SELECT SZ.id, SZ.codigo, Z.codigo As codigo_zona, Z.nombre As nombre_zona, SZ.nombre, SZ.resum, SZ.activo, SZ.created_at FROM `tbsubzonas` AS SZ
+            $query = "SELECT SZ.id, SZ.codigo AS codigo_subzona, Z.codigo As codigo_zona, Z.nombre As nombre_zona, SZ.nombre, SZ.resum, SZ.activo, SZ.created_at 
+            FROM `tbsubzonas` AS SZ
             INNER JOIN tbzonas AS Z ON Z.codigo = SZ.zona
             WHERE SZ.activo = 1 AND SZ.id = $id";
             $stmt = $dbconec->prepare($query);
@@ -253,10 +254,11 @@ class subzonasModel extends Conexion
             $totalRecordwithFilter = $records['allcount'];
 
             ## Obetener los registros de la tabla.
-            $sql = "SELECT SZ.id, SZ.codigo, Z.nombre As zona, SZ.nombre, SZ.resum, SZ.activo, SZ.created_at 
+            $sql = "SELECT SZ.id, SZ.codigo AS codigo_subzona, Z.codigo As codigo_zona, 
+            Z.nombre As nombre_zona, SZ.nombre As nombre_subzona, SZ.resum, SZ.activo, SZ.created_at 
             FROM `tbsubzonas` AS SZ
             INNER JOIN tbzonas AS Z ON Z.codigo = SZ.zona";
-            $sql .= " WHERE SZ.activo = 1 " . $searchQuery . " ORDER BY " . $columnName . " " . $columnSortOrder . " LIMIT :limit,:offset";
+            $sql .= " WHERE SZ.activo = 1 " . $searchQuery . " ORDER BY Z.codigo, " . $columnName . " " . $columnSortOrder . " LIMIT :limit,:offset";
             $stmt = $conexion->prepare($sql);
 
             // Bind values
@@ -275,15 +277,16 @@ class subzonasModel extends Conexion
 
                 # Los titulos de columnas colocados en el formulario deben corresponder exactamente con lo descrito aquí
                 // definimos los botones con sus funciones
-                $opEditar = "<button class='btn btn-outline-primary btn-sm me-1 mb-1' type='button' onclick=editar({$row['id']})>
+                $opEditar = "<button clas s='btn btn-outline-primary btn-sm me-1 mb-1' type='button' onclick=editar({$row['id']})>
                 <span class='fas fa-edit me-1' data-fa-transform='shrink-3'></span></button>";
                 $opEliminar = "<button class='btn btn-outline-primary btn-sm me-1 mb-1' type='button' onclick=eliminar({$row['id']})>
                 <span class='fas fa-trash me-1' data-fa-transform='shrink-3'></span></button>";
 
                 $data[] = array(
-                    'codigo' => $row['codigo'],
-                    'zona' => $row['zona'],
-                    'nombre' => $row['nombre'],
+                    'codigo_zona' => $row['codigo_zona'],
+                    'zona' => $row['nombre_zona'],
+                    'codigo_subzona' => $row['codigo_subzona'],
+                    'subzona' => $row['nombre_subzona'],
                     'resum' => $row['resum'],
                     'editar' => $opEditar,
                     'eliminar' => $opEliminar

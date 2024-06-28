@@ -124,12 +124,12 @@ function cargar_tabla() {
 }
 
 // abrir modal
-function abrirModal() {
+// function abrirModal() {
 
-    $('#fmr_grupos')[0].reset();
-    $('#guardarModal').modal('show');
+//     $('#fmr_grupos')[0].reset();
+//     $('#guardarModal').modal('show');
 
-}
+// }
 
 // guardar
 $(".fmr_grupos").submit(function(event) {
@@ -418,6 +418,12 @@ function cargar_clases(Id, nameSelect, Modal) {
 
 // abrir modal
 function abrirModal() {
-    $('#fmr_grupos')[0].reset();
+
+    document.getElementById("fmr_grupos").reset();
+
+    $("#guardarModal").modal("hide");
+
+    $("#guardarModal").modal("show");
+
     cargar_clases('', 'lstClaseAgg', 'guardarModal')
 }

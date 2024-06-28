@@ -257,7 +257,7 @@ class subzonasModel extends Conexion
             Z.nombre As nombre_zona, SZ.nombre As nombre_subzona, SZ.resum, SZ.activo, SZ.created_at 
             FROM `tbsubzonas` AS SZ
             INNER JOIN tbzonas AS Z ON Z.codigo = SZ.zona";
-            $sql .= " WHERE SZ.activo = 1 " . $searchQuery . " ORDER BY Z.codigo, " . $columnName . " " . $columnSortOrder . " LIMIT :limit,:offset";
+            $sql .= " WHERE SZ.activo = 1 " . $searchQuery . " ORDER BY Z.codigo, SZ.codigo, " . $columnName . " " . $columnSortOrder . " LIMIT :limit,:offset";
             $stmt = $conexion->prepare($sql);
 
             // Bind values

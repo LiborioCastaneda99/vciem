@@ -43,9 +43,10 @@ class subzonasModel extends Conexion
             $resumen = $datos['resumen'];
 
             // Consulta para verificar la existencia del código
+            $codigo_concat = $zona . $codigo;
             $query = "SELECT COUNT(*) as count FROM tbsubzonas WHERE codigo = :codigo AND zona = :zona AND activo = 1";
             $stmt = $dbconec->prepare($query);
-            $stmt->bindParam(':codigo', $codigo);
+            $stmt->bindParam(':codigo', $codigo_concat);
             $stmt->bindParam(':zona', $zona);
             $stmt->execute();
 
@@ -71,7 +72,7 @@ class subzonasModel extends Conexion
                 // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
                 $query = "INSERT INTO tbsubzonas (codigo, zona, nombre, resum) VALUES (:codigo, :zona, :nombre, :resumen)";
                 $stmt = $dbconec->prepare($query);
-                $stmt->bindParam(':codigo', $codigo);
+                $stmt->bindParam(':codigo', $codigo_concat);
                 $stmt->bindParam(':zona', $zona);
                 $stmt->bindParam(':nombre', $nombre);
                 $stmt->bindParam(':resumen', $resumen);

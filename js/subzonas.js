@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    cargar_tabla()
+    cargar_tabla();
     longitudCampo("#codigo", 3);
 });
 

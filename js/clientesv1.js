@@ -414,7 +414,7 @@ function abrirModal() {
 
   $("#guardarModal").modal("show");
   // document.getElementById('abrir').click();
-  cargar_departamentos("", "lstSucursal", "guardarModal");
+  cargar_oficinas("", "lstSucursal", "guardarModal");
   cargar_departamentos("", "lstZonas", "guardarModal");
   cargar_ciudades("", "lstSubzonas", "guardarModal");
   cargar_ciudades("", "lstSubzonas", "guardarModal");
@@ -486,6 +486,65 @@ function cargar_departamentos(Id, nameSelect, Modal) {
           return {
             searchTerm: params.term,
             proceso: "combo_departamentos",
+            id: Id,
+          };
+        },
+        processResults: function (response) {
+          return {
+            results: response,
+          };
+        },
+        cache: true,
+      },
+    });
+  }
+}
+
+function cargar_oficinas(Id, nameSelect, Modal) {
+  var lstRoles = $("#" + nameSelect);
+
+  if (Id != "") {
+    lstRoles.select2({
+      dropdownParent: $("#" + Modal),
+    });
+    // var lstRoles = $lstRoles
+    lstRoles.find("option").remove();
+    var searchTerm = "";
+    $.ajax({
+      type: "POST",
+      dataType: "json",
+      url: "ajax/ciudadesajax.php",
+      data: {
+        searchTerm: searchTerm,
+        proceso: "combo_ciudades",
+        id: Id,
+      },
+    }).then(function (registros) {
+      $(registros).each(function (i, v) {
+        lstRoles.append(
+          '<option selected value="' + v.id + '">' + v.text + "</option>"
+        );
+      });
+      lstRoles.trigger({
+        type: "select2:select",
+        params: {
+          data: registros,
+        },
+      });
+    });
+  } else {
+    lstRoles.select2({
+      placeholder: "Seleccione una oficina",
+      dropdownParent: $("#" + Modal),
+      ajax: {
+        url: "ajax/ciudadesajax.php",
+        type: "post",
+        dataType: "json",
+        delay: 150,
+        data: function (params) {
+          return {
+            searchTerm: params.term,
+            proceso: "combo_ciudades",
             id: Id,
           };
         },
@@ -645,7 +704,7 @@ function editar(id) {
       document.getElementsByName("tel1_mod")[0].value = data[0].tel1;
       document.getElementsByName("tel2_mod")[0].value = data[0].tel2;
       cargar_departamentos(data[0].zona, "lstZonas_mod", "editarModal");
-      cargar_departamentos(data[0].sucursal, "lstSucursal_mod", "editarModal");
+      cargar_oficinas(data[0].sucursal, "lstSucursal_mod", "editarModal");
       cargar_ciudades(
         data[0].subzona,
         "lstSubzonas_mod",

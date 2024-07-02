@@ -121,8 +121,11 @@ function cargar_tabla() {
 // abrir modal
 function abrirModal() {
 
-    $('#fmr_tipomoins')[0].reset();
-    $('#guardarModal').modal('show');
+    document.getElementById("fmr_umedidas").reset();
+
+    $("#guardarModal").modal("hide");
+
+    $("#guardarModal").modal("show");
 
 }
 

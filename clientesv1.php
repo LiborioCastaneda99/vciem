@@ -678,12 +678,21 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                 </div>
                                                                 <div class="col-md-3">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-pais">Codigo Pais</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-pais" name="pais_mod" type="text" required />
+                                                                    <select class="form-select" id="bootstrap-wizard-validation-wizard-pais" size="1" name="pais_mod" required>
+                                                                        <option value="" selected disabled>Seleccione...</option>
+                                                                        <option value="CO">Colombia</option>
+                                                                    </select>
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
                                                                 <div class="col-md-3">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-tipoid">Tipo Identificación</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-tipoid" name="tipoid_mod" type="text" required />
+                                                                    <select class="form-select" id="bootstrap-wizard-validation-wizard-tipoid" size="1" name="tipoid_mod" required>
+                                                                        <option value="" selected disabled>Seleccione...</option>
+                                                                        <option value="13">CC</option>
+                                                                        <option value="31">NIT</option>
+                                                                        <option value="12">TI</option>
+                                                                        <option value="22">CE</option>
+                                                                    </select>
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
                                                                 <div class="col-md-3">

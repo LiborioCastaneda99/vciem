@@ -266,14 +266,14 @@ class clientesModel extends Conexion
                     $response = array('status' => 'success', 'message' => 'El cliente se ha guardado correctamente');
                 } else {
                     // Si hubo un error en la inserción, devuelve un mensaje de error
-                    $response = array('status' => 'error', 'message' => 'Error al guardar el color');
+                    $response = array('status' => 'error', 'message' => 'Error al guardar el cliente');
                 }
 
                 // Devuelve la respuesta en formato JSON
                 echo json_encode($response);
             }
         } catch (Exception $e) {
-            $data = "Error";
+            $data = "Error ".$e;
             echo json_encode($data);
         }
     }

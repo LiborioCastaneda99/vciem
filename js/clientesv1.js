@@ -288,9 +288,7 @@ btnSiguiente.addEventListener("click", function () {
       success: function (response) {
         if (response.status === "success") {
           // limpiamos el formulario
-          $(".fmr_clientes1")[0].reset();
-          $(".fmr_clientes2")[0].reset();
-          $(".fmr_clientes3")[0].reset();
+          $(".fmr_clientes")[0].reset();
 
           // Selecciona el elemento por su ID
           var resp_titulo = document.getElementById("resp_titulo");

@@ -466,6 +466,16 @@ $(".fmr_articulos").submit(function (event) {
         docpro: $("#docpro").val()
     };
 
+    // Validar que los campos no estén vacíos, excluyendo ultpro y docpro
+    for (var key in nuevoarticulo) {
+        if (nuevoarticulo.hasOwnProperty(key) && key !== 'ultpro' && key !== 'docpro') {
+            if (nuevoarticulo[key] === '' || nuevoarticulo[key] === null) {
+                notificacion('Error', 'error', 'El campo ' + key + ' no puede estar vacío');
+                return;
+            }
+        }
+    }
+
     // Hacer la solicitud AJAX para guardar la nuevo articulo
     $.ajax({
         type: 'POST',

@@ -29,7 +29,7 @@ function cargar_tabla() {
                 text: '<span class="fas fa-file-csv" data-fa-transform="shrink-3"></span> ' +
                     'Exportar a CSV ',
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
+                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
                 }
             },
             {
@@ -39,7 +39,7 @@ function cargar_tabla() {
                     'Exportar a Excel ',
                 titleAttr: 'Csv',
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
+                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
                 }
             },
             {
@@ -49,7 +49,7 @@ function cargar_tabla() {
                 className: 'btn btn-falcon-default btn-sm mx-2',
                 titleAttr: 'Csv',
                 exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
+                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
                 }
             },
             ],
@@ -61,13 +61,13 @@ function cargar_tabla() {
             text: '<span class="fas fa-print" data-fa-transform="shrink-3"></span> ' +
                 'Imprimir ',
             exportOptions: {
-                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
+                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
             }
         }
         ],
         "columnDefs": [{
             // El numero correspode a la ultima columna iniciando en 0
-            "targets": [28, 29],
+            "targets": [26, 27],
             "orderable": false,
             "width": "70px",
             "className": "text-center",
@@ -165,12 +165,12 @@ function cargar_tabla() {
         {
             data: 'estado'
         },
-        {
-            data: 'canen'
-        },
-        {
-            data: 'valen'
-        },
+        // {
+        //     data: 'canen'
+        // },
+        // {
+        //     data: 'valen'
+        // },
         {
             data: 'pdes'
         },
@@ -461,8 +461,6 @@ $(".fmr_articulos").submit(function (event) {
         impo: $("#impo").val(),
         flete: $("#flete").val(),
         estado: $("#estado").val(),
-        canen: $("#canen").val(),
-        valen: $("#valen").val(),
         pdes: $("#pdes").val(),
         ultpro: $("#ultpro").val(),
         docpro: $("#docpro").val()
@@ -497,8 +495,6 @@ $(".fmr_articulos").submit(function (event) {
             impo: nuevoarticulo.impo,
             flete: nuevoarticulo.flete,
             estado: nuevoarticulo.estado,
-            canen: nuevoarticulo.canen,
-            valen: nuevoarticulo.valen,
             pdes: nuevoarticulo.pdes,
             ultpro: nuevoarticulo.ultpro,
             docpro: nuevoarticulo.docpro
@@ -568,8 +564,6 @@ function editar(id) {
             document.getElementById('impo_mod').value = data[0].impo
             document.getElementById('flete_mod').value = data[0].flete
             document.getElementById('estado_mod').value = data[0].estado
-            document.getElementById('canen_mod').value = data[0].canen
-            document.getElementById('valen_mod').value = data[0].valen
             document.getElementById('pdes_mod').value = data[0].pdes
             document.getElementById('ultpro_mod').value = data[0].ultpro
             document.getElementById('docpro_mod').value = data[0].docpro
@@ -613,8 +607,6 @@ $(".fmr_articulos_editar").submit(function (event) {
         impo: $("#impo_mod").val(),
         flete: $("#flete_mod").val(),
         estado: $("#estado_mod").val(),
-        canen: $("#canen_mod").val(),
-        valen: $("#valen_mod").val(),
         pdes: $("#pdes_mod").val(),
         ultpro: $("#ultpro_mod").val(),
         docpro: $("#docpro_mod").val(),
@@ -650,8 +642,6 @@ $(".fmr_articulos_editar").submit(function (event) {
             impo: nuevoarticulo.impo,
             flete: nuevoarticulo.flete,
             estado: nuevoarticulo.estado,
-            canen: nuevoarticulo.canen,
-            valen: nuevoarticulo.valen,
             pdes: nuevoarticulo.pdes,
             ultpro: nuevoarticulo.ultpro,
             docpro: nuevoarticulo.docpro,

@@ -40,6 +40,7 @@ class gruposModel extends Conexion
             ## Calcular el total numero de registros sin filtro
             $sql = "SELECT COUNT(*) ";
             $sql .= " AS allcount FROM tbgrupos AS G";
+            $sql .= " INNER JOIN tbclases As C ON C.id = G.clase ";
             $sql .= " WHERE G.activo = 1";
             error_log("sql => " . $sql);
             $stmt = $conexion->prepare($sql);
@@ -50,6 +51,7 @@ class gruposModel extends Conexion
             ## Total numero de registros con filtro
             $sql = "SELECT COUNT(*)";
             $sql .= " AS allcount FROM tbgrupos As G";
+            $sql .= " INNER JOIN tbclases As C ON C.id = G.clase ";
             $sql .= " WHERE G.activo = 1 " . $searchQuery . " ";
             error_log("sql => " . $sql);
             $stmt = $conexion->prepare($sql);
@@ -109,7 +111,7 @@ class gruposModel extends Conexion
             $conexion = NULL;
         } catch (Exception $e) {
 
-            echo '<span class="label label-danger label-block">Error al cargar los datos</span>';
+            echo '<span class="label label-danger label-block">Error al cargar los datos</span>  '.$e;
         }
     }
 

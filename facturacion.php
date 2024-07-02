@@ -150,7 +150,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                             <input class="form-control" type="text" name="descripcion" id="descripcion" readonly>
                                                         </td>
                                                         <td>
-                                                            <input class="form-control" type="text" name="um" id="um">
+                                                            <input class="form-control" type="text" name="um" id="um" readonly>
                                                         </td>
                                                         <td>
                                                             <input class="form-control" type="text" name="cant" id="cant">

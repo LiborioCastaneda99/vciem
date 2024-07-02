@@ -247,7 +247,7 @@ class facturacionModel extends Conexion
                 echo json_encode($response);
             }
         } catch (Exception $e) {
-            $data = "Error";
+            $data = "Error ".$e;
             echo json_encode($data);
         }
     }

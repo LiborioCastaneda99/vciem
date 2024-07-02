@@ -38,6 +38,7 @@ $('#btnPagar').click(function() {
     if (total === 0) {
         notificacion('Error', 'error', 'Debe llenar todos los campos.')
     } else {
+        document.getElementById("pay_total_").textContent = total;
         $('#pagarFactura').modal('show');
     }
 });
@@ -48,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     payFields.forEach(function(field) {
         field.addEventListener("change", function() {
+            // console.log(fiel)
             validarSumaCampos();
         });
     });
@@ -148,13 +150,13 @@ $('#btnConsultarFactEsp').click(function() {
                 // document.getElementById('descripcion').value = data[0].nombre
                 // document.getElementById('um').value = "N/A"
                 // document.getElementById('cant').value = 1
-                // document.getElementById('vlr_unitario').value = data[0].stmin
+                // document.getElementById('vlr_unitario').value = data[0].pv1
                 // document.getElementById('desc').value = "%"
                 // document.getElementById('vlr_descuento').value = 0
-                // document.getElementById('vlr_unit_final').value = data[0].stmin
+                // document.getElementById('vlr_unit_final').value = data[0].pv1
                 // document.getElementById('imp').value = 19
-                // document.getElementById('vlr_impuesto').value = (data[0].stmin * 0.19)
-                // document.getElementById('vlr_parcial').value = parseFloat(data[0].stmin)
+                // document.getElementById('vlr_impuesto').value = (data[0].pv1 * 0.19)
+                // document.getElementById('vlr_parcial').value = parseFloat(data[0].pv1)
                 // $('#buscarProductos').modal('hide');
 
                 // const codigoCampo = document.getElementById('codigo');
@@ -273,15 +275,15 @@ function agregar(id) {
 
             document.getElementById('codigo').value = data[0].codigo
             document.getElementById('descripcion').value = data[0].nombre
-            document.getElementById('um').value = "N/A"
+            document.getElementById('um').value = data[0].umedida
             document.getElementById('cant').value = 1
-            document.getElementById('vlr_unitario').value = data[0].stmin
+            document.getElementById('vlr_unitario').value = data[0].pv1
             document.getElementById('desc').value = "%"
             document.getElementById('vlr_descuento').value = 0
-            document.getElementById('vlr_unit_final').value = data[0].stmin
+            document.getElementById('vlr_unit_final').value = data[0].pv1
             document.getElementById('imp').value = 19
-            document.getElementById('vlr_impuesto').value = (data[0].stmin * 0.19)
-            document.getElementById('vlr_parcial').value = parseFloat(data[0].stmin)
+            document.getElementById('vlr_impuesto').value = (data[0].pv1 * 0.19)
+            document.getElementById('vlr_parcial').value = parseFloat(data[0].pv1)
             $('#buscarProductos').modal('hide');
 
             const codigoCampo = document.getElementById('codigo');
@@ -350,15 +352,15 @@ $('#codigo').change(function() {
 
                 document.getElementById('codigo').value = response.datos[0].codigo
                 document.getElementById('descripcion').value = response.datos[0].nombre
-                document.getElementById('um').value = "N/A"
+                document.getElementById('um').value = response.datos[0].umedida
                 document.getElementById('cant').value = 1
-                document.getElementById('vlr_unitario').value = response.datos[0].stmin
+                document.getElementById('vlr_unitario').value = response.datos[0].pv1
                 document.getElementById('desc').value = "%"
                 document.getElementById('vlr_descuento').value = 0
-                document.getElementById('vlr_unit_final').value = response.datos[0].stmin
+                document.getElementById('vlr_unit_final').value = response.datos[0].pv1
                 document.getElementById('imp').value = 19
-                document.getElementById('vlr_impuesto').value = (response.datos[0].stmin * 0.19)
-                document.getElementById('vlr_parcial').value = parseFloat(response.datos[0].stmin)
+                document.getElementById('vlr_impuesto').value = (response.datos[0].pv1 * 0.19)
+                document.getElementById('vlr_parcial').value = parseFloat(response.datos[0].pv1)
                     // Y así sucesivamente con los demás campos
 
                 const codigoCampo = document.getElementById('codigo');

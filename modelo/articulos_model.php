@@ -97,7 +97,7 @@ class articulosModel extends Conexion
             ## Total numero de registros con filtro
             $sql = "SELECT COUNT(*)";
             $sql .= " AS allcount FROM tbarticulos As A
-            LEFT JOIN tbumedidas As U ON U.id = A.umedida
+            LEFT JOIN tbumedidas As U ON U.codigo = A.umedida
             LEFT JOIN tbclases As C ON C.id = A.clase
             LEFT JOIN tbgrupos As G ON G.id = A.grupo";
             $sql .= " WHERE A.activo = 1 " . $searchQuery . " ";
@@ -112,7 +112,7 @@ class articulosModel extends Conexion
             A.stmin, A.stmax, A.ctostan, A.ctoult, A.fecult, A.nal, A.pv1, A.pv2, A.pv3, A.ubicacion, A.uxemp, 
             A.peso, A.iva, A.impo, A.flete, A.estado, A.canen, A.valen, A.pdes, A.ultpro, A.docpro 
             FROM tbarticulos As A
-            LEFT JOIN tbumedidas As U ON U.id = A.umedida
+            LEFT JOIN tbumedidas As U ON U.codigo = A.umedida
             LEFT JOIN tbclases As C ON C.id = A.clase
             LEFT JOIN tbgrupos As G ON G.id = A.grupo";
             $sql .= " WHERE A.activo = 1 " . $searchQuery . " ORDER BY " . $columnName . " " . $columnSortOrder . " LIMIT :limit,:offset";
@@ -272,8 +272,8 @@ class articulosModel extends Conexion
                     'codigo' => $row['codigo'],
                     'nombre' => $row['nombre'],
                     'existencia' => $row['uxemp'],
-                    'vlr_minimo' => $row['stmin'],
-                    'vlr_sugerido' => $row['stmax'],
+                    'vlr_minimo' => $row['ctoult'],
+                    'vlr_sugerido' => $row['pv1'],
                     'comprar' => $opEditar
                 );
             }

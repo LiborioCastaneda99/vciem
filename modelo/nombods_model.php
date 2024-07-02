@@ -307,7 +307,7 @@ class nombodsModel extends Conexion
                 $search = $id; // Search text
 
                 // Mostrar resultados
-                $sql = "SELECT id, codigo, nombre FROM tbnombod where id=:id";
+                $sql = "SELECT id, codigo, nombre FROM tbnombod where id=:id AND activo = 1";
                 $stmt = $dbconec->prepare($sql);
                 $stmt->bindValue(':id', $search, PDO::PARAM_STR);
                 $stmt->execute();
@@ -317,7 +317,7 @@ class nombodsModel extends Conexion
                 if ($searchTerm == '') {
 
                     // Obtener registros a tarves de la consulta SQL
-                    $sql = "SELECT id, codigo, nombre FROM tbnombod ORDER BY nombre LIMIT :limit";
+                    $sql = "SELECT id, codigo, nombre FROM tbnombod where activo = 1 ORDER BY nombre LIMIT :limit";
                     $stmt = $dbconec->prepare($sql);
                     $stmt->bindValue(':limit', (int) $numberofrecords, PDO::PARAM_INT);
                     $stmt->execute();
@@ -325,7 +325,7 @@ class nombodsModel extends Conexion
                 } else {
                     $search = $searchTerm; // Search text
                     // Mostrar resultados
-                    $sql = "SELECT id, codigo, nombre FROM tbnombod WHERE nombre like :nombre or codigo like :nombre ORDER BY nombre LIMIT :limit";
+                    $sql = "SELECT id, codigo, nombre FROM tbnombod WHERE nombre like :nombre or codigo like :nombre  AND activo = 1 ORDER BY nombre LIMIT :limit";
                     $stmt = $dbconec->prepare($sql);
                     $stmt->bindValue(':nombre', '%' . $search . '%', PDO::PARAM_STR);
                     $stmt->bindValue(':limit', (int) $numberofrecords, PDO::PARAM_INT);

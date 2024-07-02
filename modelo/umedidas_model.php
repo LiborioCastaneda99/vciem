@@ -290,7 +290,7 @@ class umedidasModel extends Conexion
                 $search = $id; // Search text
 
                 // Mostrar resultados
-                $sql = "SELECT id, codigo, nombre FROM tbumedidas where activo = 1 AND id=:codigo";
+                $sql = "SELECT id, codigo, nombre FROM tbumedidas where activo = 1 AND codigo=:codigo";
                 $stmt = $dbconec->prepare($sql);
                 $stmt->bindValue(':codigo', $search, PDO::PARAM_STR);
                 $stmt->execute();
@@ -322,7 +322,7 @@ class umedidasModel extends Conexion
 
             foreach ($lstResult as $result) {
                 $response[] = array(
-                    "id" => $result['id'],
+                    "id" => $result['codigo'],
                     "text" => $result['nombre']
                 );
             }

@@ -593,7 +593,7 @@ class clientesModel extends Conexion
                 $search = $id; // Search text
 
                 // Mostrar resultados
-                $sql = "SELECT id, codigo, nombre FROM tbclientes where id=:id";
+                $sql = "SELECT id, codigo, nombre FROM tbclientes where id=:id AND activo = 1";
                 $stmt = $dbconec->prepare($sql);
                 $stmt->bindValue(':id', $search, PDO::PARAM_STR);
                 $stmt->execute();
@@ -603,7 +603,7 @@ class clientesModel extends Conexion
                 if ($searchTerm == '') {
 
                     // Obtener registros a tarves de la consulta SQL
-                    $sql = "SELECT id, codigo, nombre FROM tbclientes ORDER BY nombre LIMIT :limit";
+                    $sql = "SELECT id, codigo, nombre FROM tbclientes where activo = 1 ORDER BY nombre LIMIT :limit";
                     $stmt = $dbconec->prepare($sql);
                     $stmt->bindValue(':limit', (int) $numberofrecords, PDO::PARAM_INT);
                     $stmt->execute();
@@ -611,7 +611,7 @@ class clientesModel extends Conexion
                 } else {
                     $search = $searchTerm; // Search text
                     // Mostrar resultados
-                    $sql = "SELECT id, codigo, nombre FROM tbclientes WHERE nombre like :nombre or codigo like :nombre ORDER BY nombre LIMIT :limit";
+                    $sql = "SELECT id, codigo, nombre FROM tbclientes WHERE nombre like :nombre or codigo AND activo = 1 like :nombre ORDER BY nombre LIMIT :limit";
                     $stmt = $dbconec->prepare($sql);
                     $stmt->bindValue(':nombre', '%' . $search . '%', PDO::PARAM_STR);
                     $stmt->bindValue(':limit', (int) $numberofrecords, PDO::PARAM_INT);
@@ -649,7 +649,7 @@ class clientesModel extends Conexion
                 $search = $id; // Search text
 
                 // Mostrar resultados
-                $sql = "SELECT id, codigo, nombre FROM tbvendedores where id=:id";
+                $sql = "SELECT id, codigo, nombre FROM tbvendedores where id=:id and activo = 1";
                 $stmt = $dbconec->prepare($sql);
                 $stmt->bindValue(':id', $search, PDO::PARAM_STR);
                 $stmt->execute();
@@ -659,7 +659,7 @@ class clientesModel extends Conexion
                 if ($searchTerm == '') {
 
                     // Obtener registros a tarves de la consulta SQL
-                    $sql = "SELECT id, codigo, nombre FROM tbvendedores ORDER BY nombre LIMIT :limit";
+                    $sql = "SELECT id, codigo, nombre FROM tbvendedores where activo = 1 ORDER BY nombre LIMIT :limit";
                     $stmt = $dbconec->prepare($sql);
                     $stmt->bindValue(':limit', (int) $numberofrecords, PDO::PARAM_INT);
                     $stmt->execute();
@@ -667,7 +667,7 @@ class clientesModel extends Conexion
                 } else {
                     $search = $searchTerm; // Search text
                     // Mostrar resultados
-                    $sql = "SELECT id, codigo, nombre FROM tbvendedores WHERE nombre like :nombre or codigo like :nombre ORDER BY nombre LIMIT :limit";
+                    $sql = "SELECT id, codigo, nombre FROM tbvendedores WHERE nombre like :nombre or codigo and activo = 1 like :nombre ORDER BY nombre LIMIT :limit";
                     $stmt = $dbconec->prepare($sql);
                     $stmt->bindValue(':nombre', '%' . $search . '%', PDO::PARAM_STR);
                     $stmt->bindValue(':limit', (int) $numberofrecords, PDO::PARAM_INT);

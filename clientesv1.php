@@ -85,7 +85,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <th class="text-900 sort">Zona</th>
                                                 <th class="text-900 sort">Subzona</th>
                                                 <th class="text-900 sort">Nombre</th>
-                                                <th class="text-900 sort">Direc</th>
+                                                <th class="text-900 sort">Dirección</th>
                                                 <th class="text-900 sort">Teléfono 1</th>
                                                 <th class="text-900 sort">Teléfono 2</th>
                                                 <th class="text-900 text-center">Editar</th>
@@ -292,8 +292,8 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                     <div class="form-group col-md-12 mb-2">
                                                                         <select class="form-select" id="riva" size="1" name="riva" required>
                                                                             <option value="" selected disabled>Seleccione...</option>
-                                                                            <option value="0">No</option>
-                                                                            <option value="1">Si</option>
+                                                                            <option value="N">No</option>
+                                                                            <option value="S">Si</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -302,8 +302,8 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                     <div class="form-group col-md-12 mb-2">
                                                                         <select class="form-select" id="rfte" size="1" name="rfte" required>
                                                                             <option value="" selected disabled>Seleccione...</option>
-                                                                            <option value="0">No</option>
-                                                                            <option value="1">Si</option>
+                                                                            <option value="N">No</option>
+                                                                            <option value="S">Si</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -312,8 +312,8 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                     <div class="form-group col-md-12 mb-2">
                                                                         <select class="form-select" id="rica" size="1" name="rica" required>
                                                                             <option value="" selected disabled>Seleccione...</option>
-                                                                            <option value="0">No</option>
-                                                                            <option value="1">Si</option>
+                                                                            <option value="N">No</option>
+                                                                            <option value="S">Si</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -527,20 +527,15 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                         <form id="fmr_clientes1_mod" class="fmr_clientes_mod needs-validation" novalidate="novalidate" data-wizard-form="1">
                                                             <div class="row">
                                                                 <input type="hidden" value="1" name="id_pestana1" id="id_pestana1">
-                                                                <div class="col-md-4">
+                                                                <div class="col-md-3">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-codigo">Código</label>
                                                                     <input class="form-control" id="bootstrap-wizard-validation-wizard-codigo" name="codigo_mod" type="number" onchange="obtenerDocumento(this.value)" required readonly>
                                                                     <input class="form-control" id="bootstrap-wizard-validation-wizard-id" name="id" type="hidden" required>
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
-                                                                <div class="col-md-2">
+                                                                <div class="col-md-1">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-digito">DV</label>
                                                                     <input class="form-control" id="bootstrap-wizard-validation-wizard-digito" name="digito_mod" type="text" required />
-                                                                    <div class="valid-feedback">¡Ok!</div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-nombre">Nombre</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-nombre" name="nombre_mod" type="text" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
 
@@ -548,41 +543,48 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-lstSucursal">Sucursal</label>
                                                                     <select class="form-control" id="lstSucursal_mod" size="1" name="lstSucursal_mod" required="required">
                                                                     </select>
+                                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btn" name="btn" style="width: 15%;"><span class="fas fa-search search-box-icon"></span></button></span>
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                     <div class="invalid-feedback">Por favor, seleccione uno</div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-nombre">Nombre</label>
+                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-nombre" name="nombre_mod" type="text" required />
+                                                                    <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-zona">Zona</label> <br>
                                                                     <select class="" id="lstZonas_mod" size="1" name="lstZonas_mod" required onchange="cargar_select(this.value)">
                                                                     </select>
+                                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btn" name="btn" style="width: 15%;"><span class="fas fa-search search-box-icon"></span></button></span>
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                     <div class="invalid-feedback">Por favor, seleccione uno</div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-subzona">Subzona</label>
-                                                                    <!-- <input class="form-control" id="bootstrap-wizard-validation-wizard-subzona" name="subzona_mod" type="text" required /> -->
                                                                     <select class="" id="lstSubzonas_mod" size="1" name="lstSubzonas_mod" required>
                                                                     </select>
+                                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btn" name="btn" style="width: 15%;"><span class="fas fa-search search-box-icon"></span></button></span>
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                     <div class="invalid-feedback">Por favor, seleccione uno</div>
                                                                 </div>
 
-                                                                <div class="col-md-6">
+                                                                <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-direc">Dirección</label>
                                                                     <input class="form-control" id="bootstrap-wizard-validation-wizard-direc" name="direc_mod" type="text" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
-                                                                <div class="col-md-6">
+                                                                <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-correo">Correo</label>
                                                                     <input class="form-control" id="bootstrap-wizard-validation-wizard-correo" name="correo_mod" type="email" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
-                                                                <div class="col-md-6">
+                                                                <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-tel1">Teléfono 1</label>
                                                                     <input class="form-control" id="bootstrap-wizard-validation-wizard-tel1" name="tel1_mod" type="number" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
-                                                                <div class="col-md-6">
+                                                                <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-tel2">Teléfono 2</label>
                                                                     <input class="form-control" id="bootstrap-wizard-validation-wizard-tel2" name="tel2_mod" type="number" />
                                                                     <div class="valid-feedback">¡Ok!</div>

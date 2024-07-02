@@ -529,7 +529,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                 <input type="hidden" value="1" name="id_pestana1" id="id_pestana1">
                                                                 <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-codigo">Código</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-codigo" name="codigo_mod" type="number" onchange="obtenerDocumento(this.value)" required>
+                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-codigo" name="codigo_mod" type="number" onchange="obtenerDocumento(this.value)" required readonly>
                                                                     <input class="form-control" id="bootstrap-wizard-validation-wizard-id" name="id" type="hidden" required>
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>

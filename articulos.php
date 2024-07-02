@@ -174,27 +174,27 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="stmin">Stmin</label>
+                                                <label class="form-label" for="stmin">Stock Mínimo</label>
                                                 <input class="form-control" id="stmin" name="stmin" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="stmax">Stmax</label>
+                                                <label class="form-label" for="stmax">Stock Máximo</label>
                                                 <input class="form-control" id="stmax" name="stmax" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="ctostan">Ctostan</label>
+                                                <label class="form-label" for="ctostan">Costo Standar</label>
                                                 <input class="form-control" id="ctostan" name="ctostan" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="ctoult">Ctoult</label>
+                                                <label class="form-label" for="ctoult">Costo Último</label>
                                                 <input class="form-control" id="ctoult" name="ctoult" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="fecult">Fecult</label>
+                                                <label class="form-label" for="fecult">Fecha Última</label>
                                                 <input class="form-control" id="fecult" name="fecult" type="date" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
@@ -208,17 +208,17 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="pv1">Pv1</label>
+                                                <label class="form-label" for="pv1">Precio Venta 1</label>
                                                 <input class="form-control" id="pv1" name="pv1" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="pv2">Pv2</label>
+                                                <label class="form-label" for="pv2">Precio Venta 2</label>
                                                 <input class="form-control" id="pv2" name="pv2" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="pv3">Pv3</label>
+                                                <label class="form-label" for="pv3">Precio Venta 3</label>
                                                 <input class="form-control" id="pv3" name="pv3" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
@@ -228,7 +228,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="uxemp">Uxemp</label>
+                                                <label class="form-label" for="uxemp">Unidad por Emp</label>
                                                 <input class="form-control" id="uxemp" name="uxemp" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
@@ -258,27 +258,27 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="canen">Canen</label>
+                                                <label class="form-label" for="canen">Cantidad en</label>
                                                 <input class="form-control" id="canen" name="canen" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="valen">Valen</label>
+                                                <label class="form-label" for="valen">Valor en</label>
                                                 <input class="form-control" id="valen" name="valen" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label class="form-label" for="pdes">Pdes</label>
+                                                <label class="form-label" for="pdes">Precio Descuento</label>
                                                 <input class="form-control" id="pdes" name="pdes" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label class="form-label" for="ultpro">Ultpro</label>
+                                                <label class="form-label" for="ultpro">Último Proveedor</label>
                                                 <input class="form-control" id="ultpro" name="ultpro" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label class="form-label" for="docpro">Docpro</label>
+                                                <label class="form-label" for="docpro">Documento Proveedor</label>
                                                 <input class="form-control" id="docpro" name="docpro" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
@@ -311,7 +311,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             <div class="col-md-2">
                                                 <label class="form-label" for="codigo_mod">Código</label>
                                                 <input class="form-control" id="id" name="id" type="hidden" />
-                                                <input class="form-control" id="codigo_mod" name="codigo_mod" type="text" required />
+                                                <input class="form-control" id="codigo_mod" name="codigo_mod" type="text" required readonly/>
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">
@@ -354,27 +354,27 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="stmin_mod">Stmin</label>
+                                                <label class="form-label" for="stmin_mod">Stock Mínimo</label>
                                                 <input class="form-control" id="stmin_mod" name="stmin_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="stmax_mod">Stmax</label>
+                                                <label class="form-label" for="stmax_mod">Stock Máximo</label>
                                                 <input class="form-control" id="stmax_mod" name="stmax_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="ctostan_mod">Ctostan</label>
+                                                <label class="form-label" for="ctostan_mod">Costo Standar</label>
                                                 <input class="form-control" id="ctostan_mod" name="ctostan_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="ctoult_mod">Ctoult</label>
+                                                <label class="form-label" for="ctoult_mod">Costo Último</label>
                                                 <input class="form-control" id="ctoult_mod" name="ctoult_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="fecult_mod">Fecult</label>
+                                                <label class="form-label" for="fecult_mod">Fecha Última</label>
                                                 <input class="form-control" id="fecult_mod" name="fecult_mod" type="date" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
@@ -388,17 +388,17 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="pv1_mod">Pv1</label>
+                                                <label class="form-label" for="pv1_mod">Precio Venta 1</label>
                                                 <input class="form-control" id="pv1_mod" name="pv1_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="pv2_mod">Pv2</label>
+                                                <label class="form-label" for="pv2_mod">Precio Venta 2</label>
                                                 <input class="form-control" id="pv2_mod" name="pv2_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="pv3_mod">Pv3</label>
+                                                <label class="form-label" for="pv3_mod">Precio Venta 3</label>
                                                 <input class="form-control" id="pv3_mod" name="pv3_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
@@ -408,7 +408,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="uxemp_mod">Uxemp</label>
+                                                <label class="form-label" for="uxemp_mod">Unidad xemp</label>
                                                 <input class="form-control" id="uxemp_mod" name="uxemp_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
@@ -438,27 +438,27 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="canen_mod">Canen</label>
+                                                <label class="form-label" for="canen_mod">Cantidad en</label>
                                                 <input class="form-control" id="canen_mod" name="canen_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="valen_mod">Valen</label>
+                                                <label class="form-label" for="valen_mod">Valor en</label>
                                                 <input class="form-control" id="valen_mod" name="valen_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label class="form-label" for="pdes_mod">Pdes</label>
+                                                <label class="form-label" for="pdes_mod">Precio Descuento</label>
                                                 <input class="form-control" id="pdes_mod" name="pdes_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label class="form-label" for="ultpro_mod">Ultpro</label>
+                                                <label class="form-label" for="ultpro_mod">Último Proveedor</label>
                                                 <input class="form-control" id="ultpro_mod" name="ultpro_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label class="form-label" for="docpro_mod">Docpro</label>
+                                                <label class="form-label" for="docpro_mod">Documento Proveedor</label>
                                                 <input class="form-control" id="docpro_mod" name="docpro_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>

@@ -156,7 +156,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             <div class="col-md-6">
                                                 <label class="form-label" for="codigo">Codigo</label>
                                                 <input class="form-control" id="id" name="id" type="hidden" />
-                                                <input class="form-control" id="codigo_mod" name="codigo_mod" type="text" required />
+                                                <input class="form-control" id="codigo_mod" name="codigo_mod" type="text" required readonly/>
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-6">

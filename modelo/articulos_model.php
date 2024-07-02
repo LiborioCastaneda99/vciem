@@ -46,8 +46,6 @@ class articulosModel extends Conexion
                     A.impo LIKE :impo or
                     A.flete LIKE :flete or
                     A.estado LIKE :estado or
-                    A.canen LIKE :canen or
-                    A.valen LIKE :valen or
                     A.pdes LIKE :pdes or
                     A.ultpro LIKE :ultpro or
                     A.docpro LIKE :docpro
@@ -76,8 +74,6 @@ class articulosModel extends Conexion
                     'impo' => "%$searchValue%",
                     'flete' => "%$searchValue%",
                     'estado' => "%$searchValue%",
-                    'canen' => "%$searchValue%",
-                    'valen' => "%$searchValue%",
                     'pdes' => "%$searchValue%",
                     'ultpro' => "%$searchValue%",
                     'docpro' => "%$searchValue%",
@@ -164,8 +160,6 @@ class articulosModel extends Conexion
                     'impo' => $row['impo'],
                     'flete' => $row['flete'],
                     'estado' => $row['estado'],
-                    'canen' => $row['canen'],
-                    'valen' => $row['valen'],
                     'pdes' => $row['pdes'],
                     'ultpro' => $row['ultpro'],
                     'docpro' => $row['docpro'],
@@ -447,7 +441,7 @@ class articulosModel extends Conexion
                 echo json_encode($response);
             }
         } catch (Exception $e) {
-            $data = "Error";
+            $data = "Error". $e;
             echo json_encode($data);
         }
     }

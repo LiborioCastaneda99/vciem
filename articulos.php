@@ -81,28 +81,26 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <th class="text-900 sort">Clase</th>
                                                 <th class="text-900 sort">Grupo</th>
                                                 <th class="text-900 sort">Referencia</th>
-                                                <th class="text-900 sort">Umedida</th>
-                                                <th class="text-900 sort">Stmin</th>
-                                                <th class="text-900 sort">Stmax</th>
-                                                <th class="text-900 sort">Ctostan</th>
-                                                <th class="text-900 sort">Ctoult</th>
-                                                <th class="text-900 sort">Fecult</th>
-                                                <th class="text-900 sort">Nal</th>
-                                                <th class="text-900 sort">Pv1</th>
-                                                <th class="text-900 sort">Pv2</th>
-                                                <th class="text-900 sort">Pv3</th>
+                                                <th class="text-900 sort">Unidad De Medida</th>
+                                                <th class="text-900 sort">Stock Mínimo</th>
+                                                <th class="text-900 sort">Stock Máximo</th>
+                                                <th class="text-900 sort">Costo Standar</th>
+                                                <th class="text-900 sort">Costo Último</th>
+                                                <th class="text-900 sort">Fecha Última</th>
+                                                <th class="text-900 sort">Nacional o Importado</th>
+                                                <th class="text-900 sort">Precio Venta 1</th>
+                                                <th class="text-900 sort">Precio Venta 2</th>
+                                                <th class="text-900 sort">Precio Venta 3</th>
                                                 <th class="text-900 sort">Ubicación</th>
-                                                <th class="text-900 sort">Uxemp</th>
+                                                <th class="text-900 sort">Unidad Por Empaque</th>
                                                 <th class="text-900 sort">Peso</th>
                                                 <th class="text-900 sort">IVA</th>
-                                                <th class="text-900 sort">Impo</th>
+                                                <th class="text-900 sort">Impuesto</th>
                                                 <th class="text-900 sort">Flete</th>
                                                 <th class="text-900 sort">Estado</th>
-                                                <th class="text-900 sort">Canen</th>
-                                                <th class="text-900 sort">Valen</th>
-                                                <th class="text-900 sort">Pdes</th>
-                                                <th class="text-900 sort">Ultpro</th>
-                                                <th class="text-900 sort">Docpro</th>
+                                                <th class="text-900 sort">Porcentaje Descuento</th>
+                                                <th class="text-900 sort">Último Proveedor</th>
+                                                <th class="text-900 sort">Documento Proveedor</th>
                                                 <th class="text-900 text-center">Editar</th>
                                                 <th class="text-900 text-center">Eliminar</th>
                                             </tr>
@@ -228,7 +226,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="uxemp">Unidad por Emp</label>
+                                                <label class="form-label" for="uxemp">Unidad Por Empaque</label>
                                                 <input class="form-control" id="uxemp" name="uxemp" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
@@ -243,7 +241,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="impo">Impo</label>
+                                                <label class="form-label" for="impo">Impuesto</label>
                                                 <input class="form-control" id="impo" name="impo" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
@@ -257,7 +255,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <input class="form-control" id="estado" name="estado" type="text" required readonly value=""     />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-2">
+                                            <!-- <div class="col-md-2">
                                                 <label class="form-label" for="canen">Cantidad en</label>
                                                 <input class="form-control" id="canen" name="canen" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
@@ -266,9 +264,9 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <label class="form-label" for="valen">Valor en</label>
                                                 <input class="form-control" id="valen" name="valen" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
-                                            </div>
+                                            </div> -->
                                             <div class="col-md-4">
-                                                <label class="form-label" for="pdes">Precio Descuento</label>
+                                                <label class="form-label" for="pdes">Porcentaje Descuento</label>
                                                 <input class="form-control" id="pdes" name="pdes" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
@@ -423,7 +421,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="impo_mod">Impo</label>
+                                                <label class="form-label" for="impo_mod">Impuesto</label>
                                                 <input class="form-control" id="impo_mod" name="impo_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
@@ -437,18 +435,18 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <input class="form-control" id="estado_mod" name="estado_mod" type="text" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
-                                            <div class="col-md-2">
-                                                <label class="form-label" for="canen_mod">Cantidad en</label>
+                                            <!-- <div class="col-md-2">
+                                                <label class="form-label" for="canen_mod">Cantidad Entrada</label>
                                                 <input class="form-control" id="canen_mod" name="canen_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label class="form-label" for="valen_mod">Valor en</label>
+                                                <label class="form-label" for="valen_mod">Valor Entrada</label>
                                                 <input class="form-control" id="valen_mod" name="valen_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
-                                            </div>
+                                            </div> -->
                                             <div class="col-md-4">
-                                                <label class="form-label" for="pdes_mod">Precio Descuento</label>
+                                                <label class="form-label" for="pdes_mod">Porcentaje Descuento</label>
                                                 <input class="form-control" id="pdes_mod" name="pdes_mod" type="number" required />
                                                 <div class="valid-feedback">¡Ok!</div>
                                             </div>

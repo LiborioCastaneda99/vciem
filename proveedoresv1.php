@@ -10,7 +10,7 @@ if (!isset($usuario_id)) {
     header('Location: login.php');
 }
 
-$permisoRequerido = "ver_clientes";
+$permisoRequerido = "ver_proveedores";
 // Verificar si el usuario tiene el permiso requerido
 if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
     // Mostrar un mensaje de error o redirigir a otra página
@@ -29,7 +29,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
     <!-- ===============================================-->
     <!--    Document Title-->
     <!-- ===============================================-->
-    <title>Visual Ciem | Clientes</title>
+    <title>Visual Ciem | Proveedores</title>
 
     <!-- ===============================================-->
     <!--    Favicons-->
@@ -70,7 +70,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                     <div class="card-header bg-body-tertiary">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h6 class="mb-0">Clientes</h6>
+                                <h6 class="mb-0">Proveedores</h6>
                             </div>
                         </div>
                     </div>
@@ -82,9 +82,10 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                         <thead class="bg-200">
                                             <tr>
                                                 <th class="text-900 sort">Código</th>
+                                                <th class="text-900 sort">Sucursal</th>
+                                                <th class="text-900 sort">Nombre</th>
                                                 <th class="text-900 sort">Zona</th>
                                                 <th class="text-900 sort">Subzona</th>
-                                                <th class="text-900 sort">Nombre</th>
                                                 <th class="text-900 sort">Dirección</th>
                                                 <th class="text-900 sort">Teléfono 1</th>
                                                 <th class="text-900 sort">Teléfono 2</th>
@@ -108,9 +109,9 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                             <div class="position-absolute top-0 end-0 mt-3 me-3 z-1"><button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button></div>
                             <div class="modal-body p-0">
                                 <div class="rounded-top-3 bg-body-tertiary py-3 ps-4 pe-6">
-                                    <h4 class="mb-1" id="staticBackdropLabel">Registro de clientes
+                                    <h4 class="mb-1" id="staticBackdropLabel">Registro de proveedores
                                     </h4>
-                                    
+
                                 </div>
                                 <div class="p-3">
                                     <div class="col-lg-6 col-xl-12 col-xxl-6 h-100">
@@ -119,7 +120,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             <div class="card-header bg-body-tertiary pt-3 pb-2">
                                                 <ul class="nav justify-content-between nav-wizard">
                                                     <li class="nav-item">
-                                                        <!-- definimos las opciones de llenado de clientes -->
+                                                        <!-- definimos las opciones de llenado de proveedores -->
                                                         <a id="abrir" class="nav-link active fw-semi-bold" href="#bootstrap-wizard-validation-tab1" data-bs-toggle="tab" data-wizard-step="1">
                                                             <span class="nav-item-circle-parent">
                                                                 <span class="nav-item-circle">
@@ -143,18 +144,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                             </span>
                                                         </a>
                                                     </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link fw-semi-bold" href="#bootstrap-wizard-validation-tab3" data-bs-toggle="tab" data-wizard-step="3">
-                                                            <span class="nav-item-circle-parent">
-                                                                <span class="nav-item-circle">
-                                                                    <span class="fas fa-dollar-sign"></span>
-                                                                </span>
-                                                            </span>
-                                                            <span class="d-none d-md-block mt-1 fs-10">
-                                                                Información facturación
-                                                            </span>
-                                                        </a>
-                                                    </li>
+
                                                     <li class="nav-item">
                                                         <a class="nav-link fw-semi-bold" href="#bootstrap-wizard-validation-tab4" data-bs-toggle="tab" data-wizard-step="4">
                                                             <span class="nav-item-circle-parent">
@@ -172,17 +162,12 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             <div class="card-body py-4" id="wizard-controller">
                                                 <div class="tab-content">
                                                     <div class="tab-pane active px-sm-3 px-md-5" role="tabpanel" aria-labelledby="bootstrap-wizard-validation-tab1" id="bootstrap-wizard-validation-tab1">
-                                                        <form id="fmr_clientes1" class="fmr_clientes needs-validation" novalidate="novalidate" data-wizard-form="1">
+                                                        <form id="fmr_proveedores1" class="fmr_proveedores needs-validation" novalidate="novalidate" data-wizard-form="1">
                                                             <div class="row">
                                                                 <input type="hidden" value="1" name="id_pestana1" id="id_pestana1">
                                                                 <div class="col-md-3">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-codigo">Código</label>
                                                                     <input class="form-control" id="bootstrap-wizard-validation-wizard-codigo" name="codigo" type="number" onchange="obtenerDocumento(this.value)" required>
-                                                                    <div class="valid-feedback">¡Ok!</div>
-                                                                </div>
-                                                                <div class="col-md-1">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-digito">DV</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-digito" name="digito" type="text" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
                                                                 <div class="col-md-4">
@@ -196,7 +181,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="col-md-4">
+                                                                <div class="col-md-5">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-nombre">Nombre</label>
                                                                     <input class="form-control" id="bootstrap-wizard-validation-wizard-nombre" name="nombre" type="text" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
@@ -224,8 +209,8 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                 </div>
 
                                                                 <div class="col-md-4">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-direc">Dirección</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-direc" name="direc" type="text" required />
+                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-direccion">Dirección</label>
+                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-direccion" name="direccion" type="text" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
                                                                 <div class="col-md-4">
@@ -247,43 +232,39 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                         </form>
                                                     </div>
                                                     <div class="tab-pane px-sm-3 px-md-5" role="tabpanel" aria-labelledby="bootstrap-wizard-validation-tab2" id="bootstrap-wizard-validation-tab2">
-                                                        <form id="fmr_clientes2" class="fmr_clientes needs-validation" novalidate="novalidate" data-wizard-form="2">
+                                                        <form id="fmr_proveedores2" class="fmr_proveedores needs-validation" novalidate="novalidate" data-wizard-form="2">
                                                             <div class="row">
                                                                 <input type="hidden" value="1" name="id_pestana2" id="id_pestana2">
 
-                                                                <div class="col-md-6">
-                                                                    <label>Vendedor</label>
-                                                                    <div class="form-group col-md-12 mb-2">
-                                                                        <select class="form-select selectpicker" id="vende" size="1" name="vende" required>
-                                                                        </select>
-                                                                        <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaVendedoresAgg" name="btnBusquedaVendedoresAgg" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-md-6">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-legal">Representante Legal</label>
+                                                                <div class="col-md-4">
+                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-legal">Representante legal</label>
                                                                     <input class="form-control" id="bootstrap-wizard-validation-wizard-legal" name="legal" type="text" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-cupo">Cupo Credito</label>
+                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-cupo">Cupo crédito</label>
                                                                     <input class="form-control" id="bootstrap-wizard-validation-wizard-cupo" name="cupo" type="text" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <label class="form-label" for="fing_ing">Fecha de Ingreso</label>
-                                                                    <input class="form-control" id="fing_ing" name="fing_ing" type="date" required />
+                                                                    <label class="form-label" for="fecha_ini">Fecha de ingreso</label>
+                                                                    <input class="form-control" id="fecha_ini" name="fecha_ini" type="date" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <label for="">Forma de pago</label>
                                                                     <div class="form-group col-md-12 mb-2">
-                                                                        <input class="form-control" id="bootstrap-wizard-validation-wizard-fpago" name="fpago" type="number" required />
+                                                                        <input class="form-control" id="bootstrap-wizard-validation-wizard-forma_pago" name="forma_pago" type="number" required />
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-3">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-chdev">Cheques Devueltos</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-chdev" name="chdev" type="text" required />
+                                                                <div class="col-md-4">
+                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-caract_dev">Caract. Devolución</label>
+                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-caract_dev" name="caract_dev" type="text" required />
+                                                                    <div class="valid-feedback">¡Ok!</div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-digito">Dígito</label>
+                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-digito" name="digito" type="text" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
 
@@ -317,108 +298,18 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-4">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-tipo">Tipo Cliente</label>
-                                                                    <select class="form-select" id="tipo" size="1" name="tipo" required>
-                                                                        <option value="" selected disabled>Seleccione...</option>
-                                                                        <option value="1">Común</option>
-                                                                        <option value="2">Simplificado</option>
-                                                                        <option value="3">Gran Contribuyente</option>
-                                                                    </select>
-                                                                    
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-distri">Distribuidor</label>
-                                                                    <select class="form-select" id="distri" size="1" name="distri" required>
-                                                                        <option value="" selected disabled>Seleccione...</option>
-                                                                        <option value="C">Cliente</option>
-                                                                        <option value="D">Distribuidor</option>
-                                                                    </select>
-                                                                   
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-clase">Clase Cliente</label>
-                                                                    <select class="form-select" id="clase" size="1" name="clase" required>
-                                                                        <option value="" selected disabled>Seleccione...</option>
-                                                                        <option value="I">Insuficiente</option>
-                                                                        <option value="R">Regular</option>
-                                                                        <option value="B">Bueno</option>
-                                                                        <option value="E">Excelente</option>
-                                                                    </select>
-                                                                    
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                    <div class="tab-pane px-sm-3 px-md-5" role="tabpanel" aria-labelledby="bootstrap-wizard-validation-tab3" id="bootstrap-wizard-validation-tab3">
-                                                        <form id="fmr_clientes3" class="fmr_clientes needs-validation" novalidate="novalidate" data-wizard-form="3">
-                                                            <div class="row">
-                                                                <input type="hidden" value="1" name="id_pestana2" id="id_pestana2">
-
-
                                                                 <div class="col-md-3">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-person">Tipo Persona</label>
-                                                                    <select class="form-select" id="person" size="1" name="person" required>
-                                                                        <option value="" selected disabled>Seleccione...</option>
-                                                                        <option value="1">Jurídico</option>
-                                                                        <option value="2">Natural</option>
-                                                                    </select>
-                                                                    
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-regime">Tipo Regimen</label>
-                                                                    <select class="form-select" id="regime" size="1" name="regime" required>
-                                                                        <option value="" selected disabled>Seleccione...</option>
-                                                                        <option value="0">Simple</option>
-                                                                        <option value="2">Ordinario</option>
-                                                                    </select>
-                                                                    
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-pais">Codigo Pais</label>
-                                                                    <select class="form-select" id="pais" size="1" name="pais" required>
-                                                                        <option value="" selected disabled>Seleccione...</option>
-                                                                        <option value="CO">Colombia</option>
-                                                                    </select>
-                                                                    
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-tipoid">Tipo Identificación</label>
-                                                                    <select class="form-select" id="tipoid" size="1" name="tipoid" required>
-                                                                        <option value="" selected disabled>Seleccione...</option>
-                                                                        <option value="13">CC</option>
-                                                                        <option value="31">NIT</option>
-                                                                        <option value="12">TI</option>
-                                                                        <option value="22">CE</option>
-                                                                    </select>
-                                                                    
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-nom1">Primer Nombre</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-nom1" name="nom1" type="text" required />
-                                                                    <div class="valid-feedback">¡Ok!</div>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-nom2">Segundo Nombre</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-nom2" name="nom2" type="text" />
-                                                                    <div class="valid-feedback">¡Ok!</div>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-ape1">Primer Apellido</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-ape1" name="ape1" type="text" required />
-                                                                    <div class="valid-feedback">¡Ok!</div>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-ape2">Segundo Apellido</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-ape2" name="ape2" type="text" />
+                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-estado">Estado</label>
+                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-estado" name="estado" type="text" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
                                                             </div>
                                                         </form>
                                                     </div>
+
                                                     <div class="tab-pane text-center px-sm-3 px-md-5" role="tabpanel" aria-labelledby="bootstrap-wizard-validation-tab4" id="bootstrap-wizard-validation-tab4">
                                                         <div class="wizard-lottie-wrapper">
-                                                            
+
                                                         </div>
                                                         <h4 id="resp_titulo" class="mb-1">{resp_titulo}</h4>
                                                         <p id="resp_mensaje">{resp_mensaje}</p><a class="btn btn-primary px-5 my-3" href="#" onclick="cerrar_modal('guardarModal')">Cerrar</a>
@@ -453,9 +344,9 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                             <div class="position-absolute top-0 end-0 mt-3 me-3 z-1"><button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button></div>
                             <div class="modal-body p-0">
                                 <div class="rounded-top-3 bg-body-tertiary py-3 ps-4 pe-6">
-                                    <h4 class="mb-1" id="staticBackdropLabel">Editar clientes
+                                    <h4 class="mb-1" id="staticBackdropLabel">Editar proveedores
                                     </h4>
-                                    
+
                                 </div>
                                 <div class="p-3">
                                     <div class="col-lg-6 col-xl-12 col-xxl-6 h-100">
@@ -464,7 +355,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             <div class="card-header bg-body-tertiary pt-3 pb-2">
                                                 <ul class="nav justify-content-between nav-wizard">
                                                     <li class="nav-item">
-                                                        <!-- definimos las opciones de llenado de clientes -->
+                                                        <!-- definimos las opciones de llenado de proveedores -->
                                                         <a id="abrir" class="nav-link active fw-semi-bold" href="#bootstrap-wizard-validation-tab1-mod" data-bs-toggle="tab" data-wizard-step="1">
                                                             <span class="nav-item-circle-parent">
                                                                 <span class="nav-item-circle">
@@ -492,18 +383,6 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                         <a class="nav-link fw-semi-bold" href="#bootstrap-wizard-validation-tab3-mod" data-bs-toggle="tab" data-wizard-step="3">
                                                             <span class="nav-item-circle-parent">
                                                                 <span class="nav-item-circle">
-                                                                    <span class="fas fa-dollar-sign"></span>
-                                                                </span>
-                                                            </span>
-                                                            <span class="d-none d-md-block mt-1 fs-10">
-                                                                Información facturación
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link fw-semi-bold" href="#bootstrap-wizard-validation-tab4-mod" data-bs-toggle="tab" data-wizard-step="4">
-                                                            <span class="nav-item-circle-parent">
-                                                                <span class="nav-item-circle">
                                                                     <span class="fas fa-thumbs-up"></span>
                                                                 </span>
                                                             </span>
@@ -517,7 +396,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             <div class="card-body py-4" id="wizard-controller">
                                                 <div class="tab-content">
                                                     <div class="tab-pane active px-sm-3 px-md-5" role="tabpanel" aria-labelledby="bootstrap-wizard-validation-tab1-mod" id="bootstrap-wizard-validation-tab1-mod">
-                                                        <form id="fmr_clientes1_mod" class="fmr_clientes_mod needs-validation" novalidate="novalidate" data-wizard-form="1">
+                                                        <form id="fmr_proveedores1_mod" class="fmr_proveedores_mod needs-validation" novalidate="novalidate" data-wizard-form="1">
                                                             <div class="row">
                                                                 <input type="hidden" value="1" name="id_pestana1" id="id_pestana1">
                                                                 <div class="col-md-3">
@@ -526,12 +405,6 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                     <input class="form-control" id="bootstrap-wizard-validation-wizard-id" name="id" type="hidden" required>
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
-                                                                <div class="col-md-1">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-digito">DV</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-digito" name="digito_mod" type="text" required />
-                                                                    <div class="valid-feedback">¡Ok!</div>
-                                                                </div>
-
                                                                 <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-lstSucursal">Sucursal</label>
                                                                     <select class="form-control" id="lstSucursal_mod" size="1" name="lstSucursal_mod" required="required">
@@ -540,7 +413,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                     <div class="invalid-feedback">Por favor, seleccione uno</div>
                                                                 </div>
-                                                                <div class="col-md-4">
+                                                                <div class="col-md-5">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-nombre">Nombre</label>
                                                                     <input class="form-control" id="bootstrap-wizard-validation-wizard-nombre" name="nombre_mod" type="text" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
@@ -549,7 +422,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-zona">Zona</label> <br>
                                                                     <select class="" id="lstZonas_mod" size="1" name="lstZonas_mod" required onchange="cargar_select_mod(this.value)">
                                                                     </select>
-                                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaZonasMod" name="btnBusquedaZonasMod" style="width: 15%;"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaZonaMod" name="btnBusquedaZonaMod" style="width: 15%;"><span class="fas fa-search search-box-icon"></span></button></span>
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                     <div class="invalid-feedback">Por favor, seleccione uno</div>
                                                                 </div>
@@ -557,14 +430,14 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-subzona">Subzona</label>
                                                                     <select class="" id="lstSubzonas_mod" size="1" name="lstSubzonas_mod" required>
                                                                     </select>
-                                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaSubZonasMod" name="btnBusquedaSubZonasMod" style="width: 15%;"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaSubzonaMod" name="btnBusquedaSubzonaMod" style="width: 15%;"><span class="fas fa-search search-box-icon"></span></button></span>
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                     <div class="invalid-feedback">Por favor, seleccione uno</div>
                                                                 </div>
 
                                                                 <div class="col-md-4">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-direc">Dirección</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-direc" name="direc_mod" type="text" required />
+                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-direccion">Dirección</label>
+                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-direccion" name="direccion_mod" type="text" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
                                                                 <div class="col-md-4">
@@ -586,41 +459,38 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                         </form>
                                                     </div>
                                                     <div class="tab-pane px-sm-3 px-md-5" role="tabpanel" aria-labelledby="bootstrap-wizard-validation-tab2-mod" id="bootstrap-wizard-validation-tab2-mod">
-                                                        <form id="fmr_clientes2_mod" class="fmr_clientes_mod needs-validation" novalidate="novalidate" data-wizard-form="2">
+                                                        <form id="fmr_proveedores2_mod" class="fmr_proveedores_mod needs-validation" novalidate="novalidate" data-wizard-form="2">
                                                             <div class="row">
                                                                 <input type="hidden" value="1" name="id_pestana2" id="id_pestana2">
-                                                                
+
                                                                 <div class="col-md-4">
-                                                                    <label class="form-label" for="vende">Vendedor</label>
-                                                                    <select class="" id="vende_mod" size="1" name="vende_mod" required>
-                                                                    </select>
-                                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaVendedoresMod" name="btnBusquedaVendedoresMod" style="width: 15%;"><span class="fas fa-search search-box-icon"></span></button></span>
-                                                                    <div class="valid-feedback">¡Ok!</div>
-                                                                    <div class="invalid-feedback">Por favor, seleccione uno</div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-legal">Representante Legal</label>
+                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-legal">Representante legal</label>
                                                                     <input class="form-control" id="bootstrap-wizard-validation-wizard-legal" name="legal_mod" type="text" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-cupo">Cupo Credito</label>
+                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-cupo">Cupo crédito</label>
                                                                     <input class="form-control" id="bootstrap-wizard-validation-wizard-cupo" name="cupo_mod" type="text" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-fing_mod">Fecha de Ingreso</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-fing_mod" name="fing_mod" type="date" required />
+                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-fecha_ini_mod">Fecha de ingreso</label>
+                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-fecha_ini_mod" name="fecha_ini_mod" type="date" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-fpago">Forma Pago</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-fpago" name="fpago_mod" type="text" required />
+                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-forma_pago">Forma pago</label>
+                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-forma_pago" name="forma_pago_mod" type="text" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
-                                                                <div class="col-md-3">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-chdev">Cheques Devueltos</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-chdev" name="chdev_mod" type="text" required />
+                                                                <div class="col-md-4">
+                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-caract_dev">Caract. Devolución</label>
+                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-caract_dev" name="caract_dev_mod" type="text" required />
+                                                                    <div class="valid-feedback">¡Ok!</div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-digito">Dígito</label>
+                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-digito" name="digito_mod" type="text" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
                                                                 <div class="col-md-3">
@@ -647,102 +517,18 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                         <option value="S">Si</option>
                                                                     </select>
                                                                 </div>
-                                                                <div class="col-md-4">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-tipo">Tipo Cliente</label>
-                                                                    <select class="form-select" id="tipo_mod" size="1" name="tipo_mod" required>
-                                                                        <option value="" selected disabled>Seleccione...</option>
-                                                                        <option value="1">Común</option>
-                                                                        <option value="2">Simplificado</option>
-                                                                        <option value="3">Gran Contribuyente</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-distri">Distribuidor</label>
-                                                                    <select class="form-select" id="distri_mod" size="1" name="distri_mod" required>
-                                                                        <option value="" selected disabled>Seleccione...</option>
-                                                                        <option value="C">Cliente</option>
-                                                                        <option value="D">Distribuidor</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-clase">Clase Cliente</label>
-                                                                    <select class="form-select" id="clase_mod" size="1" name="clase_mod" required>
-                                                                        <option value="" selected disabled>Seleccione...</option>
-                                                                        <option value="I">Insuficiente</option>
-                                                                        <option value="R">Regular</option>
-                                                                        <option value="B">Bueno</option>
-                                                                        <option value="E">Excelente</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                    <div class="tab-pane px-sm-3 px-md-5" role="tabpanel" aria-labelledby="bootstrap-wizard-validation-tab3-mod" id="bootstrap-wizard-validation-tab3-mod">
-                                                        <form id="fmr_clientes3_mod" class="fmr_clientes_mod needs-validation" novalidate="novalidate" data-wizard-form="3">
-                                                            <div class="row">
-                                                                <input type="hidden" value="1" name="id_pestana2" id="id_pestana2">
-
                                                                 <div class="col-md-3">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-person">Tipo Persona</label>
-                                                                    <select class="form-select" id="person_mod" size="1" name="person_mod" required>
-                                                                        <option value="" selected disabled>Seleccione...</option>
-                                                                        <option value="1">Jurídico</option>
-                                                                        <option value="2">Natural</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-regime">Tipo Regimen</label>
-                                                                    <select class="form-select" id="regime_mod" size="1" name="regime_mod" required>
-                                                                        <option value="" selected disabled>Seleccione...</option>
-                                                                        <option value="0">Simple</option>
-                                                                        <option value="2">Ordinario</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-pais">Codigo Pais</label>
-                                                                    <select class="form-select" id="bootstrap-wizard-validation-wizard-pais" size="1" name="pais_mod" required>
-                                                                        <option value="" selected disabled>Seleccione...</option>
-                                                                        <option value="CO">Colombia</option>
-                                                                    </select>
-                                                                    <div class="valid-feedback">¡Ok!</div>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-tipoid">Tipo Identificación</label>
-                                                                    <select class="form-select" id="bootstrap-wizard-validation-wizard-tipoid" size="1" name="tipoid_mod" required>
-                                                                        <option value="" selected disabled>Seleccione...</option>
-                                                                        <option value="13">CC</option>
-                                                                        <option value="31">NIT</option>
-                                                                        <option value="12">TI</option>
-                                                                        <option value="22">CE</option>
-                                                                    </select>
-                                                                    <div class="valid-feedback">¡Ok!</div>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-nom1">Primer Nombre</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-nom1" name="nom1_mod" type="text" required />
-                                                                    <div class="valid-feedback">¡Ok!</div>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-nom2">Segundo Nombre</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-nom2" name="nom2_mod" type="text" required />
-                                                                    <div class="valid-feedback">¡Ok!</div>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-ape1">Primer Apellido</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-ape1" name="ape1_mod" type="text" required />
-                                                                    <div class="valid-feedback">¡Ok!</div>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-ape2">Segundo Apellido</label>
-                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-ape2" name="ape2_mod" type="text" required />
+                                                                    <label class="form-label" for="bootstrap-wizard-validation-wizard-estado">Estado</label>
+                                                                    <input class="form-control" id="bootstrap-wizard-validation-wizard-estado" name="estado_mod" type="text" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
                                                             </div>
                                                         </form>
                                                     </div>
-                                                    <div class="tab-pane text-center px-sm-3 px-md-5" role="tabpanel" aria-labelledby="bootstrap-wizard-validation-tab4-mod" id="bootstrap-wizard-validation-tab4-mod">
+                                                    
+                                                    <div class="tab-pane text-center px-sm-3 px-md-5" role="tabpanel" aria-labelledby="bootstrap-wizard-validation-tab3-mod" id="bootstrap-wizard-validation-tab3-mod">
                                                         <div class="wizard-lottie-wrapper">
-                                                            <!-- <div class="lottie wizard-lottie mx-auto my-3" data-options='{"path":"assets/img/animated-icons/celebration.json"}'></div> -->
+
                                                         </div>
                                                         <h4 id="resp_titulo_mod" class="mb-1">{resp_titulo}</h4>
                                                         <p id="resp_mensaje_mod">{resp_mensaje}</p>
@@ -784,7 +570,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
     <!--    JavaScripts-->
     <!-- ===============================================-->
     <?php require_once("script.php"); ?>
-    <script src="js/clientesv1.js"></script>
+    <script src="js/proveedoresv1.js"></script>
 </body>
 
 </html>

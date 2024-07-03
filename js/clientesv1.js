@@ -390,8 +390,9 @@ function generar() {
   window.open("pdfs/generar_pdf_clientes.php", "_blank");
 }
 // Función para cerrar el modal
-function cerrar_modal() {
-  $("#guardarModal").modal("hide");
+function cerrar_modal(modal) {
+  $("#"+modal).modal("hide");
+  window.location.href = 'clientesv1.php';
 }
 
 function abrirModal() {
@@ -436,6 +437,10 @@ function abrirModal() {
 
 function cargar_select(id) {
   cargar_ciudades(id, "lstSubzonas", "guardarModal", "combo_ciudades_all");
+}
+
+function cargar_select_mod(id) {
+  cargar_ciudades(id, "lstSubzonas_mod", "editarModal", "combo_ciudades_all");
 }
 
 function cargar_departamentos(Id, nameSelect, Modal) {
@@ -497,6 +502,10 @@ function cargar_departamentos(Id, nameSelect, Modal) {
   }
 }
 
+// Funcion para cargar las listas select con opcion de busqueda de oficinas
+$("#btnBusquedaSucursalMod").click(function () {
+  cargar_oficinas("", "lstSucursal_mod", "editarModal");
+});
 function cargar_oficinas(Id, nameSelect, Modal) {
   var lstRoles = $("#" + nameSelect);
 
@@ -556,6 +565,10 @@ function cargar_oficinas(Id, nameSelect, Modal) {
   }
 }
 
+// Funcion para cargar las listas select con opcion de busqueda de zonas
+$("#btnBusquedaZonasMod").click(function () {
+  cargar_departamentos("", "lstZonas_mod", "editarModal");
+});
 function cargar_ciudades(Id, nameSelect, Modal, Proceso) {
   var lstRoles = $("#" + nameSelect);
 
@@ -615,9 +628,13 @@ function cargar_ciudades(Id, nameSelect, Modal, Proceso) {
   }
 }
 
-// Funcion para cargar las listas select con opcion de busqueda de vendedores
-$("#btnBusquedaVendedoresFact").click(function () {
-  cargar_vendedores("", "vende", "guardarModal");
+// Funcion para cargar las listas select con opcion de busqueda de Oficinas
+$("#btnBusquedaSucursalMod").click(function () {
+  cargar_oficinas("", "lstSucursal_mod", "editarModal");
+});
+
+$("#btnBusquedaVendedoresMod").click(function () {
+  cargar_vendedores("", "vende_mod", "editarModal");
 });
 
 function cargar_vendedores(Id, nameSelect, Modal) {
@@ -708,7 +725,8 @@ function editar(id) {
         "editarModal",
         "combo_ciudades_cod"
       );
-      document.getElementsByName("vende_mod")[0].value = data[0].vendedor;
+      cargar_vendedores(data[0].vendedor, "vende_mod", "editarModal");
+      // document.getElementsByName("vende_mod")[0].value = data[0].vendedor;
       document.getElementsByName("legal_mod")[0].value = data[0].legal;
       document.getElementsByName("cupo_mod")[0].value = data[0].cupo;
       document.getElementsByName("fing_mod")[0].value = data[0].fecha_ini;
@@ -724,23 +742,11 @@ function editar(id) {
       document.getElementsByName("person_mod")[0].value = data[0].person;
       document.getElementsByName("regime_mod")[0].value = data[0].regime;
       document.getElementsByName("pais_mod")[0].value = data[0].pais;
-      // document.getElementsByName("tipoid_mod")[0].value = data[0].tipoid;
+      document.getElementsByName("tipoid_mod")[0].value = data[0].tipoid;
       document.getElementsByName("nom1_mod")[0].value = data[0].nom1;
       document.getElementsByName("nom2_mod")[0].value = data[0].nom2;
       document.getElementsByName("ape1_mod")[0].value = data[0].ape1;
       document.getElementsByName("ape2_mod")[0].value = data[0].ape2;
-
-      // Seleccionar la opción en el select basado en data[0].tipoid
-      var selectElement = document.getElementsByName("tipoid_mod")  ;
-      // Iterar sobre las opciones del select
-      for (var i = 0; i < selectElement.options.length; i++) {
-        // Comparar el valor de cada opción con el valor obtenido de la BD
-        if (selectElement.options[i].value === data[0].tipoid) {
-          // Establecer la propiedad selected en true para seleccionar la opción correspondiente
-          selectElement.options[i].selected = true;
-          break; // Salir del bucle una vez que se encuentre y seleccione la opción
-        }
-      }
 
       // Mostrar el modal
       $("#editarModal").modal("show");

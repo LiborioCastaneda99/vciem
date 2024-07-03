@@ -5,18 +5,17 @@ $(document).ready(function () {
   longitudCampo("#bootstrap-wizard-validation-wizard-tel2", 10);
 });
 
+function longitudCampo(campo, max) {
+  var input = $(campo);
 
-function longitudCampo(campo, max){
-    var input = $(campo)
+  var maxLength = max;
 
-    var maxLength = max;
-
-    input.on('input', function() {
-        if ($(this).val().length > maxLength) {
-            $(this).val($(this).val().slice(0, maxLength)); 
-        }
-    });
-}   
+  input.on("input", function () {
+    if ($(this).val().length > maxLength) {
+      $(this).val($(this).val().slice(0, maxLength));
+    }
+  });
+}
 
 //consultar
 function cargar_tabla() {
@@ -431,7 +430,7 @@ function abrirModal() {
     "-" +
     (dia < 10 ? "0" : "") +
     dia;
- 
+
   $("#fing_ing").val(fechaFormateada);
 }
 
@@ -690,7 +689,7 @@ function editar(id) {
     data: "id=" + id + "&proceso=get_id",
     dataType: "json",
     success: function (data) {
-      // primera parte form
+      // Llenar el formulario con los datos obtenidos
       document.getElementsByName("id")[0].value = data[0].id;
       document.getElementsByName("codigo_mod")[0].value = data[0].codigo;
       // document.getElementsByName('lstSucursal_mod')[0].value = data[0].sucursal
@@ -709,7 +708,6 @@ function editar(id) {
         "editarModal",
         "combo_ciudades_cod"
       );
-
       document.getElementsByName("vende_mod")[0].value = data[0].vendedor;
       document.getElementsByName("legal_mod")[0].value = data[0].legal;
       document.getElementsByName("cupo_mod")[0].value = data[0].cupo;
@@ -726,18 +724,32 @@ function editar(id) {
       document.getElementsByName("person_mod")[0].value = data[0].person;
       document.getElementsByName("regime_mod")[0].value = data[0].regime;
       document.getElementsByName("pais_mod")[0].value = data[0].pais;
-      document.getElementsByName("tipoid_mod")[0].value = data[0].tipoid;
+      // document.getElementsByName("tipoid_mod")[0].value = data[0].tipoid;
       document.getElementsByName("nom1_mod")[0].value = data[0].nom1;
       document.getElementsByName("nom2_mod")[0].value = data[0].nom2;
       document.getElementsByName("ape1_mod")[0].value = data[0].ape1;
       document.getElementsByName("ape2_mod")[0].value = data[0].ape2;
 
-      // Limpiar el cuerpo de la tabla
-      $("#editarModal").modal("show"); // abrir
+      // Seleccionar la opción en el select basado en data[0].tipoid
+      var selectElement = document.getElementsByName("tipoid_mod")  ;
+      // Iterar sobre las opciones del select
+      for (var i = 0; i < selectElement.options.length; i++) {
+        // Comparar el valor de cada opción con el valor obtenido de la BD
+        if (selectElement.options[i].value === data[0].tipoid) {
+          // Establecer la propiedad selected en true para seleccionar la opción correspondiente
+          selectElement.options[i].selected = true;
+          break; // Salir del bucle una vez que se encuentre y seleccione la opción
+        }
+      }
+
+      // Mostrar el modal
+      $("#editarModal").modal("show");
     },
-    error: function () {
-      // Error en la inserción, muestra mensaje de error con SweetAlert
-      notificacion("Error", "error", response.message);
+    error: function (response) {
+      // Error en la solicitud AJAX
+      console.error("Error en la solicitud AJAX:", response);
+      // Muestra una notificación de error usando SweetAlert o similar
+      notificacion("Error", "error", "Hubo un error al cargar los datos del cliente.");
     },
   });
 }

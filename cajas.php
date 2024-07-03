@@ -27,7 +27,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- ===============================================--><!--    Document Title--><!-- ===============================================-->
-    <title>Visual Ciem | cajas</title>
+    <title>Visual Ciem | Cajas</title>
 
     <!-- ===============================================--><!--    Favicons--><!-- ===============================================-->
     <?php require_once("head.php"); ?>
@@ -146,7 +146,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                 <div class="p-4">
                                     <div class="row">
                                         <form id="fmr_cajas_editar" method="POST" class="fmr_cajas_editar row g-2 needs-validation" novalidate="">
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label class="form-label" for="codigo_mod">Código</label>
                                                 <input class="form-control" id="id" name="id" type="hidden" />
                                                 <input class="form-control" id="codigo_mod" name="codigo_mod" type="text" required readonly/>
@@ -184,7 +184,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
 
     <!-- ===============================================--><!--    JavaScripts--><!-- ===============================================-->
     <?php require_once("script.php"); ?>
-    <script src="js/caja.js"></script>
+    <script src="js/cajas.js"></script>
 </body>
 
 </html>

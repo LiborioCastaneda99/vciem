@@ -97,7 +97,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                     <input type="text" class="form-control" id="consecutivo" name="consecutivo" readonly>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-3">
                                                 <label>Atiende <span class="text-danger"> * </span></label>
                                                 <div class="form-group col-md-12 mb-2">
                                                     <select class="form-select selectpicker" id="lstVendedoresFact" size="1" name="lstVendedoresFact" required>
@@ -105,15 +105,24 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                     <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaVendedoresFact" name="btnBusquedaVendedoresFact" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
-                                                <label>Caja <span class="text-danger"> * </span></label>
+                                            <div class="col-md-3">
+                                                <label>Bodega Afectada <span class="text-danger"> * </span></label>
                                                 <div class="form-group col-md-12 mb-2">
                                                     <select class="form-select selectpicker" id="lstCajaFact" size="1" name="lstCajaFact" required>
                                                     </select>
                                                     <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaCajaFact" name="btnBusquedaCajaFact" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-3">
+                                                <label>Caja <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <select class="form-select selectpicker" id="lstCaja" size="1" name="lstCaja" required>
+                                                    </select>
+                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaCajaFact" name="btnBusquedaCajaFact" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-md-3">
                                                 <label>Total <span class="text-danger"> * </span></label>
                                                 <div class="form-group col-md-12 mb-2">
                                                     <input type="text" class="form-control" id="total" name="total" readonly>

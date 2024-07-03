@@ -106,17 +106,17 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
-                                                <label>Bodega Afectada <span class="text-danger"> * </span></label>
+                                                <label>Bodega afectada <span class="text-danger"> * </span></label>
                                                 <div class="form-group col-md-12 mb-2">
-                                                    <select class="form-select selectpicker" id="lstCajaFact" size="1" name="lstCajaFact" required>
+                                                    <select class="form-select selectpicker" id="lstBodegaFact" size="1" name="lstBodegaFact" required>
                                                     </select>
-                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaCajaFact" name="btnBusquedaCajaFact" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaBodegaFact" name="btnBusquedaBodegaFact" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Caja <span class="text-danger"> * </span></label>
                                                 <div class="form-group col-md-12 mb-2">
-                                                    <select class="form-select selectpicker" id="lstCaja" size="1" name="lstCaja" required>
+                                                    <select class="form-select selectpicker" id="lstCajaFact" size="1" name="lstCajaFact" required>
                                                     </select>
                                                     <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaCajaFact" name="btnBusquedaCajaFact" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
                                                 </div>

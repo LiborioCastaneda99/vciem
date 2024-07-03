@@ -39,12 +39,13 @@ $conn = $dbconec->Conectar();
 $conn->exec("SET CHARACTER SET utf8");
 
 $query = "SELECT V.id, Tc.nombre As cliente, Tc.codigo As documento, Tc.direc As direccion, Tc.tel1 As telefono, Tf.nombre As tipo_factura, 
-A.nombre As atiende, C.nombre As caja, V.created_at, V.total, V.subtotal, V.descuentos, (V.total - V.subtotal) As impuesto, V.nota
+A.nombre As atiende, B.nombre As bodega, C.nombre As caja, V.created_at, V.total, V.subtotal, V.descuentos, (V.total - V.subtotal) As impuesto, V.nota
 FROM ventas As V
 INNER JOIN tbclientes As Tc ON Tc.id = V.cliente
 INNER JOIN tipo_facturas As Tf ON Tf.id = V.factura
 INNER JOIN tbvendedores As A ON A.id = V.`atiende`
-INNER JOIN tbnombod As C ON C.id = V.`caja`
+INNER JOIN tbnombod As B ON B.id = V.`bodega`
+INNER JOIN tbcajas As C ON C.id = V.`caja`
 WHERE V.id = :id";
 $stmt = $conn->prepare($query);
 $stmt->bindParam(':id', $id);

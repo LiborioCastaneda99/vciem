@@ -2,6 +2,7 @@ $(document).ready(function() {
     cargar_clientes('', 'lstClientesFact', '');
     cargar_vendedores('', 'lstVendedoresFact', '');
     cargar_caja('', 'lstCajaFact', '');
+    cargar_bodega('', 'lstBodegaFact', '');
     cargar_factura('', 'lstFacturaFact', '');
     actualizarTotales();
     mostrarNoHayRegistros();
@@ -125,6 +126,7 @@ $('#btnConsultarFactEsp').click(function() {
 
                 cargar_clientes(ventas.cliente, 'lstClientesFact', '');
                 cargar_vendedores(ventas.atiende, 'lstVendedoresFact', '');
+                cargar_bodega(ventas.bodega, 'lstBodegaFact', '');
                 cargar_caja(ventas.caja, 'lstCajaFact', '');
                 cargar_factura(ventas.factura, 'lstFacturaFact', '');
 
@@ -685,6 +687,7 @@ $('.btnFacturar').click(function() {
     var consecutivo = $('#consecutivo').val();
     var atiende = $('#lstVendedoresFact').val();
     var caja = $('#lstCajaFact').val();
+    var bodega = $('#lstBodegaFact').val();
     var total = $('#total').val();
     var nota = $('#notaFact').val();
     var descuentos = $('#descuentos').text(); // Esto obtiene el texto dentro del elemento <p>
@@ -706,6 +709,7 @@ $('.btnFacturar').click(function() {
         factura: factura,
         consecutivo: consecutivo,
         atiende: atiende,
+        bodega: bodega,
         caja: caja,
         total: total,
         nota: nota,
@@ -782,6 +786,7 @@ $('.btnFacturaEspera').click(function() {
     var consecutivo = $('#consecutivo').val();
     var atiende = $('#lstVendedoresFact').val();
     var caja = $('#lstCajaFact').val();
+    var bodega = $('#lstBodegaFact').val();
     var total = $('#total').val();
     var nota = $('#notaFact').val();
     var descuentos = $('#descuentos').text(); // Esto obtiene el texto dentro del elemento <p>
@@ -794,6 +799,7 @@ $('.btnFacturaEspera').click(function() {
         consecutivo: consecutivo,
         atiende: atiende,
         caja: caja,
+        bodega: bodega,
         total: total,
         nota: nota,
         subtotal: subtotal,
@@ -940,6 +946,11 @@ function limpiarCamposFactura() {
     lstCajaFact.select2({});
     lstCajaFact.find('option').remove();
     cargar_caja('', 'lstCajaFact', '');
+
+    var lstBodegaFact = $('#lstBodegaFact');
+    lstBodegaFact.select2({});
+    lstBodegaFact.find('option').remove();
+    cargar_bodega('', 'lstBodegaFact', '');
 
     var lstFacturaFact = $('#lstFacturaFact');
     lstFacturaFact.select2({});
@@ -1279,7 +1290,7 @@ function cargar_caja(Id, nameSelect, Modal) {
         $.ajax({
             type: 'POST',
             dataType: 'json',
-            url: 'ajax/nombodsajax.php',
+            url: 'ajax/cajasajax.php',
             data: {
                 searchTerm: searchTerm,
                 proceso: 'combo_caja',
@@ -1300,6 +1311,67 @@ function cargar_caja(Id, nameSelect, Modal) {
     } else {
         lstRoles.select2({
             placeholder: "Seleccione un caja",
+            ajax: {
+                url: "ajax/cajasajax.php",
+                type: "post",
+                dataType: 'json',
+                delay: 150,
+                data: function(params) {
+                    return {
+                        searchTerm: params.term,
+                        proceso: "combo_caja",
+                        id: Id
+                    };
+                },
+                processResults: function(response) {
+                    return {
+                        results: response
+
+                    };
+                },
+                cache: true
+            }
+        });
+    }
+}
+
+// Funcion para cargar las listas select con opcion de busqueda de vendedores
+$('#btnBusquedaBodegaFact').click(function() {
+    cargar_bodega('', 'lstBodegaFact', '');
+});
+
+function cargar_bodega(Id, nameSelect, Modal) {
+    var lstRoles = $('#' + nameSelect);
+
+    if (Id != "") {
+        lstRoles.select2({});
+        // var lstRoles = $lstRoles
+        lstRoles.find('option').remove();
+        var searchTerm = '';
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: 'ajax/nombodsajax.php',
+            data: {
+                searchTerm: searchTerm,
+                proceso: 'combo_caja',
+                id: Id
+            },
+        }).then(function(registros) {
+            $(registros).each(function(i, v) {
+                lstRoles.append('<option selected value="' + v.id + '">' + v.text + '</option>');
+            })
+            lstRoles.trigger({
+                type: 'select2:select',
+                params: {
+                    data: registros
+                }
+            });
+        });
+
+    } else {
+        lstRoles.select2({
+            placeholder: "Seleccione una bodega",
             ajax: {
                 url: "ajax/nombodsajax.php",
                 type: "post",

@@ -113,6 +113,7 @@ class facturacionModel extends Conexion
             $factura = $datos["factura"];
             $consecutivo = $datos["consecutivo"];
             $atiende = $datos["atiende"];
+            $bodega = $datos["bodega"];
             $caja = $datos["caja"];
             $total = $datos["total"];
             $nota = $datos["nota"];
@@ -127,7 +128,7 @@ class facturacionModel extends Conexion
             $fac_tcambi = $datos['fac_tcambi'];
 
             if (
-                isset($cliente, $factura, $consecutivo, $atiende, $caja, $total, $subtotal, $descuentos)
+                isset($cliente, $factura, $consecutivo, $atiende, $bodega, $caja, $total, $subtotal, $descuentos)
                 && !empty($cliente) && !empty($factura) && !empty($consecutivo) && !empty($atiende)
                 && !empty($caja) && !empty($total) && !empty($subtotal) && !empty($descuentos)
             ) {
@@ -161,12 +162,13 @@ class facturacionModel extends Conexion
                 }
 
                 // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
-                $query = "INSERT INTO ventas (cliente, factura, consecutivo, atiende, caja, total, descuentos, subtotal, nota) VALUES (:cliente, :factura, :consecutivo, :atiende, :caja, :total, :descuentos, :subtotal, :nota)";
+                $query = "INSERT INTO ventas (cliente, factura, consecutivo, atiende, bodega, caja, total, descuentos, subtotal, nota) VALUES (:cliente, :factura, :consecutivo, :atiende, :bodega, :caja, :total, :descuentos, :subtotal, :nota)";
                 $stmt = $dbconec->prepare($query);
                 $stmt->bindParam(':cliente', $cliente);
                 $stmt->bindParam(':factura', $factura);
                 $stmt->bindParam(':consecutivo', $consecutivo);
                 $stmt->bindParam(':atiende', $atiende);
+                $stmt->bindParam(':bodega', $bodega);
                 $stmt->bindParam(':caja', $caja);
                 $stmt->bindParam(':total', $total);
                 $stmt->bindParam(':nota', $nota);
@@ -273,6 +275,7 @@ class facturacionModel extends Conexion
             $factura = $datos["factura"];
             $consecutivo = $datos["consecutivo"];
             $atiende = $datos["atiende"];
+            $bodega = $datos["bodega"];
             $caja = $datos["caja"];
             $total = $datos["total"];
             $nota = $datos["nota"];
@@ -281,7 +284,7 @@ class facturacionModel extends Conexion
             $detalles = $datos['detalles'];
 
             if (
-                isset($cliente, $factura, $consecutivo, $atiende, $caja, $total, $subtotal, $descuentos)
+                isset($cliente, $factura, $consecutivo, $atiende, $bodega, $caja, $total, $subtotal, $descuentos)
                 && !empty($cliente) && !empty($factura) && !empty($consecutivo) && !empty($atiende)
                 && !empty($caja) && !empty($total) && !empty($subtotal) && !empty($descuentos)
             ) {
@@ -308,12 +311,13 @@ class facturacionModel extends Conexion
                 $fact->actualizarVentaEspera($cliente);
 
                 // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
-                $query = "INSERT INTO ventas_espera (cliente, factura, consecutivo, atiende, caja, total, descuentos, subtotal, nota) VALUES (:cliente, :factura, :consecutivo, :atiende, :caja, :total, :descuentos, :subtotal, :nota)";
+                $query = "INSERT INTO ventas_espera (cliente, factura, consecutivo, atiende, bodega, caja, total, descuentos, subtotal, nota) VALUES (:cliente, :factura, :consecutivo, :atiende, :bodega, :caja, :total, :descuentos, :subtotal, :nota)";
                 $stmt = $dbconec->prepare($query);
                 $stmt->bindParam(':cliente', $cliente);
                 $stmt->bindParam(':factura', $factura);
                 $stmt->bindParam(':consecutivo', $consecutivo);
                 $stmt->bindParam(':atiende', $atiende);
+                $stmt->bindParam(':bodega', $bodega);
                 $stmt->bindParam(':caja', $caja);
                 $stmt->bindParam(':total', $total);
                 $stmt->bindParam(':nota', $nota);

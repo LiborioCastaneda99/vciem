@@ -153,37 +153,37 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <thead>
                                                     <tr class="datos_productos" id="datos_productos">
                                                         <td colspan="2">
-                                                            <input class="form-control" type="text" name="codigo" id="codigo" onchange="">
+                                                            <input class="form-control form-control-sm" type="text" name="codigo" id="codigo" onchange="">
                                                         </td>
                                                         <td>
-                                                            <input class="form-control" type="text" name="descripcion" id="descripcion" readonly>
+                                                            <input class="form-control form-control-sm" type="text" name="descripcion" id="descripcion" readonly>
                                                         </td>
                                                         <td>
-                                                            <input class="form-control" type="text" name="um" id="um" readonly>
+                                                            <input class="form-control form-control-sm" type="text" name="um" id="um" readonly>
                                                         </td>
                                                         <td>
-                                                            <input class="form-control" type="text" name="cant" id="cant">
+                                                            <input class="form-control form-control-sm" type="text" name="cant" id="cant">
                                                         </td>
                                                         <td>
-                                                            <input class="form-control" type="text" name="vlr_unitario" id="vlr_unitario">
+                                                            <input class="form-control form-control-sm" type="text" name="vlr_unitario" id="vlr_unitario">
                                                         </td>
                                                         <td>
-                                                            <input class="form-control" type="text" name="desc" id="desc" readonly>
+                                                            <input class="form-control form-control-sm" type="text" name="desc" id="desc" readonly>
                                                         </td>
                                                         <td>
-                                                            <input class="form-control" type="text" name="vlr_descuento" id="vlr_descuento">
+                                                            <input class="form-control form-control-sm" type="text" name="vlr_descuento" id="vlr_descuento">
                                                         </td>
                                                         <td>
-                                                            <input class="form-control" type="text" name="vlr_unit_final" id="vlr_unit_final" readonly>
+                                                            <input class="form-control form-control-sm" type="text" name="vlr_unit_final" id="vlr_unit_final" readonly>
                                                         </td>
                                                         <td>
-                                                            <input class="form-control" type="text" name="imp" id="imp" readonly>
+                                                            <input class="form-control form-control-sm" type="text" name="imp" id="imp" readonly>
                                                         </td>
                                                         <td>
-                                                            <input class="form-control" type="text" name="vlr_impuesto" id="vlr_impuesto" readonly>
+                                                            <input class="form-control form-control-sm" type="text" name="vlr_impuesto" id="vlr_impuesto" readonly>
                                                         </td>
                                                         <td>
-                                                            <input class="form-control" type="text" name="vlr_parcial" id="vlr_parcial">
+                                                            <input class="form-control form-control-sm" type="text" name="vlr_parcial" id="vlr_parcial">
                                                         </td>
                                                         <td>
                                                             <div class="form-group col-md-12">

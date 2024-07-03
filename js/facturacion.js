@@ -912,7 +912,7 @@ function tabla_factura(valores) {
             '<td class="imp">' + item.imp + '%</td>' +
             '<td class="vlr_impuesto">' + item.vlr_impuesto + '</td>' +
             '<td class="vlr_parcial">' + item.vlr_parcial + '</td>' +
-            '<td class="text-center"><button class="btn btn-outline-warning me-1 mb-1" type="button" onclick=editar(' + item.codigo + ')>' +
+            '<td class="text-center"><button class="btn btn-outline-warning me-1 mb-1" type="button" onclick=editar("' + item.codigo + '")>' +
             '<span class="fas fa-edit ms-1" data-fa-transform="shrink-3"></span></button>' +
             '<button class="btn btn-outline-danger me-1 mb-1" type="button" onclick=eliminarFila(' + index + ')>' +
             '<span class="fas fa-trash ms-1" data-fa-transform="shrink-3"></span></button></td>' +

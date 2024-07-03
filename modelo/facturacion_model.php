@@ -239,7 +239,7 @@ class facturacionModel extends Conexion
                     <a href="pdfs/generar_factura_carta.php?id=' . $id_encriptado . '" target="_blank">En formato carta.</a>');
                 } else {
                     // Si hubo un error en la inserción, devuelve un mensaje de error
-                    $response = array('status' => 'error', 'message' => 'Error al guardar el nombod');
+                    $response = array('status' => 'error', 'message' => 'Error al guardar la factura');
                 }
 
                 // Devuelve la respudiasa en formato JSON

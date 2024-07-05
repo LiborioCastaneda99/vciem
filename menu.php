@@ -6,11 +6,11 @@
   <ul class="navbar-nav align-items-center d-none d-lg-block">
     <li class="nav-item">
       <div class="search-box" data-list='{"valueNames":["title"]}'>
-        <form class="position-relative" data-bs-toggle="search" data-bs-display="static"><input class="form-control search-input fuzzy-search" type="search" placeholder="Search..." aria-label="Search">
+        <form class="position-relative" data-bs-toggle="search" data-bs-display="static"><input class="form-control search-input fuzzy-search" type="search" placeholder="Buscar..." aria-label="Search">
           <span class="fas fa-search search-box-icon"></span>
         </form>
         <div class="btn-close-falcon-container position-absolute end-0 top-50 translate-middle shadow-none" data-bs-dismiss="search"><button class="btn btn-link btn-close-falcon p-0" aria-label="Close"></button></div>
-        <div class="dropdown-menu border font-base start-0 mt-2 py-0 overflow-hidden w-100">
+        <!-- <div class="dropdown-menu border font-base start-0 mt-2 py-0 overflow-hidden w-100">
           <div class="scrollbar list py-3" style="max-height: 24rem;">
             <h6 class="dropdown-header fw-medium text-uppercase px-x1 fs-11 pt-0 pb-2">Recently Browsed</h6><a class="dropdown-item fs-10 px-x1 py-1 hover-primary" href="app/events/event-detail.html.htm">
               <div class="d-flex align-items-center">
@@ -97,7 +97,7 @@
           <div class="text-center mt-n3">
             <p class="fallback fw-bold fs-8 d-none">No Result Found.</p>
           </div>
-        </div>
+        </div> -->
       </div>
     </li>
   </ul>
@@ -110,11 +110,11 @@
       </div>
     </li>
     <li class="nav-item d-none d-sm-block">
-      <a class="nav-link px-0 notification-indicator notification-indicator-warning notification-indicator-fill fa-icon-wait" href="app/e-commerce/shopping-cart.html.htm"><span class="fas fa-shopping-cart" data-fa-transform="shrink-7" style="font-size: 33px;"></span><span class="notification-indicator-number">1</span></a>
+      <a class="nav-link px-0 notification-indicator notification-indicator-warning notification-indicator-fill fa-icon-wait" href="#"><span class="fas fa-shopping-cart" data-fa-transform="shrink-7" style="font-size: 33px;"></span><span class="notification-indicator-number">1</span></a>
     </li>
     <li class="nav-item dropdown">
       <a class="nav-link notification-indicator notification-indicator-primary px-0 fa-icon-wait" id="navbarDropdownNotification" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hide-on-body-scroll="data-hide-on-body-scroll"><span class="fas fa-bell" data-fa-transform="shrink-6" style="font-size: 33px;"></span></a>
-      <div class="dropdown-menu dropdown-caret dropdown-caret dropdown-menu-end dropdown-menu-card dropdown-menu-notification dropdown-caret-bg" aria-labelledby="navbarDropdownNotification">
+      <!-- <div class="dropdown-menu dropdown-caret dropdown-caret dropdown-menu-end dropdown-menu-card dropdown-menu-notification dropdown-caret-bg" aria-labelledby="navbarDropdownNotification">
         <div class="card card-notification shadow-none">
           <div class="card-header">
             <div class="row justify-content-between align-items-center">
@@ -197,7 +197,7 @@
           </div>
           <div class="card-footer text-center border-top"><a class="card-link d-block" href="app/social/notifications.html.htm">View all</a></div>
         </div>
-      </div>
+      </div> -->
     </li>
     <li class="nav-item dropdown px-1">
       <a class="nav-link fa-icon-wait nine-dots p-1" id="navbarDropdownMenu" role="button" data-hide-on-body-scroll="data-hide-on-body-scroll" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="43" viewbox="0 0 16 16" fill="none">
@@ -211,7 +211,7 @@
           <circle cx="8" cy="2" r="2" fill="#6C6E71"></circle>
           <circle cx="14" cy="2" r="2" fill="#6C6E71"></circle>
         </svg></a>
-      <div class="dropdown-menu dropdown-caret dropdown-caret dropdown-menu-end dropdown-menu-card dropdown-caret-bg" aria-labelledby="navbarDropdownMenu">
+      <!-- <div class="dropdown-menu dropdown-caret dropdown-caret dropdown-menu-end dropdown-menu-card dropdown-caret-bg" aria-labelledby="navbarDropdownMenu">
         <div class="card shadow-none">
           <div class="scrollbar-overlay nine-dots-dropdown">
             <div class="card-body px-3">
@@ -285,7 +285,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </li>
     <li class="nav-item dropdown"><a class="nav-link pe-0 ps-2" id="navbarDropdownUser" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="avatar avatar-xl">
@@ -296,11 +296,11 @@
         <div class="bg-white dark__bg-1000 rounded-2 py-2">
           <a class="dropdown-item fw-bold text-warning" href="#!"><span class="fas fa-crown me-1"></span><span><?= $_SESSION["user_nombres"]; ?></span></a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#!">Set status</a>
+          <!-- <a class="dropdown-item" href="#!">Set status</a>
           <a class="dropdown-item" href="pages/user/profile.html.htm">Profile &amp; account</a>
-          <a class="dropdown-item" href="#!">Feedback</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="pages/user/settings.html.htm">Settings</a>
+          <a class="dropdown-item" href="#!">Feedback</a> -->
+          <!-- <div class="dropdown-divider"></div> -->
+          <!-- <a class="dropdown-item" href="pages/user/settings.html.htm">Settings</a> -->
           <a class="dropdown-item" href="ajax/logout.php">Cerrar sesión</a>
         </div>
       </div>
@@ -339,7 +339,7 @@
                 </div>
                 <div class="col-6 col-md-4">
                   <div class="nav flex-column">
-                    <p class="nav-link text-700 mb-0 fw-bold">E-Commerce</p><a class="nav-link py-1 link-600 fw-medium" href="app/e-commerce/product/product-list.html.htm">Product list</a><a class="nav-link py-1 link-600 fw-medium" href="app/e-commerce/product/product-grid.html.htm">Product grid</a><a class="nav-link py-1 link-600 fw-medium" href="app/e-commerce/product/product-details.html.htm">Product details</a><a class="nav-link py-1 link-600 fw-medium" href="app/e-commerce/product/add-product.html.htm">Add product</a><a class="nav-link py-1 link-600 fw-medium" href="app/e-commerce/orders/order-list.html.htm">Order list</a><a class="nav-link py-1 link-600 fw-medium" href="app/e-commerce/orders/order-details.html.htm">Order details</a><a class="nav-link py-1 link-600 fw-medium" href="app/e-commerce/customers.html.htm">Customers</a><a class="nav-link py-1 link-600 fw-medium" href="app/e-commerce/customer-details.html.htm">Customer details</a><a class="nav-link py-1 link-600 fw-medium" href="app/e-commerce/shopping-cart.html.htm">Shopping cart</a><a class="nav-link py-1 link-600 fw-medium" href="app/e-commerce/checkout.html.htm">Checkout</a><a class="nav-link py-1 link-600 fw-medium" href="app/e-commerce/billing.html.htm">Billing</a><a class="nav-link py-1 link-600 fw-medium" href="app/e-commerce/invoice.html.htm">Invoice</a>
+                    <!-- <p class="nav-link text-700 mb-0 fw-bold">E-Commerce</p><a class="nav-link py-1 link-600 fw-medium" href="app/e-commerce/product/product-list.html.htm">Product list</a><a class="nav-link py-1 link-600 fw-medium" href="app/e-commerce/product/product-grid.html.htm">Product grid</a><a class="nav-link py-1 link-600 fw-medium" href="app/e-commerce/product/product-details.html.htm">Product details</a><a class="nav-link py-1 link-600 fw-medium" href="app/e-commerce/product/add-product.html.htm">Add product</a><a class="nav-link py-1 link-600 fw-medium" href="app/e-commerce/orders/order-list.html.htm">Order list</a><a class="nav-link py-1 link-600 fw-medium" href="app/e-commerce/orders/order-details.html.htm">Order details</a><a class="nav-link py-1 link-600 fw-medium" href="app/e-commerce/customers.html.htm">Customers</a><a class="nav-link py-1 link-600 fw-medium" href="app/e-commerce/customer-details.html.htm">Customer details</a><a class="nav-link py-1 link-600 fw-medium" href="app/e-commerce/shopping-cart.html.htm">Shopping cart</a><a class="nav-link py-1 link-600 fw-medium" href="app/e-commerce/checkout.html.htm">Checkout</a><a class="nav-link py-1 link-600 fw-medium" href="app/e-commerce/billing.html.htm">Billing</a><a class="nav-link py-1 link-600 fw-medium" href="app/e-commerce/invoice.html.htm">Invoice</a> -->
                   </div>
                 </div>
               </div>
@@ -663,11 +663,11 @@
         <div class="bg-white dark__bg-1000 rounded-2 py-2">
           <a class="dropdown-item fw-bold text-warning" href="#!"><span class="fas fa-crown me-1"></span><span><?= $_SESSION["user_nombres"]; ?></span></a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#!">Set status</a>
+          <!-- <a class="dropdown-item" href="#!">Set status</a>
           <a class="dropdown-item" href="pages/user/profile.html.htm">Profile &amp; account</a>
-          <a class="dropdown-item" href="#!">Feedback</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="pages/user/settings.html.htm">Settings</a>
+          <a class="dropdown-item" href="#!">Feedback</a> -->
+          <!-- <div class="dropdown-divider"></div> -->
+          <!-- <a class="dropdown-item" href="pages/user/settings.html.htm">Settings</a> -->
           <a class="dropdown-item" href="ajax/logout.php">Cerrar sesión</a>
         </div>
       </div>

@@ -28,7 +28,7 @@
             <!-- cargamos el menu automatico -->
             <ul class="navbar-nav flex-column mb-3" id="navbarVerticalNav">
             </ul>
-            <div class="settings mb-3">
+            <!-- <div class="settings mb-3">
                 <div class="card shadow-none">
                     <div class="card-body alert mb-0" role="alert">
                         <div class="btn-close-falcon-container"><button class="btn btn-link btn-close-falcon p-0" aria-label="Close" data-bs-dismiss="alert"></button></div>
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </nav>

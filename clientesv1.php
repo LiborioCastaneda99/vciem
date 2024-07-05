@@ -598,7 +598,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                     <div class="invalid-feedback">Por favor, seleccione uno</div>
                                                                 </div>
-                                                                <div class="col-md-6">
+                                                                <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-legal">Representante Legal</label>
                                                                     <input class="form-control" id="bootstrap-wizard-validation-wizard-legal" name="legal_mod" type="text" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
@@ -618,12 +618,12 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                     <input class="form-control" id="bootstrap-wizard-validation-wizard-fpago" name="fpago_mod" type="text" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
-                                                                <div class="col-md-3">
+                                                                <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-chdev">Cheques Devueltos</label>
                                                                     <input class="form-control" id="bootstrap-wizard-validation-wizard-chdev" name="chdev_mod" type="text" required />
                                                                     <div class="valid-feedback">¡Ok!</div>
                                                                 </div>
-                                                                <div class="col-md-3">
+                                                                <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-riva">Rete IVA</label>
                                                                     <select class="form-select" id="riva_mod" size="1" name="riva_mod" required>
                                                                         <option value="" selected disabled>Seleccione...</option>
@@ -631,7 +631,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                         <option value="S">Si</option>
                                                                     </select>
                                                                 </div>
-                                                                <div class="col-md-3">
+                                                                <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-rfte">Rete Fuente</label>
                                                                     <select class="form-select" id="rfte_mod" size="1" name="rfte_mod" required>
                                                                         <option value="" selected disabled>Seleccione...</option>
@@ -639,7 +639,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                                         <option value="S">Si</option>
                                                                     </select>
                                                                 </div>
-                                                                <div class="col-md-3">
+                                                                <div class="col-md-4">
                                                                     <label class="form-label" for="bootstrap-wizard-validation-wizard-rica">Rete ICA</label>
                                                                     <select class="form-select" id="rica_mod" size="1" name="rica_mod" required>
                                                                         <option value="" selected disabled>Seleccione...</option>

@@ -13,6 +13,8 @@ if (!empty($_POST))
 
 	$proceso = (isset($_POST['proceso'])) ? $_POST['proceso'] : '';
 	$id = (isset($_POST['id'])) ? $_POST['id'] : '';
+    $codigo = (isset($_POST['codigo'])) ? $_POST['codigo'] : '';
+    $nombre = (isset($_POST['searchTerm'])) ? $_POST['searchTerm'] : '';
     $datos = $_POST;
 
     switch ($proceso) {
@@ -30,6 +32,9 @@ if (!empty($_POST))
             break;
         case 'eliminar': // eliminar
             $cl->eliminar($id);
+            break;
+        case 'combo_transportadores': // combo_transportes
+            $cl->combo_transportadores($nombre, $id);
             break;
 		default:
 			$data = "Error";

@@ -27,6 +27,11 @@
 		$cmd = tipomoinsModel::eliminar($id);
 	}
 
+	public function combo_tipomoins($nombre, $id)
+	{
+		$cmd = tipomoinsModel::combo_tipomoins($nombre, $id);
+	}
+
 }
 
 ?>

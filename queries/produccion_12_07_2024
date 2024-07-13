@@ -1,0 +1,52 @@
+insert into `vciem`.`menu` (`ruta`, `nombre`, `icono`, `modulo`, `rol_id`)
+	values
+	('compras_proveedores.php', 'Compras Proveedores', 'fa-cart-plus', 'Facturacion', '1');
+
+insert into `vciem`.`roles_permisos` (`rol_id`, `permiso_id`)
+	values
+	('1', '25');
+
+insert into `vciem`.`permisos` (`id`, `nombre`, `descripcion`)
+	values
+	('25', 'ver_compras_proveedores', 'Permiso para ver la vista de compras proveedores');
+
+
+CREATE TABLE `vciem`.`compras_proveedores` (  
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `fecha` DATETIME NOT NULL,
+  `tipo_movimiento` VARCHAR(100) NOT NULL,
+  `nit` VARCHAR(100) NOT NULL,
+  `sucursal` VARCHAR(100) NOT NULL,
+  `plazo` VARCHAR(100) NOT NULL,
+  `documento` VARCHAR(100) NOT NULL,
+  `bodega_afectada` VARCHAR(100) NOT NULL,
+  `vendedor` VARCHAR(100) NOT NULL,
+  `transporte` VARCHAR(100) NOT NULL,
+  `numero_orden` VARCHAR(100) NOT NULL,
+  `remision` VARCHAR(100) NOT NULL,
+  `nota` VARCHAR(100),
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `activo` INT(11) DEFAULT 1,
+  PRIMARY KEY (`id`) 
+);
+
+CREATE TABLE `vciem`.`det_compras_proveedores` (  
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `id_compras_proeedores` INT,
+  `codigo` VARCHAR(100),
+  `descripcion` VARCHAR(100),
+  `umedida` VARCHAR(100),
+  `cantidad` INT(11),
+  `vlr_unitario` VARCHAR(100),
+  `descuento` VARCHAR(100),
+  `vlr_descuento` VARCHAR(100),
+  `vlr_unitario_final` VARCHAR(100),
+  `impuesto` VARCHAR(100),
+  `vlr_impuesto` VARCHAR(100),
+  `vlr_parcial` VARCHAR(100),
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `activo` INT DEFAULT 1,
+  PRIMARY KEY (`id`) 
+);
+
+

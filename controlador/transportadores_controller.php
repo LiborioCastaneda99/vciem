@@ -27,6 +27,11 @@
 		$cmd = transportadoresModel::eliminar($id);
 	}
 
+	public function combo_transportadores($nombre, $id)
+	{
+		$cmd = transportadoresModel::combo_transportadores($nombre,$id);
+	}
+
 }
 
 ?>

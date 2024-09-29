@@ -15,7 +15,7 @@ if (!isset($usuario_id)) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- ===============================================--><!--    Document Title--><!-- ===============================================-->
-    <title>Visual cien | Dashboad</title>
+    <title>Visual Ciem | Dashboad</title>
 
     <!-- ===============================================--><!--    Favicons--><!-- ===============================================-->
     <?php require_once("head.php"); ?>

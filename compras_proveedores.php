@@ -64,7 +64,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                     <div class="card-header bg-body-tertiary">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h6 class="mb-0">Ventas</h6>
+                                <h6 class="mb-0">Compras Proveedores</h6>
                             </div>
                         </div>
                     </div>
@@ -82,12 +82,24 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <label>Tipo movimiento <span class="text-danger"> * </span></label>
                                                 <div class="form-group col-md-12 mb-2">
                                                     <select class="form-select selectpicker" id="lstTipoMovimientoFact" size="1" name="lstTipoMovimientoFact" disabled>
                                                     </select>
                                                     <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btn" name="btn" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="row p-1">
+                                                    <label>Documento <span class="text-danger"> * </span></label>
+                                                    <div class="form-group col-md-6 mb-2">
+                                                        <input type="text" class="form-control" id="documentoFact" name="documentoFact" readonly>
+                                                    </div>
+                                                    <div class="form-group col-md-6 mb-2">
+                                                        <input type="text" class="form-control" id="infoTipoMovimientoFact" name="infoTipoMovimientoFact" readonly>
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -100,7 +112,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <label>Sucursal <span class="text-danger"> * </span></label>
                                                 <div class="form-group col-md-12 mb-2">
                                                     <select class="form-select selectpicker" id="lstSucursalFact" size="1" name="lstSucursalFact" required>
@@ -109,21 +121,8 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-1">
-                                                <label>Plazo <span class="text-danger"> * </span></label>
-                                                <div class="form-group col-md-12 mb-2">
-                                                    <input type="text" class="form-control" id="plazoFact" name="plazoFact">
-                                                </div>
-                                            </div>
 
-                                            <div class="col-md-2">
-                                                <label>Documento <span class="text-danger"> * </span></label>
-                                                <div class="form-group col-md-12 mb-2">
-                                                    <input type="text" class="form-control" id="documentoFact" name="documentoFact">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <label>Bodega afectada <span class="text-danger"> * </span></label>
                                                 <div class="form-group col-md-12 mb-2">
                                                     <select class="form-select selectpicker" id="lstBodegaFact" size="1" name="lstBodegaFact" required>
@@ -153,18 +152,18 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             <div class="col-md-3">
                                                 <label>Orden No. <span class="text-danger"> * </span></label>
                                                 <div class="form-group col-md-12 mb-2">
-                                                    <input type="text" class="form-control" id="ordenFact" name="ordenFact" readonly>
+                                                    <input type="text" class="form-control" id="ordenFact" name="ordenFact">
                                                 </div>
                                             </div>
 
                                             <div class="col-md-3">
                                                 <label>Remisión <span class="text-danger"> * </span></label>
                                                 <div class="form-group col-md-12 mb-2">
-                                                    <input type="text" class="form-control" id="remisionFact" name="remisionFact" readonly>
+                                                    <input type="text" class="form-control" id="remisionFact" name="remisionFact">
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6">
+                                            <div class="col-md-12">
                                                 <label>Nota</label>
                                                 <div class="form-group col-md-12 mb-2">
                                                     <input class="form-control" name="notaFact" id="notaFact" cols="50" rows="2">
@@ -177,15 +176,6 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 </div>
                                             </div>
                                             <hr>
-                                            <!-- <div class="mt-4">
-                                                <div class="form-group col-md-12 mb-2">
-                                                    <span class="input-group-addon d-grid  gap-0">
-                                                        <button class="btn btn-outline-dark me-1 mb-1 icon-search4 Search" type="button" id="btnBuscarFacturaEspera" name="btnBuscarFacturaEspera" title="Buscar producto o servicio">
-                                                            Buscar factura en espera <span class="fas fa-search search-box-icon"></span>
-                                                        </button>
-                                                    </span>
-                                                </div>
-                                            </div>
                                             <div class="">
                                                 <div class="form-group col-md-12 mb-2">
                                                     <span class="input-group-addon d-grid  gap-0">
@@ -194,42 +184,27 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                         </button>
                                                     </span>
                                                 </div>
-                                            </div> -->
+                                            </div>
                                             <table class="table table-striped mb-0 fs-10" id="tablaProductos">
                                                 <thead>
                                                     <tr class="datos_productos" id="datos_productos">
                                                         <td colspan="2">
-                                                            <input class="form-control form-control-sm" type="text" name="codigo" id="codigo" onchange="" placeholder="codigo">
+                                                            <input class="form-control form-control-sm" type="text" name="codigo" id="codigo" onchange="" placeholder="Código">
                                                         </td>
                                                         <td>
-                                                            <input class="form-control form-control-sm" type="text" name="descripcion" id="descripcion" placeholder="descripcion" readonly>
+                                                            <input class="form-control form-control-sm" type="text" name="descripcion" id="descripcion" placeholder="Descripción" readonly>
                                                         </td>
                                                         <td>
-                                                            <input class="form-control form-control-sm" type="text" name="um" id="um" placeholder="um" readonly>
+                                                            <input class="form-control form-control-sm" type="text" name="cant" placeholder="Cantidad" id="cant">
                                                         </td>
                                                         <td>
-                                                            <input class="form-control form-control-sm" type="text" name="cant" placeholder="cant" id="cant">
+                                                            <input class="form-control form-control-sm" type="text" name="vlr_unitario" placeholder="Vrl. unitario" id="vlr_unitario">
                                                         </td>
                                                         <td>
-                                                            <input class="form-control form-control-sm" type="text" name="vlr_unitario" placeholder="vlr_unitario" id="vlr_unitario">
+                                                            <input class="form-control form-control-sm" type="text" name="vlr_unit_final" placeholder="Vrl. unitario final" id="vlr_unit_final" readonly>
                                                         </td>
                                                         <td>
-                                                            <input class="form-control form-control-sm" type="text" name="desc" id="desc" placeholder="desc" readonly>
-                                                        </td>
-                                                        <td>
-                                                            <input class="form-control form-control-sm" type="text" name="vlr_descuento" placeholder="vlr_descuento" id="vlr_descuento">
-                                                        </td>
-                                                        <td>
-                                                            <input class="form-control form-control-sm" type="text" name="vlr_unit_final" placeholder="vlr_unit_final" id="vlr_unit_final" readonly>
-                                                        </td>
-                                                        <td>
-                                                            <input class="form-control form-control-sm" type="text" name="imp" id="imp" placeholder="imp" readonly>
-                                                        </td>
-                                                        <td>
-                                                            <input class="form-control form-control-sm" type="text" name="vlr_impuesto" placeholder="vlr_impuesto" id="vlr_impuesto" readonly>
-                                                        </td>
-                                                        <td>
-                                                            <input class="form-control form-control-sm" type="text" name="vlr_parcial" placeholder="vlr_parcial" id="vlr_parcial">
+                                                            <input class="form-control form-control-sm" type="text" name="vlr_parcial" placeholder="Vlr. parcial" id="vlr_parcial">
                                                         </td>
                                                         <td>
                                                             <div class="form-group col-md-12">
@@ -247,20 +222,15 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                         <th>#</th>
                                                         <th>Código</th>
                                                         <th>Descripción</th>
-                                                        <th>UM</th>
-                                                        <th>Cant</th>
-                                                        <th>Vlr.Unit</th>
-                                                        <th>Desc</th>
-                                                        <th>Vlr.Desc</th>
-                                                        <th>Vlr.Unit Final</th>
-                                                        <th>% Imp</th>
-                                                        <th>Vlr. Imp</th>
-                                                        <th>Vlr. Parcial</th>
+                                                        <th>Cantidad</th>
+                                                        <th>Vlr. unitario</th>
+                                                        <th>Vlr. unitario final</th>
+                                                        <th>Vlr. parcial</th>
                                                         <th style="width: 150px;" class="text-center">Acción</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="cuerpoTabla">
-                                                    <tr id="no_hay_registros" class="oculto">
+                                                    <tr id="no_hay_registros">
                                                         <td colspan="13" class="text-center">No hay registros agregados.</td>
                                                     </tr>
                                                     <!-- Las filas se agregarán dinámicamente aquí -->
@@ -268,7 +238,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             </table>
 
                                             <!-- pie de factura -->
-
+                                            <!-- 
                                             <div class="col-md-3 text-end">
                                                 <label>Valor antes descuento</label>
                                                 <div class="form-group col-md-12 mb-2">
@@ -316,13 +286,19 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 <div class="form-group col-md-12 mb-2">
                                                     <p class="valorParcialFact" id="valorParcialFact"></p>
                                                 </div>
+                                            </div> -->
+
+                                            <div class="col-md-12 text-end">
+                                                <label>Valor Parcial: </label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <p class="valorParcialFact" id="valorParcialFact"></p>
+                                                </div>
                                             </div>
 
-
-                                            <div class="col-md-2 d-grid  gap-0 mt-4">
-                                                <button class="btn btn-outline-primary me-1 mb-1 btnComprar" id="btnComprar" type="button"><span class="fas fa-file-invoice-dollar search-box-icon"></span> Comprar</button>
+                                            <div class="col-md-12 d-grid  gap-0 mt-4">
+                                                <button class="btn btn-outline-primary me-1 mb-1 btnFacturar" id="btnFacturar" type="button"><span class="fas fa-file-invoice-dollar search-box-icon"></span> Facturar</button>
                                             </div>
-                                            <div class="col-md-2 d-grid  gap-0 mt-4">
+                                            <!-- <div class="col-md-2 d-grid  gap-0 mt-4">
                                                 <button class="btn btn-outline-primary me-1 mb-1 btnVerCompra" id="btnVerCompra" type="button"><span class="fas fa-eye search-box-icon"></span> Ver Compra</button>
                                             </div>
                                             <div class="col-md-2 d-grid  gap-0 mt-4">
@@ -336,7 +312,7 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                             </div>
                                             <div class="col-md-2 d-grid  gap-0 mt-4">
                                                 <button class="btn btn-outline-primary me-1 mb-1 btnBorrarCompra" id="btnBorrarCompra" type="button"><span class="fas fa-trash search-box-icon"></span> Borrar Compra</button>
-                                            </div>
+                                            </div> -->
 
                                         </form>
                                     </div>
@@ -441,21 +417,21 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <label>Valor Unitario Inicial <span class="text-danger"> * </span></label>
                                                 <div class="form-group col-md-12 mb-2">
-                                                    <input type="text" class="form-control" id="vlrUnitarioInicialEditar" readonly>
+                                                    <input type="text" class="form-control" id="vlrUnitarioInicialEditar">
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <label>Cantidad <span class="text-danger"> * </span></label>
                                                 <div class="form-group col-md-12 mb-2">
                                                     <input type="text" class="form-control" id="cantidadEditar">
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <label>Valor Unitario Final <span class="text-danger"> * </span></label>
                                                 <div class="form-group col-md-12 mb-2">
                                                     <input type="text" class="form-control" id="vlrUnitarioFinalEditar">
@@ -469,12 +445,6 @@ if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6">
-                                                <label>Descuento <span class="text-danger"> * </span></label>
-                                                <div class="form-group col-md-12 mb-2">
-                                                    <input type="text" class="form-control" id="descuentoEditar">
-                                                </div>
-                                            </div>
                                             <div class="modal-footer mt-3">
                                                 <div class="col-12 d-grid  gap-0">
                                                     <button class="btn btn-outline-primary me-1 mb-1 btnModificar" id="btnModificar" type="button">Modificar</button>

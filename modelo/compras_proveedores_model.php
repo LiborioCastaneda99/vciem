@@ -70,52 +70,82 @@ class comprasProveedorModel extends Conexion
             $bodega = $datos["bodega"];
             $tipo_movimiento = $datos["tipo_movimiento"];
             $fecha = $datos["fecha"];
-            $plazo = $datos["plazo"];
+            $info_tipo_movimiento = $datos["info_tipo_movimiento"];
             $documento = $datos['documento'];
             $orden = $datos['orden'];
             $remision = $datos['remision'];
             $nota = $datos["nota"];
-            // $total = $datos["total"];
+            $valor_parcial = isset($datos["valor_parcial"]) ? $datos["valor_parcial"] : 0;
+            $detalles = $datos["detalles"];
 
             if (
-                isset($proveedor, $vendedor, $transporte, $sucursal, $bodega, $tipo_movimiento, $fecha, $plazo, $orden, 
-                    $remision, $documento, $nota)
+                isset(
+                    $proveedor,
+                    $vendedor,
+                    $transporte,
+                    $sucursal,
+                    $bodega,
+                    $tipo_movimiento,
+                    $fecha,
+                    $info_tipo_movimiento,
+                    $orden,
+                    $remision,
+                    $documento,
+                    $nota,
+                    $valor_parcial
+                )
                 && !empty($proveedor) && !empty($vendedor) && !empty($transporte) && !empty($sucursal) && !empty($bodega)
-                && !empty($tipo_movimiento) && !empty($plazo) && !empty($orden) && !empty($remision) && !empty($documento)
+                && !empty($tipo_movimiento) && !empty($info_tipo_movimiento) && !empty($orden) && !empty($remision) && !empty($documento)
                 && !empty($nota) && !empty($fecha)
             ) {
 
-
                 // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
-                $query = "INSERT INTO compras_proveedores (`fecha`, `tipo_movimiento`, `nit`, `sucursal`, `plazo`, `documento`, `bodega_afectada`, `vendedor`, `transporte`, `numero_orden`, `remision`, `nota`) VALUES 
-                    (:fecha,:tipo_movimiento,:nit,:sucursal,:plazo,:documento,:bodega_afectada,:vendedor,:transporte,:numero_orden,:remision, :nota)";
+                $query = "INSERT INTO compras_proveedores (fecha, tipo_movimiento, nit, sucursal, info_tipo_movimiento, documento, bodega_afectada, vendedor, 
+                    transporte, numero_orden, remision, nota, valor_parcial) VALUES 
+                (:fecha, :tipo_movimiento, :nit, :sucursal, :info_tipo_movimiento, :documento, :bodega_afectada, :vendedor, :transporte, 
+                :numero_orden, :remision, :nota, :valor_parcial)";
                 $stmt = $dbconec->prepare($query);
+
+                $stmt->bindParam(':fecha', $fecha);
+                $stmt->bindParam(':tipo_movimiento', $tipo_movimiento);
                 $stmt->bindParam(':nit', $proveedor);
+                $stmt->bindParam(':sucursal', $sucursal);
+                $stmt->bindParam(':info_tipo_movimiento', $info_tipo_movimiento);
+                $stmt->bindParam(':documento', $documento);
+                $stmt->bindParam(':bodega_afectada', $bodega);
                 $stmt->bindParam(':vendedor', $vendedor);
                 $stmt->bindParam(':transporte', $transporte);
-                $stmt->bindParam(':sucursal', $sucursal);
-                $stmt->bindParam(':bodega_afectada', $bodega);
-                $stmt->bindParam(':tipo_movimiento', $tipo_movimiento);
-                $stmt->bindParam(':fecha', $fecha);
-                $stmt->bindParam(':plazo', $plazo);
-                $stmt->bindParam(':documento', $documento);
                 $stmt->bindParam(':numero_orden', $orden);
                 $stmt->bindParam(':remision', $remision);
                 $stmt->bindParam(':nota', $nota);
-                // $stmt->execute();
+                $stmt->bindParam(':valor_parcial', $valor_parcial);
+                $stmt->execute();
                 $ultimoIdInsertado = $dbconec->lastInsertId();
 
-                if ($stmt->execute()) {
-                    // $fact->actualizarVentaEspera($cliente, '+');
-                    $id_encriptado = $fact->encryptID($ultimoIdInsertado, 'clave_secreta');
-                    $response = array('status' => 'success', 'message' => 'Guardò bien', 'id' => $id_encriptado);
+                if ($ultimoIdInsertado) {
+                    
+                    foreach ($detalles as $key) {
 
+                        // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
+                        $query = "INSERT INTO det_compras_proveedores (id_compras_proveedores, codigo, descripcion, cantidad, vlr_unitario, vlr_unitario_final, vlr_parcial) 
+                        VALUES (:id_compras_proveedores, :codigo, :descripcion, :cantidad, :vlr_unitario, :vlr_unitario_final, :vlr_parcial)";
+                        $stmt = $dbconec->prepare($query);
+                        $stmt->bindParam(':id_compras_proveedores', $ultimoIdInsertado);
+                        $stmt->bindParam(':codigo', $key['codigo']);
+                        $stmt->bindParam(':descripcion', $key['descripcion']);
+                        $stmt->bindParam(':cantidad', $key['cant']);
+                        $stmt->bindParam(':vlr_unitario', $key['vlrUnitario']);
+                        $stmt->bindParam(':vlr_unitario_final', $key['vlrUnitFinal']);
+                        $stmt->bindParam(':vlr_parcial', $key['vlrParcial']);
+                        $stmt->execute();
+                    }
+                    
+                    $id_encriptado = $fact->encryptID($ultimoIdInsertado, 'clave_secreta');
+                    $response = array('status' => 'success', 'message' => 'Factura liquidada correctamente.', 'id' => $id_encriptado);
                 } else {
-                    // Si hubo un error en la inserción, devuelve un mensaje de error
                     $response = array('status' => 'error', 'message' => 'Error al guardar la factura');
                 }
 
-                // Devuelve la respudiasa en formato JSON
                 echo json_encode($response);
             } else {
                 $response = array('status' => 'error', 'message' => 'Error al guardar la factura, por favor llenar todos los datos.');

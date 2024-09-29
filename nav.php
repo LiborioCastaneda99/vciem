@@ -20,7 +20,7 @@
         </div>
         <a class="navbar-brand" href="index.php">
             <!-- <div class="d-flex align-items-center py-3"><img class="me-2" src="assets/img/icons/spot-illustrations/falcon.png" alt width="40"><span class="font-sans-serif text-primary">Visual -->
-            <div class="d-flex align-items-center py-3"><span class="font-sans-serif text-primary">Visual 100</span></div>
+            <div class="d-flex align-items-center py-3"><span class="font-sans-serif text-primary">Visual Ciem</span></div>
         </a>
     </div>
     <div class="collapse navbar-collapse" id="navbarVerticalCollapse">

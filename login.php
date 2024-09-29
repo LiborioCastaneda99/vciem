@@ -73,7 +73,7 @@ if (isset($_SESSION['user_id'])) {
                                 <div class="col-md-5 text-center bg-card-gradient">
                                     <div class="position-relative p-4 pt-md-5 pb-md-7" data-bs-theme="light">
                                         <div class="bg-holder bg-auth-card-shape" style="background-image:url(assets/img/icons/spot-illustrations/half-circle.png);"></div><!--/.bg-holder-->
-                                        <div class="z-1 position-relative"><a class="link-light mb-4 font-sans-serif fs-5 d-inline-block fw-bolder" href="index.html.htm">falcon</a>
+                                        <div class="z-1 position-relative"><a class="link-light mb-4 font-sans-serif fs-5 d-inline-block fw-bolder" href="index.html.htm">Visual Ciem</a>
                                             <p class="opacity-75 text-white">With the power of Falcon, you can now focus only on functionaries for your digital products, while leaving the UI design on us!</p>
                                         </div>
                                     </div>

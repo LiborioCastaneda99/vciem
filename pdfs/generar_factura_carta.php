@@ -90,8 +90,7 @@ $pdf->AddPage();
 $pdf->SetFont('courier', '', 9);
 // $pdf->SetTopMargin(0);
 // Agregar la imagen
-// $image_file = 'https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg';
-$image_file = '';
+$image_file = 'https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg';
 $pdf->Image($image_file, 10, 10, 40, '', 'JPG', '', '', false, 300, '', false, false, 0, false, false, false);
 
 // $pdf->SetXY(70, 10); // Establecer la posición X e Y para el texto

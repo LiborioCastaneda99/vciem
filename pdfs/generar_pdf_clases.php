@@ -67,7 +67,7 @@ if (count($lstResult)) {
 }
 
 $html .= '</table>';
-$pdf->setTitle('Reporte de clases - Visual100');
+$pdf->setTitle('Reporte de clases - Visual Ciem');
 $pdf->writeHTML($html, true, false, true, false, '');
 
 // Obtén el número total de páginas después de escribir el contenido HTML

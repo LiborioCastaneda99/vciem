@@ -79,21 +79,7 @@ class comprasProveedorModel extends Conexion
             $detalles = $datos["detalles"];
 
             if (
-                isset(
-                    $proveedor,
-                    $vendedor,
-                    $transporte,
-                    $sucursal,
-                    $bodega,
-                    $tipo_movimiento,
-                    $fecha,
-                    $info_tipo_movimiento,
-                    $orden,
-                    $remision,
-                    $documento,
-                    $nota,
-                    $valor_parcial
-                )
+                isset($proveedor, $vendedor, $transporte, $sucursal, $bodega, $tipo_movimiento, $fecha, $info_tipo_movimiento, $orden, $remision, $documento, $nota, $valor_parcial)
                 && !empty($proveedor) && !empty($vendedor) && !empty($transporte) && !empty($sucursal) && !empty($bodega)
                 && !empty($tipo_movimiento) && !empty($info_tipo_movimiento) && !empty($orden) && !empty($remision) && !empty($documento)
                 && !empty($nota) && !empty($fecha)
@@ -123,7 +109,7 @@ class comprasProveedorModel extends Conexion
                 $ultimoIdInsertado = $dbconec->lastInsertId();
 
                 if ($ultimoIdInsertado) {
-                    
+
                     foreach ($detalles as $key) {
 
                         // Realiza la inserción en la base de datos (ajusta esto según tu configuración)
@@ -138,8 +124,15 @@ class comprasProveedorModel extends Conexion
                         $stmt->bindParam(':vlr_unitario_final', $key['vlrUnitFinal']);
                         $stmt->bindParam(':vlr_parcial', $key['vlrParcial']);
                         $stmt->execute();
+
+                        // Realiza la inserción en la base de datos (ajusta diaso según tu configuración)
+                        $valor_promedio = $key['vlrParcial'] / $key['cant'];
+                        $query = "UPDATE tbarticulos SET uxemp=uxemp+{$key['cant']}, ctoult=$valor_promedio, pv1=$valor_promedio WHERE codigo=:codigo";
+                        $stmt = $dbconec->prepare($query);
+                        $stmt->bindParam(':codigo', $key['codigo']);
+                        $stmt->execute();
                     }
-                    
+
                     $id_encriptado = $fact->encryptID($ultimoIdInsertado, 'clave_secreta');
                     $response = array('status' => 'success', 'message' => 'Factura liquidada correctamente.', 'id' => $id_encriptado);
                 } else {

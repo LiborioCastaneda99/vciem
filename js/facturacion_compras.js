@@ -3,19 +3,15 @@ $(document).ready(function () {
   cargar_bodega("", "lstBodegaFact", "");
   cargar_vendedores("", "lstVendedoresFact", "");
   cargar_oficinas("", "lstSucursalFact", "");
-  cargar_tipos_movimientos(8, "lstTipoMovimientoFact", "");
+  cargar_tipos_movimientos("", "lstTipoMovimientoFact", "");
   cargar_transportadores("", "lstTransporteFact", "");
   cargar_factura("", "lstFacturaFact", "");
   actualizarTotales();
   mostrarNoHayRegistros();
-  
+
   const inputFecha = document.getElementById("fechaFact");
   const today = new Date().toISOString().split("T")[0]; // Obtiene la fecha actual en formato YYYY-MM-DD
   inputFecha.value = today;
-
-  // Realizar cualquier acción que desees con el valor seleccionado, como una solicitud AJAX para cargar datos relacionados con la factura, etc.
-  facturaSeleccionada = 3;
-  obtener_consecutivo(facturaSeleccionada);
 });
 
 // Funcion para cargar las listas select con opcion de busqueda
@@ -23,56 +19,6 @@ $("#btnBuscarProducto").click(function () {
   $("#buscarProductos").modal("show");
   cargar_productos();
 });
-
-// Funcion para cargar las listas select con opcion de busqueda
-$("#btnPagar").click(function () {
-  var total = parseFloat(document.getElementById("total").value);
-  if (total === 0) {
-    notificacion("Error", "error", "Debe llenar todos los campos.");
-  } else {
-    document.getElementById("pay_total_").textContent = total;
-    $("#pagarFactura").modal("show");
-  }
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-  var payForm = document.getElementById("payForm");
-  var payFields = payForm.querySelectorAll(".pay-field");
-
-  payFields.forEach(function (field) {
-    field.addEventListener("change", function () {
-      validarSumaCampos();
-    });
-  });
-});
-
-// Función para validar la suma de los campos
-function validarSumaCampos() {
-  var fac_efecti = parseFloat(document.getElementById("fac_efecti").value);
-  var fac_tdebit = parseFloat(document.getElementById("fac_tdebit").value);
-  var fac_tcredi = parseFloat(document.getElementById("fac_tcredi").value);
-  var fac_tchequ = parseFloat(document.getElementById("fac_tchequ").value);
-  var fac_tvales = parseFloat(document.getElementById("fac_tvales").value);
-  var total = parseFloat(document.getElementById("pay_total_").textContent);
-
-  var sumaCampos =
-    fac_efecti + fac_tdebit + fac_tcredi + fac_tchequ + fac_tvales;
-  var facCambioInput = document.getElementById("fac_cambio");
-
-  // Validar si la suma de los campos es menor que el total
-  if (sumaCampos < total) {
-    // Mostrar el mensaje de error debajo del input de cambio
-    mostrarMensajeError(
-      "La suma de los campos debe ser mayor o igual al total."
-    );
-  } else {
-    // Ocultar el mensaje de error si la validación pasa
-    ocultarMensajeError();
-  }
-
-  // Actualizar el valor del input de cambio
-  facCambioInput.value = sumaCampos - total;
-}
 
 // Función para mostrar el mensaje de error debajo del input de cambio
 function mostrarMensajeError(mensaje) {
@@ -180,10 +126,12 @@ function agregar(id) {
 
       document.getElementById("codigo").value = data[0].codigo;
       document.getElementById("descripcion").value = data[0].nombre;
+      document.getElementById("um").value = data[0].umedida;
       document.getElementById("cant").value = 1;
       document.getElementById("vlr_unitario").value = data[0].pv1;
-      document.getElementById("vlr_unit_final").value = data[0].pv1;
-      document.getElementById("vlr_parcial").value = parseFloat(data[0].pv1);
+      document.getElementById("desc").value = data[0].pdes;
+      document.getElementById("imp").value = data[0].iva;
+      document.getElementById("vlr_total").value = parseFloat(data[0].pv1);
       $("#buscarProductos").modal("hide");
 
       const codigoCampo = document.getElementById("codigo");
@@ -213,32 +161,6 @@ function agregar(id) {
   });
 }
 
-// obtener consecutivo
-function obtener_consecutivo(id_factura) {
-  var consecutivoP = document.getElementById("documentoFact");
-  var infoTipoMovimiento = document.getElementById("infoTipoMovimientoFact");
-
-  // Realizar la solicitud AJAX al servidor
-  $.ajax({
-    url: "ajax/articulosajax.php", // La URL del script PHP que maneja la solicitud
-    method: "POST", // El método de solicitud
-    dataType: "json", // El tipo de datos que esperamos recibir del servidor
-    data: { proceso: "get_consecutivo", id: id_factura }, // Los datos que se enviarán al servidor
-
-    // Función que se ejecuta cuando la solicitud se completa con éxito
-    success: function (response) {
-      console.log(response);
-      consecutivoP.value = response.datos;
-      if (id_factura === 3) {
-        infoTipoMovimiento.value = "ENTRADA";
-        infoTipoMovimiento.style.backgroundColor = "blue"; // Fondo azul
-        infoTipoMovimiento.style.color = "yellow"; // Letras amarillas
-        infoTipoMovimiento.style.fontWeight = "bold"; // Letras en negrita
-      }
-    },
-  });
-}
-
 //onchange para buscar el codigo y si existe que pinte datos
 $("#codigo").change(function () {
   // Obtener el valor del código
@@ -259,10 +181,12 @@ $("#codigo").change(function () {
 
         document.getElementById("codigo").value = response.datos[0].codigo;
         document.getElementById("descripcion").value = response.datos[0].nombre;
+        document.getElementById("um").value = response.datos[0].umedida;
         document.getElementById("cant").value = 1;
         document.getElementById("vlr_unitario").value = response.datos[0].pv1;
-        document.getElementById("vlr_unit_final").value = response.datos[0].pv1;
-        document.getElementById("vlr_parcial").value = parseFloat(
+        document.getElementById("desc").value = response.datos[0].pdes;
+        document.getElementById("imp").value = response.datos[0].iva;
+        document.getElementById("vlr_total").value = parseFloat(
           response.datos[0].pv1
         );
         // Y así sucesivamente con los demás campos
@@ -291,10 +215,12 @@ $("#codigo").change(function () {
         // Si no se encontraron datos, limpiar los campos
         document.getElementById("codigo").value = "";
         document.getElementById("descripcion").value = "";
+        document.getElementById("um").value = "";
         document.getElementById("cant").value = "";
         document.getElementById("vlr_unitario").value = "";
-        document.getElementById("vlr_unit_final").value = "";
-        document.getElementById("vlr_parcial").value = "";
+        document.getElementById("desc").value = "";
+        document.getElementById("imp").value = "";
+        document.getElementById("vlr_total").value = "";
       }
     },
 
@@ -311,22 +237,47 @@ $('.datos_productos input[type="text"]').change(function () {
   // Obtener el valor de la cantidad y del valor unitario
   var cantidad = parseFloat($("#cant").val());
   var valorUnitario = parseFloat($("#vlr_unitario").val());
+  var imp = parseFloat($("#imp").val());
+  var descuento = parseFloat($("#desc").val());
 
   // Calcular el valor del descuento y el valor final
   var nuevoValorUnitario = valorUnitario;
   var valorFinal = nuevoValorUnitario * cantidad;
+  var valorImp = (valorFinal * imp) / 100;
+  var valorDesc = (valorFinal * descuento) / 100;
 
-  $("#vlr_unit_final").val(nuevoValorUnitario);
-  $("#vlr_parcial").val(valorFinal);
+  // Calcular el valor del descuento y el valor final
+  var nuevoValorUnitario = valorUnitario;
+  var valorFinal = Math.ceil(nuevoValorUnitario * cantidad + valorImp);
+
+  // $("#vlr_unit_final").val(nuevoValorUnitario);
+  $("#vlr_total").val(valorFinal);
 });
 
-// validar que los campos sean tipo numero
+// onchange de los campos manipulables para hacer calculos si se mueve alguno
+$('.datos_factuacion input[type="text"]').change(function () {
+  // Obtener el valor de la cantidad y del valor unitario
+  var valorRetefuenteFact = parseFloat($("#valorRetefuenteFact").val());
+  var valorParcialFact = parseFloat($("#valorParcialFact").val());
+
+  // Calcular el valor del descuento y el valor final
+  var valorParcialOpe = valorParcialFact - valorRetefuenteFact;
+  // actualizarTotales();
+  // $("#vlr_unit_final").val(nuevoValorUnitario);
+  $("#valorParcialFact").val(valorParcialOpe);
+});
+
 // Obtener referencias a los elementos de entrada de texto
 const campos_agg_producto = document.querySelectorAll('input[type="text"]');
 
 // Iterar sobre los campos y agregar un evento de escucha para validar los números positivos
 campos_agg_producto.forEach(function (campo) {
   campo.addEventListener("input", function () {
+    // Verificar si el campo es 'ordenFact'; si es así, salir de la función
+    if (this.id === "ordenFact" || this.id === "documentoFact") {
+      return; // No aplicar validación a este campo
+    }
+
     // Obtener el valor actual del campo
     let valor = this.value.trim(); // Eliminar espacios en blanco al principio y al final
 
@@ -340,30 +291,44 @@ campos_agg_producto.forEach(function (campo) {
 });
 
 // Capturar el evento onchange del select
-$("#lstFacturaFact").change(function () {
+$("#lstTipoMovimientoFact").change(function () {
   // Obtener el valor seleccionado
   var facturaSeleccionada = $(this).val();
-
-  // Realizar cualquier acción que desees con el valor seleccionado, como una solicitud AJAX para cargar datos relacionados con la factura, etc.
-  obtener_consecutivo(facturaSeleccionada);
+  infoTipoMovimiento = document.getElementById("infoTipoMovimientoFact");
 
   // Por ejemplo, mostrar el valor seleccionado en la consola
   console.log("Factura seleccionada:", facturaSeleccionada);
+
+  if (facturaSeleccionada === "1") {
+    infoTipoMovimiento.value = "COMPRAS";
+    infoTipoMovimiento.style.backgroundColor = "blue"; // Fondo azul
+    infoTipoMovimiento.style.color = "yellow"; // Letras amarillas
+    infoTipoMovimiento.style.fontWeight = "bold"; // Letras en negrita
+  } else {
+    infoTipoMovimiento.value = "OTRO";
+  }
 });
 
 // onchange de los campos manipulables para hacer calculos si se mueve alguno del modal
 $('.formEditar input[type="text"]').change(function () {
   // Obtener el valor de la cantidad y del valor unitario
   var cantidad = parseFloat($("#cantidadEditar").val());
-  var valorUnitario = parseFloat($("#vlrUnitarioInicialEditar").val());
+  var valorUnitario = parseFloat($("#vlrUnitarioEditar").val());
+  var imp = parseFloat($("#impuestoEditar").val());
+  var descuento = parseFloat($("#descuentoEditar").val());
 
-  // Calcular el valor final
+  // Calcular el valor del descuento y el valor final
   var nuevoValorUnitario = valorUnitario;
   var valorFinal = nuevoValorUnitario * cantidad;
+  var valorImp = (valorFinal * imp) / 100;
+  var valorDesc = (valorFinal * descuento) / 100;
 
-  // Actualizar los campos de valor descuento, valor unitario final y valor parcial
-  $("#vlrUnitarioFinalEditar").val(nuevoValorUnitario);
-  $("#vlrParcialEditar").val(valorFinal);
+  // Calcular el valor del descuento y el valor final
+  var nuevoValorUnitario = valorUnitario;
+  var valorFinal = Math.ceil(nuevoValorUnitario * cantidad + valorImp);
+
+  // $("#vlr_unit_final").val(nuevoValorUnitario);
+  $("#vlrTotalEditar").val(valorFinal);
 });
 
 var contadorTabla = 0;
@@ -373,6 +338,8 @@ var subtotal = 0;
 var descuentos = 0;
 var totalImpuestos = 0;
 var total = 0;
+var vlrImp = 0;
+var valorAntImp = 0;
 
 // agregar a la tabla
 $("#btnAgregarProducto").click(function () {
@@ -440,7 +407,17 @@ $("#btnAgregarProducto").click(function () {
   tabla_factura(valores);
 
   // Asignar un valor utilizando textContent
-  valorParcial.innerText = total.toFixed(2); // Redondear el total a dos decimales
+  $("#valorAntesDescuentoFact").val(0); // Redondear el total a dos decimales
+  $("#descuentoFact").val(0); // Redondear el total a dos decimales
+  $("#ImpuestoFact").val(valorAntImp.toFixed(2)); // Redondear el total a dos decimales
+  $("#valorImpFact").val(Math.ceil(vlrImp.toFixed(2))); // Redondear el total a dos decimales
+  if (total > 0) {
+    valorParcial.style.backgroundColor = "red"; // Fondo azul
+    valorParcial.style.color = "yellow"; // Letras amarillas
+    valorParcial.style.fontWeight = "bold"; // Letras en negrita
+    valorParcial.style.textAlign = "center"; // Letras en negrita
+  }
+  $("#valorParcialFact").val(total.toFixed(2)); // Redondear el total a dos decimales
 
   // Limpiar los inputs después de agregar el producto
   limpiarInputs();
@@ -448,18 +425,22 @@ $("#btnAgregarProducto").click(function () {
 
 // Funcion para cargar las listas select con opcion de busqueda
 function editar(id) {
-  $("#editarModal").modal("show");
   // Buscar el producto en la tabla
   var producto = obtenerProductoPorId(id);
+  console.table(producto);
+
+  $("#editarModal").modal("show");
 
   // Llenar los campos del modal con los valores del producto
   $("#idProducto").val(id);
   $("#codigoEditar").val(producto.codigo);
   $("#descripcionEditar").val(producto.descripcion);
-  $("#vlrUnitarioInicialEditar").val(producto.vlr_unitario);
+  $("#vlrUnitarioEditar").val(producto.vlr_unitario);
   $("#cantidadEditar").val(producto.cant);
-  $("#vlrUnitarioFinalEditar").val(producto.vlr_unit_final);
-  $("#vlrParcialEditar").val(producto.vlr_parcial);
+  $("#descuentoEditar").val(producto.desc);
+  $("#impuestoEditar").val(producto.imp.replace("%", ""));
+  $("#vlrTotalEditar").val(producto.vlr_total);
+  // Forzar la apertura del modal (si no se abre automáticamente)
 }
 
 // Función para obtener un producto por su ID desde la tabla
@@ -479,8 +460,9 @@ function obtenerProductoPorId(id) {
         descripcion: $(this).find(".descripcion").text(),
         cant: $(this).find(".cant").text(),
         vlr_unitario: $(this).find(".vlr_unitario").text(),
-        vlr_unit_final: $(this).find(".vlr_unit_final").text(),
-        vlr_parcial: $(this).find(".vlr_parcial").text(),
+        desc: $(this).find(".desc").text(),
+        imp: $(this).find(".imp").text(),
+        vlr_total: $(this).find(".vlr_total").text(),
       };
 
       // Salir del bucle forEach
@@ -498,9 +480,10 @@ $(".btnModificar").click(function () {
 
   // Obtener los nuevos valores de los campos de entrada
   var cantidad = $("#cantidadEditar").val();
-  var vlrUnitarioInicial = $("#vlrUnitarioInicialEditar").val();
-  var vlrUnitarioFinal = $("#vlrUnitarioFinalEditar").val();
-  var vlrParcial = $("#vlrParcialEditar").val();
+  var vlrUnitario = $("#vlrUnitarioEditar").val();
+  var impuesto = $("#impuestoEditar").val();
+  var descuento = $("#descuentoEditar").val();
+  var vlrTotal = $("#vlrTotalEditar").val();
 
   // Actualizar los valores en la tabla
   $("#tablaProductos tbody tr").each(function () {
@@ -510,10 +493,11 @@ $(".btnModificar").click(function () {
     // Verificar si el ID de la fila coincide con el ID del producto a editar
     if (idFila == idProducto) {
       // Actualizar los valores de los campos en la fila correspondiente
+      $(this).find(".vlr_unitario").text(vlrUnitario);
       $(this).find(".cant").text(cantidad);
-      $(this).find(".vlr_unitario").text(vlrUnitarioInicial);
-      $(this).find(".vlr_unit_final").text(vlrUnitarioFinal);
-      $(this).find(".vlr_parcial").text(vlrParcial);
+      $(this).find(".desc").text(descuento);
+      $(this).find(".imp").text(impuesto);
+      $(this).find(".vlr_total").text(vlrTotal);
 
       // Salir del bucle forEach
       return false;
@@ -529,36 +513,56 @@ $(".btnModificar").click(function () {
 
 // Capturar el evento de clic en el botón "Facturar" producto
 $(".btnFacturar").click(function () {
-  // Obtener los valores de los campos de entrada
-  var proveedor = $("#lstProveedoresFact").val();
-  var vendedor = $("#lstVendedoresFact").val();
-  var transporte = $("#lstTransporteFact").val();
-  var sucursal = $("#lstSucursalFact").val();
-  var tipo_movimiento = $("#lstTipoMovimientoFact").val();
-  var bodega = $("#lstBodegaFact").val();
-  var fecha = $("#fechaFact").val();
-  var info_tipo_movimiento = $("#infoTipoMovimientoFact").val();
-  var documento = $("#documentoFact").val();
-  var orden = $("#ordenFact").val();
-  var remision = $("#remisionFact").val();
-  var nota = $("#notaFact").val();
-  var valorParcialFact = $("#valorParcialFact").text(); // Esto obtiene el texto dentro del elemento <p>
+  // Obtener valores de los campos
+  const fecha = document.getElementById("fechaFact").value;
+  const tipoMovimiento = document.getElementById("lstTipoMovimientoFact").value;
+  const plazo = document.getElementById("plazoFact").value;
+  const infoTipoMovimiento = document.getElementById(
+    "infoTipoMovimientoFact"
+  ).value;
+  const proveedores = document.getElementById("lstProveedoresFact").value;
+  const sucursal = document.getElementById("lstSucursalFact").value;
+  const documento = document.getElementById("documentoFact").value;
+  const bodega = document.getElementById("lstBodegaFact").value;
+  const vendedores = document.getElementById("lstVendedoresFact").value;
+  const orden = document.getElementById("ordenFact").value;
+  const transporte = document.getElementById("lstTransporteFact").value;
+  const remision = document.getElementById("remisionFact").value;
+  const nota = document.getElementById("notaFact").value;
+  const valorAntesDescuento = document.getElementById(
+    "valorAntesDescuentoFact"
+  ).value;
+  const descuento = document.getElementById("descuentoFact").value;
+  const impuesto = document.getElementById("ImpuestoFact").value;
+  const valorImp = document.getElementById("valorImpFact").value;
+  const valorRetefuente = document.getElementById("valorRetefuenteFact").value;
+  const valorReteIva = document.getElementById("valorReteIvaFact").value;
+  const valorReteIca = document.getElementById("valorReteIcaFact").value;
+  const valorParcial = document.getElementById("valorParcialFact").value;
 
   // Crear un objeto con los datos recolectados
   var datos = {
-    proveedor: proveedor,
-    vendedor: vendedor,
-    transporte: transporte,
-    sucursal: sucursal,
-    tipo_movimiento: tipo_movimiento,
-    bodega: bodega,
     fecha: fecha,
-    info_tipo_movimiento: info_tipo_movimiento,
+    tipoMovimiento: tipoMovimiento,
+    plazo: plazo,
+    infoTipoMovimiento: infoTipoMovimiento,
+    proveedores: proveedores,
+    sucursal: sucursal,
     documento: documento,
+    bodega: bodega,
+    vendedores: vendedores,
     orden: orden,
+    transporte: transporte,
     remision: remision,
     nota: nota,
-    valor_parcial: valorParcialFact,
+    valorAntesDescuento: valorAntesDescuento,
+    descuento: descuento,
+    impuesto: impuesto,
+    valorImp: valorImp,
+    valorRetefuente: valorRetefuente,
+    valorReteIva: valorReteIva,
+    valorReteIca: valorReteIca,
+    valorParcial: valorParcial,
     detalles: [], // Aquí se agregarán los detalles de la factura
   };
 
@@ -567,17 +571,19 @@ $(".btnFacturar").click(function () {
     var detalle = {
       codigo: $(fila).find(".codigo").text(),
       descripcion: $(fila).find(".descripcion").text(),
+      um: $(fila).find(".um").text(),
       cant: $(fila).find(".cant").text(),
-      vlrUnitario: $(fila).find(".vlr_unitario").text(),
-      vlrUnitFinal: $(fila).find(".vlr_unit_final").text(),
-      vlrParcial: $(fila).find(".vlr_parcial").text(),
+      vlr_unitario: $(fila).find(".vlr_unitario").text(),
+      descuento: $(fila).find(".desc").text(),
+      imp: $(fila).find(".imp").text(),
+      vlr_total: $(fila).find(".vlr_total").text(),
     };
     datos.detalles.push(detalle);
   });
 
   // Realizar la solicitud AJAX al servidor
   $.ajax({
-    url: "ajax/comprasproveedoresajax.php",
+    url: "ajax/facturacioncomprasajax.php",
     method: "POST",
     dataType: "json",
     data: { proceso: "guardar", datos: datos },
@@ -594,79 +600,9 @@ $(".btnFacturar").click(function () {
         tabla_factura(valores);
         actualizarTotales();
         mostrarNoHayRegistros();
-        obtener_consecutivo(3);
       } else {
         notificacion("Error", response.status, response.message);
       }
-    },
-  });
-});
-
-// Capturar el evento de clic en el botón "Facturar" producto
-$(".btnFacturaEspera").click(function () {
-  // Obtener los valores de los campos de entrada
-  var proveedor = $("#lstProveedoresFact").val();
-  var factura = $("#lstFacturaFact").val();
-  var consecutivo = $("#consecutivo").val();
-  var vendedor = $("#lstVendedoresFact").val();
-  var bodega = $("#lstBodegaFact").val();
-  var total = $("#total").val();
-  var nota = $("#notaFact").val();
-  var descuentos = $("#descuentos").text(); // Esto obtiene el texto dentro del elemento <p>
-  var subtotal = $("#subtotal").text(); // Esto obtiene el texto dentro del elemento <p>
-
-  // Crear un objeto con los datos recolectados
-  var datos = {
-    proveedor: proveedor,
-    factura: factura,
-    consecutivo: consecutivo,
-    vendedor: vendedor,
-    caja: caja,
-    bodega: bodega,
-    total: total,
-    nota: nota,
-    subtotal: subtotal,
-    descuentos: descuentos,
-    detalles: [], // Aquí se agregarán los detalles de la factura
-  };
-
-  // Recorrer las filas de la tabla de detalles y agregar los datos de cada fila al objeto 'datos'
-  $("#cuerpoTabla tr").each(function (index, fila) {
-    var detalle = {
-      codigo: $(fila).find(".codigo").text(),
-      descripcion: $(fila).find(".descripcion").text(),
-      cant: $(fila).find(".cant").text(),
-      vlrUnitario: $(fila).find(".vlr_unitario").text(),
-      vlrUnitFinal: $(fila).find(".vlr_unit_final").text(),
-      vlrParcial: $(fila).find(".vlr_parcial").text(),
-    };
-    datos.detalles.push(detalle);
-  });
-
-  // Realizar la solicitud AJAX al servidor
-  $.ajax({
-    url: "ajax/facturacionajax.php", // La URL del script PHP que maneja la solicitud
-    method: "POST", // El método de solicitud
-    dataType: "json", // El tipo de datos que esperamos recibir del servidor
-    data: { proceso: "guardar_factura_espera", datos: datos }, // Los datos que se enviarán al servidor
-
-    // Función que se ejecuta cuando la solicitud se completa con éxito
-    success: function (response) {
-      console.log(response);
-      if (response.status == "success") {
-        notificacion("Exito", response.status, response.message);
-        limpiarCamposFactura();
-
-        valores = {};
-        contadorTabla = 0;
-        delete valores;
-
-        tabla_factura(valores);
-        actualizarTotales();
-      } else {
-        notificacion("Error", response.status, response.message);
-      }
-      // consecutivoP.value = response.datos
     },
   });
 });
@@ -736,6 +672,10 @@ function tabla_factura(valores) {
   subtotal = 0;
   descuentos = 0;
   total = 0;
+  valorAntImp = 0;
+  vlrImp = 0;
+  valorAntDesc = 0;
+  valorDesc = 0;
 
   $.each(valores, function (index, item) {
     $("#tablaProductos tbody").append(
@@ -749,17 +689,24 @@ function tabla_factura(valores) {
         '<td class="descripcion">' +
         item.descripcion +
         "</td>" +
+        '<td class="um">' +
+        item.um +
+        "</td>" +
         '<td class="cant">' +
         item.cant +
         "</td>" +
         '<td class="vlr_unitario">' +
         item.vlr_unitario +
         "</td>" +
-        '<td class="vlr_unit_final">' +
-        item.vlr_unit_final +
+        '<td class="desc">' +
+        item.desc +
         "</td>" +
-        '<td class="vlr_parcial">' +
-        item.vlr_parcial +
+        '<td class="imp">' +
+        item.imp +
+        "%</td>" +
+        "</td>" +
+        '<td class="vlr_total">' +
+        item.vlr_total +
         "</td>" +
         '<td class="text-center"><button class="btn btn-outline-warning me-1 mb-1" type="button" onclick=editar("' +
         item.codigo +
@@ -772,8 +719,14 @@ function tabla_factura(valores) {
         "</tr>"
     );
 
-    /// Sumar al subtotal el valor parcial del producto
-    total += parseFloat(item.vlr_parcial);
+    // Calcular el valor del descuento y el valor final
+    var valorFinal = item.cant * item.vlr_unitario;
+    vlrImp += (valorFinal * item.imp) / 100;
+    valorAntImp += valorFinal;
+    valorAntDesc += Math.ceil(item.vlr_total);
+    valorDesc += Math.ceil(item.vlr_total * item.desc) / 100;
+
+    total += parseFloat(item.vlr_total);
   });
 }
 
@@ -802,7 +755,7 @@ function limpiarCamposFactura() {
   var lstTipoMovimiento = $("#lstTipoMovimientoFact");
   lstTipoMovimiento.select2({});
   lstTipoMovimiento.find("option").remove();
-  cargar_tipos_movimientos(8, "lstTipoMovimientoFact", "");
+  cargar_tipos_movimientos("", "lstTipoMovimientoFact", "");
 
   var lstTransporte = $("#lstTransporteFact");
   lstTransporte.select2({});
@@ -831,16 +784,24 @@ function actualizarTotales() {
 
   // Recorrer todas las filas de la tabla y sumar los valores parciales de cada producto
   $("#tablaProductos tbody tr").each(function () {
-    var vlr_parcial = parseFloat($(this).find(".vlr_parcial").text());
+    var vlr_total = parseFloat($(this).find(".vlr_total").text());
 
-    if (!isNaN(vlr_parcial)) {
-      subtotal += vlr_parcial;
-      total += vlr_parcial;
+    if (!isNaN(vlr_total)) {
+      subtotal += vlr_total;
+      total += vlr_total; // Si tienes descuentos o impuestos, podrías modificar el total aquí
     }
   });
 
+  // Redondear el total hacia arriba
+  total = Math.ceil(total);
+
   // Actualizar el valor del subtotal en la interfaz de usuario
-  $("#valorParcialFact").text(total.toFixed(2));
+  // Asignar un valor utilizando textContent
+  $("#valorAntesDescuentoFact").val(0); // Redondear el total a dos decimales
+  $("#descuentoFact").val(0); // Redondear el total a dos decimales
+  $("#ImpuestoFact").val(valorAntImp.toFixed(2)); // Redondear el total a dos decimales
+  $("#valorImpFact").val(Math.ceil(vlrImp.toFixed(2))); // Redondear el total a dos decimales
+  $("#valorParcialFact").val(total.toFixed(2)); // Mostrar total con dos decimales
 }
 
 // Función para limpiar los inputs después de agregar un producto
@@ -1169,7 +1130,6 @@ function cargar_tipos_movimientos(Id, nameSelect, Modal) {
 
   if (Id != "") {
     lstRoles.select2({});
-
     lstRoles.find("option").remove();
     var searchTerm = "";
     $.ajax({
@@ -1178,7 +1138,7 @@ function cargar_tipos_movimientos(Id, nameSelect, Modal) {
       url: "ajax/tipomoinsajax.php",
       data: {
         searchTerm: searchTerm,
-        proceso: "combo_tipomoins",
+        proceso: "combo_tipofact",
         id: Id,
       },
     }).then(function (registros) {
@@ -1205,7 +1165,7 @@ function cargar_tipos_movimientos(Id, nameSelect, Modal) {
         data: function (params) {
           return {
             searchTerm: params.term,
-            proceso: "combo_tipomoins",
+            proceso: "combo_tipofact",
             id: Id,
           };
         },
@@ -1219,6 +1179,7 @@ function cargar_tipos_movimientos(Id, nameSelect, Modal) {
     });
   }
 }
+
 $("#btnBusquedaTransporteFact").click(function () {
   cargar_transportadores("", "lstTransporteFact", "");
 });

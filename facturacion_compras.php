@@ -1,0 +1,471 @@
+﻿<?php
+session_start();
+
+// llamamos clase para validarPerfil
+require_once('modelo/validar_perfil.php');
+$vp = new validarPerfil();
+
+$usuario_id = $_SESSION['user_id'];
+if (!isset($usuario_id)) {
+    header('Location: login.php');
+}
+
+$permisoRequerido = "ver_facturacion_compras";
+// Verificar si el usuario tiene el permiso requerido
+if (!$vp->tienePermiso($usuario_id, $permisoRequerido)) {
+    // Mostrar un mensaje de error o redirigir a otra página
+    header('Location: index.php');
+}
+
+?>
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en-US" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ===============================================--><!--    Document Title--><!-- ===============================================-->
+    <title>Visual Ciem | Facturas de compras</title>
+
+    <!-- ===============================================--><!--    Favicons--><!-- ===============================================-->
+    <?php require_once("head.php"); ?>
+    <script>
+        var isRTL = JSON.parse(localStorage.getItem('isRTL'));
+        if (isRTL) {
+            var linkDefault = document.getElementById('style-default');
+            var userLinkDefault = document.getElementById('user-style-default');
+            linkDefault.setAttribute('disabled', true);
+            userLinkDefault.setAttribute('disabled', true);
+            document.querySelector('html').setAttribute('dir', 'rtl');
+        } else {
+            var linkRTL = document.getElementById('style-rtl');
+            var userLinkRTL = document.getElementById('user-style-rtl');
+            linkRTL.setAttribute('disabled', true);
+            userLinkRTL.setAttribute('disabled', true);
+        }
+    </script>
+</head>
+
+<body>
+    <!-- ===============================================--><!--   Contenido--><!-- ===============================================-->
+    <main class="main" id="top">
+        <div class="container" data-layout="container">
+            <!-- navbar -->
+            <?php require_once("nav.php"); ?>
+
+            <div class="content">
+                <!-- menu -->
+                <?php require_once("menu.php"); ?>
+
+                <!-- Llenar tabla -->
+                <div class="card mb-3">
+                    <div class="card-header bg-body-tertiary">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h6 class="mb-0">Facturas de compras</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body pt-3">
+                        <div class="tab-content">
+                            <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="-" id="">
+                                <div class="p-2">
+                                    <div class="row">
+                                        <form id="frm_facturacion" method="POST" class="frm_facturacion row g-2 needs-validation" novalidate="">
+
+                                            <div class="col-md-2">
+                                                <label>Fecha <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <input type="date" class="form-control" id="fechaFact" name="fechaFact">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <label>Tipo movimiento <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <select class="form-select selectpicker" id="lstTipoMovimientoFact" size="1" name="lstTipoMovimientoFact" disabled>
+                                                    </select>
+                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btn" name="btn" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="row p-1">
+                                                    <label>Plazo <span class="text-danger"> * </span></label>
+                                                    <div class="form-group col-md-6 mb-2">
+                                                        <input type="text" class="form-control" id="plazoFact" name="plazoFact">
+                                                    </div>
+                                                    <div class="form-group col-md-6 mb-2">
+                                                        <input type="text" class="form-control" id="infoTipoMovimientoFact" name="infoTipoMovimientoFact" readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <label>Nit <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <select class="form-select selectpicker" id="lstProveedoresFact" size="1" name="lstProveedoresFact" required>
+                                                    </select>
+                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaProveedoresFact" name="btnBusquedaProveedoresFact" style="width: 12.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <label>Sucursal <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <select class="form-select selectpicker" id="lstSucursalFact" size="1" name="lstSucursalFact" required>
+                                                    </select>
+                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaSucursalFact" name="btnBusquedaSucursalFact" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="row p-1">
+                                                    <label>Documento <span class="text-danger"> * </span></label>
+                                                    <div class="form-group col-md-12 mb-2">
+                                                        <input type="text" class="form-control" id="documentoFact" name="documentoFact">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-3">
+                                                <label>Bodega afectada <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <select class="form-select selectpicker" id="lstBodegaFact" size="1" name="lstBodegaFact" required>
+                                                    </select>
+                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaBodegaFact" name="btnBusquedaBodegaFact" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <label>Vendedor <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <select class="form-select selectpicker" id="lstVendedoresFact" size="1" name="lstVendedoresFact" required>
+                                                    </select>
+                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaVendedoresFact" name="btnBusquedaVendedoresFact" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <label>Orden No. <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <input type="text" class="form-control" id="ordenFact" name="ordenFact">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <label>Transporte <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <select class="form-select selectpicker" id="lstTransporteFact" size="1" name="lstTransporteFact" required>
+                                                    </select>
+                                                    <span class="input-group-addon"><button class="btn btn-outline-primary icon-search4 Search" type="button" id="btnBusquedaTransporteFact" name="btnBusquedaTransporteFact" style="width: 15.7%;"><span class="fas fa-search search-box-icon"></span></button></span>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-3">
+                                                <label>Remisión <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <input type="text" class="form-control" id="remisionFact" name="remisionFact">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-9">
+                                                <label>Nota</label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <input class="form-control" name="notaFact" id="notaFact" cols="50" rows="2">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <input type="text" class="form-control" id="total" name="total" readonly hidden>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="">
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <span class="input-group-addon d-grid  gap-0">
+                                                        <button class="btn btn-outline-dark me-1 mb-1 icon-search4 Search" type="button" id="btnBuscarProducto" name="btnBuscarProducto" title="Buscar producto o servicio">
+                                                            Buscar productos <span class="fas fa-search search-box-icon"></span>
+                                                        </button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <table class="table table-striped mb-0 fs-10" id="tablaProductos">
+                                                <thead>
+                                                    <tr class="datos_productos" id="datos_productos">
+                                                        <td colspan="2">
+                                                            <input class="form-control form-control-sm" type="text" name="codigo" id="codigo" onchange="" placeholder="Código">
+                                                        </td>
+                                                        <td>
+                                                            <input class="form-control form-control-sm" type="text" name="descripcion" id="descripcion" placeholder="Descripción" readonly>
+                                                        </td>
+                                                        <td>
+                                                            <input class="form-control form-control-sm" type="text" name="um" id="um" placeholder="Uni. Med." readonly>
+                                                        </td>
+                                                        <td>
+                                                            <input class="form-control form-control-sm" type="text" name="cant" placeholder="Cantidad" id="cant">
+                                                        </td>
+                                                        <td>
+                                                            <input class="form-control form-control-sm" type="text" name="vlr_unitario" placeholder="Vrl. unitario" id="vlr_unitario">
+                                                        </td>
+                                                        <td>
+                                                            <input class="form-control form-control-sm" type="text" name="desc" id="desc" placeholder="Descuento %">
+                                                        </td>
+                                                        <td>
+                                                            <input class="form-control form-control-sm" type="text" name="imp" id="imp" placeholder="Impuesto %">
+                                                        </td>
+                                                        <td>
+                                                            <input class="form-control form-control-sm" type="text" name="vlr_total" placeholder="Vlr. parcial" id="vlr_total">
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group col-md-12">
+                                                                <span class="input-group-addon col-12 d-grid  gap-0">
+                                                                    <button class="btn btn-outline-success icon-search4 Search" type="button" id="btnAgregarProducto" name="btnAgregarProducto" title="Agregar producto o servicio">
+                                                                        <span class="fas fa-cart-plus search-box-icon"></span>
+                                                                    </button>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </thead>
+                                                <thead class="bg-200">
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Código</th>
+                                                        <th>Descripción</th>
+                                                        <th>Uni. Med.</th>
+                                                        <th>Cantidad</th>
+                                                        <th>Vlr. unitario</th>
+                                                        <th>Descuento</th>
+                                                        <th>Impuesto</th>
+                                                        <th>Vlr. Total</th>
+                                                        <th style="width: 150px;" class="text-center">Acción</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="cuerpoTabla">
+                                                    <tr id="no_hay_registros">
+                                                        <td colspan="13" class="text-center">No hay registros agregados.</td>
+                                                    </tr>
+                                                    <!-- Las filas se agregarán dinámicamente aquí -->
+                                                </tbody>
+                                            </table>
+
+                                            <!-- pie de factura -->
+
+                                            <div class="row mt-4 datos_factuacion">
+
+                                                <div class="col-md-3 mb-3 row">
+                                                    <label class="col-sm-7 col-form-label" for="staticEmail">Vlr antes descuento</label>
+                                                    <div class="col-sm-5">
+                                                        <input class="form-control-plaintext outline-none valorAntesDescuentoFact" name="valorAntesDescuentoFact" id="valorAntesDescuentoFact" type="text" readonly="" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3 mb-3 row">
+                                                    <label class="col-sm-6 col-form-label" for="staticEmail">Descuento</label>
+                                                    <div class="col-sm-6">
+                                                        <input class="form-control-plaintext outline-none descuentoFact" name="descuentoFact" id="descuentoFact" type="text" readonly="" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3 mb-3 row">
+                                                    <label class="col-sm-7 col-form-label" for="staticEmail">Vlr antes impuesto</label>
+                                                    <div class="col-sm-5">
+                                                        <input class="form-control-plaintext outline-none ImpuestoFact" name="ImpuestoFact" id="ImpuestoFact" type="text" readonly="" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3 mb-3 row">
+                                                    <label class="col-sm-6 col-form-label" for="staticEmail">Vlr impuesto</label>
+                                                    <div class="col-sm-6">
+                                                        <input class="form-control-plaintext outline-none valorImpFact" name="valorImpFact" id="valorImpFact" type="text" readonly="" />
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-3 mb-3 row">
+                                                    <label class="col-sm-7 col-form-label" for="staticEmail">Vlr Retefuente</label>
+                                                    <div class="col-sm-5">
+                                                        <input class="form-control outline-none valorRetefuenteFact" name="valorRetefuenteFact" id="valorRetefuenteFact" type="text"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3 mb-3 row">
+                                                    <label class="col-sm-6 col-form-label" for="staticEmail">Vlr ReteIVA</label>
+                                                    <div class="col-sm-6">
+                                                        <input class="form-control outline-none valorReteIvaFact" name="valorReteIvaFact" id="valorReteIvaFact" type="text" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3 mb-3 row">
+                                                    <label class="col-sm-7 col-form-label" for="staticEmail">Vlr ReteICA</label>
+                                                    <div class="col-sm-5">
+                                                        <input class="form-control outline-none valorReteIcaFact" name="valorReteIcaFact" id="valorReteIcaFact" type="text" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3 mb-3 row">
+                                                    <label class="col-sm-6 col-form-label" for="staticEmail">Valor Parcial</label>
+                                                    <div class="col-sm-6">
+                                                        <input class="form-control form-control-plaintext outline-none valorParcialFact" name="valorParcialFact" id="valorParcialFact" type="text" readonly="" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 d-grid  gap-0 mt-4">
+                                                <button class="btn btn-outline-primary me-1 mb-1 btnFacturar" id="btnFacturar" type="button"><span class="fas fa-file-invoice-dollar search-box-icon"></span> Facturar</button>
+                                            </div>
+                                            <!-- <div class="col-md-2 d-grid  gap-0 mt-4">
+                                                <button class="btn btn-outline-primary me-1 mb-1 btnVerCompra" id="btnVerCompra" type="button"><span class="fas fa-eye search-box-icon"></span> Ver Compra</button>
+                                            </div>-->
+                                            <div class="col-md-6 d-grid  gap-0 mt-4">
+                                                <button class="btn btn-outline-primary me-1 mb-1 btnNuevaCompra" id="btnNuevaCompra" type="button"><span class="fas fa-plus search-box-icon"></span> Nueva Compra</button>
+                                            </div>
+                                            <!--<div class="col-md-2 d-grid  gap-0 mt-4">
+                                                <button class="btn btn-outline-primary me-1 mb-1 btnBolsas" id="btnBolsas" type="button"><span class="fas fa-shopping-bag search-box-icon"></span> Bolsas</button>
+                                            </div>
+                                            <div class="col-md-2 d-grid  gap-0 mt-4">
+                                                <button class="btn btn-outline-primary me-1 mb-1 btnCompraEspera" id="btnCompraEspera" type="button"><span class="fas fa-clock search-box-icon"></span> Compra en espera</button>
+                                            </div>
+                                            <div class="col-md-2 d-grid  gap-0 mt-4">
+                                                <button class="btn btn-outline-primary me-1 mb-1 btnBorrarCompra" id="btnBorrarCompra" type="button"><span class="fas fa-trash search-box-icon"></span> Borrar Compra</button>
+                                            </div> -->
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- modal registro -->
+                <div class="modal fade" id="buscarProductos" data-bs-keyboard="false" data-bs-backdrop="static" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl mt-6" role="document">
+                        <div class="modal-content border-0">
+                            <div class="position-absolute top-0 end-0 mt-3 me-3 z-1"><button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                            <div class="modal-body p-0">
+                                <div class="rounded-top-3 bg-body-tertiary py-3 ps-4 pe-6">
+                                    <h4 class="mb-1" id="staticBackdropLabel">Buscar productos</h4>
+                                    <!-- <p class="fs-11 mb-0">Added by <a class="link-600 fw-semi-bold" href="#!">Antony</a></p> -->
+                                </div>
+                                <div class="p-4">
+                                    <div class="table-responsive scrollbar">
+
+                                        <table id="tablaListadoProductos" class="table table-striped mb-0 data-table fs-10" data-datatables="data-datatables" style="width: 100%;">
+                                            <thead class="bg-200">
+                                                <tr>
+                                                    <th class="text-900 sort">Código</th>
+                                                    <th class="text-900 sort">Nombre</th>
+                                                    <th class="text-900 text-center">Exist.</th>
+                                                    <th class="text-900 text-center">Vlr. Minimo</th>
+                                                    <th class="text-900 text-center">Vlr. Sugerido</th>
+                                                    <th class="text-900 text-center">Comprar</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- modal editar -->
+                <div class="modal fade" id="editarModal" data-bs-keyboard="false" data-bs-backdrop="static" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg mt-6" role="document">
+                        <div class="modal-content border-0">
+                            <div class="position-absolute top-0 end-0 mt-3 me-3 z-1"><button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                            <div class="modal-body p-0">
+                                <div class="rounded-top-3 bg-body-tertiary py-3 ps-4 pe-6">
+                                    <h4 class="mb-1" id="staticBackdropLabel">Editar producto</h4>
+                                    <!-- <p class="fs-11 mb-0">Added by <a class="link-600 fw-semi-bold" href="#!">Antony</a></p> -->
+                                </div>
+                                <div class="p-4">
+                                    <form class="formEditar" id="formEditar" class="row g-2">
+                                        <div class="row">
+
+                                            <input type="hidden" id="idProducto">
+                                            <input type="hidden" id="impEditar">
+
+                                            <div class="col-md-3">
+                                                <label>Código <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <input type="text" class="form-control" id="codigoEditar" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-9">
+                                                <label>Descripción <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <input type="text" class="form-control" id="descripcionEditar" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label>Valor Unitario  <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <input type="text" class="form-control" id="vlrUnitarioEditar">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label>Cantidad <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <input type="text" class="form-control" id="cantidadEditar">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <label>Descuento <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <input type="text" class="form-control" id="descuentoEditar">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <label>Impuesto <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <input type="text" class="form-control" id="impuestoEditar">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <label>Valor Total <span class="text-danger"> * </span></label>
+                                                <div class="form-group col-md-12 mb-2">
+                                                    <input type="text" class="form-control" id="vlrTotalEditar">
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer mt-3">
+                                                <div class="col-12 d-grid  gap-0">
+                                                    <button class="btn btn-outline-primary me-1 mb-1 btnModificar" id="btnModificar" type="button">Modificar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pie de pagina -->
+                <?php require_once("footer.php"); ?>
+            </div>
+        </div>
+    </main>
+    <!-- ===============================================--><!--    End ofContenido--><!-- ===============================================-->
+
+    <!-- ===============================================--><!--    JavaScripts--><!-- ===============================================-->
+    <?php require_once("script.php"); ?>
+    <script src="js/facturacion_compras.js"></script>
+</body>
+
+</html>

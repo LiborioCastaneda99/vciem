@@ -1,5 +1,5 @@
 <?php
-	class tipomoinsModelo
+	class tipofactModelo
 {
 
 	public function guardar($datos)
@@ -30,6 +30,11 @@
 	public function combo_tipomoins($nombre, $id)
 	{
 		$cmd = tipomoinsModel::combo_tipomoins($nombre, $id);
+	}
+
+	public function combo_tipofact($nombre, $id)
+	{
+		$cmd = tipomoinsModel::combo_tipofact($nombre, $id);
 	}
 
 }
